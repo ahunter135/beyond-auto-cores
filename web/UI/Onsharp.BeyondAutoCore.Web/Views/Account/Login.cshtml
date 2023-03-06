@@ -1,0 +1,63 @@
+﻿@model Onsharp.BeyondAutoCore.Web.Model.Command.LoginCommand
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Beyond Auto Care</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Beyond Auto Core" />
+    <meta property="og:site_name" content="Beyond Auto Core" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <link href="~/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic_v8.0.38/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/metronic_v8.0.38/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+</head>
+<body id="kt_body" class="bg-body">
+    <div class="d-flex flex-column flex-root">
+        <div class="d-flex flex-center flex-column flex-column-fluid p-20 pb-lg-20" style="">
+            <img alt="Logo" src="../../media/brand/cm-logo.png" class="logo" height="90" />
+            <div class="login-window-container p-10">
+                @using (Html.BeginForm("Index", "Account", new { }, FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+
+                    <div class="fv-row mb-10">
+                        <label class="form-label fs-6 fw-bolder text-white">Email</label>
+                        @Html.TextBoxFor(m => m.UserName, new { @name="email", @autocomplete="on", @placeholder = "Enter email", @class = "input-login form-control form-control-lg form-control-solid" })
+                        @Html.ValidationMessageFor(m => m.UserName)
+                    </div>
+                    <div class="fv-row mb-10">
+                        <div class="d-flex flex-stack mb-2">
+                            <label class="form-label fw-bolder text-white fs-6 mb-0">Password</label>
+                        </div>
+                        @Html.PasswordFor(m => m.Password, new { @name="password", @autocomplete="true", @placeholder = "Enter password", @class = "input-login form-control form-control-lg form-control-solid" })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-warning w-100 mb-5" style="background-color: #E7AA37">
+                            <span class="indicator-label">Sign-in</span>
+                            <span class="indicator-progress">
+                                Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    <script>var hostUrl = "metronic_v8.0.38/assets/";</script>
+    <script src="~/metronic_v8.0.38/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/metronic_v8.0.38/assets/js/scripts.bundle.js"></script>
+</body>
+</html>

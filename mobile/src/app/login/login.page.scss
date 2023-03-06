@@ -1,0 +1,27 @@
+.cm-logo {
+  margin-top: 138px;
+  margin-bottom: 20.49px;
+}
+
+ion-img::part(image) {
+  width: 263px;
+  height: 168px;
+}
+
+ion-item::part(native) {
+  padding-left: 0px;
+  --border-color: white;
+}
+
+ion-label {
+  padding-left: 16px;
+}
+
+ion-input {
+  --padding-start: 16px !important;
+}
+
+.sign-up-footer {
+  margin-top: 60px;
+  margin-bottom: 25px;
+}

@@ -1,0 +1,60 @@
+/* Custom Modal Styling */
+
+.add-lot-modal {
+  --height: 339px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+
+  &::part(backdrop) {
+    background: #000000;
+    opacity: 0.5;
+  }
+
+  &::part(content) {
+    --width: 90%;
+    max-width: 512px;
+    --border-radius: 6px;
+  }
+}
+
+.fullness-modal {
+  --height: 419px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+  overflow: auto;
+
+  &::part(backdrop) {
+    background: #000000;
+    opacity: 0.5;
+  }
+
+  &::part(content) {
+    --width: 90%;
+    max-width: 512px;
+    --border-radius: 6px;
+  }
+}
+
+.submit-lot-modal {
+  --height: 477px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+  overflow: auto;
+
+  &::part(backdrop) {
+    background: #000000;
+    opacity: 0.5;
+  }
+
+  &::part(content) {
+    --width: 90%;
+    max-width: 512px;
+    --border-radius: 6px;
+  }
+}

@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Margin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <div class="ion-padding">
+      <ion-text class="title">Adjust Your Margin</ion-text>
+      <br />
+      <ion-text class="paragraph-text-18">Use the slider below to set your profit margin.</ion-text>
+      <br />
+      <ion-text class="paragraph-text-12 opacity-50">A 10% margin displays the value 10% lower than the original
+        price.</ion-text>
+    </div>
+
+    <form [formGroup]="marginForm">
+      <div class="ion-align-items-center lot-range">
+        <ion-range mode="ios" formControlName="margin" min="0" max="100" step=".5">
+          <ion-text slot="start" class="white-500">0</ion-text>
+          <ion-text slot="end" class="white-500">100</ion-text>
+        </ion-range>
+      </div>
+
+      <div class="ion-padding-bottom ion-margin-bottom ion-text-center">
+        <ion-text class="title">{{marginForm.value.margin}}%</ion-text><br />
+        <ion-text class="paragraph-text-18 opacity-50">Margin Percentage</ion-text>
+      </div>
+
+      <ion-button class="ion-margin" expand="block" color="dark" (click)="save()">Save</ion-button>
+    </form>
+  </div>
+</ion-content>

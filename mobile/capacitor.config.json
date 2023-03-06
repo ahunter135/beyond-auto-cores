@@ -1,0 +1,12 @@
+{
+    "plugins": {
+      "PushNotifications": {
+        "presentationOptions": ["badge", "sound", "alert"]
+      },
+      "Keyboard": {
+        "resize": "native",
+        "style": "DARK",
+        "resizeOnFullScreen": true
+      }
+    }
+  }

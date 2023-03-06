@@ -1,0 +1,61 @@
+.slidesDefault {
+  max-width: 100% !important;
+  height: 100% !important;
+  border-radius: 5px;
+
+  .partners-slide,
+  .banner-slide {
+    max-width: 100% !important;
+    max-height: 100% !important;
+
+    ion-img {
+      padding: 16px !important;
+      max-width: 100% !important;
+      height: auto;
+      min-height: 100%;
+      min-width: 100%;
+    }
+
+    ion-img::part(image) {
+      border-radius: 15px;
+      overflow: hidden;
+      object-fit: fill;
+    }
+  }
+}
+
+.last-update-container {
+  padding-left: 10px;
+}
+
+.home-chip {
+  --background: #9c9c9c;
+  --color: #fff;
+  width: 80px;
+  height: 32px;
+  border-radius: 16px;
+}
+
+.home-chip-inactive {
+  --background: #9c9c9c;
+  --color: #fff;
+}
+
+.home-chip-active {
+  --background: #000000;
+  --color: #fff;
+}
+
+.home-chip-text {
+  margin: auto;
+}
+
+.metalChart {
+  width: 100%;
+  padding-top: 20px;
+  margin-top: -5px;
+}
+
+.chartContainer {
+  height: 220px;
+}

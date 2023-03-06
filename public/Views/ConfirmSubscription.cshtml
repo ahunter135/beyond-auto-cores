@@ -1,0 +1,109 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.ConfirmSubscription>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="heroreg" class="registration-ui text-white tm-font-big">
+	<nav class="navbar navbar-expand-md tm-navbar tm-navbar-absolute" id="tmNav">
+		<div class="container">
+			<div class="tm-next">
+				<a onclick="redirectHome()" class="navbar-brand">
+					<img src="~/css/bac-images/cm-transparent-horizontal.png" alt="Image" height="50" />
+				</a>
+			</div>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars navbar-toggler-icon"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#download"
+							onclick="redirectRoute('#download')">Download the App</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#introduction"
+							onclick="redirectRoute('#introduction')">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#affiliates"
+							onclick="redirectRoute('#affiliates')">Affiliates</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#contact"
+							onclick="redirectRoute('#contact')">Contact Us</a>
+					</li>
+					<li class="nav-item spacer"></li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/login"
+							onclick="redirectRoute('login')">Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="text-center tm-hero-text-container">
+		<div class="tm-hero-text-container-inner">
+			<div class="header-welcome">
+				<h1 class="poppins-medium font-bolder">CONFIRM</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="work" class="tm-section-pad-top tm-section-pad-bottom">
+	<div class="container tm-container-gallery" style="padding: 0 15vw">
+		<form id="payment-form">
+			<div class="row justify-content-md-center">
+				<div class="col-12 text-center font-light">
+					<h2 style="color:white" class="poppins-extra-light">Create Credential</h2>
+				</div>
+
+				<div class="col-12 text-center font-light" style="padding:1vh">
+					<h4 style="color:white">Please set password for subcribed email.</h4>
+					<p style="color:white">Password must be minimum of 8 characters
+						consist of at least the following: Uppercase letter, Lowercase letter, Number and Special
+						Character.</p>
+				</div>
+
+				<div class="col-6" style="margin-bottom: 50px">
+					<div class="d-flex flex-row row">
+						<div class="col-12 form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" id="password" aria-describedby="password"
+								placeholder="Password">
+						</div>
+						<div class="col-12 form-group">
+							<label>Confirm Password</label>
+							<input type="password" class="form-control" id="confirmPassword"
+								aria-describedby="confirmpassword" placeholder="Confirm Password">
+						</div>
+					</div>
+				</div>
+
+				<div id="card-element-submit" class="col-12">
+					<div class="col-12" style="text-align: center;margin-top:20px">
+						<button type="submit" class="btn btn-warning" id="pay-button"
+							onclick="confirmRegistration(); return false;">SUBMIT</button>
+					</div>
+				</div>
+
+				<div id="payment-message-success" class="hide-form"></div>
+			</div>
+		</form>
+	</div>
+</section>
+
+<script type="text/javascript">
+	(function () {
+		setTimeout(() => {
+			if (identifyUser() === true) {
+				window.location.href = `${window.location.origin}/account`;
+			}
+		}, 100)
+	})();
+</script>

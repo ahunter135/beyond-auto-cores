@@ -1,0 +1,44 @@
+ion-item {
+  --background: transparent !important;
+  --inner-border-width: 0px !important;
+}
+
+.generics-card-container {
+  position: relative;
+  width: 100%;
+}
+
+.generic-add-button {
+  position: absolute;
+  right: 14px;
+  top: -4px;
+  --background: #fff;
+  --color: #000;
+  width: 69px;
+  height: 100%;
+  --border-radius: 0px 10px 10px 0px;
+}
+
+.generic-add-icon {
+  --color: #000;
+  width: 26px;
+  height: 26px;
+}
+
+.generics-card-item {
+  padding: 0px !important;
+  margin-top: 0px !important;
+  margin-left: 15px !important;
+  margin-right: 15px !important;
+  margin-bottom: 9px !important;
+}
+
+.generics-card-item-content {
+  padding: 0px !important;
+}
+
+.generic-img {
+  width: 100px;
+  height: 65px;
+  object-fit: cover;
+}

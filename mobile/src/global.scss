@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheetsmaxWidth: '512px'
+ */
+
+/* Core CSS required for Ionic components to work properly */
+
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@import "./theme/text.scss";
+@import "./theme/colors.scss";
+@import "./theme/modals.scss";
+
+/* Card styling */
+
+.screen-max-width {
+  max-width: 512px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+ion-card {
+  background-color: black;
+  box-shadow: 0px 4px 8px #ffffff29;
+}
+
+ion-item {
+  --background: transparent;
+}
+
+/* Alignment styling */
+
+.align-vertical-middle {
+  vertical-align: middle;
+}
+
+.box-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box-flex {
+  display: flex;
+}
+
+/* Range styling  */
+
+ion-range {
+  --bar-background: #989aa2;
+  --bar-background-active: #35cc00;
+  --bar-border-radius: 2px;
+  --knob-background: #ffffff;
+  --knob-size: 30px;
+  --pin-background: #35cc00;
+  --pin-color: #fff;
+}
+
+ion-range::part(tick) {
+  background: #a2d2ff;
+}
+
+ion-range::part(tick-active) {
+  background: #bde0fe;
+}
+
+ion-range::part(knob) {
+  box-shadow: 0px 1px 3px #00000021;
+}
+
+ion-fab-button::part(native) {
+  box-shadow: 0px 0px 10px #ffffff;
+}
+
+ion-range::part(pin) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+  color: #000;
+
+  border-radius: 50%;
+  transform: scale(1.01);
+
+  top: 17px;
+
+  min-width: 28px;
+  height: 28px;
+  transition: transform 120ms ease, background 120ms ease;
+  z-index: 100;
+}
+
+.confirmation-alert .alert-wrapper {
+  --background: #fff;
+  --ion-text-color: #000;
+}
+
+.opacity-50 {
+  opacity: 50%;
+}
+
+ion-back-button {
+  color: #fff;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.custom-carrot .ion-accordion-toggle-icon {
+  color: black;
+  margin: 4px;
+}

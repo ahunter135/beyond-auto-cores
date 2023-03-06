@@ -1,0 +1,247 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="heroreg" class="registration-ui text-white tm-font-big">
+	<nav class="navbar navbar-expand-md tm-navbar tm-navbar-absolute" id="tmNav">
+		<div class="container">
+			<div class="tm-next">
+				<a onclick="redirectHome()" class="navbar-brand">
+					<img src="~/css/bac-images/cm-transparent-horizontal.png" alt="Image" height="50" />
+				</a>
+			</div>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars navbar-toggler-icon"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#download" onclick="redirectRoute('#download')">Download the App</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#introduction" onclick="redirectRoute('#introduction')">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#affiliates" onclick="redirectRoute('#affiliates')">Affiliates</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/#contact" onclick="redirectRoute('#contact')">Contact Us</a>
+					</li>
+					<li class="nav-item spacer"></li>
+					<li class="nav-item">
+						<a class="nav-link tm-nav-link font-bolder" href="/login" onclick="redirectRoute('login')">Login</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="text-center tm-hero-text-container">
+		<div class="tm-hero-text-container-inner">
+			<div class="header-welcome">
+				<h1 class="poppins-medium font-bolder">PURCHASE</h1>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section id="work" class="tm-section-pad-top tm-section-pad-bottom">
+	<div class="container tm-container-gallery" style="padding: 0 15vw">
+		<form id="payment-form">
+			<div class="row justify-content-md-center">
+				<div class="col-lg-12 text-center font-light">
+					<h2 id="subcription-label" style="color:white" class="poppins-extra-light">Choose Subscription</h2>
+				</div>
+				<div class="col-lg-12 font-light sub-selector" style="margin-bottom: 20px">
+					<select id="subscription" onchange="accessDisplayList()" class="form-control"
+						aria-label="Default select example">
+						<option selected value="" disabled>Select type of subscription</option>
+						<option value="1">Premium Subscription</option>
+						<option value="2">Elite Subscription</option>
+						<option value="3">Lifetime Subscription</option>
+					</select>
+				</div>
+				<div class="col-lg-6 text-center" style="margin-bottom: 50px">
+					<div class="go-premium">
+						<h4 style="color:white" class="font-bolder">$44.99/ Month</h4>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+							<span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+							<span><i class="bi bi-check-circle-fill"></i>10% commission affiliate link</span>
+						</div>
+					</div>
+					<div class="go-lifetime">
+						<h2 style="color:white" class="font-bolder">$3,499/ One Time</h2>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+							<span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+							<span><i class="bi bi-check-circle-fill"></i>10% commission affiliate link</span>
+							<span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
+							<span><i class="bi bi-check-circle-fill"></i>Margin Adjustment</span>
+							<span><i class="bi bi-check-circle-fill"></i>Featured Marketing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Additional Feature</span>
+							<span><i class="bi bi-check-circle-fill"></i>Additional Feature</span>
+						</div>
+					</div>
+					<div class="go-elite">
+						<h4 style="color:white" class="font-bolder">$59.99/ Month</h4>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+							<span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+							<span><i class="bi bi-check-circle-fill"></i>10% commission affiliate link</span>
+							<span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
+							<span><i class="bi bi-check-circle-fill"></i>Margin Adjustment</span>
+							<span><i class="bi bi-check-circle-fill"></i>Featured Marketing</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 text-center font-light">
+					<h2 style="color:white">Account Info</h2>
+				</div>
+				<div class="col-12" style="margin-bottom: 50px">
+					<div class="d-flex flex-row row">
+						<div class="col-6 form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" id="firstname" aria-describedby="name"
+								placeholder="First Name">
+						</div>
+						<div class="col-6 form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" id="lastname" aria-describedby="emailHelp"
+								placeholder="Last Name">
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<div class="form-group">
+							<label>Email Address</label>
+							<input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+								placeholder="Email Address">
+						</div>
+					</div>
+					<div class="d-flex flex-column hide-form">
+						<div id="affiliation-section" class="form-group hide-form">
+							<label>Affiliate (Referral Code)</label>
+							<input type="text" disabled class="form-control form-disabled" id="affiliation" />
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 text-center font-light" style="margin-bottom: 20px">
+					<h2 style="color:white">Submit Payment</h2>
+				</div>
+				<div class="col-lg-12 text-center" style="margin-bottom: 20px">
+					<div class="go-premium-total">
+						<h4 style="color:white">Total: $44.99</h4>
+					</div>
+					<div class="go-lifetime-total">
+						<h4 style="color:white">Total: $3,499</h4>
+					</div>
+					<div class="go-elite-total">
+						<h4 style="color:white">Total: $59.99</h4>
+					</div>
+				</div>
+				<div id="card-element" class="col-lg-11"></div>
+				<div id="payment-message" class="col-lg-11"></div>
+				<div id="card-element-submit" class="col-lg-12">
+					<div class="col-12" style="text-align: center">
+						<button type="submit" class="btn btn-warning" id="pay-button" onclick="postPayment(); return false;">SUBMIT</button>
+					</div>
+				</div>
+				
+				<div id="payment-message-success" class="hide-form"></div>
+			</div>
+		</form>
+	</div>
+</section>
+
+<script type="text/javascript">
+	window.addEventListener('load', function() {
+		const params = new Proxy(new URLSearchParams(window.location.search), {
+			get: (searchParams, prop) => searchParams.get(prop),
+		});
+
+		setTimeout(() => {
+			if(identifyUser() === true) { 
+				window.location.href = `${window.location.origin}/account`;
+			}
+
+			let selectSubElement = document.getElementById("subscription");
+			const queryString = window.location.search;
+			selectSubElement.value = params.subscription;
+
+			let inputAffContainer = document.getElementById('affiliation-section')
+			let inputAffInput = document.getElementById('affiliation')
+
+			if (checkUrlQuery('affiliatecode') === true) {
+				if(inputAffContainer.classList.contains('hide-form')) inputAffContainer.classList.remove('hide-form');
+				inputAffInput.value = params.affiliatecode;
+				checkAffiliateCode(params.affiliatecode)
+			} else {
+				if(!inputAffContainer.classList.contains('hide-form')) inputAffContainer.classList.add('hide-form');
+			}
+
+			accessDisplayList();
+			initialize();
+		}, 333)
+	});
+
+	function accessDisplayList() {
+		const className = 'show-sub'
+		let e = document.getElementById("subscription");
+		let value = e.value;
+		let goPremium = document.querySelector(".go-premium");
+		let goPremiumTotal = document.querySelector(".go-premium-total");
+		let goLifetime = document.querySelector(".go-lifetime");
+		let goLifetimeTotal = document.querySelector(".go-lifetime-total");
+		let goElite = document.querySelector(".go-elite");
+		let goEliteTotal = document.querySelector(".go-elite-total");
+
+		if(value === '1') {
+			if (!goPremium.classList.contains(className)) {
+				goPremium.classList.add(className)
+				goPremiumTotal.classList.add(className)
+
+				goLifetime.classList.remove(className)
+				goLifetimeTotal.classList.remove(className)
+				
+				goElite.classList.remove(className)
+				goEliteTotal.classList.remove(className)
+			}
+		} else if(value === '3') {
+			if (!goLifetime.classList.contains(className)) {
+				goLifetime.classList.add(className)
+				goLifetimeTotal.classList.add(className)
+
+				goPremium.classList.remove(className)
+				goPremiumTotal.classList.remove(className)
+				
+				goElite.classList.remove(className)
+				goEliteTotal.classList.remove(className)
+			}
+		} else if(value === '2') {
+			if (!goElite.classList.contains(className)) {
+				goElite.classList.add(className)
+				goEliteTotal.classList.add(className)
+
+				goLifetime.classList.remove(className)
+				goLifetimeTotal.classList.remove(className)
+				
+				goPremium.classList.remove(className)
+				goPremiumTotal.classList.remove(className)
+			}
+		}
+	}
+</script>

@@ -1,0 +1,27 @@
+.add-photo-button {
+  --background: #fff;
+  width: 104px;
+  height: 83px;
+}
+
+.grade-photo {
+  width: 104px;
+  height: 83px;
+  background: #000;
+}
+
+.add-photo-icon {
+  --color: #000;
+  width: 26px;
+  height: 26px;
+}
+
+.current-photo-container {
+  position: relative;
+}
+
+.trash-icon {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+}

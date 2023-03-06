@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ photoGrade.photoGradeStatus === 1 ? 'Approved' : 'Rejected' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img [src]="photoGrade.fileUrl || thumbnail" class="ion-padding"></ion-img>
+
+  <ion-grid class="ion-padding-start ion-padding-end">
+    <ion-row>
+      <ion-col>
+        <ion-text class="paragraph-text-16-bold ion-padding-vertical">Code</ion-text><br />
+        <ion-text class="paragraph-text-16 mb-20">{{ photoGrade.converterName || 'No code name'}}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-text class="paragraph-text-16-bold">Notes</ion-text><br />
+        <ion-text class="paragraph-text-16 mb-20">{{ photoGrade.comments || 'No notes' }}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

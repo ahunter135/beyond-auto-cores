@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notifications</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [scrollEvents]="true" (ionScrollEnd)="onLoadMore()">
+  <div *ngIf="isLoading">
+    <app-skeleton-list-loader></app-skeleton-list-loader>
+  </div>
+
+  <div class="notification-container ion-text-center ion-margin-top" *ngIf="!alertList.data.length && !isLoading">
+    <p>
+      <ion-text class="paragraph-text-16 ion-margin-bottom">No notification.</ion-text>
+    </p>
+  </div>
+
+  <ion-list>
+    <ng-template *ngIf="alertList.data" ngFor let-alert [ngForOf]="alertList.data" let-i="index">
+      <ion-item *ngIf="!alert.status" class="notification-item-list" (click)="viewNotification(alert)">
+        <div class="notification-icon">
+          <ion-icon class="unread-icon" src="/assets/icon/notification_unread.svg"></ion-icon>
+        </div>
+
+        <ion-label>
+          <ion-text class="paragraph-text-14-bold notification-title white">{{alert.title}}</ion-text>
+          <ion-text class="paragraph-text-16 white">{{alert.message}}</ion-text>
+        </ion-label>
+
+        <ion-text class="paragraph-text-14 notification-time white" slot="end">2h</ion-text>
+      </ion-item>
+
+      <ion-item *ngIf="alert.status" class="notification-item-list" (click)="viewNotification(alert)">
+        <div class="notification-icon">
+          <ion-icon class="read-icon" src="/assets/icon/notification_read.svg"></ion-icon>
+        </div>
+
+        <ion-label>
+          <ion-text class="paragraph-text-14-bold notification-title white opacity-50">{{alert.title}}</ion-text>
+          <ion-text class="paragraph-text-16 white opacity-50">{{alert.message}}</ion-text>
+        </ion-label>
+
+        <ion-text class="paragraph-text-14 notification-time white opacity-50" slot="end">2h</ion-text>
+      </ion-item>
+    </ng-template>
+  </ion-list>
+</ion-content>

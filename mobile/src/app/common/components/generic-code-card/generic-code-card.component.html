@@ -1,0 +1,32 @@
+<div *ngIf="code" class="generics-card-container">
+  <ion-card class="generics-card-item" (click)="goToGeneric()">
+    <ion-card-content class="generics-card-item-content">
+      <ion-img
+        class="generic-img"
+        [src]="code.fileUrl || '/assets/cm-logo-home.svg'"
+        [style]="!code.fileUrl ? 'object-fit: contain' : ''"
+      ></ion-img>
+      <div class="col-text">
+        <ion-text class="paragraph-text-16 white">{{
+          code.converterName
+        }}</ion-text>
+        <ion-text class="paragraph-text-16-bold white">{{
+          formatPrice(code.finalUnitPrice)
+        }}</ion-text>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button class="generic-add-button" (click)="openModal()">
+    <div>
+      <ion-icon
+        class="generic-add-icon"
+        src="/assets/icon/add-lot-icon.svg"
+      ></ion-icon>
+      <br />
+      <ion-text class="paragraph-text-12-light ion-text-capitalize"
+        >Add</ion-text
+      >
+    </div>
+  </ion-button>
+</div>

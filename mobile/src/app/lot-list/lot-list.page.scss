@@ -1,0 +1,270 @@
+ion-title {
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+ion-range {
+  padding-top: 0px;
+}
+
+.new-fullness-button {
+  --background: #000;
+  --border-radius: 12px;
+  height: 46px;
+  text-transform: capitalize;
+}
+
+.lot-img {
+  width: 100px;
+  height: 100%;
+  // object-fit: cover;
+}
+
+/* Modal Styling */
+
+ion-input {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --color: #000;
+}
+
+ion-modal {
+  --height: 421px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+  overflow: auto;
+}
+
+ion-modal::part(backdrop) {
+  background: #000000;
+  opacity: 0.5;
+}
+
+.lot-content::part(background) {
+  --background: #fff;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(255, 255, 255);
+  --color: rgb(0, 0, 0);
+}
+
+.add-code-toolbar {
+  padding: 13px;
+  border-bottom: 1px solid #eff2f5;
+}
+
+.lot-input {
+  --background: #f3f7f9;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+ion-label {
+  padding-bottom: 16px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+ion-modal::part(content) {
+  --width: 90%;
+  max-width: 512px;
+  --border-radius: 6px;
+}
+
+ion-footer {
+  line-height: 14px;
+  position: relative;
+}
+
+.footer-toolbar {
+  position: relative;
+}
+
+.footer-group-button {
+  width: 100%;
+}
+
+.footer-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 5px;
+  height: 67px;
+}
+
+.add-lot-button {
+  --background: #000;
+  text-transform: capitalize;
+  height: 40px;
+}
+
+.border-dash-line {
+  border-bottom: 1px dashed;
+}
+
+.modal-footer {
+  border-top: 1px solid #eff2f5;
+}
+
+.col-fix-width {
+  flex: auto !important;
+  max-width: none !important;
+  width: 100px !important;
+}
+
+.lot-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 16px;
+}
+
+.lot-item {
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgb(255 255 255 / 16%);
+
+  .cont {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    height: 75px;  // adjust lot item height here
+  }
+  
+  .lot-img {
+    width: 120px;
+    height: 100%;
+  }
+
+  .header-text {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin: 0px 28px 0px 16px;
+
+    p {
+      text-align: center;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  
+
+  // Could be margin on .content... rendering issue recheck
+  .outer {
+    padding: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .row {
+      display: flex;
+      align-items: center;
+
+      .flex {
+        flex: 2;
+      }
+
+      .qty {
+        width: 60px;
+        flex: 3;
+        text-align: center;
+      }
+
+      .subtract {
+        width: 18px;
+      }
+
+      .add {
+        width: 20px;
+      }
+
+      .trash {
+        width: 20px;
+        margin: 0 0 0 16px;
+      }
+    }
+
+    .dashed {
+      border-bottom: 1px dashed;
+    }
+
+    ion-button {
+      --background: black;
+      margin: 16px;
+    }
+  }
+
+  .bold {
+    font-weight: 700;
+  }
+
+  &::part(header) {
+    background: linear-gradient(to left, white, white 55px, black 55px);
+  }
+
+  &::part(content) {
+    background-color: white;
+    color: black;
+  }
+}
+
+.spacer {
+  height: 118px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #000;
+  bottom: 0px;
+  position: fixed;
+  height: 118px;
+  width: 100vw;
+
+  .f1 {
+    display: flex;
+    flex-direction: column;
+    margin: 16px;
+    font-size: 12px;
+
+    .lot-name {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+  }
+
+  .f2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex: 1;
+    margin-right: 16px;
+
+    .add-code {
+      font-weight: 525;
+      margin-right: 6px;
+    }
+
+    .submit {
+      font-weight: 525;
+    }
+  }
+}

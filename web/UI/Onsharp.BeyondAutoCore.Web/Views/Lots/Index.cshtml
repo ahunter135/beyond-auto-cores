@@ -1,0 +1,131 @@
+﻿@model IEnumerable< Onsharp.BeyondAutoCore.Web.Model.Dto.InventoryDto>
+
+@{
+    Layout = "_layout";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container-xxl">
+            <div class="card">
+                <div class="card-header border-0 pt-6">
+                    <div class="card-toolbar">
+                        <h2 class="d-flex text-dark fw-bolder fs-4 align-items-center my-1" style="margin-right: 5px;">Lots</h2>
+                    </div>
+                    <div class="card-title">
+                        <div class="d-flex align-items-center position-relative my-1">
+                            <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                    <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <form autocomplete="off">
+                                <input id="lots-list-search" type="text" data-kt-lots-table-filter="search" class="form-control form-control-solid ps-15 input-search-ui" placeholder="Search Lots" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_lots_table">
+                        <thead>
+                            <tr class="text-start fs-7 gs-0 table-list-custom-row-header">
+                                <th class="min-w-50px hide-section">
+                                    Lot Id
+                                </th>
+                                <th class="min-w-125px padding-left-small">Lot Number</th>
+                                <th class="min-w-125px">First Name</th>
+                                <th class="min-w-125px">Last Name</th>
+                                <th class="min-w-90px" style="text-align: left;">Quantity</th>
+                                <th class="min-w-90px" style="text-align: left;">Average</th>
+                                <th class="min-w-90px" style="text-align: left;">Total</th>
+                                <th class="min-w-90px padding-right-small" style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fw-bold text-gray-600">
+                            @foreach (var lot in Model)
+                            {
+                                <tr>
+                                    <td class="hide-section">@lot.LotId</td>
+                                    <td class="padding-left-small black-font bold-text">@lot.LotName</td>
+                                    <td>@lot.FirstName</td>
+                                    <td>@lot.LastName</td>
+                                    <td style="padding-right: 50px; text-align: left;">@String.Format("{0:0,0}",lot.Quantity)</td>
+                                    <td style="padding-right: 50px; text-align: left;">@String.Format("{0:0,0}",lot.Average)</td>
+                                    <td style="padding-right: 50px; text-align: left;">@String.Format("{0:0,0}",lot.Total)</td>
+                                    <td class="text-end">
+                                        <button class="btn_converter btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-kt-lots-table-filter="detail_list_row" style="height: 25px; width: 21px;">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24.058" height="24.062" viewBox="0 0 24.058 24.062">
+                                                <path id="view" d="M23.731,7.678,19.046,2.993a1.127,1.127,0,0,0-.8-.329h-.766a9.727,9.727,0,0,0,2.068-6.015,9.773,9.773,0,0,0-9.774-9.774A9.773,9.773,0,0,0,0-3.351,9.773,9.773,0,0,0,9.774,6.424a9.727,9.727,0,0,0,6.015-2.068v.766a1.127,1.127,0,0,0,.329.8L20.8,10.606a1.123,1.123,0,0,0,1.593,0l1.33-1.33A1.133,1.133,0,0,0,23.731,7.678ZM9.774,2.664A6.011,6.011,0,0,1,3.759-3.351,6.011,6.011,0,0,1,9.774-9.366a6.011,6.011,0,0,1,6.015,6.015A6.011,6.011,0,0,1,9.774,2.664Z" transform="translate(0 13.125)" fill="#e7aa37" />
+                                            </svg>
+                                        </button>
+                                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-kt-lots-table-filter="delete_row">
+                                            <svg id="Delete" xmlns="http://www.w3.org/2000/svg" width="18.999" height="20" viewBox="0 0 18.999 24.912">
+                                                <path id="Path_340" data-name="Path 340" d="M74.179,2.265A1.276,1.276,0,0,1,75.5.979h5.435a1.276,1.276,0,0,1,1.322,1.285V3.672h.979V2.265A2.256,2.256,0,0,0,80.936,0H75.5a2.256,2.256,0,0,0-2.3,2.265V3.672h.979Zm0,0" transform="translate(-68.719)" fill="#e7aa37" />
+                                                <path id="Path_341" data-name="Path 341" d="M30.182,141.322h11.58a2.085,2.085,0,0,0,1.983-2.2V124H28.2v15.118a2.085,2.085,0,0,0,1.983,2.2Zm8.912-14.984a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm-3.611,0a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm-3.611,0a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm0,0" transform="translate(-26.473 -116.41)" fill="#e7aa37" />
+                                                <path id="Path_342" data-name="Path 342" d="M1.224,70.448h16.55a1.224,1.224,0,1,0,0-2.448H1.224a1.224,1.224,0,1,0,0,2.448Zm0,0" transform="translate(0 -63.838)" fill="#e7aa37" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kt_modal_lots_invoice" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered mw-900px">
+            <div class="modal-content">
+                <div class="drop-area">
+                    <div class="form" action="#" id="kt_modal_lots_invoice_form">
+                        <div class="modal-header">
+                            <h2 class="fw-bolder">Invoice</h2>
+                            <div id="kt_modal_lots_invoice_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                                <span class="svg-icon svg-icon-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                        <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="modal-body py-12 px-lg-12">
+                            <div class="scroll-y me-n12 pe-12" id="kt_modal_lots_invoice_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_lots_invoice_header" data-kt-scroll-wrappers="#kt_modal_lots_invoice_scroll" data-kt-scroll-offset="300px">
+                                <input id="id" type="hidden" />
+                                <div class="row g-12 mb-12">
+                                    <table id="invoice-list-table" class="table align-middle table-row-dashed fs-12 gy-12" cellspacing="0" width="100%">
+                                        <thead>
+                                            <tr class="text-start fs-7 gs-0 table-list-custom-row-header">
+                                                <th style="width: 90px;">ID</th>
+                                                <th style="">Converter Name</th>
+                                                <th style="text-align: center; width: 90px;">Unit Price</th>
+                                                <th style="text-align: center; width: 90px;">Quantity</th>
+                                                <th style="text-align: center; width: 90px;">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                                <th>&nbsp;</th>
+                                                <th style="font-weight: bold; text-align:right"></th>
+                                                <th style="font-weight: bold;"></th>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/lots/list/list.js"></script>

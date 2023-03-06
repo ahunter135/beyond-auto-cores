@@ -1,0 +1,129 @@
+.view-generics-button {
+  --background: #000;
+  --border-radius: 12px;
+  height: 46px;
+}
+
+.find-text-container {
+  position: relative;
+}
+
+.vertical-center {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+ion-input {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+  --color: #000;
+  height: 46px;
+  font-size: 18px;
+}
+
+/* Modal Styling */
+
+ion-modal {
+  --height: 520px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+  overflow: auto;
+  align-items: flex-start;
+  padding-top: 2.5rem;
+}
+
+ion-modal::part(backdrop) {
+  background: #000000;
+  opacity: 0.5;
+}
+
+.lot-content::part(background) {
+  --background: #fff;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(255, 255, 255);
+  --color: rgb(0, 0, 0);
+}
+
+.modal-toolbar {
+  padding: 13px;
+  border-bottom: 1px solid #eff2f5;
+}
+
+.lot-input {
+  --background: #f3f7f9;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+ion-label {
+  padding-bottom: 16px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+ion-modal::part(content) {
+  --width: 90%;
+  max-width: 512px;
+  --border-radius: 6px;
+}
+
+ion-footer {
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 32px;
+}
+
+.footer-toolbar {
+  position: relative;
+}
+
+.footer-group-button {
+  width: 100%;
+}
+
+.footer-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 5px;
+}
+
+.add-lot-button {
+  --background: #000;
+  text-transform: capitalize;
+  height: 40px;
+}
+
+.lot-select {
+  background-color: #f3f7f9;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+ion-card {
+  margin: 15px;
+}
+
+.modal-footer {
+  border-top: 1px solid #eff2f5;
+}
+
+ion-range {
+  padding-top: 0px;
+}

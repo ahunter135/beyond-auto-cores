@@ -1,0 +1,100 @@
+﻿@model Onsharp.BeyondAutoCore.Web.Model.Dto.CodeDto
+
+@{
+    Layout = "_layout";
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container-xxl">
+            <div class="card">
+                <div class="card-header border-0 pt-6">
+                    <div class="card-toolbar">
+                        <h2 class="d-flex text-dark fw-bolder fs-4 align-items-center my-1" style="margin-right: 5px;">Code Detail</h2>
+                    </div>
+                </div>
+                <div class="card-body pt-0" style="padding-top: 50px;">
+                    <div class="row g-9 mb-9">
+                        <div class="col-md-9 fv-row">
+                            <form class="form" action="#" id="kt_add_code_form" data-kt-redirect="/codes">
+                                <input type="hidden" id="codeId" value="@Model.Id" />
+                                <div class="scroll-y me-n7 pe-7" id="kt_modal_add_code_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_add_code_header" data-kt-scroll-wrappers="#kt_modal_add_code_scroll" data-kt-scroll-offset="300px">
+                                    <div class="row g-9 mb-7">
+                                        <div class="col-md-6 fv-row">
+                                            <label class="required fs-6 fw-bold mb-2">Converter Name</label>
+                                            <input id="convertername" type="text" class="form-control form-control-solid" placeholder="" name="convertername" value="@Model.ConverterName" />
+                                        </div>
+                                        <div class="col-md-6 fv-row">
+                                            <div class="mb-10">
+                                                <label class="form-label fw-bold">Is Generic?</label>
+                                                <div class="d-flex" style="padding-top: 10px;">
+                                                    <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
+                                                        <input id="radgeneric" name="IsGeneric" class="form-check-input" type="radio" @(@Model.IsCustom == true ? "" : "checked='checked'")>
+                                                        <span class="form-check-label">Yes</span>
+                                                    </label>
+                                                    <label class="form-check form-check-sm form-check-custom form-check-solid">
+                                                        <input id="radnongeneric" name="IsGeneric" class="form-check-input" type="radio" @(@Model.IsCustom == true ? "checked='checked'" : "")>
+                                                        <span class="form-check-label">No</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-9 mb-7">
+                                        <div class="col-md-3 fv-row">
+                                            <label class="fs-6 fw-bold mb-2">Original Price</label>
+                                            <input id="originalprice" type="text" class="form-control form-control-solid" placeholder="" name="orginalprice" value="@String.Format("{0:n}", Model.OriginalPrice)" />
+                                        </div>
+                                        <div class="col-md-3 fv-row">
+                                            <label class="-6 fw-bold mb-2">Platinum</label>
+                                            <input id="platinum" type="text" class="form-control form-control-solid" placeholder="" name="platinum" value="@String.Format("{0:n}",Model.PlatinumPrice)" />
+                                        </div>
+                                        <div class="col-md-3 fv-row">
+                                            <label class="fs-6 fw-bold mb-2">Palladium</label>
+                                            <input id="palladium" type="text" class="form-control form-control-solid" placeholder="" name="palladium" value="@String.Format("{0:n}",Model.PalladiumPrice)" />
+                                        </div>
+                                        <div class="col-md-3 fv-row">
+                                            <label class="fs-6 fw-bold mb-2">Rhodium</label>
+                                            <input id="rhodium" type="text" class="form-control form-control-solid" placeholder="" name="rhodium" value="@String.Format("{0:n}",Model.RhodiumPrice)" />
+                                        </div>
+                                    </div>
+                                    <div class="row g-9 mb-7" style="padding-left: 15px; padding-right: 15px;">
+                                        <div class="form-group" style="background-color: #E7AA3726; border: solid 1px #E7AA37; ">
+                                            <div class="dropzone dropzone-queue mb-2" id="kt_modal_upload_dropzone">
+                                                <div class="row g-9 mb-7">
+                                                    <div class="col-md-1" style="padding-top: 25px;">
+                                                        <img alt="Logo" src="media/upload-file.png" class="logo" />
+                                                    </div>
+                                                    <div class="dropzone-panel col-md-6" style="padding-top: 25px;">
+                                                        <a class="dropzone-select btn me-2 dz-clickable" style="background-color: #E7AA3726; color: #000;">Drop files here or click to upload</a>
+                                                        <a class="dropzone-upload btn me-2">Upload All</a>
+                                                        <a class="dropzone-remove-all ">Remove All</a>
+
+                                                        <div class="dz-default dz-message"><button class="dz-button" type="button">Drop files here to upload</button></div>
+                                                    </div>
+                                                    <span class="form-text fs-6 text-muted" style="padding-left: 65px;">Upload up to 3 files.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer flex-center">
+                                    <button type="reset" id="kt_update_code_cancel" class="btn btn-light me-3">Discard</button>
+                                    <button type="submit" id="kt_update_code_submit" class="btn btn-warning">
+                                        <span class="indicator-label">Submit</span>
+                                        <span class="indicator-progress">
+                                            Please wait...
+                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                                        </span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/codes/update.js"></script>

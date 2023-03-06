@@ -1,0 +1,12 @@
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 20px 12px 15px;
+    cursor: pointer;
+}
+#drop-area.highlight {
+    border-color: #f2eded;
+}

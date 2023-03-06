@@ -1,0 +1,31 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home" (click)="onSelectTab('home')">
+      <ion-icon
+        [src]="selectedTab === 'home'? '/assets/icon/home-active.svg' :  '/assets/icon/home-inactive.svg'"
+      ></ion-icon>
+      <ion-label class="paragraph-text-10-semibold">Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="search" (click)="onSelectTab('search')">
+      <ion-icon
+        [src]="selectedTab === 'search'? '/assets/icon/search-active.svg' :  '/assets/icon/search-inactive.svg'"
+      ></ion-icon>
+      <ion-label class="paragraph-text-10-semibold">Search</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="inventory" (click)="onSelectTab('inventory')">
+      <ion-icon
+        [src]="selectedTab === 'inventory'? '/assets/icon/inventory-active.svg' :  '/assets/icon/inventory-inactive.svg'"
+      ></ion-icon>
+      <ion-label class="paragraph-text-10-semibold">Inventory</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="photo-grade" (click)="onSelectTab('photo-grade')">
+      <ion-icon
+        [src]="selectedTab === 'photo-grade'? '/assets/icon/photo-grade-active.svg' :  '/assets/icon/photo-grade-inactive.svg'"
+      ></ion-icon>
+      <ion-label class="paragraph-text-10-semibold">Photo Grade</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

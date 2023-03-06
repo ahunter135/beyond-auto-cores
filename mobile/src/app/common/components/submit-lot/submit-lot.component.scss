@@ -1,0 +1,89 @@
+/* Modal Styling */
+
+ion-toolbar {
+  --background: rgb(255, 255, 255);
+  --color: rgb(0, 0, 0);
+  padding: 13px;
+  border-bottom: 1px solid #eff2f5;
+}
+
+ion-input {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --color: #000;
+}
+
+.lot-content::part(background) {
+  --background: #fff;
+}
+
+.lot-input {
+  --background: #f3f7f9;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+ion-label {
+  padding-bottom: 16px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+ion-footer {
+  position: relative;
+  padding-top: 48px;
+}
+
+.footer-toolbar {
+  position: relative;
+}
+
+.footer-group-button {
+  width: 100%;
+}
+
+.footer-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 5px;
+  height: 67px;
+}
+
+.submit-lot-button {
+  --background: #000;
+  text-transform: capitalize;
+  height: 40px;
+}
+
+.modal-footer {
+  border-top: 1px solid #eff2f5;
+}
+
+.current-photo-container {
+  position: relative;
+}
+
+.trash-icon {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+}
+
+.id-photo {
+  width: 104px;
+  height: 83px;
+  object-fit: fit;
+}
+
+.upload-button {
+  width: 104px;
+  height: 83px;
+}

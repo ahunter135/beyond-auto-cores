@@ -1,0 +1,352 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Account>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Models.PublishedContent;
+@{
+    Layout = "Master.cshtml";
+}
+
+<section id="heroreg" class="registration-ui text-white tm-font-big">
+    <nav class="navbar navbar-expand-md tm-navbar tm-navbar-absolute" id="tmNav">
+        <div class="container">
+            <div class="tm-next">
+                <a href="#hero" onclick="redirectHome()" class="navbar-brand">
+                    <img src="~/css/bac-images/cm-transparent-horizontal.png" alt="Image" height="50" />
+                </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars navbar-toggler-icon"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#download"
+                           onclick="redirectRoute('#download')">Download the App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#introduction"
+                           onclick="redirectRoute('#introduction')">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#affiliates"
+                           onclick="redirectRoute('#affiliates')">Affiliates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#contact"
+                           onclick="redirectRoute('#contact')">Contact Us</a>
+                    </li>
+                    <li class="nav-item spacer"></li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="#" onclick="logoutUser()">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <div class="header-welcome">
+                <h1 class="poppins-medium font-bolder">Account</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="work" class="account tm-section-pad-top tm-section-pad-bottom">
+    <div class="container tm-container-gallery" style="padding: 0 10vw">
+        <div class="row">
+
+            <div class="col-lg-6">
+                <h2 style="text-align:center" class="poppins-extra-light">My Profile</h2>
+                <div class="view-account-details">
+                    <div class="image-holder-container">
+                        <span>
+                            <img id="display-account-photo" src="https://i.pinimg.com/736x/ec/e2/b0/ece2b0f541d47e4078aef33ffd22777e.jpg" alt="Img" />
+                        </span>
+                    </div>
+                    <div class="display-label">First Name</div>
+                    <div class="display-value fname">Loading...</div>
+                    <div class="display-label">Last Name</div>
+                    <div class="display-value lname">Loading...</div>
+                    <div class="display-label">Email</div>
+                    <div class="display-value email">Loading...</div>
+                    <div class="text-center">
+                        <p>
+                            <button id="btn-edit-profile" class="btn btn-warning hide-form" onclick="editEnable(); return false;">EDIT</button>
+                        </p>
+                    </div>
+                </div>
+                <div class="edit-account-details hide-form" style="text-align:center;padding: 2rem">
+                    <form id="edit-account-form">
+                        <img id="account-image-display" src="#"><br>
+                        <input type='file' class="hide-form" id="account-image-uploader" />
+
+                        <div class="display-label">First Name</div>
+                        <div class="display-value fname">
+                            <input type='text' id="account-firstname" class="form-control" />
+                        </div>
+                        <div class="display-label">Last Name</div>
+                        <div class="display-value lname">
+                            <input type='text' id="account-lastname" class="form-control" />
+                        </div>
+                        <div class="display-label">Email Address</div>
+                        <div class="display-value email">
+                            <input type='text' id="account-email" class="form-control" />
+                        </div>
+                        <div class="text-center">
+                            <p>
+                                <button id="btn-cancel-edit-profile" class="btn btn-outline-warning" onclick="cancelEdit(); return false;">Cancel</button>&nbsp;
+                            </p>
+                            <p>
+                                <button id="btn-edit-save-profile" class="btn btn-warning" onclick="saveEdit(); return false;">Save</button>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+                <div class="other-settings" style="margin-top:20px;border-top: 1px solid #ddd;padding-top:15px">
+                    <div class="display-label">Affiliate Program</div>
+                    <div class="display-value affiliate row justify-content-md-center">
+                        <div class="col-lg-12 text-center">Loading...</div><br />
+                        <div class="col-lg-12 text-center" style="margin-top:15px">
+                            <button id="affiliate-btn-share" class="btn btn-sm btn-outline-light hide-form" onclick="copyAffiliateLink(); return false;">Share</button>
+                            <button id="affiliate-btn-enroll" class="btn btn-sm btn-outline-light hide-form" onclick="onEnrollAffiliate(); return false;">Enroll Now</button>
+                            <button id="affiliate-btn-enable" class="btn btn-sm btn-outline-light hide-form" onclick="onToogleAccessAffiliate(); return false;">Enable</button>
+                            <input type='hidden' id="affiliate-link" value='' />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <form id="payment-form">
+                    <h2 style="text-align:center" class="poppins-extra-light">Photo Grades</h2>
+                    <div class="col-lg-12 text-center" style="margin-bottom: 20px">
+                        <div class="display-label-sub">You have <span id="grade-credits" style="font-weight: bolder"></span> photo grades remaining.</div>
+                    </div>
+                    <div class="col-lg-12 text-center" style="margin-bottom: 20px">
+                        <div style="text-align:center">
+                            <div class="display-label-sub">I'd like to purchase</div>
+                            <div style="text-align:center">
+                                <select class="form-control" id="photoGrade" type="number" style="width:200px;display:inline-block">
+                                    <option selected value="" disabled>Select purchase</option>
+                                    <option value="10">10 Photo Grade</option>
+                                    <option value="20">20 Photo Grade</option>
+                                    <option value="30">30 Photo Grade</option>
+                                    <option value="40">40 Photo Grade</option>
+                                    <option value="50">50 Photo Grade</option>
+                                </select>
+                            </div>
+                            <div class="display-label-sub">more photo grades.</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 text-center" style="margin-bottom: 20px">
+                        <h4 style="color:white" id="totalDisplay">Total: $0.00</h4>
+                    </div>
+
+                    <div id="card-element" class="subscription-card-element col-lg-12 text-center"></div>
+
+                    <div class="col-lg-12">
+                        <div id="payment-message" class="hidden"></div>
+                        <div class="text-center">
+                            <p>
+                                <button type="submit" class="btn btn-warning" id="pay-button" onclick="postPaymentPhotoGrades(); return false;">PURCHASE PHOTO GRADE</button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="payment-message-success" class="hide-form" style="margin-top: 20px;"></div>
+                </form>
+                <div class="other-settings" style="margin-top:40px">
+                    <h2 style="text-align:center" class="poppins-extra-light">Subscription Plan</h2>
+                    <div class="subscription-display-ui">
+                        <div class="display-value subscription">Loading...</div>
+                        <div id="change-sub-trigger" class="col-12 hide-form" style="text-align: center">
+                            <button type="submit" class="btn btn-warning" id="upgrade-sub-button"
+                                    onclick="onChangeSubsriptionToogle(); return false;">
+                                CHANGE
+                                SUBSCRIPTION
+                            </button><br /><br />
+                            <button type="submit" class="btn btn-outline-light hide-form" id="cancel-sub-button"
+                                    onclick="onCancelSubscription(false); return false;">
+                                CANCEL
+                                SUBSCRIPTION
+                            </button>
+                            <button type="submit" class="btn btn-outline-light hide-form" id="enable-sub-button"
+                                    onclick="onCancelSubscription(true); return false;">
+                                ENABLE
+                                SUBSCRIPTION
+                            </button>
+                        </div>
+                    </div>
+                    <form id="mod-subscription" class="hide-form" style="margin: 2rem 2rem 0;">
+                        <select id="subscription" class="form-control" style="margin-bottom: 2rem;"
+                                aria-label="Default select example">
+                            <option selected value="" disabled>Select type of subscription</option>
+                            <option value="1">Premium Subscription</option>
+                            <option value="2">Elite Subscription</option>
+                            <option value="3">Lifetime Subscription</option>
+                        </select>
+                        <div class="subscription-benefits">
+                            <div class='subpremium hide-form'>
+                                <h4 style="color:white" class="font-bolder">$44.99/ Month</h4>
+                                <h5 style="color:white" class="font-bolder">Users will have access to</h5>
+                                <div class="sub-access-list">
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>Real-time converter
+                                        pricing
+                                    </span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Images</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>10% commission affiliate
+                                        link
+                                    </span>
+                                </div>
+                            </div>
+                            <div class='sublifetime'>
+                                <h2 style="color:white" class="font-bolder">$3,499/ One Time</h2>
+                                <h5 style="color:white" class="font-bolder">Users will have access to</h5>
+                                <div class="sub-access-list">
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>Real-time converter
+                                        pricing
+                                    </span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Images</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>10% commission affiliate
+                                        link
+                                    </span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Margin Adjustment</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Featured Marketing</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Additional Feature</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Additional Feature</span>
+                                </div>
+                            </div>
+                            <div class='subelite hide-form'>
+                                <h4 style="color:white" class="font-bolder">$59.99/ Month</h4>
+                                <h5 style="color:white" class="font-bolder">Users will have access to</h5>
+                                <div class="sub-access-list">
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>Real-time converter
+                                        pricing
+                                    </span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Images</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+                                    <span>
+                                        <i class="bi bi-check-circle-fill"></i>10% commission affiliate
+                                        link
+                                    </span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Margin Adjustment</span>
+                                    <span><i class="bi bi-check-circle-fill"></i>Featured Marketing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="card-element-subscription"
+                             class="subscription-card-element col-lg-12 text-center" style="margin-top: 2rem">
+                        </div>
+
+                        <div class="col-12" style="text-align: center; margin-top: 2rem">
+                            <div id="payment-sub-message" class="hidden"></div>
+                            <button type="submit" class="btn btn-outline-warning" id="upgrade-sub-cancel-button"
+                                    onclick="onCancelUpdateSubscription(); return false;">
+                                CANCEL
+                            </button>
+                            <button type="submit" class="btn btn-warning" id="upgrade-sub-submit-button"
+                                    onclick="onUpdateSubscription(); return false;">
+                                PROCEED
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    let photoGrade = document.querySelector('#photoGrade');
+    let totalDisplay = document.querySelector('#totalDisplay');
+
+    photoGrade.addEventListener('input', (e) => {
+        totalDisplay.textContent = `Total: ${new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD'
+        }).format(e.target.value * 2)}`;
+    });
+
+    window.addEventListener('load', function () {
+        if (localStorage.getItem('access_token')) {
+            getUserInfo();
+        } else {
+            window.location.href = `${window.location.origin}/`;
+        }
+
+        if (checkUrlQuery('confirmaffiliate') === true) {
+            const queryString = window.location.search;
+            const affiliateCode = queryString.replace('?confirmaffiliate=', '');
+            setTimeout(() => {
+                confirmAffiliate(affiliateCode);
+            }, 1000)
+        }
+
+        document.querySelector('img#account-image-display')
+            .addEventListener('click', function () {
+                document.querySelector('input#account-image-uploader[type="file"]').click()
+            });
+
+        document.querySelector('input#account-image-uploader[type="file"]')
+            .addEventListener('change', function () {
+                if (this.files && this.files[0]) {
+                    let img = document.querySelector('img#account-image-display');
+                    img.onload = () => {
+                        URL.revokeObjectURL(img.src);  // no longer needed, free memory
+                    }
+
+                    img.src = URL.createObjectURL(this.files[0]); // set src to blob url
+                }
+            });
+
+        initialize();
+
+        document.querySelector('#subscription').addEventListener('change', (targetElement) => {
+            const currentUserInfo = JSON.parse(localStorage.getItem('currentUserInfo'));
+            const className = 'hide-form'
+            let e = document.getElementById("subscription");
+            let value = e.value;
+            let goPremium = document.querySelector(".subpremium");
+            let goLifetime = document.querySelector(".sublifetime");
+            let goElite = document.querySelector(".subelite");
+
+            if (JSON.stringify(currentUserInfo.subscription) === e.value) {
+                loadingButton("#upgrade-sub-submit-button", 'PROCEED', true);
+            } else {
+                loadingButton("#upgrade-sub-submit-button", 'PROCEED', false);
+            }
+
+            if (value === '1') {
+                goPremium.classList.remove(className)
+                goLifetime.classList.add(className)
+                goElite.classList.add(className)
+            } else if (value === '3') {
+                goLifetime.classList.remove(className)
+                goPremium.classList.add(className)
+                goElite.classList.add(className)
+            } else if (value === '2') {
+                goElite.classList.remove(className)
+                goLifetime.classList.add(className)
+                goPremium.classList.add(className)
+            }
+        })
+    });
+</script>

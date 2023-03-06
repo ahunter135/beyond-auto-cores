@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="AppSetting\**" />
+    <EmbeddedResource Remove="AppSetting\**" />
+    <None Remove="AppSetting\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Dto\PhotoGrades\PhotoGradeListDto.cs~RF30766ee.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Onsharp.BeyondAutoCore.Common\Onsharp.BeyondAutoCore.Web.Common.csproj" />
+  </ItemGroup>
+
+</Project>

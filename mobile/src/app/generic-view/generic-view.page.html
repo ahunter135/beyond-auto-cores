@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ code.converterName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img [src]="currentPhoto" class="generic-img"></ion-img>
+
+  <div *ngIf="photoGrade && photoGrade.photoGradeItems.length > 1">
+    <div class="box-flex-center carousel-img">
+      <ion-img *ngFor="let image of photoGrade.photoGradeItems; index as i" [src]="image.fileUrl" class="generic-img-sm ion-margin-end" (click)="onSelectImage(image.fileUrl)"></ion-img>
+    </div>
+  </div>
+
+  <ion-grid class="ion-padding-start ion-padding-end">
+    <ion-row>
+      <ion-col>
+        <ion-text class="paragraph-text-16-bold ion-padding-vertical">Code</ion-text><br />
+        <ion-text class="paragraph-text-16 mb-20">{{ code.converterName }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-text class="paragraph-text-16-bold">Market Price</ion-text><br />
+        <ion-text class="paragraph-text-16 white mb-20">{{ formatPrice(code.finalUnitPrice) }}</ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-text class="paragraph-text-16-bold">Make</ion-text><br />
+        <ion-text class="paragraph-text-16 mb-20">{{ code.make }}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" class="add-inventory-button white ion-padding-start ion-padding-end" (click)="openModal()">
+    <ion-text class="paragraph-text-16-semibold white">Add to Inventory Lot</ion-text>
+  </ion-button>
+</ion-content>

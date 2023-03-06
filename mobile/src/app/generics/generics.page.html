@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>View Generics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding">
+    <ion-input [(ngModel)]="searchCode" placeholder="Search Generics..." (ionChange)="onSearch($event)" (keyup.enter)="hideKeyboard($event)" debounce="500" enterkeyhint="Search" #search></ion-input>
+  </div>
+
+  <div class="ion-padding-end">
+    <div *ngIf="isLoading && !dataCodes.data">
+      <app-skeleton-list-loader></app-skeleton-list-loader>
+    </div>
+
+    <ng-template *ngIf="dataCodes.data" ngFor let-code [ngForOf]="dataCodes.data" let-i="index">
+      <app-generic-code-card [code]="code"></app-generic-code-card>
+    </ng-template>
+
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" threshold="200px">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
+  </div>
+</ion-content>

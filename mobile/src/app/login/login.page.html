@@ -1,0 +1,48 @@
+<ion-content class="ion-text-center">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-justify-content-center" style="display: flex;">
+        <ion-img class="cm-logo" src="../../assets/cm_logo@3x.png"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-text class="ion-text-center">Login</ion-text>
+
+  <form [formGroup]="form">
+    <ion-item>
+      <ion-label class="paragraph-text-13" position="stacked">Email</ion-label>
+      <ion-input formControlName="userName" type="email"></ion-input>
+    </ion-item>
+
+    <div>
+      <ion-text color="danger">
+        <small *ngIf="!form.get('userName').valid && (form.get('userName').dirty || form.get('userName').touched)">
+          Please enter a valid email.
+        </small>
+      </ion-text>
+    </div>
+
+    <ion-item>
+      <ion-label class="paragraph-text-13" position="stacked">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+    <div class="ion-padding-bottom ion-margin-bottom">
+      <ion-text color="danger">
+        <small *ngIf="!form.get('password').valid && (form.get('password').dirty || form.get('password').touched)">
+          Please enter a valid password.
+        </small>
+      </ion-text>
+    </div>
+    <ion-button (click)="submitForm()" class="ion-margin" expand="block" color="dark" [attr.disabled]="!form.valid || isSubmitting">
+      <ion-text class="paragraph-text-16-semibold">Login</ion-text>
+    </ion-button>
+
+    <ion-text class="paragraph-text-12" (click)="goToForgotPassword()">Forgot your password?</ion-text>
+  </form>
+
+  <p class="sign-up-footer">
+    <ion-text class="paragraph-text-12">Need Help? </ion-text>
+    <ion-text class="paragraph-text-12-semibold" (click)="signUp()">Sign up</ion-text>
+  </p>
+</ion-content>

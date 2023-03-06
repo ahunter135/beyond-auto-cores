@@ -1,0 +1,30 @@
+.generic-img {
+  margin: 15px;
+  object-fit: cover;
+}
+
+.generic-img-sm {
+  width: 66px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.add-inventory-button {
+  --background: #000;
+  --border-radius: 12px;
+  height: 46px;
+  text-transform: capitalize;
+}
+
+.footer-toolbar {
+  --background: transparent;
+}
+
+.carousel-img {
+  height: 50px;
+}
+
+ion-title {
+  text-transform: uppercase;
+  font-size: 18px;
+}

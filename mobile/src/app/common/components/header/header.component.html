@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons *ngIf="!isHome" slot="start">
+      <ion-img
+        class="header-ion-icon-logo"
+        src="/assets/cm-logo-header.svg"
+      ></ion-img>
+    </ion-buttons>
+
+    <ion-title *ngIf="!isHome">{{ title }}</ion-title>
+
+    <ion-img
+      *ngIf="isHome"
+      class="header-ion-logo"
+      src="/assets/cm-logo-home.svg"
+    ></ion-img>
+
+    <ion-buttons slot="end">
+      <ion-img
+        class="header-ion-icon-settings"
+        src="/assets/icon/settings.svg"
+        (click)="goToSettings()"
+      ></ion-img>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

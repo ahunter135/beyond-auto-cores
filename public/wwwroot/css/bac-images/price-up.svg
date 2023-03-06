@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="39.256" height="62" viewBox="0 0 39.256 62">
+  <g id="price-up" transform="translate(-93.91)">
+    <path id="Path_104" data-name="Path 104" d="M265.172,0,256.06,9.112v3.295h3.649V32.816h10.929V12.407h3.647V9.112Z" transform="translate(-142.515)" fill="#0ca3fe"/>
+    <path id="Path_105" data-name="Path 105" d="M340.422,9.112v3.295h-3.647V32.816H331.31V0Z" transform="translate(-208.652)" fill="#0081ee"/>
+    <path id="Path_106" data-name="Path 106" d="M114.552,47.99,105.44,57.1v3.3h3.647V75h10.929V60.4h3.649V57.1Z" transform="translate(-10.134 -42.179)" fill="#0ca3fe"/>
+    <path id="Path_107" data-name="Path 107" d="M189.8,57.1v3.3h-3.649V75H180.69V47.99Z" transform="translate(-76.271 -42.179)" fill="#0081ee"/>
+    <circle id="Ellipse_6" data-name="Ellipse 6" cx="19.628" cy="19.628" r="19.628" transform="translate(93.91 22.744)" fill="#ffe54a"/>
+    <path id="Path_108" data-name="Path 108" d="M275.628,207.448A19.628,19.628,0,0,1,256,227.076V187.82A19.628,19.628,0,0,1,275.628,207.448Z" transform="translate(-142.462 -165.076)" fill="#f4cc03"/>
+    <path id="Path_109" data-name="Path 109" d="M216.858,273.949a5.3,5.3,0,0,1-4.427,5.218v2.252H208.8v-2.246a5.237,5.237,0,0,1-4.4-5.163h3.633a1.6,1.6,0,0,0,1.6,1.6h1.942a1.657,1.657,0,0,0,0-3.314h-1.908a5.29,5.29,0,0,1-.862-10.509V259.53h3.633v2.26A5.3,5.3,0,0,1,216.817,267h-3.633a1.661,1.661,0,0,0-1.659-1.659h-1.865a1.657,1.657,0,1,0,0,3.314h1.908A5.3,5.3,0,0,1,216.858,273.949Z" transform="translate(-97.084 -228.103)" fill="#f4cc03"/>
+    <g id="Group_48" data-name="Group 48" transform="translate(113.538 31.427)">
+      <path id="Path_110" data-name="Path 110" d="M262.236,340.2a5.3,5.3,0,0,1-4.427,5.218v2.252H256v-5.814h.947a1.657,1.657,0,0,0,0-3.314H256V334.91h.947A5.3,5.3,0,0,1,262.236,340.2Z" transform="translate(-256 -325.782)" fill="#edae02"/>
+      <path id="Path_111" data-name="Path 111" d="M256.9,265.344H256V259.53h1.809v2.26A5.3,5.3,0,0,1,262.2,267h-3.633A1.662,1.662,0,0,0,256.9,265.344Z" transform="translate(-256 -259.53)" fill="#edae02"/>
+    </g>
+  </g>
+</svg>

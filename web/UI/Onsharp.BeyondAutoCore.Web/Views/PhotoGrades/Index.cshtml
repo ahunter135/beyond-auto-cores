@@ -1,0 +1,204 @@
+﻿@model IEnumerable< Onsharp.BeyondAutoCore.Web.Model.Dto.PhotoGradeListDto>
+
+@{
+    Layout = "_layout";
+    string status = string.Empty;
+}
+
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+    <div class="post d-flex flex-column-fluid" id="kt_post">
+        <div id="kt_content_container" class="container-xxl">
+            <div class="card">
+                <div class="card-header border-0 pt-6">
+                    <div class="card-toolbar">
+                        <h2 class="d-flex text-dark fw-bolder fs-4 align-items-center my-1" style="margin-right: 5px;">Photo Grading</h2>
+                    </div>
+                    <div class="card-title">
+                        <div class="d-flex align-items-center position-relative my-1">
+                            <span class="svg-icon svg-icon-1 position-absolute ms-6">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="17.0365" y="15.1223" width="8.15546" height="2" rx="1" transform="rotate(45 17.0365 15.1223)" fill="currentColor" />
+                                    <path d="M11 19C6.55556 19 3 15.4444 3 11C3 6.55556 6.55556 3 11 3C15.4444 3 19 6.55556 19 11C19 15.4444 15.4444 19 11 19ZM11 5C7.53333 5 5 7.53333 5 11C5 14.4667 7.53333 17 11 17C14.4667 17 17 14.4667 17 11C17 7.53333 14.4667 5 11 5Z" fill="currentColor" />
+                                </svg>
+                            </span>
+                            <form autocomplete="off">
+                                <input id="photogrades-list-search" type="text" data-kt-photograde-table-filter="search" autocomplete="off" class="form-control form-control-solid ps-15 input-search-ui" placeholder="Search PhotoGrades" />
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body pt-0">
+                    <table class="table align-middle table-row-dashed fs-6 gy-5" id="kt_photograde_table">
+                        <thead>
+                            <tr class="text-start fs-7 gs-0 table-list-custom-row-header">
+                                <th class="min-w-50px hide-section">
+                                    Grade Id
+                                </th>
+                                <th class="min-w-250px padding-left-small">Requester Name</th>
+                                <th class="min-w-125px">Date Requested</th>
+                                <th class="min-w-125px">Status</th>
+                                <th class="min-w-70px padding-right-small" style="text-align: right;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="fw-bold text-gray-600">
+                            @foreach (var lot in Model)
+                            {
+                                <tr>
+                                    <td class="hide-section">@lot.PhotoGradeId</td>
+                                    <td class="black-font padding-left-small"><b>@lot.RequestorName</b></td>
+                                    <td><span>@lot.DateRequested</span></td>
+                                    <td style="padding-right: 100px;">
+                                        @{
+                                            if (lot.PhotoGradeStatus == Onsharp.BeyondAutoCore.Web.Common.Enums.PhotoGradeStatusEnum.InReview) { status = "Pending"; } else { status = lot.PhotoGradeStatus.ToString(); }
+                                        }
+
+                                        @status
+
+                                    </td>
+                                    <td class="" style="text-align: center;">
+                                        <button class="btn_converter btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-kt-photograde-table-filter="update_row">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24.894" height="20" viewBox="0 0 24.894 22.132">
+                                                <path id="edit-icon" d="M8.95,1.783a.34.34,0,0,0-.1.242V6.93H-6.363V-8.283H4.075a.343.343,0,0,0,.246-.1L5.7-9.766a.348.348,0,0,0-.246-.592H-6.363A2.075,2.075,0,0,0-8.437-8.283V6.93A2.075,2.075,0,0,0-6.363,9H8.85A2.075,2.075,0,0,0,10.925,6.93V.646A.347.347,0,0,0,10.333.4Zm6.768-8.722a2.532,2.532,0,0,0,0-3.579l-1.867-1.867a2.522,2.522,0,0,0-3.574,0L-1.077-1.035l-.432,3.907A1.786,1.786,0,0,0,.461,4.842L4.368,4.41ZM11.448-5.6,3.413,2.426.591,2.742.907-.08l8.03-8.035Zm2.8-3.445a.461.461,0,0,1,0,.644L12.917-7.069,10.406-9.58l1.336-1.336a.451.451,0,0,1,.64,0Z" transform="translate(8.438 13.127)" fill="#e7aa37" />
+                                            </svg>
+                                        </button>
+                                        <button class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1" data-kt-photograde-table-filter="delete_row">
+                                            <svg id="Delete" xmlns="http://www.w3.org/2000/svg" width="18.999" height="20" viewBox="0 0 18.999 24.912">
+                                                <path id="Path_340" data-name="Path 340" d="M74.179,2.265A1.276,1.276,0,0,1,75.5.979h5.435a1.276,1.276,0,0,1,1.322,1.285V3.672h.979V2.265A2.256,2.256,0,0,0,80.936,0H75.5a2.256,2.256,0,0,0-2.3,2.265V3.672h.979Zm0,0" transform="translate(-68.719)" fill="#e7aa37" />
+                                                <path id="Path_341" data-name="Path 341" d="M30.182,141.322h11.58a2.085,2.085,0,0,0,1.983-2.2V124H28.2v15.118a2.085,2.085,0,0,0,1.983,2.2Zm8.912-14.984a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm-3.611,0a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm-3.611,0a.49.49,0,0,1,.979,0v11.568a.49.49,0,1,1-.979,0Zm0,0" transform="translate(-26.473 -116.41)" fill="#e7aa37" />
+                                                <path id="Path_342" data-name="Path 342" d="M1.224,70.448h16.55a1.224,1.224,0,1,0,0-2.448H1.224a1.224,1.224,0,1,0,0,2.448Zm0,0" transform="translate(0 -63.838)" fill="#e7aa37" />
+                                            </svg>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kt_modal_update_photogridstatus" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered mw-750px">
+            <div class="modal-content">
+                <form autocomplete="off">
+                    <div class="modal-header" id="kt_modal_update_photograde_header">
+                        <h2 class="fw-bolder">Grade Converter</h2>
+                        <div id="kt_modal_update_photograde_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                            <span class="svg-icon svg-icon-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                    <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                                </svg>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-body py-10 px-lg-17">
+                        <div class="scroll-y me-n7 pe-7" id="kt_modal_update_photograde_scroll" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-max-height="auto" data-kt-scroll-dependencies="#kt_modal_update_photograde_header" data-kt-scroll-wrappers="#kt_modal_update_photograde_scroll" data-kt-scroll-offset="300px">
+                            <input id="selPhotogradeId" type="hidden" />
+                            <div class="row g-9 mb-7">
+                                <div class="col-md-6 fv-row">
+                                    <label class="fs-6 fw-bold mb-2">Code</label>
+                                    <select id="codeList" class="form-select form-select-solid fw-bolder" name="photoGridStatus" data-control="select2" data-hide-search="true">
+                                        <option value="0" selected="selected"></option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6 fv-row">
+                                </div>
+                            </div>
+                            <div class="row g-9 mb-7">
+                                <div class="col-md-6 fv-row">
+                                    <label class="fs-6 fw-bold mb-2">Price</label>
+                                    <input id="price" type="number" class="form-control form-control-solid" placeholder="" name="price" value="" />
+                                </div>
+                                <div class="col-md-6 fv-row">
+                                    <label class="-6 fw-bold mb-2">Status</label>
+                                    <select id="photoGridStatus" class="form-select form-select-solid fw-bolder" name="photoGridStatus" data-control="select2" data-placeholder="Select an option" data-hide-search="true">
+                                        <option value="0">In Review</option>
+                                        <option value="1">Approved</option>
+                                        <option value="2">Rejected</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row g-9 mb-7">
+                                <div class="col-md-12 fv-row">
+                                    <label class="fs-6 fw-bold mb-2">Comments:</label>
+                                    <textarea id="comments" rows="5" type="text" class="form-control form-control-solid" name="comments"></textarea>
+                                </div>
+                            </div>
+                            <div class="row g-9 mb-7">
+                                <div class="photoslides">
+                                    <div class="photo-preview">
+                                        <div id="previous"><image src="media/photograde/chevron-left.png" /></div>
+                                        <div id="next"><image src="media/photograde/chevron-right.png" /></div>
+                                        <div id="slideshow">
+                                            <div class="d-flex image-container justify-content-center">
+                                                <img id="imgslidephoto" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="photoList" class="photo-thumbnails">
+                                        <div class="image-container">
+                                            <img id="image0" thumbnailposition="0" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="image-container">
+                                            <img id="image1" thumbnailposition="1" onerror="this.style.display='none'">
+                                        </div>
+                                        <div class="image-container">
+                                            <img id="image2" thumbnailposition="2" onerror="this.style.display='none'">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer flex-center">
+                        <button type="reset" id="kt_modal_update_photograde_cancel" class="btn btn-light me-3">Discard</button>
+                        <button type="submit" id="kt_modal_update_photograde_submit" class="btn btn-warning">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">
+                                Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+                            </span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="kt_modal_photo_carousel" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered mw-750px">
+            <div class="modal-content">
+                <div class="modal-header" id="kt_modal_update_photograde_header" style="padding-bottom: 5px !important">
+                    <h2 class="fw-bolder">Photos</h2>
+                    <div id="kt_modal_photo_carousel_close" class="btn btn-icon btn-sm btn-active-icon-primary">
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="currentColor" />
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="currentColor" />
+                            </svg>
+                        </span>
+                    </div>
+                </div>
+                <div class="modal-body py-10 px-lg-17" style="padding: 7px 7px 25px 7px !important;">
+                    <div style="float: left; width: 100%;">
+                        <div id="previous" style="float: left; width: 5%;"><image src="media/photograde/chevron-left.png" /></div>
+                        <div id="slideshow" style="float: left;"><img id="imgslidephoto" /></div>
+                        <div id="next" style="float: left; width: 5%;"><image src="media/photograde/chevron-right.png" /></div>
+                    </div>
+                    <div id="photoList" style="margin: auto; padding:0%; width: 60%; ">
+                        <div style="margin: auto;">
+                            <img id="image0" thumbnailposition="0" onerror="this.style.display='none'" style="" src="">
+                            <img id="image1" thumbnailposition="1" onerror="this.style.display='none'" style="" ; padding-left:2px; padding-right:2px;" src="">
+                            <img id="image2" thumbnailposition="2" onerror="this.style.display='none'" style="" src="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link href="~/css/photograde.css" rel="stylesheet" type="text/css" />
+<script src="~/js/photogrades/list/list.js"></script>

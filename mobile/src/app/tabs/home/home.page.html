@@ -1,0 +1,78 @@
+<app-header title="Home" [isHome]="true"></app-header>
+
+<ion-content>
+  <div>
+    <ion-slides class="slidesDefault" *ngIf="partners.data" pager="true" [options]="slideOpts">
+      <ion-slide class="partners-slide" *ngFor="let fileUrl of fileUrls">
+        <ion-img class="banner-img" [src]="fileUrl"></ion-img>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <div class="chartContainer">
+    <ion-text class="ion-padding-start heading1-text">Market Metal Prices</ion-text>
+    <canvas id="MetalPriceChart" class="metalChart"></canvas>
+  </div>
+
+  <ion-row class="ion-align-items-center ion-padding-top">
+    <ion-col size="6">
+      <ion-text class="paragraph-text-10 letter-spacing-05">Last Update: {{ currentMetalPrices?.lastUpdate }}</ion-text>
+    </ion-col>
+    <ion-col size="3">
+      <ion-chip [class]="is1M? 'home-chip home-chip-active' : 'home-chip home-chip-inactive'" (click)="toggleGraphFilter(true)">
+        <ion-label [class]="is1M? 'paragraph-text-14-bold home-chip-text' : 'paragraph-text-14 home-chip-text'">1M</ion-label>
+      </ion-chip>
+    </ion-col>
+    <ion-col size="3">
+      <ion-chip [class]="!is1M? 'home-chip home-chip-active' : 'home-chip home-chip-inactive'" (click)="toggleGraphFilter(false)">
+        <ion-label [class]="!is1M? 'paragraph-text-14-bold home-chip-text' : 'paragraph-text-14 home-chip-text'">1Y</ion-label>
+      </ion-chip>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-align-items-center ion-padding-bottom">
+    <ion-col size="4" class="ion-align-self-center ion-text-center">
+      <ion-chip [class]="metalSelected.platinum? 'home-chip home-chip-active pink-500' : 'home-chip home-chip-inactive'" (click)="onSelectMetal('platinum')">
+        <ion-label [class]="metalSelected.platinum? 'paragraph-text-12-bold home-chip-text' : 'paragraph-text-12-light home-chip-text'">Platinum</ion-label>
+      </ion-chip>
+
+      <br />
+
+      <ion-text [class]="metalSelected.platinum? 'paragraph-text-18-bold' : 'paragraph-text-18-light'">{{platinumPrices?.bidPrice || 0}}</ion-text>
+      <br />
+
+      <ion-icon [name]="platinumPrices?.isNegative? 'arrow-down-outline' : 'add-outline'" [class]="platinumPrices?.isNegative? 'align-vertical-middle red-500' : 'align-vertical-middle green-500'"></ion-icon>
+      <ion-text [class]="getStyleMetalSelected(metalSelected.platinum, platinumPrices?.isNegative)">{{platinumPrices?.oneDayPercentChange || 0}}</ion-text>
+    </ion-col>
+
+    <ion-col size="4" class="ion-align-self-center ion-text-center">
+      <ion-chip [class]="metalSelected.palladium? 'home-chip home-chip-active blue-500' : 'home-chip home-chip-inactive'" (click)="onSelectMetal('palladium')">
+        <ion-label [class]="metalSelected.palladium? 'paragraph-text-12-bold home-chip-text' : 'paragraph-text-12-light home-chip-text'">Palladium</ion-label>
+      </ion-chip>
+
+      <br />
+
+      <ion-text [class]="metalSelected.palladium? 'paragraph-text-18-bold' : 'paragraph-text-18-light'">{{palladiumPrices?.bidPrice || 0}}</ion-text>
+
+      <br />
+
+      <ion-icon [name]="palladiumPrices?.isNegative? 'arrow-down-outline' : 'add-outline'" [class]="palladiumPrices?.isNegative? 'align-vertical-middle red-500' : 'align-vertical-middle green-500'"></ion-icon>
+      <ion-text [class]="getStyleMetalSelected(metalSelected.palladium, palladiumPrices?.isNegative)">{{palladiumPrices?.oneDayPercentChange || 0}}</ion-text>
+    </ion-col>
+
+    <ion-col size="4" class="ion-align-self-center ion-text-center">
+      <ion-chip [class]="metalSelected.rhodium? 'home-chip home-chip-active green-200' : 'home-chip home-chip-inactive'" (click)="onSelectMetal('rhodium')">
+        <ion-label [class]="metalSelected.rhodium? 'paragraph-text-12-bold home-chip-text' : 'paragraph-text-12-light home-chip-text'">Rhodium</ion-label>
+      </ion-chip>
+
+      <br />
+
+      <ion-text [class]="metalSelected.rhodium? 'paragraph-text-18-bold' : 'paragraph-text-18-light'">{{rhodiumPrices?.bidPrice || 0}}</ion-text>
+
+      <br />
+
+      <ion-icon [name]="rhodiumPrices?.isNegative? 'arrow-down-outline' : 'add-outline'" [class]="rhodiumPrices?.isNegative? 'align-vertical-middle red-500' : 'align-vertical-middle green-500'"></ion-icon>
+      <ion-text [class]="getStyleMetalSelected(metalSelected.rhodium, rhodiumPrices?.isNegative)">{{rhodiumPrices?.oneDayPercentChange || 0}}</ion-text>
+    </ion-col>
+  </ion-row>
+</ion-content>

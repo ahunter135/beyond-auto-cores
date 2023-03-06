@@ -1,0 +1,65 @@
+<ion-content class="lot-content">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-text class="paragraph-text-14-bold">Add Fullness</ion-text>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button color="light" (click)="cancel()">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Quantity</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input class="lot-input" type="number" placeholder="Input quantity here" [(ngModel)]="qty"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Item Price</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-input [(ngModel)]="price" class="lot-input" (keydown)="onPriceKeyDown($event)" (ionBlur)="onBlurPrice($event)" (ionInput)="onInputPrice($event)" placeholder="Input unit price" type="number"></ion-input>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Item Fullness %</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <div class="ion-align-items-center lot-range">
+          <ion-range mode="ios" [pin]="true" [(ngModel)]="fullness" (ionChange)="onChangeFullness()" min="0" max="100" step="10">
+            <ion-text slot="start" class="black-500">0</ion-text>
+            <ion-text slot="end" class="black-500">100</ion-text>
+          </ion-range>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-footer class="modal-footer">
+    <div class="footer-button">
+      <ion-button class="ion-text-capitalize" color="dark" (click)="cancel()">Cancel</ion-button>
+      <ion-button class="add-lot-button" (click)="add()" [attr.disabled]="!price">
+        <ion-text class="white">Add fullness</ion-text>
+      </ion-button>
+    </div>
+  </ion-footer>
+</ion-content>

@@ -1,0 +1,7 @@
+{
+  "name": "Catalytic Mastermind",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,46 @@
+.unread-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.read-icon {
+  width: 22px;
+  height: 33px;
+}
+
+.notification-icon {
+  width: 64px;
+  text-align: center;
+}
+
+.notification-title {
+  margin-bottom: 15px;
+}
+
+.notification-time {
+  position: absolute;
+  top: 26px;
+  right: 15px;
+}
+
+ion-label {
+  display: grid !important;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+ion-list {
+  background-color: #212540 !important;
+}
+
+.notification-container {
+  width: 100%;
+  margin: auto;
+  display: block;
+  margin-top: 50%;
+}
+
+ion-title {
+  text-transform: uppercase;
+  font-size: 18px;
+}

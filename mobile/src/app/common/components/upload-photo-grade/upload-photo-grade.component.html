@@ -1,0 +1,27 @@
+<div class="current-photo-container" *ngIf="photoDataUrl">
+  <ion-img [src]="photoDataUrl" class="grade-photo ion-margin-end"></ion-img>
+
+  <ion-icon
+    class="trash-icon"
+    name="trash"
+    color="danger"
+    (click)="onRemovePhotoGrade()"
+  ></ion-icon>
+</div>
+
+<ion-button
+  *ngIf="!photoDataUrl"
+  expand="block"
+  color="dark"
+  class="add-photo-button ion-margin-end"
+  (click)="addPhotoGrade()"
+>
+  <div>
+    <ion-icon
+      class="add-photo-icon"
+      src="/assets/icon/add-photo.svg"
+    ></ion-icon>
+    <br />
+    <ion-text>Add Photo</ion-text>
+  </div>
+</ion-button>

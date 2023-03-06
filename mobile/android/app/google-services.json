@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "208731811467",
+    "project_id": "catalytic-mastermind",
+    "storage_bucket": "catalytic-mastermind.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:208731811467:android:23013d124d1fd0e5dc6e8e",
+        "android_client_info": {
+          "package_name": "org.catalyticmastermind.beyondautocore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "208731811467-p0uad9ncftbo1a500qp6ehqv0khans58.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbTAlxOnOLHMO8pXj7mKmLY1Vky0eXqXU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "208731811467-p0uad9ncftbo1a500qp6ehqv0khans58.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

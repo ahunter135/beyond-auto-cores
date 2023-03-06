@@ -1,0 +1,48 @@
+<app-header title="Photo Grade"></app-header>
+
+
+<ion-content #content>
+  <div class="ion-padding">
+    <ion-segment (ionChange)="segmentChanged($event)" mode="ios" [value]="defaultSegment" [attr.disabled]="isLoading">
+      <ion-segment-button value="submitted">
+        <ion-label>Submitted</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="completed">
+        <ion-label>Completed</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+  <div class="photo-grade-container ion-text-center ion-margin-top" *ngIf="!photoGradeList.data.length && !isLoading">
+    <p>
+      <ion-text class="paragraph-text-16 ion-margin-bottom">No Parts Currently Submitted.</ion-text>
+    </p>
+    <p>
+      <ion-text class="paragraph-text-16 ion-padding-top ion-margin-bottom">You have {{gradeCredits || 0}} photo grade credits</ion-text>
+    </p>
+    <p>
+      <ion-text class="paragraph-text-20-bold ion-padding-top ion-margin-bottom" (click)="purchaseMore()">Purchase more credits.</ion-text>
+    </p>
+  </div>
+
+  <div *ngIf="isLoading && !photoGradeList.data">
+    <app-skeleton-list-loader></app-skeleton-list-loader>
+  </div>
+
+  <ng-template *ngIf="photoGradeList.data" ngFor let-photoGrade [ngForOf]="photoGradeList.data" let-i="index">
+    <app-photo-grade-card [photoGrade]="photoGrade"></app-photo-grade-card>
+  </ng-template>
+
+  <ion-infinite-scroll *ngIf="defaultSegment === 'submitted'" (ionInfinite)="onIonInfinite($event)" threshold="200px">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-infinite-scroll *ngIf="defaultSegment === 'completed'" (ionInfinite)="onIonInfinite($event)" threshold="200px">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer class="ion-padding">
+  <ion-button expand="block" class="new-photo-grade-button" (click)="newPhotoGrade()" [attr.disabled]="!gradeCredits">
+    <ion-text class="paragraph-text-16-semibold ion-text-wrap">New Photo Grade ({{gradeCredits || 0}} Remaining)</ion-text>
+  </ion-button>
+</ion-footer>

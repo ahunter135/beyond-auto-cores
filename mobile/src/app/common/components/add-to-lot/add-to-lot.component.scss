@@ -1,0 +1,71 @@
+.lot-content::part(background) {
+  --background: #fff;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+ion-toolbar {
+  --background: rgb(255, 255, 255);
+  --color: rgb(0, 0, 0);
+  padding: 13px;
+  border-bottom: 1px solid #EFF2F5;
+}
+
+.lot-input {
+  --background: #f3f7f9;
+}
+
+ion-label {
+  padding-bottom: 16px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+.footer-group-button {
+  border-top: 1px solid #EFF2F5;
+  position: relative;
+  width: 100%;
+  height: 80px;
+}
+
+.footer-button {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  bottom: 5px;
+}
+
+.add-lot-button {
+  --background: #000;
+  text-transform: capitalize;
+  height: 40px;
+}
+
+ion-input {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --color: #000;
+}
+
+.lot-select {
+  background-color: #f3f7f9;
+  padding: 10px;
+  border-radius: 12px;
+}
+
+ion-range {
+  padding-top: 0px;
+}
+
+.generic-add-icon {
+  width: 26px;
+  height: 26px;
+  margin-right: 5px;
+}

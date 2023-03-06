@@ -1,0 +1,55 @@
+<div *ngIf="photoGrade" class="generics-card-container">
+  <ion-card *ngIf="!photoGrade.photoGradeStatus" class="generics-card-item">
+    <ion-card-content class="generics-card-item-content">
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-start ion-no-padding" size="4">
+          <ion-img [src]="photoGrade.fileUrl || thumbnail" class="generic-img"></ion-img>
+        </ion-col>
+        <ion-col class="ion-text-center" size="8">
+          <ion-text class="paragraph-text-16 white">In Review</ion-text>
+          <br />
+          <ion-text class="paragraph-text-16-bold white">{{ photoGrade.fullness }}%</ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="photoGrade.photoGradeStatus" class="generics-card-item" (click)="onView()">
+    <ion-card-content class="generics-card-item-content">
+      <ion-row class="ion-align-items-center">
+        <ion-col class="ion-text-start ion-no-padding">
+          <ion-img [src]="photoGrade.fileUrl || thumbnail" class="generic-img"></ion-img>
+        </ion-col>
+        <ion-col class="ion-text-center" size="6" *ngIf="photoGrade.photoGradeStatus === 1">
+          <ion-text class="paragraph-text-16 white">{{ photoGrade.converterName }}</ion-text>
+          <br />
+          <ion-text class="paragraph-text-16-bold white">{{ formatPrice(photoGrade.price) }}
+          </ion-text>
+          <ion-text class="paragraph-text-16-bold white">| {{ photoGrade.fullness }}%</ion-text>
+        </ion-col>
+
+        <ion-col class="ion-text-center" size="6" *ngIf="photoGrade.photoGradeStatus === 2">
+          <ion-text class="paragraph-text-16 white">Rejected</ion-text>
+        </ion-col>
+
+        <ion-col class="ion-text-end"></ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button *ngIf="photoGrade.photoGradeStatus === 1" class="generic-add-button" (click)="openModal()">
+    <div>
+      <ion-icon class="generic-add-icon" src="/assets/icon/add-lot-icon.svg"></ion-icon>
+      <br />
+      <ion-text class="paragraph-text-12-light ion-text-capitalize">Add</ion-text>
+    </div>
+  </ion-button>
+
+  <ion-button *ngIf="photoGrade.photoGradeStatus === 2" class="generic-add-button" (click)="delete()">
+    <div>
+      <ion-icon class="generic-add-icon" src="/assets/icon/trash-lot-icon.svg"></ion-icon>
+      <br />
+      <ion-text class="paragraph-text-12-light ion-text-capitalize">Delete</ion-text>
+    </div>
+  </ion-button>
+</div>

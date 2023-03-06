@@ -1,0 +1,58 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.InteriorPage>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "Master.cshtml";
+}
+
+<section id="heroreg" class="registration-ui text-white tm-font-big">
+    <nav class="navbar navbar-expand-md tm-navbar tm-navbar-absolute" id="tmNav">
+        <div class="container">
+            <div class="tm-next">
+                <a href="#hero" onclick="redirectHome()" class="navbar-brand">
+                    <img src="~/css/bac-images/cm-transparent-horizontal.png" alt="Image" height="50" />
+                </a>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars navbar-toggler-icon"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#download"
+                           onclick="redirectRoute('#download')">Download the App</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#introduction"
+                           onclick="redirectRoute('#introduction')">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#affiliates"
+                           onclick="redirectRoute('#affiliates')">Affiliates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/#contact"
+                           onclick="redirectRoute('#contact')">Contact Us</a>
+                    </li>
+                    <li class="nav-item spacer"></li>
+                    <li class="nav-item">
+                        <a class="nav-link tm-nav-link font-bolder" href="/login"
+                           onclick="redirectRoute('registration')">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="text-center tm-hero-text-container">
+        <div class="tm-hero-text-container-inner">
+            <div class="header-welcome">
+                <h1 class="poppins-medium font-bolder">@Model.Name</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.GetGridHtml(Model, "grid", "bootstrap3")

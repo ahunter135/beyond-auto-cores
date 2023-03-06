@@ -1,0 +1,143 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{lot.lotName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="isLoading">
+    <app-skeleton-list-loader></app-skeleton-list-loader>
+  </div>
+
+  <ion-accordion-group class="lot-items" (ionChange)="accordionGroupChange($event)" *ngIf="!isLoading">
+    <ion-accordion class="lot-item" *ngFor="let lotItem of lotItems; index as i" [value]="lotItem.id">
+      <ion-item class="ion-no-padding ion-no-margin custom-carrot" slot="header">
+        <div class="cont">
+          <img [src]="lotItem.fileUrl || '/assets/cm-logo-home.svg'" [ngStyle]="lotItem.fileUrl ? {'object-fit': 'cover'} : {'object-fit': 'fill'} " class="lot-img" />
+          <div class="header-text">
+            <p>{{ lotItem.converterName || "Unknown" }}</p>
+            <p class="bold">
+              {{ formatPrice(lotItem.minUnitPrice || 0) }} - {{
+              formatPrice(lotItem.maxUnitPrice || 0) }}
+            </p>
+          </div>
+        </div>
+      </ion-item>
+      <div class="outer" slot="content">
+        <div class="content">
+          <div class="row">
+            <p class="flex bold">% Full</p>
+            <p class="flex bold">Price</p>
+            <p class="subtract"></p>
+            <p class="qty bold center">Quantity</p>
+            <p class="add"></p>
+            <p class="trash"></p>
+          </div>
+
+          <div class="row dashed" *ngFor="let lotItemFullness of lotItemsFullness; index as i">
+            <p class="flex">{{ lotItemFullness.fullnessPercentage || 0 }}%</p>
+            <p class="flex">
+              {{ formatPrice(lotItemFullness.unitPrice || 0) }}
+            </p>
+            <ion-icon class="subtract" src="./assets/icon/minus-qty.svg" (click)="updateQtyItemFullness(lotItemFullness, false)"></ion-icon>
+            <p class="qty bold">Qty: {{ lotItemFullness.qty || 0 }}</p>
+            <ion-icon class="add" src="./assets/icon/add-qty.svg" (click)="updateQtyItemFullness(lotItemFullness, true)" *ngIf="!lot.isSubmitted"></ion-icon>
+            <ion-icon class="trash" name="trash" color="danger" (click)="removeItemFullness(lotItemFullness.id)" *ngIf="!lot.isSubmitted"></ion-icon>
+          </div>
+          <ion-button class="bold" expand="block" (click)="openModalFullness()" *ngIf="!lot.isSubmitted">Add New Fullness</ion-button>
+        </div>
+      </div>
+    </ion-accordion>
+  </ion-accordion-group>
+  <div class="spacer"></div>
+  <div class="footer" *ngIf="!isModalActive">
+    <div class="f1">
+      <p class="lot-name">{{ lot.lotName || 'No lot name' }}</p>
+      <p>Quantity: {{ lot.quantity || 0 }}</p>
+      <p>Average: {{ formatPrice(lot.average || 0) }}</p>
+      <p>Total: {{ formatPrice(lot.total || 0) }}</p>
+    </div>
+    <div class="f2" *ngIf="!lot.isSubmitted">
+      <ion-button class="add-code ion-text-capitalize" color="dark" id="lot-modal">
+        <ion-icon slot="start" src="./assets/icon/add-code.svg"></ion-icon>
+        Add Code
+      </ion-button>
+      <ion-button class="submit ion-text-capitalize" color="dark" (click)="submitLot()" *ngIf="canInvoice">
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+        Submit
+      </ion-button>
+    </div>
+  </div>
+  <ion-modal #modal trigger="lot-modal" [animated]="false" (didDismiss)="reset()">
+    <ng-template>
+      <ion-content class="lot-content">
+        <ion-toolbar class="add-code-toolbar" mode="ios">
+          <ion-buttons slot="start">
+            <ion-text class="paragraph-text-14-bold">Add a Code</ion-text>
+          </ion-buttons>
+
+          <ion-buttons slot="end">
+            <ion-button color="light" (click)="modal.dismiss()">
+              <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-toolbar>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Code</ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-input [(ngModel)]="codeName" class="lot-input" placeholder="Input code name"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Item Price</ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-input [(ngModel)]="price" class="lot-input" placeholder="Input unit price" (keydown)="onPriceKeyDown($event)" (ionBlur)="onBlurPrice($event)" (ionInput)="onInputPrice()" type="number"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-label position="stacked" class="black-500 paragraph-text-14-bold">Item Fullness %</ion-label>
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <ion-range mode="ios" [(ngModel)]="fullness" pin="true" min="0" max="100" step="10" (ionChange)="onChangeFullness()" [attr.disabled]="!price">
+                <ion-text slot="start" class="black-500">0</ion-text>
+                <ion-text slot="end" class="black-500">100</ion-text>
+              </ion-range>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-footer class="modal-footer">
+          <div class="footer-button">
+            <ion-button class="ion-text-capitalize" color="dark" (click)="modal.dismiss()">
+              <ion-text class="paragraph-text-16-semibold">Cancel</ion-text>
+            </ion-button>
+            <ion-button class="add-lot-button" (click)="addCode()" [attr.disabled]="!codeName || !price">
+              <ion-text class="paragraph-text-16-semibold white">Add to Lot</ion-text>
+            </ion-button>
+          </div>
+        </ion-footer>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+</ion-content>

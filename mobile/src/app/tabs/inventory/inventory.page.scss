@@ -1,0 +1,133 @@
+ion-segment-button {
+  --color: #ffffff80;
+  --background-checked: #000;
+  --color-checked: #000000;
+  --indicator-color: #ffffff;
+}
+
+ion-segment {
+  --background: #000000;
+  --color: #ffffff80;
+  width: 250px;
+  margin: auto;
+}
+
+.create-inventory-button {
+  --background: #000;
+  --border-radius: 12px;
+  height: 46px;
+  text-transform: capitalize;
+}
+
+ion-footer {
+  border: 0px;
+}
+
+.inventory-card-item {
+  padding: 0px !important;
+  margin: 12px 0px !important;
+  height: 86px;
+}
+
+/* Modal Styling */
+
+ion-modal {
+  --height: 264px;
+  --border-radius: 16px;
+  --box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --background: #fff;
+  overflow: auto;
+}
+
+.modal-footer {
+  border-top: 1px solid #eff2f5;
+}
+
+ion-modal::part(backdrop) {
+  background: #000000;
+  opacity: 0.5;
+}
+
+.lot-content::part(background) {
+  --background: #fff;
+}
+
+ion-modal ion-toolbar {
+  --background: rgb(255, 255, 255);
+  --color: rgb(0, 0, 0);
+}
+
+.lot-input {
+  --background: #f3f7f9;
+  border-radius: 6px;
+  border: 1px solid #f3f7f9;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+ion-modal::part(content) {
+  --width: 90%;
+  max-width: 512px;
+  --border-radius: 6px;
+}
+
+ion-footer {
+  position: relative;
+  padding-top: 20px;
+}
+
+.footer-group-button {
+  width: 100%;
+}
+
+.footer-button {
+  position: absolute;
+  top: 15px;
+  right: 0;
+  bottom: 5px;
+}
+
+.create-lot-button {
+  --background: #000;
+  text-transform: capitalize;
+  height: 40px;
+}
+
+ion-input {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --color: #000;
+}
+
+.inventory-item-col {
+  line-height: 12px;
+}
+
+.create-lot-button {
+  border-radius: 6px;
+  --background: #000000;
+  width: 144px;
+  height: 40px;
+  margin-right: 22px;
+}
+
+.cancel-lot-button {
+  border-radius: 6px;
+  width: 85px;
+  height: 40px;
+}
+
+ion-toolbar {
+  padding: 13px;
+  border-bottom: 1px solid #eff2f5;
+}

@@ -1,0 +1,56 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Context\**" />
+	  <EmbeddedResource Remove="Context\**" />
+	  <None Remove="Context\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Remove="EfUnitOfWork.cs" />
+		<Compile Remove="Migrations\20220713101322_initial.cs" />
+		<Compile Remove="Migrations\20220713134603_initial.cs" />
+		<Compile Remove="Migrations\20220714181453_initial01.cs" />
+		<Compile Remove="Migrations\20220714184356_initial.cs" />
+		<Compile Remove="Migrations\20220714184356_initial.Designer.cs" />
+		<Compile Remove="Migrations\20220715192244_initial.cs" />
+		<Compile Remove="Migrations\20220715192244_initial.Designer.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Service\LotService.cs~RF57f99b.TMP" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="11.0.1" />
+		<PackageReference Include="DinkToPdf" Version="1.0.8" />
+		<PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="6.0.7" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.7">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
+		<PackageReference Include="Stripe.net" Version="40.10.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Onsharp.BeyondAutoCore.Application\Onsharp.BeyondAutoCore.Application.csproj" />
+		<ProjectReference Include="..\Onsharp.BeyondAutoCore.Domain\Onsharp.BeyondAutoCore.Domain.csproj" />
+		<ProjectReference Include="..\Onsharp.BeyondAutoCore.Infrastructure.Core\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj" />
+	</ItemGroup>
+
+</Project>

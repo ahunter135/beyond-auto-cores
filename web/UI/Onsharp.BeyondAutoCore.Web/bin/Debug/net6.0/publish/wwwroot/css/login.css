@@ -1,0 +1,8 @@
+﻿.field-validation-error, .validation-summary-errors { color: #ff0000 !important; }
+
+#kt_body { background-image: url('../media/brand/login-background.jpg'); background-repeat: no-repeat; background-size: cover; }
+
+.input-login { color: #000000 !important; }
+
+.validation-summary-errors { font-size: 16px; }
+	.validation-summary-errors ul { list-style-type: none; text-align: center; }

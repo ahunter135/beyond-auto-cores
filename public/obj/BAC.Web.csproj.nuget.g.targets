@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.5/buildTransitive/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.mvc.razor.runtimecompilation/6.0.5/buildTransitive/net6.0/Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.expansions.core/10.2.0/buildTransitive/uSync.Expansions.Core.targets" Condition="Exists('$(NuGetPackageRoot)usync.expansions.core/10.2.0/buildTransitive/uSync.Expansions.Core.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.snapshots/10.2.0/buildTransitive/uSync.Snapshots.targets" Condition="Exists('$(NuGetPackageRoot)usync.snapshots/10.2.0/buildTransitive/uSync.Snapshots.targets')" />
+    <Import Project="$(NuGetPackageRoot)microsoft.aspnetcore.components.analyzers/6.0.4/buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.aspnetcore.components.analyzers/6.0.4/buildTransitive/netstandard2.0/Microsoft.AspNetCore.Components.Analyzers.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.publisher/10.2.0/buildTransitive/uSync.Publisher.targets" Condition="Exists('$(NuGetPackageRoot)usync.publisher/10.2.0/buildTransitive/uSync.Publisher.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.peopleedition/10.2.0/buildTransitive/uSync.PeopleEdition.targets" Condition="Exists('$(NuGetPackageRoot)usync.peopleedition/10.2.0/buildTransitive/uSync.PeopleEdition.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.exporter/10.2.0/buildTransitive/uSync.Exporter.targets" Condition="Exists('$(NuGetPackageRoot)usync.exporter/10.2.0/buildTransitive/uSync.Exporter.targets')" />
+    <Import Project="$(NuGetPackageRoot)usync.backoffice.assets/10.2.1/buildTransitive/uSync.BackOffice.Assets.targets" Condition="Exists('$(NuGetPackageRoot)usync.backoffice.assets/10.2.1/buildTransitive/uSync.BackOffice.Assets.targets')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.cms/10.2.0/buildTransitive/Umbraco.Cms.targets" Condition="Exists('$(NuGetPackageRoot)umbraco.cms/10.2.0/buildTransitive/Umbraco.Cms.targets')" />
+  </ImportGroup>
+</Project>

@@ -49,8 +49,7 @@ builder.Services.AddCors(options =>
     // this defines a CORS policy called "default"
     options.AddPolicy("default", policy =>
     {
-        policy.SetIsOriginAllowedToAllowWildcardSubdomains()
-            //.WithOrigins(allowedOrigins)
+        policy
             .AllowAnyOrigin()
             .AllowAnyHeader()
             .AllowAnyMethod()

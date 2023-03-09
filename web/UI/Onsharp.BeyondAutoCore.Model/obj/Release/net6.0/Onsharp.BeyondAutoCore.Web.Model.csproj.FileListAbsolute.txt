@@ -1,0 +1,15 @@
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/bin/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.deps.json
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/bin/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/bin/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/bin/Release/net6.0/Onsharp.BeyondAutoCore.Web.Common.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/bin/Release/net6.0/Onsharp.BeyondAutoCore.Web.Common.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.csproj.AssemblyReference.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.GeneratedMSBuildEditorConfig.editorconfig
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.AssemblyInfoInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.AssemblyInfo.cs
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.csproj.CoreCompileInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.csproj.CopyComplete
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/refint/Onsharp.BeyondAutoCore.Web.Model.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/Onsharp.BeyondAutoCore.Web.Model.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/obj/Release/net6.0/ref/Onsharp.BeyondAutoCore.Web.Model.dll

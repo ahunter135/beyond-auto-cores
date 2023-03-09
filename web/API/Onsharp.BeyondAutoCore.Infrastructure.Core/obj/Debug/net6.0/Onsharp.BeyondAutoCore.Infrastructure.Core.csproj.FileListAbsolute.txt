@@ -1,0 +1,15 @@
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.deps.json
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Domain.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Domain.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.csproj.AssemblyReference.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.GeneratedMSBuildEditorConfig.editorconfig
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.AssemblyInfoInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.AssemblyInfo.cs
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.csproj.CoreCompileInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.csproj.CopyComplete
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/refint/Onsharp.BeyondAutoCore.Infrastructure.Core.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.Core.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/obj/Debug/net6.0/ref/Onsharp.BeyondAutoCore.Infrastructure.Core.dll

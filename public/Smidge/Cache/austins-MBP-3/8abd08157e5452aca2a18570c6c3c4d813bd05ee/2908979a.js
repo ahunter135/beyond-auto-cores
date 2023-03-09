@@ -1,0 +1,1 @@
+(function(){"use strict";function completeController($scope){$scope.vm.complete=!0}angular.module("umbraco").controller("uSyncPublisherCompleteController",completeController)})()

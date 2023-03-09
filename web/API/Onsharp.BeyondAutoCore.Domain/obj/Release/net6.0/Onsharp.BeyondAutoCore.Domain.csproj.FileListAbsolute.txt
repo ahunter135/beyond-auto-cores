@@ -1,0 +1,12 @@
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/bin/Release/net6.0/Onsharp.BeyondAutoCore.Domain.deps.json
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/bin/Release/net6.0/Onsharp.BeyondAutoCore.Domain.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/bin/Release/net6.0/Onsharp.BeyondAutoCore.Domain.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.csproj.AssemblyReference.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.AssemblyInfoInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.AssemblyInfo.cs
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.csproj.CoreCompileInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/refint/Onsharp.BeyondAutoCore.Domain.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/Onsharp.BeyondAutoCore.Domain.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Domain/obj/Release/net6.0/ref/Onsharp.BeyondAutoCore.Domain.dll

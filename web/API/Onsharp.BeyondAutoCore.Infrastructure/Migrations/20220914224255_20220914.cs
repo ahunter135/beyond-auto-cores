@@ -28,6 +28,13 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Migrations
                 type: "bit",
                 nullable: false,
                 defaultValue: false);
+            
+            migrationBuilder.AddColumn<bool>(
+                name: "AffiliateEnable",
+                table: "Users",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
 
             migrationBuilder.AddColumn<decimal>(
                 name: "Margin",
@@ -42,6 +49,44 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Migrations
                 table: "Users",
                 type: "nvarchar(max)",
                 nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "RegistrationId",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "UUID",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "StripeAccountId",
+                table: "Users",
+                type: "nvarchar(max)",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Tier1AdminEnabled",
+                table: "Users",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
+
+            migrationBuilder.AddColumn<int>(
+                name: "Tier1PercentLevel",
+                table: "Users",
+                type: "int",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Tier1UserEnabled",
+                table: "Users",
+                type: "bit",
+                nullable: false,
+                defaultValue: false);
 
             migrationBuilder.AddColumn<int>(
                 name: "ResetPasswordCode",
@@ -486,6 +531,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Migrations
 
             migrationBuilder.DropColumn(
                 name: "IsDeleted",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "AffiliateEnable",
                 table: "Users");
 
             migrationBuilder.DropColumn(

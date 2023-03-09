@@ -1,0 +1,14 @@
+input[type="file"] {
+    display: none;
+}
+
+.custom-file-upload {
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    height: 120px;
+}
+
+#select2-userpermission-container {
+    color: #b7b5b5 !important;
+}

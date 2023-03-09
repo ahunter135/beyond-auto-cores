@@ -1,0 +1,162 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color: #F3F6F9;
+}
+
+.table-list-custom-row-header {
+    font-weight: bolder !important;
+    background: #EFF2F5 0% 0% no-repeat padding-box;
+    border: 1px solid #EFF2F5;
+    border-radius: 8px !important;
+    opacity: 1;
+}
+
+.field-validation-error, .validation-summary-errors {
+    color: #ff0000 !important;
+}
+
+.menu-item-profile span {
+    color: #E7AA37 !important;
+}
+
+.side-item-menu {
+    width: 95px;
+    height: 65px;
+    margin: auto;
+    padding-top: 7px;
+    text-align: center;
+}
+    .side-item-menu svg {
+        color: #A1A5B7;
+    }
+
+.active {
+    border-radius: 5px;
+    background-color: #EBEBEB;
+}
+    .active svg {
+        color: #E7AA37 !important;
+    }
+
+.side-menu-title {
+    font-weight: bold;
+}
+
+.title-active {
+    color: #000000 !important;
+}
+
+.btn-custom-bg {
+    background-color: #E7AA37 !important;
+}
+
+.image-container {
+    overflow: hidden;
+    border: 1px solid #ddd;
+    background: #ddd;
+    text-align: center;
+}
+
+.image-container > img {
+    height: 100%;
+    width: auto;
+}
+
+.photo-preview {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+div#kt_aside {
+    width: 180px;
+}
+
+.aside-menu.flex-column-fluid {
+    width: 230px;
+    background-color: #22253f;
+}
+
+div#kt_aside_logo a img {
+    height: 150px;
+    position: absolute;
+    top: 0;
+    left: -60px;
+}
+
+div#kt_header {
+    left: 0;
+}
+
+.form-check.form-check-solid .form-check-input:checked {
+    background-color: #e6a941;
+}
+
+.padding-left-small {
+    padding-left: 15px !important;
+}
+
+.padding-right-small {
+    padding-right: 15px !important;
+}
+
+.input-search-ui {
+    background: white !important;
+    border: 1px solid #707070 !important;
+}
+
+.black-font * {
+    color: black;
+}
+
+.card .card-header {
+    padding: 15px 1.8rem 15px !important;
+}
+
+.hide-section {
+    display: none !important;
+}
+
+.bold-text {
+    font-weight: bolder !important;
+}
+
+.btn.btn-warning {
+    background-color: #E7AA37 !important;
+}
+
+.text-hover-warning:hover {
+    color: #E7AA37 !important;
+    cursor: pointer;
+}
+
+td.child { padding: 15px !important; }
+
+.btn-delete-icon {
+    background-image: url( '/media/buttons/delete-icon.svg' );
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom center, 50%, 50%;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-right {
+    padding-right: 5px;
+    text-align: right;
+}

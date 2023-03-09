@@ -1,0 +1,17 @@
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.deps.json
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.Common.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.Model.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.Model.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/bin/Debug/net6.0/Onsharp.BeyondAutoCore.Web.Common.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.csproj.AssemblyReference.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.GeneratedMSBuildEditorConfig.editorconfig
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.AssemblyInfoInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.AssemblyInfo.cs
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.csproj.CoreCompileInputs.cache
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.csproj.CopyComplete
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/refint/Onsharp.BeyondAutoCore.Web.ServiceClient.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.ServiceClient.pdb
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/Debug/net6.0/ref/Onsharp.BeyondAutoCore.Web.ServiceClient.dll

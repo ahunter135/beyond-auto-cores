@@ -1,0 +1,53 @@
+﻿
+/*photo grade*/
+
+#slideshow {
+    position: relative;
+    height: 350px;
+    margin: 0 auto;
+}
+
+#previous, #next {
+    position: absolute;
+    right: 0;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    top: 45%;
+}
+
+#previous {
+    left: 10px;
+}
+
+#previous img, #next img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 80%;
+}
+
+#slideshow img {
+    width: auto;
+    height: 350px;
+}
+
+#photoList {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    justify-content: center;
+}
+
+#photoList img {
+    height: 70px;
+    flex-grow: 1;
+    flex-basis: 0;
+    width: auto;
+}
+
+#photoList > .image-container {
+    width: 100px;
+    margin: 0 5px;
+}

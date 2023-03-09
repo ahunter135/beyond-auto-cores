@@ -17,9 +17,6 @@ builder.Services.AddSession(options =>
 
 ConfigurationManager configuration = builder.Configuration;
 builder.Services.AddDbContext<BacDBContext>(options => options.UseSqlServer(configuration.GetConnectionString("WebApiDatabase")));
-builder.Services.AddDataProtection()
-    .SetApplicationName("BeyondAutoCore")
-    .PersistKeysToDbContext<BacDBContext>();
 
 // Add application services.
 

@@ -18,6 +18,15 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Repository
             return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodes @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();
         }
 
+        public async Task<List<CodeListDto>> GetCodes(List<SqlParameter> parameters, bool? isPage = false)
+        {
+            if (isPage != null && isPage == true)
+            {
+                return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodesPage @convertername, @isadmin, @iscustom, @notIncludePGItem, @pagesize, @pagenumber", parameters.ToArray()).ToListAsync();
+            }
+            return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodes @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();
+        }
+
         public async Task<bool> IsUsed(long codeId)
         {
             return await _context.LotItems.Where(w => w.CodeId == codeId && w.IsDeleted == false).AnyAsync();

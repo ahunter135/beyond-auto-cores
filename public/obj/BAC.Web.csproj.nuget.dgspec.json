@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "/Users/austinhunter/Documents/upwork/BAC/public/BAC.Web.csproj": {}
+    "A:\\elco-dev-projects\\beyond-auto-cores\\public\\BAC.Web.csproj": {}
   },
   "projects": {
-    "/Users/austinhunter/Documents/upwork/BAC/public/BAC.Web.csproj": {
+    "A:\\elco-dev-projects\\beyond-auto-cores\\public\\BAC.Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/austinhunter/Documents/upwork/BAC/public/BAC.Web.csproj",
+        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\public\\BAC.Web.csproj",
         "projectName": "BAC.Web",
-        "projectPath": "/Users/austinhunter/Documents/upwork/BAC/public/BAC.Web.csproj",
-        "packagesPath": "/Users/austinhunter/.nuget/packages/",
-        "outputPath": "/Users/austinhunter/Documents/upwork/BAC/public/obj/",
+        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\public\\BAC.Web.csproj",
+        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
+        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\public\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/austinhunter/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -70,7 +72,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kLwg+NKF2V9NFIYIpgC/61IWyIDOWNgFuatNomz7RENK8IbSAtj3y+vfwqLyuw02t4Xg5YjrXnewabwMLPsqlg==",
+  "dgSpecHash": "48/5v/dS8NWhahJV0cTrGYvxm7dPmNNyXune2L1c9kBimbQEFdK9FqfhYTL9yX+cGXeGVXIrPzbcigZhyGnpvw==",
   "success": true,
-  "projectFilePath": "/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Shared/Onsharp.BeyondAutoCore.Shared.csproj",
+  "projectFilePath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Shared\\Onsharp.BeyondAutoCore.Shared.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

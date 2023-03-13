@@ -59,6 +59,47 @@
             });
         }
 
+        [HttpGet]
+        [Route("page")]
+        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false)
+        {
+            var parametersCommand = new ParametersCommand();
+            if (pageNumber != null && pageNumber.Value > 0)
+                parametersCommand.PageNumber = pageNumber.Value;
+            if (pageSize != null && pageSize.Value > 0)
+                parametersCommand.PageSize = pageSize.Value;
+
+            if (!string.IsNullOrEmpty(searchCategory) && !string.IsNullOrEmpty(searchQuery))
+            {
+                parametersCommand.SearchCategory = searchCategory;
+                parametersCommand.SearchQuery = searchQuery;
+            }
+
+            var response = await _codeService.GetPage(parametersCommand, isAdmin, isCustom, notIncludePGItem);
+            var previousPageLink = response.HasPrevious ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.PreviousPage) : null;
+            var nextPageLink = response.HasNext ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.NextPage) : null;
+
+            var paginationMetaData = new
+            {
+                totalCount = response.TotalCount,
+                pageSize = response.PageSize,
+                currentPage = response.CurrentPage,
+                totalPages = response.TotalPages,
+                previousPageLink,
+                nextPageLink
+            };
+
+            Response.Headers.Add("X-Pagination", JsonSerializer.Serialize(paginationMetaData));
+
+            return Ok(new ResponseRecordDto<object>
+            {
+                Success = response != null ? 1 : 0,
+                ErrorCode = response != null ? 0 : 1000,
+                Message = response != null ? "Successfully get the list." : "Failed generating the data.",
+                Data = response
+            });
+        }
+
         
         [HttpGet]
         [Route("", Name = "GetAllCodes")]

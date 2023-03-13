@@ -115,6 +115,11 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/Onsharp.BeyondAutoCore.API.csproj.CoreCompileInputs.cache
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/Onsharp.BeyondAutoCore.API.MvcApplicationPartsAssemblyInfo.cs
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/Onsharp.BeyondAutoCore.API.MvcApplicationPartsAssemblyInfo.cache
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.Onsharp.BeyondAutoCore.API.Microsoft.AspNetCore.StaticWebAssets.props
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.build.Onsharp.BeyondAutoCore.API.props
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Onsharp.BeyondAutoCore.API.props
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Onsharp.BeyondAutoCore.API.props
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets.pack.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets.build.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets.development.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/scopedcss/bundle/Onsharp.BeyondAutoCore.API.styles.css
@@ -124,8 +129,3 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/Onsharp.BeyondAutoCore.API.pdb
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/Onsharp.BeyondAutoCore.API.genruntimeconfig.cache
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/ref/Onsharp.BeyondAutoCore.API.dll
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.Onsharp.BeyondAutoCore.API.Microsoft.AspNetCore.StaticWebAssets.props
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.build.Onsharp.BeyondAutoCore.API.props
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.buildMultiTargeting.Onsharp.BeyondAutoCore.API.props
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets/msbuild.buildTransitive.Onsharp.BeyondAutoCore.API.props
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/obj/Debug/net6.0/staticwebassets.pack.json

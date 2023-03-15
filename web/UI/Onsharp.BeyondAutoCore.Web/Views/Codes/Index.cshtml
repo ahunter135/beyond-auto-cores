@@ -83,6 +83,41 @@
                             }
                         </tbody>
                     </table>
+                    <!-- Trying to make my own pagination -->
+                <div class="row">
+                    <div class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
+                        <div class="dataTables_length" id="kt_codes_table_length">
+                            <label>
+                                <!-- User can change how many show on page -->
+                                <select id="pageSizeSelect" name="kt_codes_table_length" aria-controls="kt_codes_table" class="form-select form-select-sm form-select-solid" onchange="changePageSize(this.options[this.selectedIndex].value)">
+                                    <option value="10" selected=@(ViewBag.PageSize == 10)>10</option>
+                                    <option value="25" selected=@(ViewBag.PageSize == 25)>25</option>
+                                    <option value="50" selected=@(ViewBag.PageSize == 50)>50</option>
+                                    <option value="100" selected=@(ViewBag.PageSize == 100)>100</option>
+                                </select>    
+                            </label>
+                        </div>
+                    </div>
+                    <!-- This will show the list of pages user can navigate to -->
+                    <div class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
+                        <div class="dataTables_paginate paging_simple_numbers" id="kt_codes_table_paginate">
+                            <ul class="pagination">
+                                <!-- Previous button -->
+                                <li class="paginate_button page-item previous disabled" id="kt_codes_table_previous"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
+                                <!-- First page -->
+                                <li class="paginate_button page-item active" id="kt_codes_table_previous"><a href="/Codes?page=1&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                @for(int i = 2; i < 7; i++)
+                                {
+                                    <li class="paginate_button page-item" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                }
+                                <!-- Last Page -->
+                                <li class="paginate_button page-item"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / 10.0))&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
+                                <!-- Next Button -->
+                                <li class="paginate_button page-item next" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
                 </div>
             </div>
 
@@ -256,3 +291,20 @@
 <script src="~/js/codes/list/list.js"></script>
 <script src="~/js/codes/addupdate.js"></script>
 <script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>
+<script type="text/javascript">
+    function changePageSize(chosen) {
+        $.urlParam = function (name) {
+            var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                            .exec(window.location.search);
+        
+            return (results !== null) ? results[1] || 0 : false;
+        }
+        
+        
+        const pageParam = $.urlParam('page');
+        const isGenericParam = $.urlParam('isGeneric');
+        console.log("/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : pageParam));
+
+        window.location = "/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : pageParam);
+    }
+</script>

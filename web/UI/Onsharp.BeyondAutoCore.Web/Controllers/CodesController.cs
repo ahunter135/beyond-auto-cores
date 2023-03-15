@@ -9,23 +9,53 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
         private readonly ILogger<CodesController> _logger;
         private readonly PhotoGradesClient _photoGradesClient;
         private readonly CodesClient _codesClient;
-        private Pager _pager;
 
         public CodesController(IHttpContextAccessor httpContextAccessor, ILogger<CodesController> logger) : base(httpContextAccessor)
         {
             _logger = logger;
             _photoGradesClient = new PhotoGradesClient(Host, Port, EnableSSL, token);
             _codesClient = new CodesClient(Host, Port, EnableSSL, token);
-            _pager = new Pager();
         }
 
         [HttpGet]
         public async Task<IActionResult> Index(bool isGeneric = true)
         {
-            var data = await _codesClient.GetPage(isGeneric, "").GetData();
-            int length = 5;
+
+            // Here we get query params that specify the part of table that will be displayed
+            string? pageNumberS = Request.Query["page"];
+            string? pageSizeS = Request.Query["size"];
+            string? lengthS = Request.Query["length"];
+            int pageNumberI = 1;
+            int pageSizeI = 10;
+            int lengthI = -1;
+
+            bool needLength = false;
+            try
+            {
+                pageNumberI = pageNumberS == null ? 1 : Int32.Parse(pageNumberS);
+                pageSizeI = pageSizeS == null ? 10 : Int32.Parse(pageSizeS);
+                lengthI = lengthS == null ? -1 : Int32.Parse(lengthS);
+            } catch (FormatException)
+            {
+
+            } finally
+            {
+                needLength = lengthI < 0;
+                pageNumberI = (pageNumberI < 0) ? 1 : pageNumberI;
+                pageSizeI = (pageSizeI < 0) ? 10 : pageSizeI;
+            }
+            
+            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}");
+
+            var res = await _codesClient.GetPage(isGeneric, "", pageNumberI, pageSizeI, true);
+            var data = res.GetData();
+            if (needLength == true)
+                ViewBag.Length = Int32.Parse(res.Message);
+            else
+                ViewBag.Length = lengthI;
+            ViewBag.CurrentPage = pageNumberI;
+            ViewBag.PageSize = pageSizeI;
             ViewBag.IsGeneric = isGeneric;
-            ViewBag.Length = length;
             //return View(data.Where( x=> x.Id != 9999).ToList());
             
             //var data  = await _codesClient.GetAll(isGeneric,"").GetData();

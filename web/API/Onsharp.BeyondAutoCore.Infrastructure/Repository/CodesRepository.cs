@@ -22,14 +22,18 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Repository
         {
             if (isPage == true)
             {
-                var length = await _context.Set<CountModel>().FromSqlRaw("SProc_GetCodesCount @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();
-                // length[0].Count HAS THE TOTAL AMOUNT OF CODES
-                return new List<CodeListDto>();
-                var data = await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodesPage @convertername, @isadmin, @iscustom, @notIncludePGItem, @pagesize, @pagenumber", parameters.ToArray()).ToListAsync();
-                int pageNumber = (int)parameters.ToArray()[5].Value;
-                List<CodeListDto> tmp = new List<CodeListDto>(5);
+                return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodesPage @convertername, @isadmin, @iscustom, @notIncludePGItem, @pagesize, @pagenumber", parameters.ToArray()).ToListAsync();
             }
             return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodes @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();
+        }
+
+        public async Task<int> GetCodesLength(List<SqlParameter> parameters, bool isPage = false)
+        {
+            var length = await _context.Set<CountModel>().FromSqlRaw("SProc_GetCodesCount @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();
+            if (length != null)
+                return length[0].Count;
+            else
+                return -1;
         }
 
         public async Task<bool> IsUsed(long codeId)

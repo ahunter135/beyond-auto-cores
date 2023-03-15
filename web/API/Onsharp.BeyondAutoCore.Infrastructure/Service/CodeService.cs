@@ -131,7 +131,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return mapData;
         }
 
-        public async Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem)
+        public async Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem, bool needLength = true)
         {
             if (parametersCommand == null)
                 throw new ArgumentNullException("Invalid parameters.");
@@ -173,6 +173,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
 
             var listData = await _codesRepository.GetCodes(parameters, true);
+            int length = -1;
+            
+            if (needLength == true)
+            {
+                length = await _codesRepository.GetCodesLength(parameters, true);
+            }
 
             listData = listData.Where(x => x.Id != 9999).ToList(); //Remove No Code Item in the results
 
@@ -191,7 +197,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             var livePrices = await GetLivePrice();
             var dataOriginalPrice = await _materialOriginalPriceService.GetSingleRecord();
-            var pageListData = PageList<CodeListDto>.Create(listData, parametersCommand.PageNumber, parametersCommand.PageSize);
+            var pageListData = new PageList<CodeListDto>(listData, listData.Count(), parametersCommand.PageNumber, parametersCommand.PageSize, length);
+            //var pageListData = PageList<CodeListDto>.Create(listData, parametersCommand.PageNumber, parametersCommand.PageSize);
             foreach (var pageItem in pageListData)
             {
                 if (!string.IsNullOrWhiteSpace(pageItem.FileKey))

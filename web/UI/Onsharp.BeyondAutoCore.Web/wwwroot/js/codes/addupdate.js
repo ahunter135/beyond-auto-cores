@@ -259,8 +259,10 @@ var KTModalCodesAdd = function () {
 
 							let urlRedirect = form.getAttribute("data-kt-redirect");
 							let isGeneric = $("#viewBagIsGeneric").val();
+							const pageSize = $('select[name="kt_codes_table_length"]').find(":selected").val();
+							console.log(pageSize);
 
-							window.location = urlRedirect + "?isGeneric=" + isGeneric;
+							window.location = urlRedirect + "?isGeneric=" + isGeneric + "&size=" + pageSize;
 						}
 					}).catch(e => {
 						onDissmissDisablesAndLoaders();

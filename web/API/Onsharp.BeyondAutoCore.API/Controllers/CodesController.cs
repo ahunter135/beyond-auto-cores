@@ -61,13 +61,15 @@
 
         [HttpGet]
         [Route("page")]
-        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false)
+        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false, bool needLength = true)
         {
             var parametersCommand = new ParametersCommand();
             if (pageNumber != null && pageNumber.Value > 0)
                 parametersCommand.PageNumber = pageNumber.Value;
+                Console.WriteLine($"HERHEHEHE {pageNumber}");
             if (pageSize != null && pageSize.Value > 0)
                 parametersCommand.PageSize = pageSize.Value;
+                Console.WriteLine($"HERHEHEHE {pageSize}");
 
             if (!string.IsNullOrEmpty(searchCategory) && !string.IsNullOrEmpty(searchQuery))
             {
@@ -95,7 +97,7 @@
             {
                 Success = response != null ? 1 : 0,
                 ErrorCode = response != null ? 0 : 1000,
-                Message = response != null ? "Successfully get the list." : "Failed generating the data.",
+                Message = response != null ? $"{response.TotalEntries}" : "Failed generating the data.",
                 Data = response
             });
         }

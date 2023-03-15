@@ -31,7 +31,7 @@ namespace Onsharp.BeyondAutoCore.Web.ServiceClient.Clients
         }
 
         // Want this method to take in a page number - fetch page number data from API - return all entries from that page
-        public async Task<Result<List<CodeDto>>> GetPage(bool? isGeneric = true, string query = "", int pageNumber = 1, int pageSize = 10)
+        public async Task<Result<List<CodeDto>>> GetPage(bool? isGeneric = true, string query = "", int pageNumber = 1, int pageSize = 10, bool needLength = true)
         {
             Dictionary<string, string> apiParameters = new Dictionary<string, string>();
 
@@ -46,6 +46,7 @@ namespace Onsharp.BeyondAutoCore.Web.ServiceClient.Clients
             apiParameters.Add("pageNumber", $"{pageNumber}");
             apiParameters.Add("pageSize", $"{pageSize}");
             apiParameters.Add("searchQuery", query);
+            apiParameters.Add("needLength", $"{needLength}");
 
             return await Get<List<CodeDto>>("page", apiParameters);
         }

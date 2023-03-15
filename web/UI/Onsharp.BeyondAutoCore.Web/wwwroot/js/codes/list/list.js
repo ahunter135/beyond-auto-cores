@@ -16,8 +16,12 @@ var KTCodesList = function () {
         });
 
         const tableRows = table.querySelectorAll('tbody tr');
+        console.log('Initializing Code List');
 
-        datatable = $(table).DataTable({
+
+
+        // This is what splits data into pages
+        /*datatable = $(table).DataTable({
             info: false,
             order: [],
             columnDefs: [
@@ -31,7 +35,7 @@ var KTCodesList = function () {
             initToggleToolbar();
             handleUpdateRows();
             handleDeleteRows();
-        });
+        });*/
     }
 
     var handleSearchDatatable = () => {
@@ -156,14 +160,16 @@ var KTCodesList = function () {
 
     // Init toggle toolbar
     var initToggleToolbar = () => {
+        console.log("Initializing Toggle Bar");
 
         const showGeneric = formList.querySelector('#toggleShowGenerics');
         showGeneric.addEventListener('click', function () {
             
             let isCheck = false;
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
-
-            window.location = codesUrl + "?isGeneric=" + isCheck;
+            const pageSize = $('select[name="kt_codes_table_length"]').find(":selected").val();
+			console.log(pageSize);
+            window.location = codesUrl + "?isGeneric=" + isCheck + "&size=" + pageSize;
         });
 
     }
@@ -178,6 +184,8 @@ var KTCodesList = function () {
             if (!table) {
                 return;
             }
+
+            console.log("First init call");
 
             initCodesList();
             initToggleToolbar();

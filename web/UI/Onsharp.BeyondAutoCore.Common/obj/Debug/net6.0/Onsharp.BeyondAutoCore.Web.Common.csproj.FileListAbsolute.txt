@@ -10,3 +10,15 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Common/obj/Debug/net6.0/refint/Onsharp.BeyondAutoCore.Web.Common.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Common/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Web.Common.pdb
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Common/obj/Debug/net6.0/ref/Onsharp.BeyondAutoCore.Web.Common.dll
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\bin\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.deps.json
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\bin\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.dll
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\bin\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.pdb
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.csproj.AssemblyReference.cache
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.GeneratedMSBuildEditorConfig.editorconfig
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.AssemblyInfoInputs.cache
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.AssemblyInfo.cs
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.csproj.CoreCompileInputs.cache
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.dll
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\refint\Onsharp.BeyondAutoCore.Web.Common.dll
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.Common.pdb
+A:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Common\obj\Debug\net6.0\ref\Onsharp.BeyondAutoCore.Web.Common.dll

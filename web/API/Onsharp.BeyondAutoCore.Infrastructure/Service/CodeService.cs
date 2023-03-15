@@ -131,6 +131,80 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return mapData;
         }
 
+        public async Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem)
+        {
+            if (parametersCommand == null)
+                throw new ArgumentNullException("Invalid parameters.");
+
+            var userInfo = await _userService.GetById(this.CurrentUserId());
+            if (isAdmin == null || isAdmin == false)
+            {
+                if (userInfo.Role == RoleEnum.Admin)
+                    isAdmin = true;
+            }
+            var parameters = new List<SqlParameter>();
+            if (!string.IsNullOrEmpty(parametersCommand.SearchCategory) && parametersCommand.SearchCategory.ToLower() == "convertername" &&
+                !string.IsNullOrEmpty(parametersCommand.SearchQuery))
+                parameters.Add(new SqlParameter("@convertername", System.Data.SqlDbType.Text) { Direction = System.Data.ParameterDirection.Input, Value = parametersCommand.SearchQuery });
+            else
+                parameters.Add(new SqlParameter("@convertername", System.Data.SqlDbType.Text) { Direction = System.Data.ParameterDirection.Input, Value = DBNull.Value });
+            if (parametersCommand.PageNumber != null && parametersCommand.PageSize != null)
+                parameters.Add(new SqlParameter("@pagesize", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Input, Value = parametersCommand.PageSize });
+                parameters.Add(new SqlParameter("@pagenumber", System.Data.SqlDbType.Int) { Direction = System.Data.ParameterDirection.Input, Value = (parametersCommand.PageSize * (parametersCommand.PageNumber - 1)) });
+            if (isCustom != null)
+            {
+                parameters.Add(new SqlParameter("@iscustom", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = isCustom });
+            }
+            else
+                parameters.Add(new SqlParameter("@iscustom", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = DBNull.Value });
+
+            if (isAdmin != null)
+            {
+                parameters.Add(new SqlParameter("@isadmin", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = isAdmin });
+            }
+            else
+                parameters.Add(new SqlParameter("@isadmin", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = DBNull.Value });
+
+            if (notIncludePGItem != null)
+            {
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = notIncludePGItem });
+            }
+            else
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
+
+            var listData = await _codesRepository.GetCodes(parameters, true);
+
+            listData = listData.Where(x => x.Id != 9999).ToList(); //Remove No Code Item in the results
+
+            decimal margin = 0;
+            var userMarginInfo = await _userService.GetUserMargin(this.CurrentUserId());
+
+            if (userMarginInfo != null && userMarginInfo.Margin != null && userMarginInfo.Margin.Value > 0)
+                margin = userMarginInfo.Margin.Value;
+            else
+                margin = userMarginInfo.MasterMargin ?? 0;
+
+            decimal tier = 0;
+
+            if (userInfo != null && userInfo.Tier1AdminEnabled && userInfo.Tier1UserEnabled && userInfo.Tier1PercentLevel > 0)
+                tier = userInfo.Tier1PercentLevel;
+
+            var livePrices = await GetLivePrice();
+            var dataOriginalPrice = await _materialOriginalPriceService.GetSingleRecord();
+            var pageListData = PageList<CodeListDto>.Create(listData, parametersCommand.PageNumber, parametersCommand.PageSize);
+            foreach (var pageItem in pageListData)
+            {
+                if (!string.IsNullOrWhiteSpace(pageItem.FileKey))
+                    pageItem.FileUrl = await _awsS3Helper.GetPreSignedUrlAsync(pageItem.FileKey);
+
+                pageItem.FinalUnitPrice = await GetFinalUnitPrice(pageItem, dataOriginalPrice, livePrices, margin, tier, userInfo);
+                pageItem.AdminUnitPrice = await GetAdminUnitPrice(pageItem, dataOriginalPrice, livePrices, margin, tier, userInfo);
+            }
+
+            return pageListData;
+
+        }
+
         public async Task<PageList<CodeListDto>> GetAll(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem)
         {
             
@@ -143,7 +217,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 if (userInfo.Role == RoleEnum.Admin)
                     isAdmin = true;
             }
-
             var parameters = new List<SqlParameter>();
 
             if (!string.IsNullOrEmpty(parametersCommand.SearchCategory) && parametersCommand.SearchCategory.ToLower() == "convertername" &&

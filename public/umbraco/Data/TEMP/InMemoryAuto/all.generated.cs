@@ -5,7 +5,7 @@ using  Umbraco.Cms.Core.PublishedCache;
 using  Umbraco.Cms.Infrastructure.ModelsBuilder;
 using  Umbraco.Cms.Core;
 using  Umbraco.Extensions;
-[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "a58ffafb97b7ca16ee320981b882cc10078d8ce1")]
+[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "987af4d49bcbf4aa25623214c371e3318969dd73")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
 
 

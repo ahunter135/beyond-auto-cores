@@ -1,4 +1,6 @@
-﻿
+﻿using System.Xml.Serialization;
+using Onsharp.BeyondAutoCore.Web.Helpers;
+
 namespace Onsharp.BeyondAutoCore.Web.Controllers
 {
     [Authorize]
@@ -7,19 +9,26 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
         private readonly ILogger<CodesController> _logger;
         private readonly PhotoGradesClient _photoGradesClient;
         private readonly CodesClient _codesClient;
+        private Pager _pager;
 
         public CodesController(IHttpContextAccessor httpContextAccessor, ILogger<CodesController> logger) : base(httpContextAccessor)
         {
             _logger = logger;
             _photoGradesClient = new PhotoGradesClient(Host, Port, EnableSSL, token);
             _codesClient = new CodesClient(Host, Port, EnableSSL, token);
+            _pager = new Pager();
         }
 
         [HttpGet]
         public async Task<IActionResult> Index(bool isGeneric = true)
         {
-            var data  = await _codesClient.GetAll(isGeneric,"").GetData();
+            var data = await _codesClient.GetPage(isGeneric, "").GetData();
+            int length = 5;
             ViewBag.IsGeneric = isGeneric;
+            ViewBag.Length = length;
+            //return View(data.Where( x=> x.Id != 9999).ToList());
+            
+            //var data  = await _codesClient.GetAll(isGeneric,"").GetData();
             return View(data.Where( x=> x.Id != 9999).ToList());
         }
 

@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/Onsharp.BeyondAutoCore.Web.props" />
+  <Import Project="..\build\Onsharp.BeyondAutoCore.Web.props" />
 </Project>

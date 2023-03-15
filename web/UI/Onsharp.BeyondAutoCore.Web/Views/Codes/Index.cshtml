@@ -31,7 +31,7 @@
                                 </svg>
                             </span>
                             <form autocomplete="off">
-                                <input id="code-list-search" type="text" data-kt-code-table-filter="search" autocomplete="off" class="form-control form-control-solid ps-15 input-search-ui" placeholder="Search Codes" />
+                                <input id="code-list-search" type="text" data-kt-code-table-filter="search" autocomplete="off" class="form-control form-control-solid ps-15 input-search-ui" placeholder="Search Codes" value="@(ViewBag.Search != "" ? ViewBag.Search : "")"/>
                             </form>
                         </div>
                     </div>
@@ -91,7 +91,7 @@
                                 <!-- User can change how many show on page -->
                                 <select id="pageSizeSelect" name="kt_codes_table_length" aria-controls="kt_codes_table" class="form-select form-select-sm form-select-solid" onchange="changePageSize(this.options[this.selectedIndex].value)">
                                     <option value="10" selected=@(ViewBag.PageSize == 10)>10</option>
-                                    <option value="25" selected=@(ViewBag.PageSize == 25)>25</option>
+                                    <option value="20" selected=@(ViewBag.PageSize == 20)>20</option>
                                     <option value="50" selected=@(ViewBag.PageSize == 50)>50</option>
                                     <option value="100" selected=@(ViewBag.PageSize == 100)>100</option>
                                 </select>    
@@ -103,17 +103,45 @@
                         <div class="dataTables_paginate paging_simple_numbers" id="kt_codes_table_paginate">
                             <ul class="pagination">
                                 <!-- Previous button -->
-                                <li class="paginate_button page-item previous disabled" id="kt_codes_table_previous"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
+                                <li class="paginate_button page-item previous @(ViewBag.CurrentPage == 1 ? "disabled" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
                                 <!-- First page -->
-                                <li class="paginate_button page-item active" id="kt_codes_table_previous"><a href="/Codes?page=1&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                @for(int i = 2; i < 7; i++)
+                                <li class="paginate_button page-item @(ViewBag.CurrentPage == 1 ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=1&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                @if(@ViewBag.CurrentPage <= 4)
                                 {
-                                    <li class="paginate_button page-item" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                    for(int i = 2; i < 6 && i < ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)); i++)
+                                    {
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                    }
+                                    if (1 <= ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize) - 4))
+                                    {
+                                        <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
+                                    }
+                                }
+                                else if(ViewBag.CurrentPage > 4 && ViewBag.CurrentPage <= ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) - 4)
+                                {
+                                    <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
+                                    for(int i = ViewBag.CurrentPage - 1; i < ViewBag.CurrentPage + 2; i++)
+                                    {
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                    }
+                                    <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
+                                }
+                                else
+                                {
+                                    // ... Button
+                                    <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
+                                    for(int i = ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)), j = 4; j > 0; j--)
+                                    {
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == (i - j) ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i - j)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@(i - j)" tabindex="0" class="page-link">@(i - j)</a></li>
+                                    }
                                 }
                                 <!-- Last Page -->
-                                <li class="paginate_button page-item"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / 10.0))&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
+                                @if((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize) != 1)
+                                {
+                                    <li class="paginate_button page-item @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "active" : "")"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
+                                }
                                 <!-- Next Button -->
-                                <li class="paginate_button page-item next" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
+                                <li class="paginate_button page-item next @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "disabled" : "")" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -300,11 +328,11 @@
             return (results !== null) ? results[1] || 0 : false;
         }
         
-        
+        const sizeParam = $.urlParam('size');
         const pageParam = $.urlParam('page');
         const isGenericParam = $.urlParam('isGeneric');
-        console.log("/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : pageParam));
+        const newPageNumber = 
 
-        window.location = "/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : pageParam);
+        window.location = "/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : String(Math.round(Number(pageParam) * (1/(Number(chosen) / Number(sizeParam))))));
     }
 </script>

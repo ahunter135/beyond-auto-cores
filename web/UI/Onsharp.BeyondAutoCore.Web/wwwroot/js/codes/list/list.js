@@ -40,9 +40,19 @@ var KTCodesList = function () {
 
     var handleSearchDatatable = () => {
         const filterSearch = document.querySelector('[data-kt-code-table-filter="search"]');
-        filterSearch.addEventListener('keyup', function (e) {
-            datatable.search(e.target.value).draw();
-        });
+        filterSearch.addEventListener('keyup', delay(function (e) {
+            // Here we handle search
+            console.log('I typed');
+            const isGeneric = $.urlParam('isGeneric');
+            if (isGeneric === false) {
+                isGeneric = true;
+            }
+            const page = $.urlParam('page');
+            const size = $.urlParam('size');
+
+            const redirect = `/codes?isGeneric=${isGeneric}&search=${filterSearch.value}&page=1&size=${size === false ? "10" : size}`;
+            window.location = redirect;
+        }, 2000));
     }
 
     var handleUpdateRows = () => {
@@ -168,8 +178,9 @@ var KTCodesList = function () {
             let isCheck = false;
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
             const pageSize = $('select[name="kt_codes_table_length"]').find(":selected").val();
-			console.log(pageSize);
-            window.location = codesUrl + "?isGeneric=" + isCheck + "&size=" + pageSize;
+			let search = $.urlParam('search');
+            search = search === false || search === "" ? "" : search;
+            window.location = codesUrl + "?isGeneric=" + isCheck + "&size=" + pageSize + "&search=" + search;
         });
 
     }
@@ -203,3 +214,21 @@ var KTCodesList = function () {
 KTUtil.onDOMContentLoaded(function () {
     KTCodesList.init();
 });
+
+function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+}
+
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                    .exec(window.location.search);
+
+    return (results !== null) ? results[1] || 0 : false;
+}

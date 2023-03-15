@@ -25,6 +25,7 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             string? pageNumberS = Request.Query["page"];
             string? pageSizeS = Request.Query["size"];
             string? lengthS = Request.Query["length"];
+            string? searchQuery = Request.Query["search"];
             int pageNumberI = 1;
             int pageSizeI = 10;
             int lengthI = -1;
@@ -35,19 +36,22 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
                 pageNumberI = pageNumberS == null ? 1 : Int32.Parse(pageNumberS);
                 pageSizeI = pageSizeS == null ? 10 : Int32.Parse(pageSizeS);
                 lengthI = lengthS == null ? -1 : Int32.Parse(lengthS);
-            } catch (FormatException)
+                searchQuery = searchQuery == null ? "" : searchQuery;
+            }
+            catch (FormatException e)
             {
 
-            } finally
+            }
+            finally
             {
                 needLength = lengthI < 0;
                 pageNumberI = (pageNumberI < 0) ? 1 : pageNumberI;
                 pageSizeI = (pageSizeI < 0) ? 10 : pageSizeI;
             }
             
-            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}");
+            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}. Search: {searchQuery}");
 
-            var res = await _codesClient.GetPage(isGeneric, "", pageNumberI, pageSizeI, true);
+            var res = await _codesClient.GetPage(isGeneric, searchQuery, pageNumberI, pageSizeI, true);
             var data = res.GetData();
             if (needLength == true)
                 ViewBag.Length = Int32.Parse(res.Message);
@@ -56,6 +60,7 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             ViewBag.CurrentPage = pageNumberI;
             ViewBag.PageSize = pageSizeI;
             ViewBag.IsGeneric = isGeneric;
+            ViewBag.Search = searchQuery;
             //return View(data.Where( x=> x.Id != 9999).ToList());
             
             //var data  = await _codesClient.GetAll(isGeneric,"").GetData();

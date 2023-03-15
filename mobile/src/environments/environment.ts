@@ -11,7 +11,7 @@ export const environment = {
   /** Contains the API server URLs. */
   servers: {
     none: '', // for calling api without servername need
-    default: 'https://bac-api.azurewebsites.net/api/v1'
+    default: 'http://localhost:5181/api/v1'//'https://bac-api.azurewebsites.net/api/v1'
     // 'http://localhost:5181/api/v1'
   },
 

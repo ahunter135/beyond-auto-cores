@@ -6,7 +6,7 @@
         // Read
         Task<CodeDto> GetById(long id);
         Task<PageList<CodeListDto>> GetAll(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem);
-        Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem, bool needLength = true);
+        Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem, bool needLength = true, string sortCol = "0", string direction = "0");
 
         // Write
         Task<CodeDto> Create(CreateCodeCommand createCommand);

@@ -61,7 +61,7 @@
 
         [HttpGet]
         [Route("page")]
-        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false, bool needLength = true)
+        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false, bool needLength = true, string sortCol = "0", string direction = "0")
         {
             var parametersCommand = new ParametersCommand();
             if (pageNumber != null && pageNumber.Value > 0)
@@ -77,7 +77,10 @@
                 parametersCommand.SearchQuery = searchQuery;
             }
 
-            var response = await _codeService.GetPage(parametersCommand, isAdmin, isCustom, notIncludePGItem);
+            Console.WriteLine($"HEHEHERHEHEHEEHEHEH\n\n\n\n\n\n");
+            Console.WriteLine($"{sortCol}, {direction}");
+
+            var response = await _codeService.GetPage(parametersCommand, isAdmin, isCustom, notIncludePGItem, needLength, sortCol, direction);
             var previousPageLink = response.HasPrevious ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.PreviousPage) : null;
             var nextPageLink = response.HasNext ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.NextPage) : null;
 

@@ -141,11 +141,10 @@
                                     <li class="paginate_button page-item @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "active" : "")"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
                                 }
                                 <!-- Next Button -->
-                                <li class="paginate_button page-item next @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "disabled" : "")" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
+                                <li class="paginate_button page-item next @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "disabled" : "")" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage + 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
                             </ul>
                         </div>
                     </div>
-                </div>
                 </div>
             </div>
 
@@ -318,7 +317,7 @@
 <link href="~/css/codes.css" rel="stylesheet" type="text/css" />
 <script src="~/js/codes/list/list.js"></script>
 <script src="~/js/codes/addupdate.js"></script>
-<script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>
+<!--<script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>-->
 <script type="text/javascript">
     function changePageSize(chosen) {
         $.urlParam = function (name) {

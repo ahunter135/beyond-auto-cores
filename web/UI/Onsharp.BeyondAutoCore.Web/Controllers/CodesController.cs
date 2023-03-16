@@ -26,6 +26,8 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             string? pageSizeS = Request.Query["size"];
             string? lengthS = Request.Query["length"];
             string? searchQuery = Request.Query["search"];
+            string? sortColumn = Request.Query["sortCol"];
+            string? direction = Request.Query["direction"];
             int pageNumberI = 1;
             int pageSizeI = 10;
             int lengthI = -1;
@@ -37,6 +39,8 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
                 pageSizeI = pageSizeS == null ? 10 : Int32.Parse(pageSizeS);
                 lengthI = lengthS == null ? -1 : Int32.Parse(lengthS);
                 searchQuery = searchQuery == null ? "" : searchQuery;
+                sortColumn = sortColumn == null ? "0" : sortColumn;
+                direction = direction == null ? "0" : direction;
             }
             catch (FormatException e)
             {
@@ -45,13 +49,15 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             finally
             {
                 needLength = lengthI < 0;
-                pageNumberI = (pageNumberI < 0) ? 1 : pageNumberI;
-                pageSizeI = (pageSizeI < 0) ? 10 : pageSizeI;
+                pageNumberI = (pageNumberI <= 0) ? 1 : pageNumberI;
+                pageSizeI = (pageSizeI <= 0) ? 10 : pageSizeI;
+                if (sortColumn != "0" && sortColumn != "1" && sortColumn != "2" && sortColumn != "3") sortColumn = "0";
+                if (direction != "0" && direction != "1") direction = "0";
             }
             
-            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}. Search: {searchQuery}");
+            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}. Search: {searchQuery}. Direction: {direction}. SortCol: {sortColumn}");
 
-            var res = await _codesClient.GetPage(isGeneric, searchQuery, pageNumberI, pageSizeI, true);
+            var res = await _codesClient.GetPage(isGeneric, searchQuery, pageNumberI, pageSizeI, true, sortColumn, direction);
             var data = res.GetData();
             if (needLength == true)
                 ViewBag.Length = Int32.Parse(res.Message);
@@ -61,6 +67,8 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             ViewBag.PageSize = pageSizeI;
             ViewBag.IsGeneric = isGeneric;
             ViewBag.Search = searchQuery;
+            ViewBag.SortColumn = sortColumn;
+            ViewBag.Direction = direction;
             //return View(data.Where( x=> x.Id != 9999).ToList());
             
             //var data  = await _codesClient.GetAll(isGeneric,"").GetData();

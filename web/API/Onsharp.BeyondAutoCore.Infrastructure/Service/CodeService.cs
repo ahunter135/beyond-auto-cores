@@ -131,7 +131,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return mapData;
         }
 
-        public async Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem, bool needLength = true)
+        public async Task<PageList<CodeListDto>> GetPage(ParametersCommand parametersCommand, bool? isAdmin, bool? isCustom, bool? notIncludePGItem, bool needLength = true, string sortCol = "0", string direction = "0")
         {
             if (parametersCommand == null)
                 throw new ArgumentNullException("Invalid parameters.");
@@ -171,6 +171,35 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
             else
                 parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
+
+
+            switch(direction)
+            {   
+                case "1":
+                    parameters.Add(new SqlParameter("@direction", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 1});
+                    break;
+                default:
+                    Console.WriteLine("In direction Switch default");
+                    parameters.Add(new SqlParameter("@direction", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 0});
+                    break;     
+            }
+            
+            switch (sortCol)
+            {
+                case "1":
+                    parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 1});
+                    break;
+                case "2":
+                    parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 2});
+                    break;
+                case "3":
+                    parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 3});
+                    break;
+                default:
+                    Console.WriteLine("In SortCol Switch default");
+                    parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 0});
+                    break;
+            }
 
             var listData = await _codesRepository.GetCodes(parameters, true);
             int length = -1;

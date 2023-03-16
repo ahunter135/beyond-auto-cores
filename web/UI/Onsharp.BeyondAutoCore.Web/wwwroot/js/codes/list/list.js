@@ -179,7 +179,7 @@ var KTCodesList = function () {
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
             const pageSize = $('select[name="kt_codes_table_length"]').find(":selected").val();
 			let search = $.urlParam('search');
-            search = search === false || search === "" ? "" : search;
+            search = search === false || search == 0 ? "" : search;
             window.location = codesUrl + "?isGeneric=" + isCheck + "&size=" + pageSize + "&search=" + search;
         });
 

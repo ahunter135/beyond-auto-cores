@@ -41,11 +41,63 @@
                         <thead>
                             <tr class="text-start fs-7 gs-0 table-list-custom-row-header">
                                 <th class="min-w-50px hide-section">Code Id</th>
-                                <th class="min-w-125px padding-left-small" style="text-align: left;">Converter Code</th>
+                                <th class="min-w-125px padding-left-small" style="text-align: left; cursor: pointer;" onclick="sortColumn(0)">
+                                    Converter Code
+                                    @if (ViewBag.SortColumn == "0")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
                                 <th></th>
-                                <th class="min-w-125px" style="text-align: left;">Platinum Price</th>
-                                <th class="min-w-125px" style="text-align: left;">Palladium Price</th>
-                                <th class="min-w-125px" style="text-align: left;">Rhodium Price</th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(1)">
+                                    Platinum Price
+                                    @if (ViewBag.SortColumn == "1")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(2)">
+                                    Palladium Price
+                                    @if (ViewBag.SortColumn == "2")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(3)">
+                                    Rhodium Price
+                                    @if (ViewBag.SortColumn == "3")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
                                 <th class="min-w-70px padding-right-small" style="text-align: right;">Actions</th>
                             </tr>
                         </thead>
@@ -319,24 +371,55 @@
 <script src="~/js/codes/addupdate.js"></script>
 <script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>
 <script type="text/javascript">
+    $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                        .exec(window.location.search);
+    
+        return (results !== null) ? results[1] || 0 : false;
+    }
     function changePageSize(chosen) {
-        $.urlParam = function (name) {
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                            .exec(window.location.search);
         
-            return (results !== null) ? results[1] || 0 : false;
-        }
-        
-        const sizeParam = $.urlParam('size');
-        const pageParam = $.urlParam('page');
-        const isGenericParam = $.urlParam('isGeneric');
+        const size = $.urlParam('size');
+        const page = $.urlParam('page');
+        const isGeneric = $.urlParam('isGeneric');
         const direction = $.urlParam('direction');
         const sortCol = $.urlParam('sortCol');
         const search = $.urlParam('search');
 
-        let queryStringBuilder = "/codes" + "?isGeneric=" + ((isGenericParam === false) ? "true" : isGenericParam) + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : String(Math.round(Number(pageParam) * (1/(Number(chosen) / Number(sizeParam))))));
-        queryStringBuilder += "&direction=" + (direction === false ? "0" : direction) + "&sortCol=" + (sortCol === false ? "0" : sortCol) + "&search=" + (search === false || search == 0 ? "" : search);
+        const newPage = ((page === false) ? "1" : String(Math.ceil(Number(page) * (1/(Number(chosen) / Number(size))))));
         
-        window.location = queryStringBuilder;
+        redirectToCodesPage(
+            chosen,
+            newPage,
+            isGeneric,
+            direction,
+            search,
+            sortCol
+        );
+    }
+
+    function sortColumn(columnNumber) {
+        let currentDirection = $.urlParam('direction');
+        const sortCol = $.urlParam('sortCol');
+
+        currentDirection = currentDirection === false || currentDirection == "0" ? "0" : currentDirection;
+        let newDirection = currentDirection === "0" ? "1" : "0";
+        let newSortColumn = columnNumber >= 0 && columnNumber <= 3 ? columnNumber : 0 ;
+
+        if (sortCol != newSortColumn) newDirection = "0";
+
+        const size = $.urlParam('size');
+        const page = $.urlParam('page');
+        const isGeneric = $.urlParam('isGeneric');
+        const search = $.urlParam('search');
+
+        redirectToCodesPage(
+            size,
+            page,
+            isGeneric,
+            newDirection,
+            search,
+            newSortColumn
+        );
     }
 </script>

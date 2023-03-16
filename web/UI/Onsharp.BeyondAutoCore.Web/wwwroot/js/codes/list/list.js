@@ -44,15 +44,18 @@ var KTCodesList = function () {
             // Here we handle search
             console.log('I typed');
             const isGeneric = $.urlParam('isGeneric');
-            if (isGeneric === false) {
-                isGeneric = true;
-            }
             const size = $.urlParam('size');
             const direction = $.urlParam('direction');
             const sortCol = $.urlParam('sortCol');
 
-            const redirect = `/codes?isGeneric=${isGeneric}&search=${filterSearch.value}&page=1&size=${size === false ? "10" : size}&direction=${direction === false ? "0" : direction}&sortCol=${sortCol === false ? "0" : sortCol}`;
-            window.location = redirect;
+            redirectToCodesPage(
+                size,
+                "1",
+                isGeneric,
+                direction,
+                filterSearch.value,
+                sortCol
+            );
         }, 2000));
     }
 
@@ -176,18 +179,22 @@ var KTCodesList = function () {
         const showGeneric = formList.querySelector('#toggleShowGenerics');
         showGeneric.addEventListener('click', function () {
             
-            let isCheck = false;
+            let isCheck = "false";
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
-            const sizeParam = $.urlParam('size');
-            const pageParam = $.urlParam('page');
+            const size = $.urlParam('size');
+            const page = $.urlParam('page');
             const direction = $.urlParam('direction');
             const sortCol = $.urlParam('sortCol');
             const search = $.urlParam('search');
 
-            let queryStringBuilder = "/codes" + "?isGeneric=" + isCheck + "&size=" + (sizeParam === false ? "10" : sizeParam) + "&page=" + ((pageParam === false) ? "1" : pageParam);
-            queryStringBuilder += "&direction=" + (direction === false ? "0" : direction) + "&sortCol=" + (sortCol === false ? "0" : sortCol) + "&search=" + (search === false || search == 0 ? "" : search);
-            
-            window.location = queryStringBuilder;
+            redirectToCodesPage(
+                size,
+                page,
+                isCheck,
+                direction,
+                search,
+                sortCol
+            );
         });
 
     }
@@ -239,3 +246,15 @@ $.urlParam = function (name) {
 
     return (results !== null) ? results[1] || 0 : false;
 }
+
+function redirectToCodesPage(
+    size,
+    page,
+    isGeneric,
+    direction,
+    search,
+    sortCol
+    ) {
+        let queryStrinBuilder = `/codes?isGeneric=${isGeneric === false ? "true" : isGeneric}&search=${search === false || search == "0" ? "" : search}&page=${(page === false) ? "1" : page}&size=${size === false ? "10" : size}&direction=${direction === false ? "0" : direction}&sortCol=${sortCol === false ? "0" : sortCol}`;
+        window.location = queryStrinBuilder;
+    }

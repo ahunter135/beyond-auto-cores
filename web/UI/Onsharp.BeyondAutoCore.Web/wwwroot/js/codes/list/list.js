@@ -47,10 +47,11 @@ var KTCodesList = function () {
             if (isGeneric === false) {
                 isGeneric = true;
             }
-            const page = $.urlParam('page');
             const size = $.urlParam('size');
+            const direction = $.urlParam('direction');
+            const sortCol = $.urlParam('sortCol');
 
-            const redirect = `/codes?isGeneric=${isGeneric}&search=${filterSearch.value}&page=1&size=${size === false ? "10" : size}`;
+            const redirect = `/codes?isGeneric=${isGeneric}&search=${filterSearch.value}&page=1&size=${size === false ? "10" : size}&direction=${direction === false ? "0" : direction}&sortCol=${sortCol === false ? "0" : sortCol}`;
             window.location = redirect;
         }, 2000));
     }
@@ -177,10 +178,16 @@ var KTCodesList = function () {
             
             let isCheck = false;
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
-            const pageSize = $('select[name="kt_codes_table_length"]').find(":selected").val();
-			let search = $.urlParam('search');
-            search = search === false || search == 0 ? "" : search;
-            window.location = codesUrl + "?isGeneric=" + isCheck + "&size=" + pageSize + "&search=" + search;
+            const sizeParam = $.urlParam('size');
+            const pageParam = $.urlParam('page');
+            const direction = $.urlParam('direction');
+            const sortCol = $.urlParam('sortCol');
+            const search = $.urlParam('search');
+
+            let queryStringBuilder = "/codes" + "?isGeneric=" + isCheck + "&size=" + (sizeParam === false ? "10" : sizeParam) + "&page=" + ((pageParam === false) ? "1" : pageParam);
+            queryStringBuilder += "&direction=" + (direction === false ? "0" : direction) + "&sortCol=" + (sortCol === false ? "0" : sortCol) + "&search=" + (search === false || search == 0 ? "" : search);
+            
+            window.location = queryStringBuilder;
         });
 
     }

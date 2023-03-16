@@ -77,9 +77,6 @@
                 parametersCommand.SearchQuery = searchQuery;
             }
 
-            Console.WriteLine($"HEHEHERHEHEHEEHEHEH\n\n\n\n\n\n");
-            Console.WriteLine($"{sortCol}, {direction}");
-
             var response = await _codeService.GetPage(parametersCommand, isAdmin, isCustom, notIncludePGItem, needLength, sortCol, direction);
             var previousPageLink = response.HasPrevious ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.PreviousPage) : null;
             var nextPageLink = response.HasNext ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.NextPage) : null;

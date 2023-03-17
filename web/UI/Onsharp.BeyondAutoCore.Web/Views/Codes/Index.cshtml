@@ -41,11 +41,63 @@
                         <thead>
                             <tr class="text-start fs-7 gs-0 table-list-custom-row-header">
                                 <th class="min-w-50px hide-section">Code Id</th>
-                                <th class="min-w-125px padding-left-small" style="text-align: left;">Converter Code</th>
+                                <th class="min-w-125px padding-left-small" style="text-align: left; cursor: pointer;" onclick="sortColumn(0)">
+                                    Converter Code
+                                    @if (ViewBag.SortColumn == "0")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
                                 <th></th>
-                                <th class="min-w-125px" style="text-align: left;">Platinum Price</th>
-                                <th class="min-w-125px" style="text-align: left;">Palladium Price</th>
-                                <th class="min-w-125px" style="text-align: left;">Rhodium Price</th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(1)">
+                                    Platinum Price
+                                    @if (ViewBag.SortColumn == "1")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(2)">
+                                    Palladium Price
+                                    @if (ViewBag.SortColumn == "2")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
+                                <th class="min-w-125px" style="text-align: left; cursor: pointer;" onclick="sortColumn(3)">
+                                    Rhodium Price
+                                    @if (ViewBag.SortColumn == "3")
+                                    {
+                                        if (ViewBag.Direction == "0")
+                                        {
+                                            <span class="arrow">╲╱</span>
+                                        }
+                                        else
+                                        {
+                                           <span class="arrow">╱╲</span>
+                                        }
+                                    }
+                                </th>
                                 <th class="min-w-70px padding-right-small" style="text-align: right;">Actions</th>
                             </tr>
                         </thead>
@@ -103,14 +155,14 @@
                         <div class="dataTables_paginate paging_simple_numbers" id="kt_codes_table_paginate">
                             <ul class="pagination">
                                 <!-- Previous button -->
-                                <li class="paginate_button page-item previous @(ViewBag.CurrentPage == 1 ? "disabled" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
+                                <li class="paginate_button page-item previous @(ViewBag.CurrentPage == 1 ? "disabled" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(ViewBag.CurrentPage - 1)@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="0" tabindex="0" class="page-link"><i class="previous"></i></a></li>
                                 <!-- First page -->
-                                <li class="paginate_button page-item @(ViewBag.CurrentPage == 1 ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=1&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                <li class="paginate_button page-item @(ViewBag.CurrentPage == 1 ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=1@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
                                 @if(@ViewBag.CurrentPage <= 4)
                                 {
                                     for(int i = 2; i < 6 && i < ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)); i++)
                                     {
-                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
                                     }
                                     if (1 <= ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize) - 4))
                                     {
@@ -122,7 +174,7 @@
                                     <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
                                     for(int i = ViewBag.CurrentPage - 1; i < ViewBag.CurrentPage + 2; i++)
                                     {
-                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == i ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i)@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="@i" tabindex="0" class="page-link">@i</a></li>
                                     }
                                     <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
                                 }
@@ -132,16 +184,16 @@
                                     <li class="paginate_button page-item disabled" id="kt_codes_table_ellipsis"><a href="#" aria-controls="kt_codes_table" data-dt-idx="6" tabindex="0" class="page-link">…</a></li>
                                     for(int i = ((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)), j = 4; j > 0; j--)
                                     {
-                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == (i - j) ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i - j)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="@(i - j)" tabindex="0" class="page-link">@(i - j)</a></li>
+                                        <li class="paginate_button page-item @(ViewBag.CurrentPage == (i - j) ? "active" : "")" id="kt_codes_table_previous"><a href="/Codes?page=@(i - j)@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="@(i - j)" tabindex="0" class="page-link">@(i - j)</a></li>
                                     }
                                 }
                                 <!-- Last Page -->
-                                @if((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize) != 1)
+                                @if((int)Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize) > 1)
                                 {
-                                    <li class="paginate_button page-item @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "active" : "")"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
+                                    <li class="paginate_button page-item @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "active" : "")"><a href="/Codes?page=@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="7" tabindex="0" class="page-link">@(Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize))</a></li>
                                 }
                                 <!-- Next Button -->
-                                <li class="paginate_button page-item next @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "disabled" : "")" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage + 1)&size=@(ViewBag.PageSize)&isGeneric=@(ViewBag.IsGeneric)&search=@(ViewBag.Search)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
+                                <li class="paginate_button page-item next @(ViewBag.CurrentPage == (Math.Ceiling((float)ViewBag.Length / (float)ViewBag.PageSize)) ? "disabled" : "")" id="kt_codes_table_next"><a href="/Codes?page=@(ViewBag.CurrentPage + 1)@(ViewBag.QueryParams)" aria-controls="kt_codes_table" data-dt-idx="8" tabindex="0" class="page-link"><i class="next"></i></a></li>
                             </ul>
                         </div>
                     </div>
@@ -317,21 +369,57 @@
 <link href="~/css/codes.css" rel="stylesheet" type="text/css" />
 <script src="~/js/codes/list/list.js"></script>
 <script src="~/js/codes/addupdate.js"></script>
-<!--<script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>-->
+<script type="text/javascript">KTUtil.onDOMContentLoaded(function () { DragAndDrop.init(); });</script>
 <script type="text/javascript">
+    $.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                        .exec(window.location.search);
+    
+        return (results !== null) ? results[1] || 0 : false;
+    }
     function changePageSize(chosen) {
-        $.urlParam = function (name) {
-            var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-                            .exec(window.location.search);
         
-            return (results !== null) ? results[1] || 0 : false;
-        }
-        
-        const sizeParam = $.urlParam('size');
-        const pageParam = $.urlParam('page');
-        const isGenericParam = $.urlParam('isGeneric');
-        const newPageNumber = 
+        const size = $.urlParam('size');
+        const page = $.urlParam('page');
+        const isGeneric = $.urlParam('isGeneric');
+        const direction = $.urlParam('direction');
+        const sortCol = $.urlParam('sortCol');
+        const search = $.urlParam('search');
 
-        window.location = "/codes" + "?isGeneric=" + ((isGenericParam === false) ? "false" : "true") + "&size=" + chosen + "&page=" + ((pageParam === false) ? "1" : String(Math.round(Number(pageParam) * (1/(Number(chosen) / Number(sizeParam))))));
+        const newPage = ((page === false) ? "1" : String(Math.ceil(Number(page) * (1/(Number(chosen) / Number(size))))));
+        
+        redirectToCodesPage(
+            chosen,
+            newPage,
+            isGeneric,
+            direction,
+            search,
+            sortCol
+        );
+    }
+
+    function sortColumn(columnNumber) {
+        let currentDirection = $.urlParam('direction');
+        const sortCol = $.urlParam('sortCol');
+
+        currentDirection = currentDirection === false || currentDirection == "0" ? "0" : currentDirection;
+        let newDirection = currentDirection === "0" ? "1" : "0";
+        let newSortColumn = columnNumber >= 0 && columnNumber <= 3 ? columnNumber : 0 ;
+
+        if (sortCol != newSortColumn) newDirection = "0";
+
+        const size = $.urlParam('size');
+        const page = $.urlParam('page');
+        const isGeneric = $.urlParam('isGeneric');
+        const search = $.urlParam('search');
+
+        redirectToCodesPage(
+            size,
+            page,
+            isGeneric,
+            newDirection,
+            search,
+            newSortColumn
+        );
     }
 </script>

@@ -127,7 +127,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var listData = await _lotRepository.GetInventorySummary(parameters);
             var currentUser = await _userService.GetById(this.CurrentUserId());
 
-            if (currentUser != null && currentUser.Role == RoleEnum.User)
+            if (currentUser != null)
                 listData = listData.FindAll(w => w.CreatedBy == this.CurrentUserId()).ToList();
 
             var pageListData = PageList<InventorySummaryDto>.Create(listData, parametersCommand.PageNumber, parametersCommand.PageSize);

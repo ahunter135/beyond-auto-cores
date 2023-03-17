@@ -22,6 +22,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Repository
         {
             if (isPage == true)
             {
+                foreach (SqlParameter s in parameters)
+                {
+                    Console.WriteLine($"{s.DbType} => {s.Value} => {s.SqlDbType} => {s.SqlValue} => {s.ParameterName}");
+                }
                 return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodesPage @convertername, @isadmin, @iscustom, @notIncludePGItem, @pagesize, @pagenumber, @direction, @sortColumn", parameters.ToArray()).ToListAsync();
             }
             return await _context.Set<CodeListDto>().FromSqlRaw("SProc_GetCodes @convertername, @isadmin, @iscustom, @notIncludePGItem", parameters.ToArray()).ToListAsync();

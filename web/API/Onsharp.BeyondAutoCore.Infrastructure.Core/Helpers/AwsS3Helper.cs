@@ -95,12 +95,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
             var url = "";
             await Task.Run(() =>
             {
+                Console.WriteLine("RUNNING!!");
                 url = _aws3Client.GetPreSignedURL(new GetPreSignedUrlRequest()
                 {
                     BucketName = _awsSettings.Bucket,
                     Key = fileKey,
                     Expires = DateTime.Now.AddMinutes(120)
                 });
+                Console.WriteLine("AWS!!");
             });
 
             return url;
@@ -110,6 +112,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
         {
             try
             {
+                Console.WriteLine("UPLOADING!");
                 using (var newMemoryStream = new MemoryStream())
                 {
                     file.CopyTo(newMemoryStream);

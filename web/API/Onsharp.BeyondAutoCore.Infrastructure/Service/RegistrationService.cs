@@ -393,7 +393,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                                $"padding: 12px 16px 12px 16px; text-align: left; line-height: 1; text-underline: none; mso-text-underline: none; font-size: 16px; display: inline-block; " +
                                $"border: 0; border-radius: 2px; mso-border-alt: 8px solid #8661C5; mso-padding-alt: 0; background-color: #212540\" rel=\"noopener\">Accept Invitation</a>";
 
-            string htmlFullBody = System.IO.File.ReadAllText(@"HtmlTemplates\SignUpWelcome.html");
+            string htmlFullBody = System.IO.File.ReadAllText(@"HtmlTemplates/SignUpWelcome.html");
             htmlFullBody = String.Format(@htmlFullBody, siteLogo, nameOfProject, acceptBtn);
 
             return htmlFullBody;

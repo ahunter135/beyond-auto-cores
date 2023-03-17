@@ -1,1 +1,0 @@
-(function(){"use strict";function realtimeServerConfig(){var cvm=this;cvm.showAll=!0}angular.module("umbraco").controller("realtimeServerConfigController",realtimeServerConfig)})()

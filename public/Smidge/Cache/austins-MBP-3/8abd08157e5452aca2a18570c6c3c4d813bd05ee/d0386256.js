@@ -1,1 +1,0 @@
-(function(){"use strict";function itemManager($http){function getEntity(treeItem){return $http.post(getUrl("getEntity"),treeItem)}function getUrl(method){return Umbraco.Sys.ServerVariables.uSyncComplete.itemManager+method}return{getEntity:getEntity}}angular.module("umbraco").factory("uSyncItemManager",itemManager)})()

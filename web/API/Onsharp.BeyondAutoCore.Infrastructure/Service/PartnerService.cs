@@ -135,9 +135,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
 
             var collection = _partnerRepository.GetAllIQueryable();
-
             collection = collection.Where(w => w.IsDeleted == false);
-
             if (!string.IsNullOrEmpty(parametersCommand.SearchCategory) && parametersCommand.SearchCategory.ToLower() == "partnername" &&
                 !string.IsNullOrEmpty(parametersCommand.SearchQuery))
             {
@@ -154,16 +152,17 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var filteredData = collection.Skip((parametersCommand.PageNumber - 1) * parametersCommand.PageSize).Take(parametersCommand.PageSize).ToList();
 
             var mappedData = _mapper.Map<List<PartnerModel>, List<PartnerDto>>(filteredData);
-
+    Console.WriteLine("MADE IT!!!");
             if (includeLogoUrl)
             {
                 foreach (var partner in mappedData)
                 {
-                    if (!string.IsNullOrWhiteSpace(partner.LogoFileKey))
+                    Console.WriteLine(partner.LogoFileKey);
+                    if (!string.IsNullOrWhiteSpace(partner.LogoFileKey)) {
                         partner.FileUrl = await _awsS3Helper.GetPreSignedUrlAsync(partner.LogoFileKey);
+                    }
                 }
             }
-
             return PageList<PartnerDto>.Create(mappedData, sourceCount, parametersCommand.PageNumber, parametersCommand.PageSize);
         }
 

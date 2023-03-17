@@ -19,8 +19,5 @@
 			"style": "DARK",
 			"resizeOnFullScreen": true
 		}
-	},
-	"server": {
-		"url": "http://localhost:8100"
 	}
 }

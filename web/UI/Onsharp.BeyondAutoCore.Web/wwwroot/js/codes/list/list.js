@@ -16,7 +16,6 @@ var KTCodesList = function () {
         });
 
         const tableRows = table.querySelectorAll('tbody tr');
-        console.log('Initializing Code List');
 
 
 
@@ -174,7 +173,6 @@ var KTCodesList = function () {
 
     // Init toggle toolbar
     var initToggleToolbar = () => {
-        console.log("Initializing Toggle Bar");
 
         const showGeneric = formList.querySelector('#toggleShowGenerics');
         showGeneric.addEventListener('click', function () {
@@ -209,8 +207,6 @@ var KTCodesList = function () {
             if (!table) {
                 return;
             }
-
-            console.log("First init call");
 
             initCodesList();
             initToggleToolbar();

@@ -133,7 +133,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if(parametersCommand == null)
                 throw new ArgumentNullException("Invalid parameters.");
 
+
             var collection = _partnerRepository.GetAllIQueryable();
+
             collection = collection.Where(w => w.IsDeleted == false);
 
             if (!string.IsNullOrEmpty(parametersCommand.SearchCategory) && parametersCommand.SearchCategory.ToLower() == "partnername" &&

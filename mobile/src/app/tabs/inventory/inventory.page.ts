@@ -60,6 +60,7 @@ export class InventoryPage implements OnDestroy {
       searchCategory: 'isSubmitted',
       searchQuery: 'false',
     });
+
     this.isLoading = false;
   }
 

@@ -12,7 +12,7 @@ export const environment = {
   servers: {
     none: '', // for calling api without servername need
     default: 'https://bac-api.azurewebsites.net/api/v1'
-    // 'http://localhost:5181/api/v1'
+     //'http://localhost:5181/api/v1'
   },
 
   /** Marketing website link */

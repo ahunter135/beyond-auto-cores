@@ -58,6 +58,7 @@ export class PhotoGradePage implements OnInit, OnDestroy {
       searchCategory: 'photoGradeStatus',
       searchQuery: '0',
     });
+    console.log(this.photoGradeList);
     this.accountService.currentUserState$.subscribe(() => {
       this.gradeCredits = this.accountService.currentUser?.gradeCredits;
     });

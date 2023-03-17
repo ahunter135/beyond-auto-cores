@@ -82,6 +82,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             collection = collection.Where(w => w.IsDeleted == false);
 
             var currentUser =  await _userService.GetById(this.CurrentUserId());
+
             if (currentUser != null && currentUser.Role == RoleEnum.User)
                 collection = collection.Where(w => w.CreatedBy == this.CurrentUserId());
 
@@ -124,10 +125,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             var parameters = await CreateSqlParameter(parametersCommand);
             var listData = await _lotRepository.GetInventorySummary(parameters);
-            
             var currentUser = await _userService.GetById(this.CurrentUserId());
+
             if (currentUser != null && currentUser.Role == RoleEnum.User)
-                listData = listData.Where(w => w.CreatedBy == this.CurrentUserId()).ToList();
+                listData = listData.FindAll(w => w.CreatedBy == this.CurrentUserId()).ToList();
 
             var pageListData = PageList<InventorySummaryDto>.Create(listData, parametersCommand.PageNumber, parametersCommand.PageSize);
 

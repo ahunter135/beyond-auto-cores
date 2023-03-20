@@ -96,7 +96,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             else if (newLotItem.CodeId == 0)
             {
                 // 66244 new lot items with a code id of 0 need to pass validation.
-                codeId = 9999;
+                codeId = 13013;
             }
             else
             {

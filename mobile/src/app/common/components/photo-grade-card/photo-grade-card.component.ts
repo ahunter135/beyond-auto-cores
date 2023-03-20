@@ -36,7 +36,7 @@ export class PhotoGradeCardComponent implements OnInit {
 
   async openModal() {
     this.photoGradeService.setSelectedPhotoGrade = this.photoGrade;
-
+    console.log(this.photoGrade);
     const modal = await this.modalCtrl.create({
       component: AddToLotComponent,
       cssClass: 'add-lot-modal',

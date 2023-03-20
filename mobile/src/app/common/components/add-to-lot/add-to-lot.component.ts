@@ -70,6 +70,9 @@ export class AddToLotComponent implements OnInit {
       };
     }
 
+    console.log(this.codesService.selectedCode);
+
+
     loading.dismiss();
   }
 

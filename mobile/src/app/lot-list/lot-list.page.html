@@ -18,7 +18,7 @@
         <div class="cont">
           <img [src]="lotItem.fileUrl || '/assets/cm-logo-home.svg'" [ngStyle]="lotItem.fileUrl ? {'object-fit': 'cover'} : {'object-fit': 'fill'} " class="lot-img" />
           <div class="header-text">
-            <p>{{ lotItem.converterName || "Unknown" }}</p>
+            <p>{{ lotItem.converterName || "No Code" }}</p>
             <p class="bold">
               {{ formatPrice(lotItem.minUnitPrice || 0) }} - {{
               formatPrice(lotItem.maxUnitPrice || 0) }}

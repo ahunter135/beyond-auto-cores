@@ -160,8 +160,8 @@ var KTPhotoGradesList = function () {
         let price = $("#price").val();
         let photoGradeStatus = $("#photoGridStatus").val();
         let comments = $("#comments").val();
-
-        if (photoGradeStatus == 1 && codeId == 0) {
+        
+        if (photoGradeStatus == 1 && !codeId) {
             Swal.fire({
                 text: "Code is required if the status is approved.",
                 icon: "error",

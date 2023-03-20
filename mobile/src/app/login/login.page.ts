@@ -37,8 +37,8 @@ export class LoginPage
   /** Builds the form object. */
   buildForm(): void {
     this.form = this.formBuilder.group({
-      userName: ["catalyticmastermind@catalyticmastermind.org", Validators.required],
-      password: ["bacadmin", Validators.required],
+      userName: [null, Validators.required],
+      password: [null, Validators.required],
     });
   }
 

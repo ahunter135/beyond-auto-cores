@@ -69,6 +69,7 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             ViewBag.Search = searchQuery;
             ViewBag.SortColumn = sortColumn;
             ViewBag.Direction = direction;
+            ViewBag.QueryParams = $"&size={pageSizeI}&search={searchQuery}&direction={direction}&sortCol={sortColumn}&isGeneric={isGeneric}";
             //return View(data.Where( x=> x.Id != 9999).ToList());
             
             //var data  = await _codesClient.GetAll(isGeneric,"").GetData();

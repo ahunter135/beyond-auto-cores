@@ -30,7 +30,9 @@ export class PhotoGradeCardComponent implements OnInit {
     private router: Router
   ) {}
 
-  async ngOnInit() {}
+  async ngOnInit() {
+    console.log(this.photoGrade.converterName === "");
+  }
 
   async openModal() {
     this.photoGradeService.setSelectedPhotoGrade = this.photoGrade;

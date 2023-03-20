@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj": {}
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj": {}
   },
   "projects": {
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj": {
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj",
+        "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj",
         "projectName": "Onsharp.BeyondAutoCore.API",
-        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj",
-        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
-        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\obj\\",
+        "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\Onsharp.BeyondAutoCore.API.csproj",
+        "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
+        "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,8 +28,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj"
               }
             }
           }
@@ -114,21 +114,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj": {
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj",
+        "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj",
         "projectName": "Onsharp.BeyondAutoCore.Application",
-        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj",
-        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
-        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\obj\\",
+        "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj",
+        "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
+        "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -142,8 +142,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
               }
             }
           }
@@ -183,21 +183,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj",
+        "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj",
         "projectName": "Onsharp.BeyondAutoCore.Domain",
-        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj",
-        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
-        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\obj\\",
+        "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj",
+        "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
+        "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -268,21 +268,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj": {
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj",
+        "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj",
         "projectName": "Onsharp.BeyondAutoCore.Infrastructure.Core",
-        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj",
-        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
-        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\obj\\",
+        "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj",
+        "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
+        "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -296,8 +296,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
               }
             }
           }
@@ -361,21 +361,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj": {
+    "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj",
+        "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj",
         "projectName": "Onsharp.BeyondAutoCore.Infrastructure",
-        "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\Carter Williams\\.nuget\\packages\\",
-        "outputPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\obj\\",
+        "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\Onsharp.BeyondAutoCore.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
+        "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Carter Williams\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -389,14 +389,14 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Application\\Onsharp.BeyondAutoCore.Application.csproj"
               },
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Domain\\Onsharp.BeyondAutoCore.Domain.csproj"
               },
-              "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj": {
-                "projectPath": "A:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj"
+              "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj": {
+                "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\API\\Onsharp.BeyondAutoCore.Infrastructure.Core\\Onsharp.BeyondAutoCore.Infrastructure.Core.csproj"
               }
             }
           }
@@ -476,7 +476,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

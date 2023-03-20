@@ -289,7 +289,7 @@ var KTPhotoGradesList = function () {
                     newOption = new Option('' + data.converterName, data.codeId, true, true);
                 }
                 else {
-                    newOption = new Option('No code', '9999', true, true);
+                    newOption = new Option('No code', '0', true, true);
                 }
 
                 $('#codeList').append(newOption).trigger('change');

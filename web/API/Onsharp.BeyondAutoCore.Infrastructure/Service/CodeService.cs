@@ -170,7 +170,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = notIncludePGItem });
             }
             else
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
 
 
             switch(direction)
@@ -277,10 +277,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             if (notIncludePGItem != null)
             {
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = notIncludePGItem });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
             }
             else
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
 
             var listData = await _codesRepository.GetCodes(parameters);
 

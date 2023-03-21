@@ -20,6 +20,7 @@ import { AddToLotComponent } from '../add-to-lot/add-to-lot.component';
 })
 export class PhotoGradeCardComponent implements OnInit {
   @Input() photoGrade: PhotoGradeListResponse;
+  name: string;
   thumbnail = '../../../assets/cm-logo-home.svg';
 
   constructor(
@@ -32,6 +33,7 @@ export class PhotoGradeCardComponent implements OnInit {
 
   async ngOnInit() {
     console.log(this.photoGrade.converterName === "");
+    this.name = this.photoGrade.converterName === "" ? "No Code" : this.photoGrade.converterName;
   }
 
   async openModal() {

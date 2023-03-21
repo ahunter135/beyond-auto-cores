@@ -61,24 +61,19 @@
 
         [HttpGet]
         [Route("page")]
-        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false, bool needLength = true, string sortCol = "0", string direction = "0")
+        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = true, bool needLength = true, string sortCol = "0", string direction = "0")
         {
             var parametersCommand = new ParametersCommand();
             if (pageNumber != null && pageNumber.Value > 0)
                 parametersCommand.PageNumber = pageNumber.Value;
-                Console.WriteLine($"HERHEHEHE {pageNumber}");
             if (pageSize != null && pageSize.Value > 0)
                 parametersCommand.PageSize = pageSize.Value;
-                Console.WriteLine($"HERHEHEHE {pageSize}");
 
             if (!string.IsNullOrEmpty(searchCategory) && !string.IsNullOrEmpty(searchQuery))
             {
                 parametersCommand.SearchCategory = searchCategory;
                 parametersCommand.SearchQuery = searchQuery;
             }
-
-            Console.WriteLine($"HEHEHERHEHEHEEHEHEH\n\n\n\n\n\n");
-            Console.WriteLine($"{sortCol}, {direction}");
 
             var response = await _codeService.GetPage(parametersCommand, isAdmin, isCustom, notIncludePGItem, needLength, sortCol, direction);
             var previousPageLink = response.HasPrevious ? CreateResourceUri(parametersCommand, ResourceUriTypeEnum.PreviousPage) : null;

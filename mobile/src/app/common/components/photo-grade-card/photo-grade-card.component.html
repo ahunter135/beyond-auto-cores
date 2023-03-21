@@ -21,7 +21,7 @@
           <ion-img [src]="photoGrade.fileUrl || thumbnail" class="generic-img"></ion-img>
         </ion-col>
         <ion-col class="ion-text-center" size="6" *ngIf="photoGrade.photoGradeStatus === 1">
-          <ion-text class="paragraph-text-16 white">{{ photoGrade.converterName }}</ion-text>
+          <ion-text class="paragraph-text-16 white">{{ name }}</ion-text>
           <br />
           <ion-text class="paragraph-text-16-bold white">{{ formatPrice(photoGrade.price) }}
           </ion-text>

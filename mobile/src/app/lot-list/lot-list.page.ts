@@ -93,6 +93,7 @@ export class LotListPage implements OnInit {
       { pageNumber: 1, pageSize: 66955359 }
     );
     this.isLoading = false;
+    console.log(this.lotItems);
   }
 
   async openModalFullness() {

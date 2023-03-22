@@ -61,7 +61,7 @@
 
         [HttpGet]
         [Route("page")]
-        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = true, bool needLength = true, string sortCol = "0", string direction = "0")
+        public async Task<IActionResult> GetPage(bool? isAdmin, bool? isCustom, int? pageNumber, int? pageSize, string? searchQuery = "", string? searchCategory = "", bool? notIncludePGItem = false, bool needLength = true, string sortCol = "0", string direction = "0")
         {
             var parametersCommand = new ParametersCommand();
             if (pageNumber != null && pageNumber.Value > 0)

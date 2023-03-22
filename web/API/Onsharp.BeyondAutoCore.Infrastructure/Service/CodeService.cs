@@ -170,7 +170,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = notIncludePGItem });
             }
             else
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
 
 
             switch(direction)
@@ -202,14 +202,13 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
 
             var listData = await _codesRepository.GetCodes(parameters, true);
+            Console.WriteLine($"{listData.Count()} \n\n\n\n");
             int length = -1;
             
             if (needLength == true)
             {
                 length = await _codesRepository.GetCodesLength(parameters, true);
             }
-
-            listData = listData.Where(x => x.Id != 9999).ToList(); //Remove No Code Item in the results
 
             decimal margin = 0;
             var userMarginInfo = await _userService.GetUserMargin(this.CurrentUserId());
@@ -277,14 +276,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             if (notIncludePGItem != null)
             {
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = notIncludePGItem });
             }
             else
-                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = true });
+                parameters.Add(new SqlParameter("@notIncludePGItem", System.Data.SqlDbType.Bit) { Direction = System.Data.ParameterDirection.Input, Value = false });
 
             var listData = await _codesRepository.GetCodes(parameters);
-
-            listData = listData.Where(x => x.Id != 9999).ToList(); //Remove No Code Item in the results
 
             decimal margin = 0;
             var userMarginInfo = await _userService.GetUserMargin(this.CurrentUserId());

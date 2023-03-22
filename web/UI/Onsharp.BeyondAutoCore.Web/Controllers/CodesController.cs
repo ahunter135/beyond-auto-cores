@@ -73,7 +73,7 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
             //return View(data.Where( x=> x.Id != 9999).ToList());
             
             //var data  = await _codesClient.GetAll(isGeneric,"").GetData();
-            return View(data.Where( x=> x.Id != 9999).ToList());
+            return View(data);
         }
 
         [HttpGet]

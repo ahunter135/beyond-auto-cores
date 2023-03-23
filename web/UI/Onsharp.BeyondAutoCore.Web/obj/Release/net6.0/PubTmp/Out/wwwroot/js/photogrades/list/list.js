@@ -160,8 +160,8 @@ var KTPhotoGradesList = function () {
         let price = $("#price").val();
         let photoGradeStatus = $("#photoGridStatus").val();
         let comments = $("#comments").val();
-
-        if (photoGradeStatus == 1 && codeId == 0) {
+        
+        if (photoGradeStatus == 1 && !codeId) {
             Swal.fire({
                 text: "Code is required if the status is approved.",
                 icon: "error",
@@ -289,7 +289,7 @@ var KTPhotoGradesList = function () {
                     newOption = new Option('' + data.converterName, data.codeId, true, true);
                 }
                 else {
-                    newOption = new Option('No code', '9999', true, true);
+                    newOption = new Option('No code', '0', true, true);
                 }
 
                 $('#codeList').append(newOption).trigger('change');

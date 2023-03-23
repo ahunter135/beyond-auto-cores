@@ -17,7 +17,10 @@ var KTCodesList = function () {
 
         const tableRows = table.querySelectorAll('tbody tr');
 
-        datatable = $(table).DataTable({
+
+
+        // This is what splits data into pages
+        /*datatable = $(table).DataTable({
             info: false,
             order: [],
             columnDefs: [
@@ -31,14 +34,28 @@ var KTCodesList = function () {
             initToggleToolbar();
             handleUpdateRows();
             handleDeleteRows();
-        });
+        });*/
     }
 
     var handleSearchDatatable = () => {
         const filterSearch = document.querySelector('[data-kt-code-table-filter="search"]');
-        filterSearch.addEventListener('keyup', function (e) {
-            datatable.search(e.target.value).draw();
-        });
+        filterSearch.addEventListener('keyup', delay(function (e) {
+            // Here we handle search
+            console.log('I typed');
+            const isGeneric = $.urlParam('isGeneric');
+            const size = $.urlParam('size');
+            const direction = $.urlParam('direction');
+            const sortCol = $.urlParam('sortCol');
+
+            redirectToCodesPage(
+                size,
+                "1",
+                isGeneric,
+                direction,
+                filterSearch.value,
+                sortCol
+            );
+        }, 2000));
     }
 
     var handleUpdateRows = () => {
@@ -160,10 +177,22 @@ var KTCodesList = function () {
         const showGeneric = formList.querySelector('#toggleShowGenerics');
         showGeneric.addEventListener('click', function () {
             
-            let isCheck = false;
+            let isCheck = "false";
             if ($('#toggleShowGenerics').is(':checked')) { isCheck = true; }
+            const size = $.urlParam('size');
+            const page = $.urlParam('page');
+            const direction = $.urlParam('direction');
+            const sortCol = $.urlParam('sortCol');
+            const search = $.urlParam('search');
 
-            window.location = codesUrl + "?isGeneric=" + isCheck;
+            redirectToCodesPage(
+                size,
+                page,
+                isCheck,
+                direction,
+                search,
+                sortCol
+            );
         });
 
     }
@@ -195,3 +224,33 @@ var KTCodesList = function () {
 KTUtil.onDOMContentLoaded(function () {
     KTCodesList.init();
 });
+
+function delay(callback, ms) {
+    var timer = 0;
+    return function() {
+      var context = this, args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(function () {
+        callback.apply(context, args);
+      }, ms || 0);
+    };
+}
+
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                    .exec(window.location.search);
+
+    return (results !== null) ? results[1] || 0 : false;
+}
+
+function redirectToCodesPage(
+    size,
+    page,
+    isGeneric,
+    direction,
+    search,
+    sortCol
+    ) {
+        let queryStrinBuilder = `/codes?isGeneric=${isGeneric === false ? "true" : isGeneric}&search=${search === false || search == "0" ? "" : search}&page=${(page === false) ? "1" : page}&size=${size === false ? "10" : size}&direction=${direction === false ? "0" : direction}&sortCol=${sortCol === false ? "0" : sortCol}`;
+        window.location = queryStrinBuilder;
+    }

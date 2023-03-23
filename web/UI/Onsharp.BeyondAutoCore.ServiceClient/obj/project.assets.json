@@ -2335,34 +2335,32 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Carter\\.nuget\\packages\\": {}
+    "/Users/austinhunter/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\UI\\Onsharp.BeyondAutoCore.ServiceClient\\Onsharp.BeyondAutoCore.Web.ServiceClient.csproj",
+      "projectUniqueName": "/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/Onsharp.BeyondAutoCore.Web.ServiceClient.csproj",
       "projectName": "Onsharp.BeyondAutoCore.Web.ServiceClient",
-      "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\UI\\Onsharp.BeyondAutoCore.ServiceClient\\Onsharp.BeyondAutoCore.Web.ServiceClient.csproj",
-      "packagesPath": "C:\\Users\\Carter\\.nuget\\packages\\",
-      "outputPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\UI\\Onsharp.BeyondAutoCore.ServiceClient\\obj\\",
+      "projectPath": "/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/Onsharp.BeyondAutoCore.Web.ServiceClient.csproj",
+      "packagesPath": "/Users/austinhunter/.nuget/packages/",
+      "outputPath": "/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.ServiceClient/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Carter\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/austinhunter/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\elco-dev-projects\\beyond-auto-cores\\web\\UI\\Onsharp.BeyondAutoCore.Model\\Onsharp.BeyondAutoCore.Web.Model.csproj": {
-              "projectPath": "C:\\elco-dev-projects\\beyond-auto-cores\\web\\UI\\Onsharp.BeyondAutoCore.Model\\Onsharp.BeyondAutoCore.Web.Model.csproj"
+            "/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/Onsharp.BeyondAutoCore.Web.Model.csproj": {
+              "projectPath": "/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Model/Onsharp.BeyondAutoCore.Web.Model.csproj"
             }
           }
         }
@@ -2398,7 +2396,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.201/RuntimeIdentifierGraph.json"
       }
     }
   }

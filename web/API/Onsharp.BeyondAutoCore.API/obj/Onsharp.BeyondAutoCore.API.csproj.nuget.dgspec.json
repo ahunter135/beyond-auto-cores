@@ -58,10 +58,6 @@
               "target": "Package",
               "version": "[11.0.0, )"
             },
-            "DinkToPdf": {
-              "target": "Package",
-              "version": "[1.0.8, )"
-            },
             "Hangfire": {
               "target": "Package",
               "version": "[1.7.31, )"
@@ -83,6 +79,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.7, )"
+            },
+            "RndUsr0.DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.9-20190207.1, )"
             },
             "Sentry.AspNetCore": {
               "target": "Package",
@@ -312,10 +312,6 @@
               "target": "Package",
               "version": "[3.7.9.37, )"
             },
-            "DinkToPdf": {
-              "target": "Package",
-              "version": "[1.0.8, )"
-            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.1, )"
@@ -327,6 +323,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.7, )"
+            },
+            "RndUsr0.DinkToPdf": {
+              "target": "Package",
+              "version": "[1.0.9-20190207.1, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -404,10 +404,6 @@
             "AutoMapper": {
               "target": "Package",
               "version": "[11.0.1, )"
-            },
-            "DinkToPdf": {
-              "target": "Package",
-              "version": "[1.0.8, )"
             },
             "Microsoft.AspNetCore.DataProtection.EntityFrameworkCore": {
               "target": "Package",

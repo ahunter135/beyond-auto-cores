@@ -55,8 +55,6 @@ namespace Onsharp.BeyondAutoCore.Web.Controllers
                 if (direction != "0" && direction != "1") direction = "0";
             }
             
-            Console.WriteLine($"PageNumber: {pageNumberS}. PageSize: {pageSizeS}. Search: {searchQuery}. Direction: {direction}. SortCol: {sortColumn}");
-
             var res = await _codesClient.GetPage(isGeneric, searchQuery, pageNumberI, pageSizeI, true, sortColumn, direction);
             var data = res.GetData();
             if (needLength == true)

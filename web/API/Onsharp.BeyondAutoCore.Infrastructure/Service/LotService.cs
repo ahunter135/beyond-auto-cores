@@ -306,7 +306,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             var pdfConfig = new PdfConfig();
             var location = pdfConfig.SaveLocation;
-
             bool exists = System.IO.Directory.Exists(location);
             if (!exists)
                 System.IO.Directory.CreateDirectory(location);
@@ -314,16 +313,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var pdfFileName = "invoice_" + invoiceNo + ".pdf";
             if (!string.IsNullOrWhiteSpace(submitLotCommand.BusinessName))
                 pdfFileName = submitLotCommand.BusinessName + " - " + invoiceNo + ".pdf";
-
             var pdfCreatorHelper = new PdfCreatorHelper(_converter);
             var pdfFilename = pdfCreatorHelper.CreatePDF(composedHtml, location, pdfFileName);
 
-            
             string fromEmail = smtpSetting.Email;
             string subject = $"{lotName} PDF Copy ";
             string emailbody = ComposedEmailBody(invoiceNo, submitLotCommand.Email, smtpSetting.SiteDomain);
 
-            bool emailResult = await EmailHelper.SendEmail(submitLotCommand.Email, fromEmail, subject, emailbody, isBodyHtml: true, attachmentFileName: pdfFilename);
+            bool emailResult = await EmailHelper.SendEmail(submitLotCommand.Email, fromEmail, subject, emailbody, isBodyHtml: true);
 
             result.Success = 1;
             if (emailResult)
@@ -336,7 +333,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         private string ComposedEmailBody(string invoice, string email, string siteDomain)
         {
-            string htmlFullBody = File.ReadAllText(@"HtmlTemplates\SubmitEmailTemplate.html");
+            string htmlFullBody = File.ReadAllText(@"HtmlTemplates/SubmitEmailTemplate.html");
             htmlFullBody = String.Format(@htmlFullBody, invoice, email, _totalUnits.ToString("#,##0.#0"), _averagePrice.ToString("#,##0.#0"), _total.ToString("#,##0.#0"), siteDomain);
 
             return htmlFullBody;
@@ -376,7 +373,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 htmlRowList = htmlRowList + string.Format(htmlRow, item.ConverterName, item.Quantity, itemUnitPrice.ToString("#,##0.#0"), currentTotal.ToString("#,##0.#0"));
             }
 
-            string htmlFullBody = File.ReadAllText(@"HtmlTemplates\InvoiceTemplate.html");
+            string htmlFullBody = File.ReadAllText(@"HtmlTemplates/InvoiceTemplate.html");
 
             if (_total > 0 && _totalUnits > 0)
                 _averagePrice = _total / _totalUnits;

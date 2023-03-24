@@ -3219,6 +3219,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.7",
           "Onsharp.BeyondAutoCore.Domain": "1.0.0",
           "Stripe.net": "40.10.0"
@@ -3234,6 +3235,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Microsoft.EntityFrameworkCore": "6.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.7",
           "Microsoft.Extensions.Configuration": "6.0.1",
@@ -3298,6 +3300,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Microsoft.AspNetCore": "2.2.0",
           "Microsoft.Extensions.Configuration": "6.0.1",
           "Microsoft.Extensions.Configuration.Abstractions": "6.0.0",
@@ -3315,6 +3318,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Onsharp.BeyondAutoCore.Web.Common": "1.0.0"
         },
         "compile": {
@@ -3328,6 +3332,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "DinkToPdf": "1.0.8",
           "Newtonsoft.Json": "13.0.1",
           "Onsharp.BeyondAutoCore.Web.Model": "1.0.0"
         },
@@ -9193,6 +9198,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "DinkToPdf >= 1.0.8",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 6.0.7",
       "Onsharp.BeyondAutoCore.Infrastructure >= 1.0.0",
       "Onsharp.BeyondAutoCore.Web.Common >= 1.0.0",
@@ -9247,6 +9253,10 @@
       "net6.0": {
         "targetAlias": "net6.0",
         "dependencies": {
+          "DinkToPdf": {
+            "target": "Package",
+            "version": "[1.0.8, )"
+          },
           "Microsoft.AspNetCore.Authentication.JwtBearer": {
             "target": "Package",
             "version": "[6.0.7, )"

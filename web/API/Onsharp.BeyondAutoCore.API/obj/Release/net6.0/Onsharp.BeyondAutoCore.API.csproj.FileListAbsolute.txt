@@ -2,12 +2,14 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/appsettings.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/appsettings.Production.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/appsettings.Staging.json
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/libwkhtmltox.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/libwkhtmltox.dylib
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/libwkhtmltox.so
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Onsharp.BeyondAutoCore.API
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/HtmlTemplates/InvoiceTemplate.html
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/HtmlTemplates/GradeCreditConfirmation.html
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/HtmlTemplates/SignUpWelcome.html
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/HtmlTemplates/SubmitEmailTemplate.html
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/libwkhtmltox.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Onsharp.BeyondAutoCore.API.deps.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Onsharp.BeyondAutoCore.API.runtimeconfig.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Onsharp.BeyondAutoCore.API.dll
@@ -17,7 +19,6 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/AWSSDK.Core.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/AWSSDK.Extensions.NETCore.Setup.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/AWSSDK.S3.dll
-/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/DinkToPdf.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Forbid.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Hangfire.AspNetCore.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Hangfire.Core.dll
@@ -53,6 +54,7 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Microsoft.Win32.SystemEvents.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Netjection.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Newtonsoft.Json.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/DinkToPdf.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Sentry.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Sentry.AspNetCore.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/Sentry.Extensions.Logging.dll
@@ -89,6 +91,12 @@
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/linux-x64/native/libwkhtmltox.so
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/linux-x86/native/libwkhtmltox.so
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/osx-x64/native/libwkhtmltox.dylib
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/osx-x86/native/libwkhtmltox.dylib
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x64/native/libwkhtmltox.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x86/native/libwkhtmltox.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-arm64/native/sni.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x64/native/sni.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/bin/Release/net6.0/runtimes/win-x86/native/sni.dll

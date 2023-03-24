@@ -13,7 +13,6 @@ namespace Onsharp.BeyondAutoCore.Hangfire.Controllers
         [Route("api/hangfire/jobs")]
         public IActionResult CreateJobs()
         {
-            Console.WriteLine("RUNNING!");
             //Recurring Job - this job is executed many times on the specified cron schedule
             //RecurringJob.AddOrUpdate(() => Console.WriteLine("Sent similar product offer and suuggestions"), Cron.Minutely);
             // RecurringJob.AddOrUpdate<CronServiceDB>("db-poll-metafields-send", a => a.SendMetafields(10, false), "*/5 * * * * *", null, "outprocessing");

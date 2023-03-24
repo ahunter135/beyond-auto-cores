@@ -179,7 +179,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     parameters.Add(new SqlParameter("@direction", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 1});
                     break;
                 default:
-                    Console.WriteLine("In direction Switch default");
                     parameters.Add(new SqlParameter("@direction", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 0});
                     break;     
             }
@@ -196,13 +195,11 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 3});
                     break;
                 default:
-                    Console.WriteLine("In SortCol Switch default");
                     parameters.Add(new SqlParameter("@sortColumn", System.Data.SqlDbType.Int) {Direction = System.Data.ParameterDirection.Input, Value= 0});
                     break;
             }
 
             var listData = await _codesRepository.GetCodes(parameters, true);
-            Console.WriteLine($"{listData.Count()} \n\n\n\n");
             int length = -1;
             
             if (needLength == true)

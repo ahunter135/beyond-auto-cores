@@ -152,12 +152,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var filteredData = collection.Skip((parametersCommand.PageNumber - 1) * parametersCommand.PageSize).Take(parametersCommand.PageSize).ToList();
 
             var mappedData = _mapper.Map<List<PartnerModel>, List<PartnerDto>>(filteredData);
-    Console.WriteLine("MADE IT!!!");
             if (includeLogoUrl)
             {
                 foreach (var partner in mappedData)
                 {
-                    Console.WriteLine(partner.LogoFileKey);
                     if (!string.IsNullOrWhiteSpace(partner.LogoFileKey)) {
                         partner.FileUrl = await _awsS3Helper.GetPreSignedUrlAsync(partner.LogoFileKey);
                     }

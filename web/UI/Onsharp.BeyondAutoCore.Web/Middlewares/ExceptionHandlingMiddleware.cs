@@ -35,13 +35,10 @@
                 Success = 0
             };
 
-                                                Console.WriteLine(exception);
-
             switch (exception)
             {
 
                 case ApplicationException ex:
-                    Console.WriteLine(ex.Message);
                     if (ex.Message.Contains("Unauthorized"))
                     {
                         // If refresh token successful, signOut and signIn to apply the claim changes, else, Logout

@@ -35,7 +35,6 @@ namespace Onsharp.BeyondAutoCore.Web.ServiceClient
                                                     _scheme, _host, _port, _root, Service, action);
                 if (!string.IsNullOrWhiteSpace(parameters)) uri += "?" + parameters;
                 request = new HttpRequestMessage(HttpMethod.Get, uri);
-                Console.WriteLine(_host);
                 AddAuthHeader(request);
                 response = await Send(client, request);//.ConfigureAwait(false);
 
@@ -647,7 +646,6 @@ namespace Onsharp.BeyondAutoCore.Web.ServiceClient
             if (apiParameters != null)
                 parameters = string.Join("&", apiParameters.Select(x => x.Key + "=" + x.Value).ToArray());
 
-            Console.WriteLine(apiParameters);
             response = await GetRequest(action, parameters);//.ConfigureAwait(false);
             if (!string.IsNullOrWhiteSpace(response.ReasonPhrase) && response.ReasonPhrase.ToLower() == "unauthorized")
             {

@@ -232,18 +232,19 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             string logoFileName = "";
             if (submitLotCommand.PhotoAttachment != null && submitLotCommand.PhotoAttachment.FileName != "none")
             {
-                try
-                {
+                //try
+                //{
                     logoFileName = submitLotCommand.PhotoAttachment.FileName;
                     fileKey = "lotAttachement_" + DateTime.Now.ToString("yyyyMMddhhmmssfff") + "_" + submitLotCommand.PhotoAttachment.FileName;
                     uploadResult = await _awsS3Helper.UploadFileAsync(submitLotCommand.PhotoAttachment, _awsSettings.Value.Bucket, fileKey);
                     uploadResult = true;
-                }
-                catch (Exception ex)
-                {
-                    uploadResult = false;
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                    //uploadResult = false;
+                //}
             }
+            Console.WriteLine($"UploadResult: {uploadResult}");
 
             if (!uploadResult)
             {
@@ -271,6 +272,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             _lotRepository.SaveChanges();
 
             var fileUrl = !string.IsNullOrEmpty(fileKey) ? await _awsS3Helper.GetPreSignedUrlAsync(fileKey) : string.Empty;
+            Console.WriteLine($"This is the url: {fileUrl}");
 
             return await SendLotItemsInvoice(currenData.LotName, invoiceNo, submitLotCommand, lotItems, fileUrl);
         }
@@ -303,18 +305,22 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
 
             var composedHtml = ComposedInvoiceHtml(smtpSetting.SiteDomain, submitLotCommand.Email, lotName, invoiceNo, lotItems, fileUrl);
+            Console.WriteLine($"Composed HTML: {composedHtml}");
 
             var pdfConfig = new PdfConfig();
             var location = pdfConfig.SaveLocation;
+            Console.WriteLine($"Save to: {location}");
             bool exists = System.IO.Directory.Exists(location);
             if (!exists)
                 System.IO.Directory.CreateDirectory(location);
 
             var pdfFileName = "invoice_" + invoiceNo + ".pdf";
+
             if (!string.IsNullOrWhiteSpace(submitLotCommand.BusinessName))
                 pdfFileName = submitLotCommand.BusinessName + " - " + invoiceNo + ".pdf";
             var pdfCreatorHelper = new PdfCreatorHelper(_converter);
             var pdfFilename = pdfCreatorHelper.CreatePDF(composedHtml, location, pdfFileName);
+            Console.WriteLine($"PDF file name: {pdfFileName}");
 
             string fromEmail = smtpSetting.Email;
             string subject = $"{lotName} PDF Copy ";
@@ -372,6 +378,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
                 htmlRowList = htmlRowList + string.Format(htmlRow, item.ConverterName, item.Quantity, itemUnitPrice.ToString("#,##0.#0"), currentTotal.ToString("#,##0.#0"));
             }
+            Console.WriteLine($"HTML row List: {htmlRowList}");
 
             string htmlFullBody = File.ReadAllText(@"HtmlTemplates/InvoiceTemplate.html");
 
@@ -384,7 +391,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             {
                 htmlFullBody += string.Format("<div><img width=\"250px\" style=\"padding: 25px;\" src=\"{0}\"/></div>", fileUrl);
             }
-
+            Console.WriteLine($"HTML full body: {htmlFullBody}");
             return htmlFullBody;
         }
 

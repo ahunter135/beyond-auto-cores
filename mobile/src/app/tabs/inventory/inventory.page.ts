@@ -47,7 +47,9 @@ export class InventoryPage implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.navigationSubscription.unsubscribe();
+    if (this.navigationSubscription) {
+      this.navigationSubscription.unsubscribe();
+    }
   }
 
   async onLoad() {

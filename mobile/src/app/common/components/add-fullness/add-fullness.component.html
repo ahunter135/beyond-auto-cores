@@ -57,7 +57,7 @@
   <ion-footer class="modal-footer">
     <div class="footer-button">
       <ion-button class="ion-text-capitalize" color="dark" (click)="cancel()">Cancel</ion-button>
-      <ion-button class="add-lot-button" (click)="add()" [attr.disabled]="!price">
+      <ion-button class="add-lot-button" (click)="add()" [attr.disabled]="price < 0 || price == undefined">
         <ion-text class="white">Add fullness</ion-text>
       </ion-button>
     </div>

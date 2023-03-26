@@ -119,7 +119,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-range mode="ios" [(ngModel)]="fullness" pin="true" min="0" max="100" step="10" (ionChange)="onChangeFullness()" [attr.disabled]="!price">
+              <ion-range mode="ios" [(ngModel)]="fullness" pin="true" min="0" max="100" step="10" (ionChange)="onChangeFullness()" [attr.disabled]="price < 0 || price == undefined">
                 <ion-text slot="start" class="black-500">0</ion-text>
                 <ion-text slot="end" class="black-500">100</ion-text>
               </ion-range>
@@ -132,7 +132,7 @@
             <ion-button class="ion-text-capitalize" color="dark" (click)="modal.dismiss()">
               <ion-text class="paragraph-text-16-semibold">Cancel</ion-text>
             </ion-button>
-            <ion-button class="add-lot-button" (click)="addCode()" [attr.disabled]="!codeName || !price">
+            <ion-button class="add-lot-button" (click)="addCode()" [attr.disabled]="!codeName || price < 0 || price == undefined">
               <ion-text class="paragraph-text-16-semibold white">Add to Lot</ion-text>
             </ion-button>
           </div>

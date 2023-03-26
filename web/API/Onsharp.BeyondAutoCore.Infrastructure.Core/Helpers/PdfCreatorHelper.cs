@@ -51,7 +51,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
                 Objects = { objectSettings }
             };
 
-           // var file = _converter.Convert(pdf);
+            var file = _converter.Convert(pdf);
 
             //return Ok("Successfully created PDF document.");
             //return File(file, "application/pdf", "EmployeeReport.pdf");

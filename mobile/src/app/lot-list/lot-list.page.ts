@@ -249,6 +249,7 @@ export class LotListPage implements OnInit {
 
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
+    console.log(data);
 
     if (role === 'submit') {
       const loading = await this.loadingCtrl.create({
@@ -306,6 +307,7 @@ export class LotListPage implements OnInit {
     this.codeName = '';
     this.price = null;
     this.fullPrice = null;
+    console.log('we reset');
   }
 
   formatPrice(price: number) {

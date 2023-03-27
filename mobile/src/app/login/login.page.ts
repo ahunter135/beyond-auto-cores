@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { EnvironmentService } from '@app/common/services/environment.service';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-login',
@@ -67,5 +68,12 @@ export class LoginPage
   private handleError(err: any): Observable<any> {
     // Show the API given error message if we have one.
     return this.showError(err);
+  }
+
+  // THis may not work on mobile
+  keyDown(e) {
+    if (e.keyCode === 13) {
+      Keyboard.hide();
+    }
   }
 }

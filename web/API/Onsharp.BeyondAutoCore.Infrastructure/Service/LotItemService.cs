@@ -178,18 +178,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             _lotItemsRepository.Add(newLotItem);
             _lotItemsRepository.SaveChanges();
 
-
-            if (createCommand.FullnessPercentage != 0 || createCommand.OriginalPrice != 0)
-            {
-
-                var createLotItemFullnessCommand = new CreateLotItemFullnessCommand();
-                createLotItemFullnessCommand.FullnessPercentage = createCommand.FullnessPercentage ?? 0;
-                createLotItemFullnessCommand.LotItemId = newLotItem.Id;
-                createLotItemFullnessCommand.UnitPrice = createCommand.OriginalPrice ?? 0;
-                createLotItemFullnessCommand.Qty = 1;
-
-                await _lotItemFullnessService.Create(createLotItemFullnessCommand);
-            }
+            var createLotItemFullnessCommand = new CreateLotItemFullnessCommand();
+            createLotItemFullnessCommand.FullnessPercentage = createCommand.FullnessPercentage ?? 0;
+            createLotItemFullnessCommand.LotItemId = newLotItem.Id;
+            createLotItemFullnessCommand.UnitPrice = createCommand.OriginalPrice ?? 0;
+            createLotItemFullnessCommand.Qty = 1;
+            await _lotItemFullnessService.Create(createLotItemFullnessCommand);
 
             return _mapper.Map<LotItemModel, LotItemDto>(newLotItem);
         }

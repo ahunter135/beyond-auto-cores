@@ -21,6 +21,7 @@ import { LotItemFullnessService } from '@app/common/services/lot-item-fullness.s
 import { SubmitLotComponent } from '@app/common/components/submit-lot/submit-lot.component';
 import { AccountService } from '@app/common/services/account.service';
 import { currencyFormat, fullnessPrice } from '@app/common/utils/currencyUtils';
+import { Keyboard } from '@capacitor/keyboard';
 
 @Component({
   selector: 'app-lot-list',
@@ -158,6 +159,12 @@ export class LotListPage implements OnInit {
     });
 
     loading.present();
+    console.log({
+      lotId: this.lot.lotId || this.lot.id,
+      converterName: this.codeName,
+      originalPrice: this.price,
+      fullnessPercentage: this.fullness,
+    })
     await this.lotItemsService.addCodeToLot({
       lotId: this.lot.lotId || this.lot.id,
       converterName: this.codeName,
@@ -285,6 +292,12 @@ export class LotListPage implements OnInit {
   onPriceKeyDown(e) {
     if (e.key === 'e' || e.key === '.') {
       e.preventDefault();
+    }
+  }
+
+  checkEnterKeyDown(e) {
+    if (e.keyCode === 13) {
+      Keyboard.hide();
     }
   }
 

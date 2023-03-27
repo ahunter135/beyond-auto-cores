@@ -48,6 +48,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             #endregion validation
 
+            Console.WriteLine("In LotItemFullness service creating");
+
             newLotItemFullness.CreatedBy = this.CurrentUserId();
             newLotItemFullness.CreatedOn = DateTime.UtcNow;
 

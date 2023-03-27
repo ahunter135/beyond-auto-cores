@@ -5,7 +5,10 @@
     <ion-card-header class="ion-text-center">
       <ion-card-title class="heading1-text">Search by Code</ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content style="position: relative;">
+      <div class="clear-btn-wrapper">
+        <ion-icon class="clear-btn" name="close-outline" (click)="this.searchCode = '';"></ion-icon>
+      </div>
       <ion-input [(ngModel)]="searchCode" placeholder="Enter converter code ..." enterkeyhint="Search" (ionInput)="onClearEmpty($event)" (ionChange)="onSearch($event)" (keyup.enter)="keyEnter($event)" debounce="500" #search></ion-input>
     </ion-card-content>
   </ion-card>

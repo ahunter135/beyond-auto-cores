@@ -12,7 +12,7 @@
   <form [formGroup]="form">
     <ion-item>
       <ion-label class="paragraph-text-13" position="stacked">Email</ion-label>
-      <ion-input formControlName="userName" type="email"></ion-input>
+      <ion-input formControlName="userName" type="email" (keydown)="keyDown($event)"></ion-input>
     </ion-item>
 
     <div>
@@ -25,7 +25,7 @@
 
     <ion-item>
       <ion-label class="paragraph-text-13" position="stacked">Password</ion-label>
-      <ion-input formControlName="password" type="password"></ion-input>
+      <ion-input formControlName="password" type="password" (keydown)="keyDown($event)"></ion-input>
     </ion-item>
     <div class="ion-padding-bottom ion-margin-bottom">
       <ion-text color="danger">
@@ -38,11 +38,11 @@
       <ion-text class="paragraph-text-16-semibold">Login</ion-text>
     </ion-button>
 
-    <ion-text class="paragraph-text-12" (click)="goToForgotPassword()">Forgot your password?</ion-text>
+    <ion-button class="paragraph-text-12" fill="none" (click)="goToForgotPassword()">Forgot your password?</ion-button>
   </form>
 
   <p class="sign-up-footer">
     <ion-text class="paragraph-text-12">Need Help? </ion-text>
-    <ion-text class="paragraph-text-12-semibold" (click)="signUp()">Sign up</ion-text>
+    <ion-text fill="none" class="paragraph-text-12-semibold" (click)="signUp()">Sign up</ion-text>
   </p>
 </ion-content>

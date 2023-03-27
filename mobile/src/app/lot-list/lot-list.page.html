@@ -95,7 +95,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-input [(ngModel)]="codeName" class="lot-input" placeholder="Input code name"></ion-input>
+              <ion-input [(ngModel)]="codeName" class="lot-input" placeholder="Input code name" (keydown)="checkEnterKeyDown($event)"></ion-input>
             </ion-col>
           </ion-row>
 
@@ -107,7 +107,7 @@
 
           <ion-row>
             <ion-col>
-              <ion-input [(ngModel)]="price" class="lot-input" placeholder="Input unit price" (keydown)="onPriceKeyDown($event)" (ionBlur)="onBlurPrice($event)" (ionInput)="onInputPrice()" type="number"></ion-input>
+              <ion-input [(ngModel)]="price" class="lot-input" placeholder="Input unit price" (keydown)="onPriceKeyDown($event); checkEnterKeyDown($event)" (ionBlur)="onBlurPrice($event)" (ionInput)="onInputPrice()" type="number"></ion-input>
             </ion-col>
           </ion-row>
 

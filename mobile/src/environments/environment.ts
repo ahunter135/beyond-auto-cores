@@ -11,13 +11,13 @@ export const environment = {
   /** Contains the API server URLs. */
   servers: {
     none: '', // for calling api without servername need
-    default: //'https://bac-api.azurewebsites.net/api/v1'
-     'http://localhost:5181/api/v1'
+    default: 'https://bac-api.azurewebsites.net/api/v1'
+     //'http://localhost:5181/api/v1'
   },
 
   /** Marketing website link */
-  signUpUrl: 'https://catalyticmastermind.com/#work3',
-  signInUrl: 'https://catalyticmastermind.com/login',
+  signUpUrl: 'https://catalyticmastermind.app/#work',
+  signInUrl: 'https://catalyticmastermind.app/login',
   web: '',
   appSettings: {},
 };

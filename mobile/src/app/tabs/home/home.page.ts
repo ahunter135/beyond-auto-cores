@@ -10,6 +10,7 @@ import { MetalService } from '@app/common/services/metal.service';
 import { MetalPrices } from '@app/common/models/metals';
 import { currencyFormat } from '@utils/currencyUtils';
 import { toLocalTime } from '@app/common/utils/timeUtils';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -27,6 +28,7 @@ export class HomePage implements OnInit, OnDestroy {
   palladiumPrices: MetalPrices;
   platinumPrices: MetalPrices;
   metalChart: Chart;
+  loader: any;
 
   slideOpts: SwiperOptions = {
     autoplay: {
@@ -79,9 +81,14 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(
     private partnersService: PartnersService,
     private metalService: MetalService,
+    private loadingCtrl: LoadingController
   ) {}
 
   async ngOnInit() {
+    this.loader = await this.loadingCtrl.create({
+      message: 'Loading Prices ...',
+    });
+    this.loader.present();
     this.createChart();
     this.partners = await this.partnersService.partners({
       includeLogoUrl: true,
@@ -106,9 +113,10 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   async initLoadMetalPrices() {
-    this.rhodiumPrices = await this.getMetalPrices(2);
-    this.palladiumPrices = await this.getMetalPrices(1);
     this.platinumPrices = await this.getMetalPrices(0);
+    this.palladiumPrices = await this.getMetalPrices(1);
+    this.rhodiumPrices = await this.getMetalPrices(2);
+    this.loader?.dismiss();
   }
 
   async getMetalPrices(metalId = 2) {

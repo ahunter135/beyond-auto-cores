@@ -70,7 +70,7 @@ export class LoginPage
     return this.showError(err);
   }
 
-  // THis may not work on mobile
+  // This may not work on mobile
   keyDown(e) {
     if (e.keyCode === 13) {
       Keyboard.hide();

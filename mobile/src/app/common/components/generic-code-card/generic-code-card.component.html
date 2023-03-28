@@ -3,7 +3,7 @@
     <ion-card-content class="generics-card-item-content">
       <ion-img
         class="generic-img"
-        [src]="'/assets/cm-logo-home.svg'"
+        [src]="code.fileUrl === null ? '/assets/cm-logo-home.svg' : code.fileUrl"
         [style]="'object-fit: contain'"
       ></ion-img>
       <div class="col-text">

@@ -328,3 +328,9 @@ C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\obj\Deb
 C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.pdb
 C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Web.genruntimeconfig.cache
 C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\obj\Debug\net6.0\ref\Onsharp.BeyondAutoCore.Web.dll
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\linux-x64\native\libwkhtmltox.so
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\linux-x86\native\libwkhtmltox.so
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\osx-x64\native\libwkhtmltox.dylib
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\osx-x86\native\libwkhtmltox.dylib
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\win-x64\native\libwkhtmltox.dll
+C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.Web\bin\Debug\net6.0\runtimes\win-x86\native\libwkhtmltox.dll

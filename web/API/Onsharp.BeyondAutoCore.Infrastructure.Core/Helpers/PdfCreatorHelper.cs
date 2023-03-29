@@ -1,5 +1,7 @@
-﻿using DinkToPdf;
-using DinkToPdf.Contracts;
+﻿//using DinkToPdf;
+//using DinkToPdf.Contracts;
+using WkHtmlToPdfDotNet;
+using WkHtmlToPdfDotNet.Contracts;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
 {

@@ -22,6 +22,7 @@ import { SubmitLotComponent } from '@app/common/components/submit-lot/submit-lot
 import { AccountService } from '@app/common/services/account.service';
 import { currencyFormat, fullnessPrice } from '@app/common/utils/currencyUtils';
 import { Keyboard } from '@capacitor/keyboard';
+import { AddCodeToLotComponent } from '@app/common/components/add-code-to-lot/add-code-to-lot.component';
 
 @Component({
   selector: 'app-lot-list',
@@ -132,6 +133,30 @@ export class LotListPage implements OnInit {
 
       loading.dismiss();
       await this.onLoad();
+    }
+  }
+
+  async openModalCode() {
+    const modal = await this.modalCtrl.create({
+      component: AddCodeToLotComponent,
+      cssClass: 'add-code-to-lot-modal',
+      animated: false
+    });
+
+    this.isModalActive = true;
+    await modal.present();
+    const { data, role } = await modal.onWillDismiss();
+    this.isModalActive = false;
+
+    if (role === 'add') {
+      this.fullness = data.fullness;
+      this.codeName = data.codeName;
+      this.price = data.price;
+      this.fullPrice = data.fullPrice;
+
+      await this.addCode();
+
+      this.reset();
     }
   }
 
@@ -288,6 +313,7 @@ export class LotListPage implements OnInit {
       loading.dismiss();
     }
   }
+  /*
 
   onPriceKeyDown(e) {
     if (e.key === 'e' || e.key === '.') {
@@ -314,13 +340,12 @@ export class LotListPage implements OnInit {
   onChangeFullness() {
     this.price = fullnessPrice(this.fullness, this.fullPrice);
   }
-
+  */
   reset() {
     this.fullness = 100;
     this.codeName = '';
     this.price = null;
     this.fullPrice = null;
-    console.log('we reset');
   }
 
   formatPrice(price: number) {

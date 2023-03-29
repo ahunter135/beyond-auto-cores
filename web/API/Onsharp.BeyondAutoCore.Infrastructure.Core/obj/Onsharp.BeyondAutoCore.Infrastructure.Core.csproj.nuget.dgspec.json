@@ -137,6 +137,10 @@
               "target": "Package",
               "version": "[3.7.9.37, )"
             },
+            "Haukcode.WkHtmlToPdfDotNet": {
+              "target": "Package",
+              "version": "[1.5.86, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[10.0.1, )"

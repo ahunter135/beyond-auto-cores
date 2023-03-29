@@ -109,7 +109,9 @@ export class HomePage implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.metalPriceSubscription.unsubscribe();
+    if (this.metalPriceSubscription) {
+      this.metalPriceSubscription.unsubscribe();
+    }
   }
 
   async initLoadMetalPrices() {

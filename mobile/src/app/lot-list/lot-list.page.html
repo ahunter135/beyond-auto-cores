@@ -61,7 +61,7 @@
       <p>Total: {{ formatPrice(lot.total || 0) }}</p>
     </div>
     <div class="f2" *ngIf="!lot.isSubmitted">
-      <ion-button class="add-code ion-text-capitalize" color="dark" id="lot-modal">
+      <ion-button class="add-code ion-text-capitalize" color="dark" id="lot-modal" (click)="openModalCode()">
         <ion-icon slot="start" src="./assets/icon/add-code.svg"></ion-icon>
         Add Code
       </ion-button>
@@ -71,7 +71,8 @@
       </ion-button>
     </div>
   </div>
-  <ion-modal #modal trigger="lot-modal" [animated]="false" (didDismiss)="reset()">
+  <!--
+  <ion-modal id="add-code-modal" #modal trigger="lot-modal" [animated]="false" (didDismiss)="reset()">
     <ng-template>
       <ion-content class="lot-content">
         <ion-toolbar class="add-code-toolbar" mode="ios">
@@ -80,7 +81,7 @@
           </ion-buttons>
 
           <ion-buttons slot="end">
-            <ion-button color="light" (click)="modal.dismiss()">
+            <ion-button color="light" (click)="modal.dismiss(null, 'add-code-modal')">
               <ion-icon name="close-outline"></ion-icon>
             </ion-button>
           </ion-buttons>
@@ -140,4 +141,5 @@
       </ion-content>
     </ng-template>
   </ion-modal>
+  -->
 </ion-content>

@@ -12,6 +12,7 @@ import { AddFullnessComponent } from './common/components/add-fullness/add-fulln
 import { SubmitLotComponent } from './common/components/submit-lot/submit-lot.component';
 import { UploadPhotoGradeComponent } from './common/components/upload-photo-grade/upload-photo-grade.component';
 import { PhotoGradeCardComponent } from './common/components/photo-grade-card/photo-grade-card.component';
+import { AddCodeToLotComponent } from './common/components/add-code-to-lot/add-code-to-lot.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, IonicModule],
@@ -24,6 +25,7 @@ import { PhotoGradeCardComponent } from './common/components/photo-grade-card/ph
     SubmitLotComponent,
     UploadPhotoGradeComponent,
     PhotoGradeCardComponent,
+    AddCodeToLotComponent
   ],
   exports: [
     HeaderComponent,
@@ -34,6 +36,7 @@ import { PhotoGradeCardComponent } from './common/components/photo-grade-card/ph
     SubmitLotComponent,
     UploadPhotoGradeComponent,
     PhotoGradeCardComponent,
+    AddCodeToLotComponent
   ],
 })
 export class SharedModule {}

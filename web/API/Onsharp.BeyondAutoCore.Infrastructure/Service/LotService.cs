@@ -1,5 +1,7 @@
-﻿using DinkToPdf;
-using DinkToPdf.Contracts;
+﻿//using DinkToPdf;
+//using DinkToPdf.Contracts;
+using WkHtmlToPdfDotNet;
+using WkHtmlToPdfDotNet.Contracts;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 {
@@ -320,13 +322,13 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 pdfFileName = submitLotCommand.BusinessName + " - " + invoiceNo + ".pdf";
             var pdfCreatorHelper = new PdfCreatorHelper(_converter);
             var pdfFilename = pdfCreatorHelper.CreatePDF(composedHtml, location, pdfFileName);
+            var pdfFileLocation = location = pdfFilename;
             Console.WriteLine($"PDF file name: {pdfFileName}");
-
             string fromEmail = smtpSetting.Email;
             string subject = $"{lotName} PDF Copy ";
             string emailbody = ComposedEmailBody(invoiceNo, submitLotCommand.Email, smtpSetting.SiteDomain);
 
-            bool emailResult = await EmailHelper.SendEmail(submitLotCommand.Email, fromEmail, subject, emailbody, isBodyHtml: true);
+            bool emailResult = await EmailHelper.SendEmail(submitLotCommand.Email, fromEmail, subject, emailbody, isBodyHtml: true, attachmentFileName: pdfFileLocation);
 
             result.Success = 1;
             if (emailResult)

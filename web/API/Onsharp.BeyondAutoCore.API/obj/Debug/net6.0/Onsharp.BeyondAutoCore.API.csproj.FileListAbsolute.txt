@@ -407,3 +407,7 @@ C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\obj\De
 C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\obj\Debug\net6.0\Onsharp.BeyondAutoCore.API.genruntimeconfig.cache
 C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\obj\Debug\net6.0\ref\Onsharp.BeyondAutoCore.API.dll
 C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\obj\Debug\net6.0\Onsharp.BeyondAutoCore.API.MvcApplicationPartsAssemblyInfo.cs
+C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\bin\Debug\net6.0\runtimes\win-x64\native\wkhtmltox.dll
+C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\bin\Debug\net6.0\runtimes\win-x86\native\wkhtmltox.dll
+C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\bin\Debug\net6.0\WkHtmlToPdfDotNet.dll
+C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.API\bin\Debug\net6.0\runtimes\linux-arm64\native\libwkhtmltox.so

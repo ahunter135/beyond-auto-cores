@@ -1,0 +1,43 @@
+ion-toolbar {
+    --background: rgb(255, 255, 255);
+    --color: rgb(0, 0, 0);
+}
+
+ion-footer {
+    line-height: 14px;
+    position: relative;
+}
+
+.lot-content::part(background) {
+    --background: #fff;
+}
+
+.add-code-toolbar {
+    padding: 13px;
+    border-bottom: 1px solid #eff2f5;
+}
+ion-input {
+    --background: #f3f7f9;
+    border-radius: 12px;
+    --padding-start: 10px;
+    --padding-end: 10px;
+    --color: #000;
+  }
+
+.modal-footer {
+    border-top: 1px solid #eff2f5;
+}
+
+.footer-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    bottom: 5px;
+    height: 67px;
+}
+
+.add-lot-button {
+    --background: #000;
+    text-transform: capitalize;
+    height: 40px;
+}

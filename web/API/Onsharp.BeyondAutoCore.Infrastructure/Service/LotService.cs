@@ -366,6 +366,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
            
 
             string htmlRowList = string.Empty;
+            string converterName = string.Empty;
             foreach (var item in listItems)
             {
                 rowCount++;
@@ -377,8 +378,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 decimal currentTotal = (item.UnitPrice ?? 0) * (item.Quantity ?? 0);
 
                 _total += currentTotal;
+                converterName = string.IsNullOrWhiteSpace(item.ConverterName) ? "No Code" : item.ConverterName;
 
-                htmlRowList = htmlRowList + string.Format(htmlRow, item.ConverterName, item.Quantity, itemUnitPrice.ToString("#,##0.#0"), currentTotal.ToString("#,##0.#0"));
+                htmlRowList = htmlRowList + string.Format(htmlRow, converterName, item.Quantity, itemUnitPrice.ToString("#,##0.#0"), currentTotal.ToString("#,##0.#0"));
             }
             Console.WriteLine($"HTML row List: {htmlRowList}");
 

@@ -52,6 +52,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var result = new LotItemDto();
             var newLotItem = _mapper.Map<CreateLotItemCommand, LotItemModel>(createCommand);
 
+            Console.WriteLine($"NewLotItemId: {newLotItem.CodeId}\n\n\n\n\n\n");
+
             #region validation
 
             if (newLotItem == null)
@@ -81,6 +83,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 }
 
                 codeId = newLotItem.CodeId.Value;
+                Console.WriteLine($"Code Id: {codeId} when code Id supplied.");
             }
             else if (!string.IsNullOrWhiteSpace(createCommand.ConverterName))
             {
@@ -92,11 +95,13 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 var newCode = await _codeService.Create(newCodeCommand);
 
                 codeId = newCode.Id;
+                Console.WriteLine($"Code Id: {codeId} when creating a new code");
             }
             else if (newLotItem.CodeId == 0)
             {
                 // 66244 new lot items with a code id of 0 need to pass validation.
                 codeId = 0;
+                Console.WriteLine($"Code Id: {codeId} new lot item.CodeId == 0");
             }
             else
             {
@@ -142,7 +147,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             else
             {
                 //normal
-                var checkLotExistingCode = await _lotItemsRepository.GetLotItemByLotIdAndCodeId(newLotItem.LotId, newLotItem.CodeId ?? 0);
+                var checkLotExistingCode = await _lotItemsRepository.GetLotItemByLotIdAndCodeId(newLotItem.LotId, codeId);
                 if (checkLotExistingCode != null)  // add fullness to existing lotItem
                 {
                     return await CommonUpdateLotItemModel(checkLotExistingCode.Id, createCommand.FullnessPercentage, createCommand.OriginalPrice);

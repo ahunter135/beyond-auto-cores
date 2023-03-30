@@ -120,7 +120,7 @@
             <ion-button class="ion-text-capitalize" color="dark" (click)="onCancelAddCode()">
               <ion-text class="paragraph-text-16-semibold">Cancel</ion-text>
             </ion-button>
-            <ion-button class="add-lot-button" (click)="addCode()" [attr.disabled]="!lotId || !codeName || !price">
+            <ion-button class="add-lot-button" (click)="addCode()" [attr.disabled]="!lotId || !codeName || price < 0 || price == undefined">
               <ion-text class="paragraph-text-16-semibold white">Add to Lot</ion-text>
             </ion-button>
           </div>

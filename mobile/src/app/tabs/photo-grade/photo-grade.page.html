@@ -42,8 +42,7 @@
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <!-- [attr.disabled]="!gradeCredits" -->
-  <ion-button expand="block" class="new-photo-grade-button" (click)="newPhotoGrade()">
+  <ion-button expand="block" class="new-photo-grade-button" (click)="newPhotoGrade()" [attr.disabled]="!gradeCredits" >
     <ion-text class="paragraph-text-16-semibold ion-text-wrap">New Photo Grade ({{gradeCredits || 0}} Remaining)</ion-text>
   </ion-button>
 </ion-footer>

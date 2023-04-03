@@ -49,6 +49,8 @@ export class GenericsPage implements OnInit {
       notIncludePGItem: false,
     });
     this.isLoading = false;
+
+    console.log(this.dataCodes);
   }
 
   async hideKeyboard(_) {

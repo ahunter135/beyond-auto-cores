@@ -26,6 +26,7 @@ export class GenericCodeCardComponent implements OnInit {
 
   goToGeneric() {
     this.codeService.setSelectedCode = this.code;
+    console.log(this.code);
     this.router.navigate(['/generic-view']);
   }
 

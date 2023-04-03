@@ -131,11 +131,11 @@
                             <div style="text-align:center">
                                 <select class="form-control" id="photoGrade" type="number" style="width:200px;display:inline-block">
                                     <option selected value="" disabled>Select purchase</option>
-                                    <option value="10">10 Photo Grade</option>
-                                    <option value="20">20 Photo Grade</option>
-                                    <option value="30">30 Photo Grade</option>
-                                    <option value="40">40 Photo Grade</option>
-                                    <option value="50">50 Photo Grade</option>
+                                    <option value="1">1 Photo Grade</option>
+                                    <option value="5">5 Photo Grades</option>
+                                    <option value="10">10 Photo Grades</option>
+                                    <option value="50">50 Photo Grades</option>
+                                    <option value="100">100 Photo Grades</option>
                                 </select>
                             </div>
                             <div class="display-label-sub">more photo grades.</div>
@@ -202,7 +202,7 @@
                                     <span><i class="bi bi-check-circle-fill"></i>Images</span>
                                     <span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
                                     <span>
-                                        <i class="bi bi-check-circle-fill"></i>10% commission affiliate
+                                        <i class="bi bi-check-circle-fill"></i>5% commission affiliate
                                         link
                                     </span>
                                 </div>
@@ -219,7 +219,7 @@
                                     <span><i class="bi bi-check-circle-fill"></i>Images</span>
                                     <span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
                                     <span>
-                                        <i class="bi bi-check-circle-fill"></i>10% commission affiliate
+                                        <i class="bi bi-check-circle-fill"></i>15% commission affiliate
                                         link
                                     </span>
                                     <span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
@@ -279,10 +279,28 @@
     let totalDisplay = document.querySelector('#totalDisplay');
 
     photoGrade.addEventListener('input', (e) => {
+        let total = 0;
+        switch (e.target.value) {
+            case "1":
+                total = 2.00
+                break;
+            case "5":
+                total = 8.75
+                break;
+            case "10":
+                total = 15.00
+                break;
+            case "50":
+                total = 60.00
+                break;
+            case "100":
+                total = 110.00
+                break;
+        }
         totalDisplay.textContent = `Total: ${new Intl.NumberFormat('en-US', {
             style: 'currency',
             currency: 'USD'
-        }).format(e.target.value * 2)}`;
+        }).format(total)}`;
     });
 
     window.addEventListener('load', function () {

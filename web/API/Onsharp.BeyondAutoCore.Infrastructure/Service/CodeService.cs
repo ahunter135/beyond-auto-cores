@@ -390,15 +390,17 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (codeInfo.Margin != null && codeInfo.Margin.HasValue)
                 codeMargin = (finalUnitPrice * (codeInfo.Margin.Value / 100m));
 
-            decimal userMargin = 0;
-            if (user.Margin != null && user.Margin.HasValue && user.Margin.Value > 0)
-                userMargin = (finalUnitPrice * (user.Margin.Value / 100m));
-
             decimal tierValue = 0;
             if (user.Tier1AdminEnabled && user.Tier1UserEnabled && user.Tier1PercentLevel > 0)
                 tierValue = (finalUnitPrice * (user.Tier1PercentLevel / 100m));
 
-            finalUnitPrice = finalUnitPrice - masterMarginValue + codeMargin - userMargin + tierValue;
+            finalUnitPrice = finalUnitPrice - masterMarginValue + codeMargin + tierValue;
+
+            decimal userMargin = 0;
+            if (user.Margin != null && user.Margin.HasValue && user.Margin.Value > 0)
+                userMargin = (finalUnitPrice * (user.Margin.Value / 100m));
+
+            finalUnitPrice = finalUnitPrice - userMargin;
 
             return decimal.Round(finalUnitPrice, 2, MidpointRounding.AwayFromZero); ;
         }

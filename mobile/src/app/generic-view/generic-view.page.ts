@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AddToLotComponent } from '@app/common/components/add-to-lot/add-to-lot.component';
 import { Code } from '@app/common/models/codes';
 import { PhotoGradeResponse } from '@app/common/models/photo-grade';
+import { AccountService } from '@app/common/services/account.service';
 import { CodesService } from '@app/common/services/codes.service';
 import { PhotoGradeService } from '@app/common/services/photo-grade.service';
 import { currencyFormat } from '@app/common/utils/currencyUtils';
@@ -21,7 +22,8 @@ export class GenericViewPage implements OnInit {
   constructor(
     private codeService: CodesService,
     private photoGradeService: PhotoGradeService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private accountService: AccountService
   ) {}
 
   async ngOnInit() {

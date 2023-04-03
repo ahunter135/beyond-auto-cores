@@ -439,7 +439,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (priceInfo == null)
                 return new UserPurchaseGradeCreditDto() { Success = false, Message = "Invalid payment type." };
 
-            decimal amount = priceInfo.Amount * numberOfGradeCredit;
+            decimal amount = this.GetPhotoGradeCost(numberOfGradeCredit, priceInfo.Amount);
+
             var registrationInfo = await _registrationsRepository.GetByIdAsync(userInfo.RegistrationId);
             var paymentIntentResponse = await _paymentService.CreatePaymentIntent(amount, priceInfo.Currency, priceInfo.Description ?? "", registrationInfo.StripeCustomerId);
 
@@ -466,6 +467,23 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 PaymentIntentId = paymentIntentId,
                 ClientSecret = clientSecret
             };
+        }
+
+        // Method for calculating photograde cost based on the number being purchased and a default scalar for the price ($2 right now)
+        private decimal GetPhotoGradeCost(decimal numberOfGradeCredit, decimal defaultPriceScalar) {
+            decimal amount = defaultPriceScalar * numberOfGradeCredit; // Default value
+            if (decimal.Equals(numberOfGradeCredit, 1.0m)) {
+                amount = 2.00m;
+            } else if (decimal.Equals(numberOfGradeCredit, 5.0m)) {
+                amount = 8.75m;
+            } else if (decimal.Equals(numberOfGradeCredit, 10.0m)) {
+                amount = 15.00m;
+            } else if (decimal.Equals(numberOfGradeCredit, 50.0m)) {
+                amount = 60.00m;
+            } else if (decimal.Equals(numberOfGradeCredit, 100.0m)) {
+                amount = 110.00m;
+            }
+            return amount;
         }
 
         public async Task<bool> PurchaseGradeCreditConfirm(ConfirmGradeCreditCommand confirmCommand)

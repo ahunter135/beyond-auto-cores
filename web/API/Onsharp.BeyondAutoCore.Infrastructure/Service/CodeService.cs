@@ -381,20 +381,24 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             decimal finalUnitPrice = orginalPrice + A + B + C;
 
+            decimal codeMargin = 0;
+            if (codeInfo.Margin != null && codeInfo.Margin.HasValue)
+                codeMargin = (finalUnitPrice * (codeInfo.Margin.Value / 100m));
+
+            finalUnitPrice += codeMargin;
+
             decimal masterMarginValue = 0;
             var masterMarginData = await _masterMarginService.Get();
             if (masterMarginData != null && masterMarginData.Margin > 0)
                 masterMarginValue = (finalUnitPrice * (masterMarginData.Margin / 100m));
 
-            decimal codeMargin = 0;
-            if (codeInfo.Margin != null && codeInfo.Margin.HasValue)
-                codeMargin = (finalUnitPrice * (codeInfo.Margin.Value / 100m));
+            finalUnitPrice -= masterMarginValue;
 
             decimal tierValue = 0;
             if (user.Tier1AdminEnabled && user.Tier1UserEnabled && user.Tier1PercentLevel > 0)
                 tierValue = (finalUnitPrice * (user.Tier1PercentLevel / 100m));
 
-            finalUnitPrice = finalUnitPrice - masterMarginValue + codeMargin + tierValue;
+            finalUnitPrice = finalUnitPrice  + tierValue;
 
             decimal userMargin = 0;
             if (user.Margin != null && user.Margin.HasValue && user.Margin.Value > 0)
@@ -445,16 +449,18 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             decimal adminUnitPrice = orginalPrice + A + B + C;
 
+            decimal codeMargin = 0;
+            if (codeInfo.Margin != null && codeInfo.Margin.HasValue && codeInfo.Margin.Value > 0)
+                codeMargin = (adminUnitPrice * (codeInfo.Margin.Value / 100m));
+
+            adminUnitPrice = adminUnitPrice + codeMargin;
+
             decimal masterMarginValue = 0;
             var masterMarginData = await _masterMarginService.Get();
             if (masterMarginData != null && masterMarginData.Margin > 0)
                 masterMarginValue = (adminUnitPrice * (masterMarginData.Margin / 100m));
 
-            decimal codeMargin = 0;
-            if (codeInfo.Margin != null && codeInfo.Margin.HasValue && codeInfo.Margin.Value > 0)
-                codeMargin = (adminUnitPrice * (codeInfo.Margin.Value / 100m));
-
-            adminUnitPrice = adminUnitPrice - masterMarginValue + codeMargin;
+            adminUnitPrice = adminUnitPrice - masterMarginValue;
 
             return decimal.Round(adminUnitPrice, 2, MidpointRounding.AwayFromZero); ;
         }

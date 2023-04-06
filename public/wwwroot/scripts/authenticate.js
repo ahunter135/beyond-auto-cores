@@ -493,7 +493,7 @@ const saveAvatar = async (formData) => {
 }
 
 const checkAffiliateCode = (code) => {
-	let postUrl = `${API_URL}/affiliates/code?code=${code}`;
+	let postUrl = `${API_URL}/affiliates/code?code=${encodeURIComponent(code)}`;
 	let _swalMain = Swal;
 	let gldSwlUI = GLBSwal, _swal = gldSwlUI;
 	let inputAffContainer = document.getElementById('affiliation-section')

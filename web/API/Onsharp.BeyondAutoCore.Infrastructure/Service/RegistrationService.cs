@@ -216,12 +216,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var userRegistration = await _userRegistrationRepository.GetByIdAsync(userInfo.RegistrationId);
             if (userRegistration == null)
             {
-                return new ResponseDto() { Success = 0, Message = "Unable to found registration." };
+                return new ResponseDto() { Success = 0, Message = "Unable to find registration." };
             }
 
-            //var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
-            //if (paymentInfo != null && !string.IsNullOrWhiteSpace(paymentInfo.SubscriptionId))
-            //    await _paymentService.CancelSubscription(paymentInfo.SubscriptionId);
+            var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
+            if (paymentInfo != null && !string.IsNullOrWhiteSpace(paymentInfo.SubscriptionId))
+                await _paymentService.CancelSubscription(paymentInfo.SubscriptionId);
 
             userRegistration.SubscriptionIsCancel = !enable;
             _userRegistrationRepository.Update(userRegistration);

@@ -80,6 +80,7 @@
         public async Task<bool> IsAffiliateCodeEnable(string affiliateCode)
         {
             var userInfo = await _usersRepository.GetUserByAffiliateCode(affiliateCode);
+
             if (userInfo != null)
                 return true;
             else
@@ -116,6 +117,7 @@
             //parameters.Add(new SqlParameter("@dateFrom", System.Data.SqlDbType.DateTime) { Direction = System.Data.ParameterDirection.Input, Value = processCommand.DateFrom });
             //parameters.Add(new SqlParameter("@dateTo", System.Data.SqlDbType.DateTime) { Direction = System.Data.ParameterDirection.Input, Value = processCommand.DateTo });
 
+            
             var listData = await _usersRepository.GetCommissions();
             foreach (var data in listData)
             {

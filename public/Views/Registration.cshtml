@@ -168,10 +168,19 @@
 </section>
 
 <script type="text/javascript">
+	$.urlParam = function (name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                        .exec(window.location.search);
+    
+        return (results !== null) ? results[1] || 0 : false;
+    }
+
 	window.addEventListener('load', function() {
 		const params = new Proxy(new URLSearchParams(window.location.search), {
 			get: (searchParams, prop) => searchParams.get(prop),
 		});
+
+		const affiliatecode = $.urlParam('affiliatecode');
 
 		setTimeout(() => {
 			if(identifyUser() === true) { 
@@ -187,8 +196,8 @@
 
 			if (checkUrlQuery('affiliatecode') === true) {
 				if(inputAffContainer.classList.contains('hide-form')) inputAffContainer.classList.remove('hide-form');
-				inputAffInput.value = params.affiliatecode;
-				checkAffiliateCode(params.affiliatecode)
+				inputAffInput.value = affiliatecode;
+				checkAffiliateCode(affiliatecode)
 			} else {
 				if(!inputAffContainer.classList.contains('hide-form')) inputAffContainer.classList.add('hide-form');
 			}

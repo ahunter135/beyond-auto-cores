@@ -195,7 +195,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<string> CreateAccount()
         {
-            var optAccount = new AccountCreateOptions { Type = "express" };
+            var optAccount = new AccountCreateOptions {
+                Type = "express",
+                Capabilities = new AccountCapabilitiesOptions
+                {
+                    CardPayments = new AccountCapabilitiesCardPaymentsOptions { Requested = true },
+                    Transfers = new AccountCapabilitiesTransfersOptions { Requested = true },
+                },
+            };
             var service = new AccountService();
             var account = service.Create(optAccount);
 

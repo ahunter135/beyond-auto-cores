@@ -15,8 +15,8 @@ export const environment = {
   },
 
   /** Marketing website link */
-  signUpUrl: 'https://catalyticmastermind.com/#work3',
-  signInUrl: 'https://catalyticmastermind.com/login',
+  signUpUrl: 'https://catalyticmastermind.app/#work',
+  signInUrl: 'https://catalyticmastermind.app/login',
   web: '',
   appSettings: {},
 };

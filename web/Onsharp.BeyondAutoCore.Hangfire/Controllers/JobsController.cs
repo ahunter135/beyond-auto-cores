@@ -21,7 +21,7 @@ namespace Onsharp.BeyondAutoCore.Hangfire.Controllers
             var affiliateService = new AffiliateService();
 
             RecurringJob.AddOrUpdate(() =>  metalPriceService.UpdateMetalPrices(), Cron.Minutely);
-            RecurringJob.AddOrUpdate(() => affiliateService.ProcessPayouts(), "00 01 */15 * *"); // At 01:00 AM, every 15 days
+            RecurringJob.AddOrUpdate(() => affiliateService.ProcessPayouts(), "00 01 */01 * *"); // At 01:00 AM, everyday
 
             return Json(new { success = true });
         }

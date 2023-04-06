@@ -8,8 +8,8 @@ export const environment = {
     default: 'https://bac-api.azurewebsites.net/api/v1'
   },
   /** Marketing website link */
-  signUpUrl: 'https://catalyticmastermind.com/#work3',
-  signInUrl: 'https://catalyticmastermind.com/login',
+  signUpUrl: 'https://catalyticmastermind.app/#work',
+  signInUrl: 'https://catalyticmastermind.app/login',
   web: '',
   appSettings: {},
 };

@@ -33,13 +33,15 @@ public class RefreshTokenService : IRefreshTokenService
         var base64Salt = Convert.ToBase64String(salt);
 
         var tokenHashed = _tokenHasher.HashUsingPbkdf2(refreshToken, salt);
-
-        _refreshTokenRepository.Add(new RefreshTokenModel(
+        var refreshTokenModel = new RefreshTokenModel(
             user.Id,
             tokenHashed, 
             base64Salt, 
             DateTime.Now.AddMinutes(_jwtSettings.RefreshTokenExpirationMinutes)) { 
-        });
+        };
+        refreshTokenModel.CreatedOn = DateTime.UtcNow;
+
+        _refreshTokenRepository.Add(refreshTokenModel);
         _refreshTokenRepository.SaveChanges();
 
         return refreshToken;

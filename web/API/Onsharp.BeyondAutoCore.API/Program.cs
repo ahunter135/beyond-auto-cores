@@ -113,6 +113,17 @@ builder.Services.AddAuthentication(x =>
     }
 );
 
+// Custom Authorization handler that only allows one user to be logged in
+builder.Services.AddTransient<IAuthorizationHandler, OneUserSessionHandler>();
+
+builder.Services.AddAuthorization(x =>
+	x.DefaultPolicy = new AuthorizationPolicyBuilder()
+        .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+	    .RequireAuthenticatedUser()
+        .AddRequirements(new OneUserSessionRequirement())
+	    .Build()
+);
+
 #endregion Jwt 
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

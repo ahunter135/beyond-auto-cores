@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Onsharp.BeyondAutoCore.Web.ServiceClient
-build_property.ProjectDir = c:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.ServiceClient\
+build_property.ProjectDir = C:\elco-dev-projects\beyond-auto-cores\web\UI\Onsharp.BeyondAutoCore.ServiceClient\

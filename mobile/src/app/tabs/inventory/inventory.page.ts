@@ -19,7 +19,6 @@ import {
 } from '@app/common/models/lots';
 import { currencyFormat } from '@app/common/utils/currencyUtils';
 import { toLocalTime } from '@app/common/utils/timeUtils';
-import { AccountService } from '@app/common/services/account.service';
 
 @Component({
   selector: 'app-inventory',
@@ -35,14 +34,12 @@ export class InventoryPage implements OnDestroy {
   isLoading = false;
   navigationSubscription: Subscription;
   activeSegment = 'active';
-  userSubscription: number = 0;
 
   constructor(
     private route: Router,
     private modalCtrl: ModalController,
     private lotsService: LotsService,
-    private loadingCtrl: LoadingController,
-    private accountService: AccountService
+    private loadingCtrl: LoadingController
   ) {}
 
   ionViewWillEnter() {
@@ -65,8 +62,7 @@ export class InventoryPage implements OnDestroy {
       searchCategory: 'isSubmitted',
       searchQuery: 'false',
     });
-    this.userSubscription = this.accountService.currentUser.subscription;
-    console.log(this.userSubscription);
+
     this.isLoading = false;
   }
 

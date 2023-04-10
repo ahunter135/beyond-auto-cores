@@ -321,6 +321,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     var subscriptionTypeInfo = await _priceService.GetPriceByName(priceEnumFromSubEnum);
                     await CreateSubscription(response.Id, subscriptionTypeInfo);
 
+                    this.GiftCredits(userRegistration, response.Id);
 
                     var userLoginCommand = new LoginCommand();
                     userLoginCommand.UserName = newUser.UserName;
@@ -354,6 +355,30 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
 
             return result;
+        }
+
+        private async Task GiftCredits(RegistrationModel userRegistration, long userId)
+        {
+            if (String.IsNullOrWhiteSpace(userRegistration.AffiliateCode)) return;
+
+            CreateGradeCreditCommand gradeCreditCommand= new CreateGradeCreditCommand();
+            gradeCreditCommand.UserId = userId;
+
+            switch (userRegistration.Subscription)
+            {
+                case SubscriptionTypeEnum.Premium:
+                    gradeCreditCommand.Credit = 3.0m;
+					break;
+                case SubscriptionTypeEnum.Elite:
+					gradeCreditCommand.Credit = 10.0m;
+					break;
+                case SubscriptionTypeEnum.Lifetime:
+					gradeCreditCommand.Credit = 150.0m;
+					break;
+            }
+
+            await _gradeCreditService.Create(gradeCreditCommand);
+            return;
         }
 
         private async Task<bool> CreateSubscription(long userId, PriceDto subscriptionTypeInfo)

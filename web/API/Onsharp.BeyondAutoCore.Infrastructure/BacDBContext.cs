@@ -11,6 +11,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure
 
 
         public DbSet<LotItemPhotoGradeModel> LotItemPhotoGrades { get; set; }
+        public DbSet<AffiliateSummaryModel> AffiliatesSummary { get; set; }
         public DbSet<AlertModel> Alerts { get; set; }
         public DbSet<CodeModel> Codes { get; set; }
         public DbSet<CommissionModel> Commissions { get; set; }

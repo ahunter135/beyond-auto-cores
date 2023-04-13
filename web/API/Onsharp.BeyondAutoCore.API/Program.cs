@@ -90,6 +90,8 @@ var jwtSettings = new JwtSettingModel()
 
 builder.Configuration.Bind(nameof(JwtSettingModel), jwtSettings);
 builder.Services.AddSingleton(jwtSettings);
+builder.Services.AddSingleton<IAuthorizationMiddlewareResultHandler,
+    OneUserSessionAuthorizationMiddlewareResultHandler>();
 
 builder.Services.AddAuthentication(x =>
 {

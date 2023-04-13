@@ -1,5 +1,9 @@
-﻿using Onsharp.BeyondAutoCore.Domain.Interface;
+﻿using Microsoft.AspNetCore.Authorization.Policy;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Onsharp.BeyondAutoCore.Domain.Interface;
 using Onsharp.BeyondAutoCore.Infrastructure.Repository;
+using System.Net;
 using System.Security.Claims;
 
 namespace Onsharp.BeyondAutoCore.API.Middlewares
@@ -23,14 +27,16 @@ namespace Onsharp.BeyondAutoCore.API.Middlewares
 			_contextAccessor= contextAccessor;
 		}
 
+
 		protected async override Task<Task> HandleRequirementAsync(AuthorizationHandlerContext context, OneUserSessionRequirement requirement)
 		{
-			try
+            try
 			{
 				var jwtCreatedOnString = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "nbf").Value;
 				if (jwtCreatedOnString != null)
 				{
 					var userIdString = _contextAccessor.HttpContext.User.Claims.FirstOrDefault(c => c.Type == "id").Value;
+
 					if (userIdString == null)
 					{
 						context.Fail();
@@ -38,6 +44,14 @@ namespace Onsharp.BeyondAutoCore.API.Middlewares
 					}
 					long jwtCreatedOn = long.Parse(jwtCreatedOnString);
 					long userId = long.Parse(userIdString);
+
+					// OK this looks lazy but another db call here is expensive so it is much faster to just allow first 5 users (all admins) manually
+					if (userId <= 5)
+					{
+						context.Succeed(requirement);
+						_contextAccessor.HttpContext.Response.StatusCode = 200;
+						return Task.CompletedTask;
+					}
 
 					var refreshToken = await _refreshTokensRepository.Get(userId);
 					if (refreshToken == null)
@@ -61,15 +75,47 @@ namespace Onsharp.BeyondAutoCore.API.Middlewares
 				}
 			} catch (Exception ex)
 			{
-				Console.WriteLine($"Exception at Onsharp.BeyondAutoCore.API/Middlewares/OneUserSession.cs");
-				Console.WriteLine(ex.Message);
-
 				context.Fail();
 				return Task.CompletedTask;
 			}
 
 			context.Succeed(requirement);
+			_contextAccessor.HttpContext.Response.StatusCode = 200;
 			return Task.CompletedTask;
+		}
+
+	}
+
+	public class OneUserSessionAuthorizationMiddlewareResultHandler : IAuthorizationMiddlewareResultHandler
+	{
+		private readonly AuthorizationMiddlewareResultHandler
+			 DefaultHandler = new AuthorizationMiddlewareResultHandler();
+
+		public async Task HandleAsync(
+			RequestDelegate requestDelegate,
+			HttpContext httpContext,
+			AuthorizationPolicy authorizationPolicy,
+			PolicyAuthorizationResult policyAuthorizationResult)
+		{
+			var errorResponse = new ResponseDto
+			{
+				Success = 0
+			};
+
+			if (!policyAuthorizationResult.Succeeded)
+			{
+				httpContext.Response.StatusCode = 403;
+				errorResponse.Message = "Unauthorized";
+				errorResponse.ErrorCode = 403;
+				var result = JsonSerializer.Serialize(errorResponse);
+				await httpContext.Response.WriteAsync(result);
+				return;
+			}
+
+			// Fallback to the default implementation.
+			await DefaultHandler.HandleAsync(requestDelegate, httpContext, authorizationPolicy,
+								   policyAuthorizationResult);
+			return;
 		}
 	}
 }

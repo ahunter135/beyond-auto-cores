@@ -55,6 +55,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure
 
             services.AddTransient<IRefreshTokensRepository, RefreshTokensRepository>();
 
+            services.AddTransient<IAffiliatesSummaryRepository, AffiliateSummaryRepository>();
             services.AddTransient<IAlertsRepository, AlertsRepository>();
             services.AddTransient<ICodesRepository, CodesRepository>();
             services.AddTransient<IDeviceRepository, DeviceRepository>();

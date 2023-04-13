@@ -1,4 +1,5 @@
 ﻿using Onsharp.BeyondAutoCore.Domain.Command.Devices;
+using Onsharp.BeyondAutoCore.Domain.Dto.Affiliates;
 using Onsharp.BeyondAutoCore.Domain.Dto.Devices;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure
@@ -108,6 +109,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure
                 CreateMap<UserDto, UserModel>();
                 CreateMap<RegistrationDto, RegistrationModel>();
                 CreateMap<SubscriptionDto, SubscriptionModel>();
+                CreateMap<AffiliateSummaryDto, AffiliateSummaryModel>();
 
                 #endregion Dto to Model
 
@@ -154,6 +156,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure
                 CreateMap<UserModel, UserAccessDto>();
                 CreateMap<RegistrationModel, RegistrationDto>();
                 CreateMap<SubscriptionModel, SubscriptionDto>();
+                CreateMap<AffiliateSummaryModel, AffiliateSummaryDto>();
 
                 #endregion Model to Dto 
 

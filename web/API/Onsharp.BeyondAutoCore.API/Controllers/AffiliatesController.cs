@@ -103,5 +103,36 @@
             });
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        [Route("affiliates-summary")]
+        public async Task<IActionResult> AffiliatesSummary()
+        {
+            var response = await _affiliateService.AffiliatesSummary();
+
+            return Ok(new ResponseRecordDto<object>
+            {
+                Success = response.Success,
+                ErrorCode = response.Success == 0 ? 0 : 1000,
+                Message = response.Success == 1 ? "Successfully retrieved affiliate summary." : "Failed retrieving affiliate summary.",
+                Data = response
+            });
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("update-affiliates-summary")]
+        public async Task<IActionResult> UpdateAffiliatesSummary()
+        {
+            var response = await _affiliateService.UpdateAffiliatesSummary();
+
+            return Ok(new ResponseRecordDto<object>
+            {
+                Success = response ? 1 : 0,
+                ErrorCode = response ? 0 : 1000,
+                Message = response == true ? "Successfully updated affiliate summary." : "Failed updating affiliate summary.",
+                Data = response
+            });
+        }
     }
 }

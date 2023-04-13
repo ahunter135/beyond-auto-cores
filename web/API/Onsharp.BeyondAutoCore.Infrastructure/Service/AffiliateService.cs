@@ -1,4 +1,6 @@
-﻿namespace Onsharp.BeyondAutoCore.Infrastructure.Service
+﻿using Onsharp.BeyondAutoCore.Domain.Dto.Affiliates;
+
+namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 {
     public class AffiliateService : BaseService, IAffiliateService
     {
@@ -7,10 +9,12 @@
         private readonly IPaymentService _paymentService;
         private readonly ICommissionService _commissionService;
         private readonly ISubscriptionsRepository _subscriptionsRepository;
+        private readonly IAffiliatesSummaryRepository _affiliatesSummaryRepository;
         
         public AffiliateService(IHttpContextAccessor httpContextAccessor, IMapper mapper,
                            IPaymentService paymentService, ICommissionService commissionService,
-                           IUsersRepository usersRepository, ISubscriptionsRepository subscriptionsRepository)
+                           IUsersRepository usersRepository, ISubscriptionsRepository subscriptionsRepository,
+                           IAffiliatesSummaryRepository affiliatesSummaryRepository)
            : base(httpContextAccessor)
         {
             _mapper = mapper;
@@ -18,6 +22,7 @@
             _commissionService = commissionService;
             _paymentService = paymentService;
             _subscriptionsRepository = subscriptionsRepository;
+            _affiliatesSummaryRepository = affiliatesSummaryRepository;
         }
 
         public async Task<UserAffiliateDto> JoinAffiliate(long id)
@@ -134,6 +139,36 @@
 
             }
 
+            return true;
+        }
+
+        public async Task<AffiliateSummaryDto> AffiliatesSummary()
+        {
+            var affiliateSummaryModels = await _affiliatesSummaryRepository.GetByAllAsync();
+            AffiliateSummaryModel? affiliateSummaryModel = null;
+            if (affiliateSummaryModels != null)
+            {
+                affiliateSummaryModel = affiliateSummaryModels.FirstOrDefault();
+            }
+            if (affiliateSummaryModel == null)
+            {
+                return new AffiliateSummaryDto()
+                {
+                    Success = 0,
+                    Message = "No affiliate summary found."
+                };
+            }
+
+            AffiliateSummaryDto returnVal = _mapper.Map<AffiliateSummaryModel, AffiliateSummaryDto>(affiliateSummaryModel);
+            returnVal.Success = 1;
+            returnVal.Message = "Success";
+
+            return returnVal;
+
+        }
+
+        public async Task<bool> UpdateAffiliatesSummary()
+        {
             return true;
         }
 

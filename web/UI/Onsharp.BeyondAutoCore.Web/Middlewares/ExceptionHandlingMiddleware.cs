@@ -38,37 +38,36 @@
             switch (exception)
             {
 
-                case ApplicationException ex:
-                    if (ex.Message.Contains("Unauthorized"))
-                    {
-                        // If refresh token successful, signOut and signIn to apply the claim changes, else, Logout
-                        var newIdentity = await UserHelper.RefreshApiToken();
-                        await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-                        context.Session.Clear();
+                case ApplicationException:
+                case System.Exception:
+					if (exception.Message.Contains("Unauthorized"))
+					{
+						// If refresh token successful, signOut and signIn to apply the claim changes, else, Logout
+						var newIdentity = await UserHelper.RefreshApiToken();
+						await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+						context.Session.Clear();
 
-                        if (newIdentity != null)
-                        {
-                            var authProperties = new AuthenticationProperties
-                            {
-                                ExpiresUtc = DateTimeOffset.UtcNow.AddDays(15),
-                            };
+						if (newIdentity != null)
+						{
+							var authProperties = new AuthenticationProperties
+							{
+								ExpiresUtc = DateTimeOffset.UtcNow.AddDays(15),
+							};
 
-                            await context.SignInAsync(
-                                CookieAuthenticationDefaults.AuthenticationScheme,
-                                new ClaimsPrincipal(newIdentity),
-                                authProperties);
-                            response.Redirect(context.Request.Path); // reload the page
-                        }
-                        else
-                        {
-                            _logger.LogInformation("ExceptionHandlingMiddleware -> HandleExceptionAsync: newIdentity is null");
-                            response.Redirect("account");
-                        }
-                        break;
-                    }
-
-                    throw exception;
-
+							await context.SignInAsync(
+								CookieAuthenticationDefaults.AuthenticationScheme,
+								new ClaimsPrincipal(newIdentity),
+								authProperties);
+							response.Redirect(context.Request.Path); // reload the page
+						}
+						else
+						{
+							_logger.LogInformation("ExceptionHandlingMiddleware -> HandleExceptionAsync: newIdentity is null");
+							response.Redirect("account");
+						}
+						break;
+					}
+                    break;
                 default:
                     throw exception;
             }

@@ -120,6 +120,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<PhotoGradeDto> UpdateGrade(GradeConverterCommand updateCommand)
         {
+            string userEmail = string.Empty;
+           
+
             var currenData = await _photoGradesRepository.GetByIdAsync(updateCommand.Id);
 
             if (currenData == null)
@@ -128,7 +131,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (!Enum.IsDefined(typeof(PhotoGradeStatusEnum), updateCommand.PhotoGradeStatus))
                 return new PhotoGradeDto() { Success = false, Message = "Invalid Photograde status." };
 
-
+            if (updateCommand.PhotoGradeStatus == 1) {
+                var currentUser = await _userService.GetById(currenData.CreatedBy);
+                if (currentUser != null)
+                    userEmail = currentUser.Email;
+                if (!string.IsNullOrWhiteSpace(userEmail))
+                        await SendUserNotificationApproved(userEmail);
+            }
+            
             currenData.PhotoGradeStatus = updateCommand.PhotoGradeStatus;
             currenData.Price = updateCommand.Price;
             currenData.Comments = string.Format("{0}",updateCommand.Comments);
@@ -280,14 +290,33 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         {
             var smtpSetting = new SMTPConfig();
             string fromEmail = smtpSetting.Email;
-            string confirmEmail = $"Photo Grade Received";
+            string confirmEmail = $"Photo Grade Submitted";
             string logoName = smtpSetting.LogoName;
 
             string siteLogo = smtpSetting.SiteDomain + $"/media/brand/{logoName}";
 
             StringBuilder sb = new StringBuilder();
             sb.Append($"<img style=\"display: block; -webkit - user - select: none; cursor: zoom -in; background - color: hsl(0, 0 %, 90 %); transition: background - color 300ms;\" src=\"{siteLogo}\" width=\"320\" height=\"164\"><br/><br/>");
-            sb.Append($"Photo grade received.<br/> <br/>");
+            sb.Append($"Photo grade submitted.<br/> <br/>");
+
+            string emailBody = sb.ToString();
+
+            await EmailHelper.SendEmail(userEmail, fromEmail, confirmEmail, emailBody, isBodyHtml: true);
+
+            return true;
+        }
+        private async Task<bool> SendUserNotificationApproved(string userEmail)
+        {
+            var smtpSetting = new SMTPConfig();
+            string fromEmail = smtpSetting.Email;
+            string confirmEmail = $"Photo Grade Approved";
+            string logoName = smtpSetting.LogoName;
+
+            string siteLogo = smtpSetting.SiteDomain + $"/media/brand/{logoName}";
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append($"<img style=\"display: block; -webkit - user - select: none; cursor: zoom -in; background - color: hsl(0, 0 %, 90 %); transition: background - color 300ms;\" src=\"{siteLogo}\" width=\"320\" height=\"164\"><br/><br/>");
+            sb.Append($"Photo grade approved.<br/> <br/>");
 
             string emailBody = sb.ToString();
 

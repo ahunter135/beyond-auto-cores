@@ -85,10 +85,6 @@ export class HomePage implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    this.loader = await this.loadingCtrl.create({
-      message: 'Loading Prices ...',
-    });
-    this.loader.present();
     this.createChart();
     this.partners = await this.partnersService.partners({
       includeLogoUrl: true,
@@ -118,7 +114,6 @@ export class HomePage implements OnInit, OnDestroy {
     this.platinumPrices = await this.getMetalPrices(0);
     this.palladiumPrices = await this.getMetalPrices(1);
     this.rhodiumPrices = await this.getMetalPrices(2);
-    this.loader?.dismiss();
   }
 
   async getMetalPrices(metalId = 2) {

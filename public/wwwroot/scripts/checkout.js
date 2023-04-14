@@ -1,7 +1,7 @@
 // This is a public sample test API key.
 // Don’t submit any personally identifiable information in requests made with this key.
 // Sign in to see your own test API key embedded in code samples.
-const stripe = Stripe("pk_test_51LhJIXABDnBRLPxLIwIymjMAuxaPpfOG2qTL4gc1TfUSUDoJGqu5cpBmQ5it9kTKlnyyZ3jRf6ClO0MMDfCg3wZ100icTpmiTr");
+const stripe = Stripe("pk_live_51LhJIXABDnBRLPxLjosZbu44szycf2Vyg5ttg4NHAZSCSE5jnspO4xVC0feeS0pFHLiqVAyXlRpeCiEBWu0LL2SU00GG3gYgX4");
 let cardelement;
 
 // Fetches a payment intent and captures the client secret

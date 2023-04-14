@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>New Photo Grade</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="ion-text-center ion-margin-bottom">
+    <ion-text class="paragraph-text-16-bold">Add up to Three Photos</ion-text>
+  </div>
+
+  <ion-grid>
+    <ion-row class="ion-margin-bottom">
+      <ion-col>
+        <div class="box-flex">
+          <app-upload-photo-grade [photoDataUrl]="photoGradeDataUrl.length ? photoGradeDataUrl[0] : ''" (add)="onAddPhoto($event, 0)" (remove)="onRemovePhotoGrade(0)"></app-upload-photo-grade>
+
+          <app-upload-photo-grade *ngIf="photoGradeDataUrl.length > 0" [photoDataUrl]="photoGradeDataUrl[1]" (add)="onAddPhoto($event, 1)" (remove)="onRemovePhotoGrade(1)"></app-upload-photo-grade>
+
+          <app-upload-photo-grade *ngIf="photoGradeDataUrl.length > 1" [photoDataUrl]="photoGradeDataUrl[2]" (add)="onAddPhoto($event, 2)" (remove)="onRemovePhotoGrade(2)"></app-upload-photo-grade>
+        </div>
+        <ion-text color="danger" *ngIf="showError && !photoGradeDataUrl.length">
+          <small> Please add a photo.</small>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked" class="white paragraph-text-14-bold">Item Fullness %</ion-label>
+        <div class="ion-align-items-center lot-range">
+          <ion-range mode="ios" [pin]="true" [(ngModel)]="fullness" min="0" max="100" step="10">
+            <ion-text slot="start" class="white-500">0</ion-text>
+            <ion-text slot="end" class="white-500">100</ion-text>
+          </ion-range>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-label position="stacked" class="white paragraph-text-14-bold">Notes</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-textarea [(ngModel)]="notes" class="lot-input" placeholder="Enter any notes" rows="6"></ion-textarea>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-button expand="block" class="submit-grading-button" (click)="submitGrading()">
+    <ion-text class="paragraph-text-16-semibold white">Submit for grading</ion-text>
+  </ion-button>
+</ion-content>

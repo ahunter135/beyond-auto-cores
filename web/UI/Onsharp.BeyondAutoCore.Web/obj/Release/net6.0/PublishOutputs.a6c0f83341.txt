@@ -1,4 +1,6 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Onsharp.BeyondAutoCore.Web
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x64/native/wkhtmltox.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x86/native/wkhtmltox.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/appsettings.Development.json
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/appsettings.json
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/appsettings.Production.json
@@ -11,8 +13,8 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/AWSSDK.Core.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/AWSSDK.Extensions.NETCore.Setup.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/AWSSDK.S3.dll
-/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/DinkToPdf.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Forbid.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/WkHtmlToPdfDotNet.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/MediatR.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/MediatR.Contracts.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Microsoft.AspNetCore.Authentication.JwtBearer.dll
@@ -44,6 +46,7 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Microsoft.Win32.SystemEvents.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Netjection.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Newtonsoft.Json.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/DinkToPdf.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Stripe.net.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Swashbuckle.AspNetCore.Annotations.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/Swashbuckle.AspNetCore.Swagger.dll
@@ -56,6 +59,10 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/System.Security.Cryptography.ProtectedData.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/System.Security.Permissions.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/System.Windows.Extensions.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/linux-arm64/native/libwkhtmltox.so
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/linux-x64/native/libwkhtmltox.so
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/linux-x86/native/libwkhtmltox.so
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/osx-x64/native/libwkhtmltox.dylib
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/unix/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win/lib/netcoreapp3.1/Microsoft.Data.SqlClient.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll
@@ -63,6 +70,9 @@
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win/lib/net6.0/Microsoft.Win32.SystemEvents.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/osx-x86/native/libwkhtmltox.dylib
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x64/native/libwkhtmltox.dll
+/Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win-x86/native/libwkhtmltox.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/unix/lib/net6.0/System.Drawing.Common.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win/lib/net6.0/System.Drawing.Common.dll
 /Users/austinhunter/Documents/upwork/BAC/web/UI/Onsharp.BeyondAutoCore.Web/obj/Release/net6.0/PubTmp/Out/runtimes/win/lib/netstandard2.0/System.Runtime.Caching.dll

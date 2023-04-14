@@ -41,13 +41,17 @@ export class PhotoGradePage implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.onLoad();
   }
+
 
   ngOnDestroy(): void {
     if (this.navigationSubscription) {
       this.navigationSubscription.unsubscribe();
     }
+  }
+
+  ionViewWillEnter() {
+    this.onLoad();
   }
 
   async onLoad() {
@@ -90,7 +94,6 @@ export class PhotoGradePage implements OnInit, OnDestroy {
             pageSize: 10,
           });
         this.isLoading = false;
-        console.log(this.photoGradeList);
       }
     }
   }
@@ -118,7 +121,7 @@ export class PhotoGradePage implements OnInit, OnDestroy {
   }
 
   newPhotoGrade() {
-    this.navCtrl.navigateForward('/create-photo-grade')
+    this.navCtrl.navigateForward('tabs/tabs/photo-grade/create-photo-grade')
   }
 
   async purchaseMore() {

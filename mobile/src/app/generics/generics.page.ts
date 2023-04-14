@@ -25,7 +25,7 @@ export class GenericsPage implements OnInit {
   async ngOnInit() {
     this.isLoading = true;
     this.dataCodes = await this.codesService.codes({
-      pageSize: 10,
+      pageSize: 66955359,
       pageNumber: 1,
       isCustom: false,
       isAdmin: true,
@@ -43,7 +43,7 @@ export class GenericsPage implements OnInit {
       searchCategory: 'converterName',
       searchQuery: value,
       pageNumber: 1,
-      pageSize: 24,
+      pageSize: 66955359,
       isCustom: false,
       isAdmin: true,
       notIncludePGItem: false,
@@ -63,7 +63,7 @@ export class GenericsPage implements OnInit {
     if (!this.searchCode) {
       const nextLink = this.dataCodes.pagination.nextPageLink;
       this.isLoading = true;
-
+      console.log(nextLink);
       if (nextLink && !this.codesService.isLoadingMore) {
         const { data, pagination } = await this.codesService.nextCodes(
           nextLink,
@@ -74,10 +74,12 @@ export class GenericsPage implements OnInit {
             notIncludePGItem: false,
           }
         );
+        console.log(pagination);
         this.dataCodes = {
           data: [...this.dataCodes.data, ...data],
           pagination,
         };
+        this.codesService.isLoadingMore = false;
       }
 
       this.isLoading = false;

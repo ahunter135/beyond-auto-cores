@@ -24,7 +24,7 @@
       <app-generic-code-card [code]="code"></app-generic-code-card>
     </ng-template>
 
-    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" threshold="200px">
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" threshold="50%">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>

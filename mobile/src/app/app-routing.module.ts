@@ -39,9 +39,6 @@ const routes: Routes = [
     loadChildren: () => import('./generic-view/generic-view.module').then( m => m.GenericViewPageModule)
   },
   {
-    path: 'create-photo-grade',
-    loadChildren: () => import('./create-photo-grade/create-photo-grade.module').then( m => m.CreatePhotoGradePageModule)
-  },  {
     path: 'margin',
     loadChildren: () => import('./margin/margin.module').then( m => m.MarginPageModule)
   },

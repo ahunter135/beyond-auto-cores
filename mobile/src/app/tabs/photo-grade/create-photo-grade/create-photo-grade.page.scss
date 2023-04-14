@@ -1,0 +1,54 @@
+ion-textarea {
+  --background: #fff;
+  border-radius: 12px;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --color: #000;
+}
+
+.lot-input {
+  --background: #f3f7f9;
+}
+
+ion-item::part(native) {
+  border: 0px;
+}
+
+ion-label {
+  padding-bottom: 16px;
+}
+
+.lot-range {
+  display: flex;
+  width: 100%;
+}
+
+.submit-grading-button {
+  --background: #000;
+  --border-radius: 12px;
+  height: 46px;
+  text-transform: capitalize;
+}
+
+.add-photo-button {
+  --background: #fff;
+  width: 104px;
+  height: 83px;
+}
+
+.grade-photo {
+  width: 104px;
+  height: 83px;
+  background: #000;
+}
+
+.add-photo-icon {
+  --color: #000;
+  width: 26px;
+  height: 26px;
+}
+
+ion-title {
+  text-transform: uppercase;
+  font-size: 18px;
+}

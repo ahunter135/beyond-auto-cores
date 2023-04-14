@@ -43,7 +43,7 @@ export class InventoryPage implements OnDestroy {
     private lotsService: LotsService,
     private loadingCtrl: LoadingController,
     private accountService: AccountService
-  ) {}
+  ) { }
 
   ionViewWillEnter() {
     this.onLoad();
@@ -61,12 +61,12 @@ export class InventoryPage implements OnDestroy {
     this.isLoading = true;
     this.lots = await this.lotsService.inventorySummary({
       pageNumber: 1,
-      pageSize: 10,
+      pageSize: 100,
       searchCategory: 'isSubmitted',
       searchQuery: 'false',
     });
     this.userSubscription = this.accountService.currentUser.subscription;
-    console.log(this.userSubscription);
+    this.sortLots();
     this.isLoading = false;
   }
 
@@ -82,17 +82,18 @@ export class InventoryPage implements OnDestroy {
 
       this.lots = await this.lotsService.inventorySummary({
         pageNumber: 1,
-        pageSize: 10,
+        pageSize: 100,
         ...(this.defaultSegment === 'closed'
           ? {
-              searchCategory: 'isSubmitted',
-              searchQuery: 'true',
-            }
+            searchCategory: 'isSubmitted',
+            searchQuery: 'true',
+          }
           : {
-              searchCategory: 'isSubmitted',
-              searchQuery: 'false',
-            }),
+            searchCategory: 'isSubmitted',
+            searchQuery: 'false',
+          }),
       });
+      this.sortLots();
       this.isLoading = false;
     }
   }
@@ -129,10 +130,17 @@ export class InventoryPage implements OnDestroy {
     }
 
     this.isLoading = false;
-
+    this.sortLots();
     setTimeout(() => {
       (ev as InfiniteScrollCustomEvent).target.complete();
     }, 500);
+  }
+
+  sortLots() {
+    function custom_sort(a, b) {
+      return new Date(b.createdOn).getTime() - new Date(a.createdOn).getTime();
+    }
+    this.lots.data.sort(custom_sort);
   }
 
   clear() {

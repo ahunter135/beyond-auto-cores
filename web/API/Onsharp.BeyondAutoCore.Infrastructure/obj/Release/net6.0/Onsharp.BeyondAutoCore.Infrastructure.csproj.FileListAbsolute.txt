@@ -1,3 +1,5 @@
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure/bin/Release/net6.0/runtimes/win-x64/native/wkhtmltox.dll
+/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure/bin/Release/net6.0/runtimes/win-x86/native/wkhtmltox.dll
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure/bin/Release/net6.0/Onsharp.BeyondAutoCore.Infrastructure.deps.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure/bin/Release/net6.0/Onsharp.BeyondAutoCore.Infrastructure.runtimeconfig.json
 /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure/bin/Release/net6.0/Onsharp.BeyondAutoCore.Infrastructure.dll

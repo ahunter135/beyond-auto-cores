@@ -12,7 +12,6 @@
       }
     ],
     "configProperties": {
-      "System.Globalization.AppLocalIcu": "68.2.0.9",
       "System.GC.Server": true,
       "System.Runtime.Serialization.EnableUnsafeBinaryFormatterSerialization": false
     }

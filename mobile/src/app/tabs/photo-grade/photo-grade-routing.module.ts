@@ -7,6 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: PhotoGradePage
+  },
+  {
+    path: 'create-photo-grade',
+    loadChildren: () => import('./create-photo-grade/create-photo-grade.module').then( m => m.CreatePhotoGradePageModule)
   }
 ];
 

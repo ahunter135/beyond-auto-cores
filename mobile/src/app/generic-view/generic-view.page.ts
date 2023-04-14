@@ -7,6 +7,8 @@ import { AccountService } from '@app/common/services/account.service';
 import { CodesService } from '@app/common/services/codes.service';
 import { PhotoGradeService } from '@app/common/services/photo-grade.service';
 import { currencyFormat } from '@app/common/utils/currencyUtils';
+import { PhotoviewerComponent } from '@app/photoviewer/photoviewer.component';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -58,5 +60,19 @@ export class GenericViewPage implements OnInit {
 
   formatPrice(price: number) {
     return currencyFormat(price);
+  }
+
+  async openViewer() {
+    if (this.currentPhoto) {
+      const modal = await this.modalCtrl.create({
+        component: PhotoviewerComponent,
+        componentProps: {
+          url: this.currentPhoto
+        }
+      });
+  
+      modal.present();
+    }
+    
   }
 }

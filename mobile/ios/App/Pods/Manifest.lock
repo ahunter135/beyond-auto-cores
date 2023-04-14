@@ -10,6 +10,10 @@ PODS:
   - CapacitorCommunityFcm (3.0.2):
     - Capacitor
     - Firebase/Messaging
+  - CapacitorCommunityPhotoviewer (2.0.10):
+    - Capacitor
+    - ISVImageScrollView
+    - SDWebImage
   - CapacitorCordova (4.6.1)
   - CapacitorDevice (4.1.0):
     - Capacitor
@@ -31,23 +35,27 @@ PODS:
     - Capacitor
   - CapacitorStatusBar (4.1.1):
     - Capacitor
-  - Firebase/CoreOnly (10.5.0):
-    - FirebaseCore (= 10.5.0)
-  - Firebase/Messaging (10.5.0):
+  - CapacitorToast (4.1.0):
+    - Capacitor
+  - CordovaPlugins (4.7.0):
+    - CapacitorCordova
+  - Firebase/CoreOnly (10.7.0):
+    - FirebaseCore (= 10.7.0)
+  - Firebase/Messaging (10.7.0):
     - Firebase/CoreOnly
-    - FirebaseMessaging (~> 10.5.0)
-  - FirebaseCore (10.5.0):
+    - FirebaseMessaging (~> 10.7.0)
+  - FirebaseCore (10.7.0):
     - FirebaseCoreInternal (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/Logger (~> 7.8)
-  - FirebaseCoreInternal (10.5.0):
+  - FirebaseCoreInternal (10.7.0):
     - "GoogleUtilities/NSData+zlib (~> 7.8)"
-  - FirebaseInstallations (10.5.0):
+  - FirebaseInstallations (10.7.0):
     - FirebaseCore (~> 10.0)
     - GoogleUtilities/Environment (~> 7.8)
     - GoogleUtilities/UserDefaults (~> 7.8)
     - PromisesObjC (~> 2.1)
-  - FirebaseMessaging (10.5.0):
+  - FirebaseMessaging (10.7.0):
     - FirebaseCore (~> 10.0)
     - FirebaseInstallations (~> 10.0)
     - GoogleDataTransport (~> 9.2)
@@ -77,12 +85,16 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.11.0):
     - GoogleUtilities/Logger
+  - ISVImageScrollView (0.3.0)
   - nanopb (2.30909.0):
     - nanopb/decode (= 2.30909.0)
     - nanopb/encode (= 2.30909.0)
   - nanopb/decode (2.30909.0)
   - nanopb/encode (2.30909.0)
-  - PromisesObjC (2.1.1)
+  - PromisesObjC (2.2.0)
+  - SDWebImage (5.15.5):
+    - SDWebImage/Core (= 5.15.5)
+  - SDWebImage/Core (5.15.5)
 
 DEPENDENCIES:
   - "Capacitor (from `../../node_modules/@capacitor/ios`)"
@@ -90,6 +102,7 @@ DEPENDENCIES:
   - "CapacitorBrowser (from `../../node_modules/@capacitor/browser`)"
   - "CapacitorCamera (from `../../node_modules/@capacitor/camera`)"
   - "CapacitorCommunityFcm (from `../../node_modules/@capacitor-community/fcm`)"
+  - "CapacitorCommunityPhotoviewer (from `../../node_modules/@capacitor-community/photoviewer`)"
   - "CapacitorCordova (from `../../node_modules/@capacitor/ios`)"
   - "CapacitorDevice (from `../../node_modules/@capacitor/device`)"
   - "CapacitorDialog (from `../../node_modules/@capacitor/dialog`)"
@@ -101,6 +114,8 @@ DEPENDENCIES:
   - "CapacitorShare (from `../../node_modules/@capacitor/share`)"
   - "CapacitorSplashScreen (from `../../node_modules/@capacitor/splash-screen`)"
   - "CapacitorStatusBar (from `../../node_modules/@capacitor/status-bar`)"
+  - "CapacitorToast (from `../../node_modules/@capacitor/toast`)"
+  - CordovaPlugins (from `../capacitor-cordova-ios-plugins`)
 
 SPEC REPOS:
   trunk:
@@ -111,8 +126,10 @@ SPEC REPOS:
     - FirebaseMessaging
     - GoogleDataTransport
     - GoogleUtilities
+    - ISVImageScrollView
     - nanopb
     - PromisesObjC
+    - SDWebImage
 
 EXTERNAL SOURCES:
   Capacitor:
@@ -125,6 +142,8 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/camera"
   CapacitorCommunityFcm:
     :path: "../../node_modules/@capacitor-community/fcm"
+  CapacitorCommunityPhotoviewer:
+    :path: "../../node_modules/@capacitor-community/photoviewer"
   CapacitorCordova:
     :path: "../../node_modules/@capacitor/ios"
   CapacitorDevice:
@@ -147,6 +166,10 @@ EXTERNAL SOURCES:
     :path: "../../node_modules/@capacitor/splash-screen"
   CapacitorStatusBar:
     :path: "../../node_modules/@capacitor/status-bar"
+  CapacitorToast:
+    :path: "../../node_modules/@capacitor/toast"
+  CordovaPlugins:
+    :path: "../capacitor-cordova-ios-plugins"
 
 SPEC CHECKSUMS:
   Capacitor: 6b8848492d0b4fec76f53c1504089228d00645bf
@@ -154,6 +177,7 @@ SPEC CHECKSUMS:
   CapacitorBrowser: b7d161fb82d591294cb81fcb12f950ae73470035
   CapacitorCamera: 8e1f9eac46c6a0b7df5619d20f021d852ccaa99a
   CapacitorCommunityFcm: 4a33814029adc531140a8faf67bca73581bd5430
+  CapacitorCommunityPhotoviewer: ab2bc87404c2cfdbd9d9217e80afc098757b1d91
   CapacitorCordova: 48a0f6863177473356a4aecb4ee69e2b865202e7
   CapacitorDevice: 63e8ef8837176b8caf67dc0717b8b1123754a955
   CapacitorDialog: c8a6558d29767e76a32a056bb5e0fc9104b985b0
@@ -165,16 +189,20 @@ SPEC CHECKSUMS:
   CapacitorShare: 964682279c7ba28ac13c435de29e705a2ce8f487
   CapacitorSplashScreen: 6b1c832e6f822ad1ef05073dc31dfeca02bc03a3
   CapacitorStatusBar: 65933e554bb5d65b361deaa936a93616086a2608
-  Firebase: 3d6637234ab163e31852834617b4fe1df3b7af6d
-  FirebaseCore: 324b8d182d9ff7e3f6d1fa2f04b082d1c7a3e366
-  FirebaseCoreInternal: e463f41bb935cd049505bf7e9a5bdd7dcea90df6
-  FirebaseInstallations: 935bc4abb6f7a035cab7a0c31cb777b2be3dd254
-  FirebaseMessaging: 35ecbbc68ff547fca80f9326c9622e79288c7149
+  CapacitorToast: 81855a3f8035e002c16f7eb5c753eb42660330a7
+  CordovaPlugins: 264f047fcb481760cdc1887f88d00b1a6cab8bd7
+  Firebase: 0219acf760880eeec8ce479895bd7767466d9f81
+  FirebaseCore: e317665b9d744727a97e623edbbed009320afdd7
+  FirebaseCoreInternal: 8845798510aae74703467480f71ac613788d0696
+  FirebaseInstallations: 59c0e4c7a816a0f76710d83f77e5369b3e45eb96
+  FirebaseMessaging: ac9062bcc35ed56e15a0241d8fd317022499baf8
   GoogleDataTransport: ea169759df570f4e37bdee1623ec32a7e64e67c4
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
+  ISVImageScrollView: 2c89840496647af985bfc0e09b346b9aa733ecec
   nanopb: b552cce312b6c8484180ef47159bc0f65a1f0431
-  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
+  PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
+  SDWebImage: fd7e1a22f00303e058058278639bf6196ee431fe
 
-PODFILE CHECKSUM: 1c63cd9ebb496331a824f54896889631d038445c
+PODFILE CHECKSUM: f46223b820c1ad1b129f2d85ea5415f1155c0eb3
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

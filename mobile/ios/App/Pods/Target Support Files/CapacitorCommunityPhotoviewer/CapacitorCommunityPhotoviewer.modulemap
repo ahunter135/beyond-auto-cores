@@ -1,0 +1,6 @@
+framework module CapacitorCommunityPhotoviewer {
+  umbrella header "CapacitorCommunityPhotoviewer-umbrella.h"
+
+  export *
+  module * { export * }
+}

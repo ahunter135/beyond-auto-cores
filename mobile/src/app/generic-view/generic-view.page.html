@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content>
-  <ion-img [src]="currentPhoto" class="generic-img"></ion-img>
+  <ion-img [src]="currentPhoto" class="generic-img" (click)="openViewer()"></ion-img>
 
   <div *ngIf="photoGrade && photoGrade.photoGradeItems.length > 1">
     <div class="box-flex-center carousel-img">
-      <ion-img *ngFor="let image of photoGrade.photoGradeItems; index as i" [src]="image.fileUrl" class="generic-img-sm ion-margin-end" (click)="onSelectImage(image.fileUrl)"></ion-img>
+      <ion-img *ngFor="let image of photoGrade.photoGradeItems; index as i" [src]="image.fileUrl" class="generic-img-sm ion-margin-end" [ngClass]="{'isActive': currentPhoto == image.fileUrl}" (click)="onSelectImage(image.fileUrl)"></ion-img>
     </div>
   </div>
 

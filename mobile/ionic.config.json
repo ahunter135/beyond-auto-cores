@@ -1,7 +1,12 @@
 {
   "name": "Catalytic Mastermind",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": true
+    },
+    "cordova": {
+      "enabled": false
+    }
   },
   "type": "angular"
 }

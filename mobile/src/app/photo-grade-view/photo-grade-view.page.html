@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-img [src]="photoGrade.fileUrl || thumbnail" class="ion-padding"></ion-img>
+  <ion-img [src]="photoGrade.fileUrl || thumbnail" class="ion-padding" (click)="openViewer()"></ion-img>
 
   <ion-grid class="ion-padding-start ion-padding-end">
     <ion-row>

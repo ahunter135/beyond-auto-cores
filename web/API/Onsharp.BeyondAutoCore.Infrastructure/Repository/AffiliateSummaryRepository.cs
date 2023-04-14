@@ -27,5 +27,10 @@
         {
             throw new NotSupportedException("This table only has one row");
         }
+
+        public int Update()
+        {
+            return dBContext.Database.ExecuteSqlRaw("SProc_UpdateAffiliateSummary");
+        }
     }
 }

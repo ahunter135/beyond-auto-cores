@@ -782,3 +782,24 @@ const getSubscriptionOptions = () => {
 			});
 	})
 }
+
+const getAffiliateSummary = () => {
+	let getUrl = `${API_URL}/affiliates/affiliates-summary`;
+
+	return new Promise((resolve, reject) => {
+		axios.get(getUrl)
+			.then(function (response) {
+				let affiliateSummary = document.querySelector("#affiliates-stats");
+				let formattingOptions = {
+					style: 'currency',
+					currency: 'USD',
+					minimumFractionDigits: 2
+				}
+				let dollarString = new Intl.NumberFormat("en-US", formattingOptions)
+				affiliateSummary.textContent = `Grow your revenue with Catalytic Masterminds, just like ${response.data.data.numOfAffiliates} other affiliates that have earned ${dollarString.format(response.data.data.totalCommissionsEarned)}, and earn commission through our affiliates program.`
+			})
+			.catch(function (error) {
+				//_swalMain.close();
+			});
+	});
+}

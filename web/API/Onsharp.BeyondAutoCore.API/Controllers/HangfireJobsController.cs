@@ -21,6 +21,7 @@ namespace Onsharp.BeyondAutoCore.API.Controllers
 
             RecurringJob.AddOrUpdate(() => _hangfireJobService.UpdateMetalPrices(), Cron.Minutely);
             RecurringJob.AddOrUpdate(() => _hangfireJobService.ProcessPayouts(), "00 01 */01 * *"); // At 01:00 AM, everyday
+            RecurringJob.AddOrUpdate(() => _hangfireJobService.UpdateAffiliatesSummary(), "00 01 */02 * *");
 
             return Json(new { success = true });
         }

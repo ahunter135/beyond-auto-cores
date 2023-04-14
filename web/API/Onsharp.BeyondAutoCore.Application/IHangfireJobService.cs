@@ -7,6 +7,7 @@ namespace Onsharp.BeyondAutoCore.Application
 
         // write 
         Task<bool> UpdateMetalPrices();
+        Task<bool> UpdateAffiliatesSummary();
         Task<bool> ProcessPayouts();
     }
 }

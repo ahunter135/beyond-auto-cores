@@ -23,6 +23,18 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return true;
         }
 
+        public async Task<bool> UpdateAffiliatesSummary()
+        {
+            Dictionary<string, string> apiParameters = new Dictionary<string, string>();
+
+            string service = "affiliates";
+            var apiConfig = new HangfireApiConfig();
+            var apiClient = new ApiClient(apiConfig.Host, apiConfig.Port, service, apiConfig.EnableSSL, apiConfig.Token);
+            var data = await apiClient.PostRequest(apiParameters, "update-affiliates-summary");
+            return true;
+
+        }
+
         public async Task<bool> ProcessPayouts()
         {
             Dictionary<string, string> apiParameters = new Dictionary<string, string>(); ;

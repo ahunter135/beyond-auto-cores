@@ -169,7 +169,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<bool> UpdateAffiliatesSummary()
         {
-            return true;
+            var numOfRowsEffected = _affiliatesSummaryRepository.Update();
+            // Should update 1 row
+            return numOfRowsEffected >= 0 ? true : false;
         }
 
     }

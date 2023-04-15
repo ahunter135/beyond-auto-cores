@@ -19,6 +19,7 @@ export interface LotItemsResponse {
   photoGradeItemId: any;
   fileKey: any;
   fileUrl: any;
+  createdOn: any;
 }
 
 export interface LotItemsFullnessResponse {

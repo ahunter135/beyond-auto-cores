@@ -16,5 +16,6 @@
 
 		[NotMapped]
 		public string? FileUrl { get; set; }
+		public DateTime CreatedOn { get; set; }
 	}
 }

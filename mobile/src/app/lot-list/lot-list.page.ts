@@ -64,6 +64,7 @@ export class LotListPage implements OnInit {
     this.lot = this.lotsService.selectedLot as LotInventoryResponse;
     await this.fetchLot();
     await this.fetchLotCodes();
+    await this.sortLotCodes();
     this.lotItems.forEach(async (lotItem) => {
       const fullness = await this.lotItemsService.lotItemsFullness(
         lotItem.id.toString(),
@@ -95,6 +96,15 @@ export class LotListPage implements OnInit {
       (this.lot.lotId || this.lot.id) as string,
       { pageNumber: 1, pageSize: 66955359 }
     );
+    this.isLoading = false;
+  }
+
+  async sortLotCodes() {
+    this.isLoading = true;
+
+    this.lotItems.sort(function(x, y) {
+      return new Date(y.createdOn).getTime() - new Date(x.createdOn).getTime();
+    });
     this.isLoading = false;
   }
 
@@ -198,6 +208,7 @@ export class LotListPage implements OnInit {
     });
     await this.fetchLot();
     await this.fetchLotCodes();
+    await this.sortLotCodes();
     this.modalCtrl.dismiss();
     loading.dismiss();
   }

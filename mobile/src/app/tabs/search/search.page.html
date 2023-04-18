@@ -9,7 +9,7 @@
       <div class="clear-btn-wrapper">
         <ion-icon class="clear-btn" name="close-outline" (click)="this.searchCode = '';"></ion-icon>
       </div>
-      <ion-input [(ngModel)]="searchCode" placeholder="Enter converter code ..." enterkeyhint="Search" (ionInput)="onClearEmpty($event)" (ionChange)="onSearch($event)" (keyup.enter)="keyEnter($event)" [debounce]="1000" #search></ion-input>
+      <ion-input [(ngModel)]="searchCode" placeholder="Enter converter code ..." enterkeyhint="Search" (ionInput)="onClearEmpty($event)" (ionChange)="onSearch($event)" (keyup.enter)="keyEnter($event)" [debounce]="600" #search></ion-input>
     </ion-card-content>
   </ion-card>
 

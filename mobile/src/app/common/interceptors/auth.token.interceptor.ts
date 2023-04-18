@@ -65,7 +65,7 @@ export class AuthTokenInterceptor implements HttpInterceptor {
                   ),
                   catchError((authError) => {
                     this.loadingController.dismiss();
-                    //this.authService.deauthenticate();
+                    this.authService.deauthenticate();
                     return throwError(authError);
                   })
                 );

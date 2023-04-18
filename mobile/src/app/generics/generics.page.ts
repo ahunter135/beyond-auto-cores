@@ -8,6 +8,7 @@ import { Keyboard } from '@capacitor/keyboard';
 
 import { CodesService } from '@app/common/services/codes.service';
 import { CodeList } from '@models/codes';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-generics',
@@ -20,46 +21,64 @@ export class GenericsPage implements OnInit {
   dataCodes: CodeList | null = { data: [], pagination: null };
   isLoading = false;
   searchCounter: number = 0;
+  subscribed: Subscription;
 
-  constructor(private codesService: CodesService) {}
+  constructor(private codesService: CodesService) { }
 
   async ngOnInit() {
     this.isLoading = true;
-    this.dataCodes = await this.codesService.codes({
-      pageSize: 66955359,
+    if (this.subscribed) {
+      this.subscribed.unsubscribe();
+    }
+    this.subscribed = this.codesService.codes({
+      pageSize: 75,
       pageNumber: 1,
       isCustom: false,
       isAdmin: true,
       notIncludePGItem: false,
+    }).subscribe((response) => {
+      console.log(response);
+      const { data, pagination } = response.body;
+      this.resolveSearchData({data, pagination});
+      this.isLoading = false;
+
     });
-    this.isLoading = false;
   }
 
   async onSearch(e: Event) {
+    console.log("Searching");
     const event = e as InputCustomEvent;
     const value = event.target?.value as string;
 
-    this.search(value).then(([codes, searchNumber]) => {
-      if (searchNumber === this.searchCounter - 1) {
-        this.dataCodes = codes;
-        this.isLoading = false;
-      }
-    });
+    this.search(value);
   }
 
-  async search(value: string): Promise<[CodeList, number]> {
+  async search(value: string): Promise<any> {
     const currentSearch = this.searchCounter++;
     this.isLoading = true;
-
-    return [await this.codesService.codes({
+    console.log(this.subscribed);
+    if (this.subscribed) {
+      this.subscribed.unsubscribe();
+    }
+    this.subscribed = this.codesService.codes({
       searchCategory: 'converterName',
       searchQuery: value,
       pageNumber: 1,
-      pageSize: 66955359,
+      pageSize: 75,
       isCustom: false,
       isAdmin: true,
       notIncludePGItem: false,
-    }), currentSearch];
+    }).subscribe((response) => {
+      const { data, pagination } = response.body;
+      this.resolveSearchData({data, pagination});
+      this.isLoading = false;
+
+    });
+
+  }
+
+  resolveSearchData(obj) {
+    this.dataCodes = obj;
   }
 
   async hideKeyboard(_) {

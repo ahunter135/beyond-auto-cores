@@ -86,9 +86,10 @@ export class RestService implements HttpDelegate {
         retryWhen((errors) =>
           errors.pipe(
             switchMap((error, index) => {
-              this.auth.deauthenticate();
 
               if (index === RETRY_COUNT || error.status === 403) {
+                this.auth.deauthenticate();
+
                 return throwError(error);
               }
 

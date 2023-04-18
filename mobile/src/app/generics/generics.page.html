@@ -12,11 +12,11 @@
     <div class="clear-btn-wrapper">
       <ion-icon class="clear-btn" name="close-outline" (click)="this.searchCode = ''; ngOnInit()"></ion-icon>
     </div>
-    <ion-input [(ngModel)]="searchCode" placeholder="Search Generics..." (ionChange)="onSearch($event)" (keyup.enter)="hideKeyboard($event)" [debounce]="1000" enterkeyhint="Search" #search></ion-input>
+    <ion-input [(ngModel)]="searchCode" placeholder="Search Generics..." (ionChange)="onSearch($event)" (keyup.enter)="hideKeyboard($event)" [debounce]="600" enterkeyhint="Search" #search></ion-input>
   </div>
 
   <div class="ion-padding-end">
-    <div *ngIf="isLoading && !dataCodes.data">
+    <div *ngIf="isLoading">
       <app-skeleton-list-loader></app-skeleton-list-loader>
     </div>
 
@@ -24,7 +24,7 @@
       <app-generic-code-card [code]="code"></app-generic-code-card>
     </ng-template>
 
-    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" threshold="50%">
+    <ion-infinite-scroll (ionInfinite)="onIonInfinite($event)" threshold="60%">
       <ion-infinite-scroll-content></ion-infinite-scroll-content>
     </ion-infinite-scroll>
   </div>

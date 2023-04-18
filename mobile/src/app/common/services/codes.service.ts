@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Subscription, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Code, CodeList } from '../models/codes';
@@ -31,23 +31,12 @@ export class CodesService {
    * Retrieve code list details
    *
    */
-  codes(filter?: FilterRequest): Promise<CodeList> {
+  codes(filter?: FilterRequest): any {
     return this.rest
       .get<CodeList>({
         endpoint: `/codes`,
         params: filter,
-      })
-      .pipe(
-        map((response: any) => {
-          const { data, pagination } = response.body;
-          return {
-            data,
-            pagination,
-          };
-        }),
-        catchError((error) => throwError(error))
-      )
-      .toPromise();
+      });
   }
 
   /**

@@ -121,6 +121,19 @@ export class HomePage implements OnInit, OnDestroy {
       metal: metalId,
       reportType: this.is1M ? 0 : 1,
     });
+    
+    if (this.currentMetalPrices && metalPrices.symbol === this.currentMetalPrices.symbol) {
+      this.currentMetalPrices =  {
+        ...metalPrices,
+        lastUpdate: toLocalTime(metalPrices.lastUpdate),
+        lastPrice: currencyFormat(metalPrices.lastPrice as number),
+        bidPrice: currencyFormat(metalPrices.bidPrice as number),
+        oneDayPercentChange: `${(
+          metalPrices.oneDayPercentChange as number
+        ).toFixed(2)}%`,
+        isNegative: metalPrices.oneDayPercentChange < 0,
+      } as MetalPrices;
+    }
 
     return {
       ...metalPrices,

@@ -1,19 +1,18 @@
 ﻿<Properties StartupConfiguration="{8C618381-E959-4CD5-BC76-AD1F3BE0EF2B}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Onsharp.BeyondAutoCore.API/appsettings.json">
-    <Files>
-      <File FileName="UI/Onsharp.BeyondAutoCore.Web/appsettings.json" />
-      <File FileName="API/Onsharp.BeyondAutoCore.API/appsettings.json" Line="12" Column="33" />
-    </Files>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Onsharp.BeyondAutoCore" expanded="True" selected="True">
+          <Node name="Onsharp.BeyondAutoCore" expanded="True">
             <Node name="API" expanded="True">
-              <Node name="Onsharp.BeyondAutoCore.API" expanded="True" />
+              <Node name="Onsharp.BeyondAutoCore.API" selected="True" />
             </Node>
-            <Node name="UI" expanded="True">
-              <Node name="Onsharp.BeyondAutoCore.Web" expanded="True" />
-            </Node>
+            <Node name="UI" expanded="True" />
           </Node>
         </State>
       </Pad>
@@ -21,9 +20,4 @@
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.UI.Onsharp.BeyondAutoCore.Web PreferredExecutionTarget="/Applications/Brave Browser.app" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
 </Properties>

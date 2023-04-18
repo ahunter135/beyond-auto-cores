@@ -19,6 +19,7 @@ export class GenericsPage implements OnInit {
   searchCode = '';
   dataCodes: CodeList | null = { data: [], pagination: null };
   isLoading = false;
+  searchCounter: number = 0;
 
   constructor(private codesService: CodesService) {}
 
@@ -36,10 +37,21 @@ export class GenericsPage implements OnInit {
 
   async onSearch(e: Event) {
     const event = e as InputCustomEvent;
-    const { value } = event.detail;
+    const value = event.target?.value as string;
+
+    this.search(value).then(([codes, searchNumber]) => {
+      if (searchNumber === this.searchCounter - 1) {
+        this.dataCodes = codes;
+        this.isLoading = false;
+      }
+    });
+  }
+
+  async search(value: string): Promise<[CodeList, number]> {
+    const currentSearch = this.searchCounter++;
     this.isLoading = true;
 
-    this.dataCodes = await this.codesService.codes({
+    return [await this.codesService.codes({
       searchCategory: 'converterName',
       searchQuery: value,
       pageNumber: 1,
@@ -47,10 +59,7 @@ export class GenericsPage implements OnInit {
       isCustom: false,
       isAdmin: true,
       notIncludePGItem: false,
-    });
-    this.isLoading = false;
-
-    console.log(this.dataCodes);
+    }), currentSearch];
   }
 
   async hideKeyboard(_) {

@@ -48,6 +48,7 @@ export class SearchPage implements OnInit, OnDestroy, AfterViewInit {
   fullPrice: number;
   navigationSubscription: Subscription;
   isActivePage = true;
+  searchCounter: number = 0;
 
   constructor(
     private route: Router,
@@ -63,7 +64,14 @@ export class SearchPage implements OnInit, OnDestroy, AfterViewInit {
         filter((event: NavigationEvent) => event instanceof NavigationStart)
       )
       .subscribe(() => {
-        this.search();
+        this.search().then(([codes, searchNumber]) => {
+          if (searchNumber === this.searchCounter - 1) {
+            this.dataCodes = codes;
+            this.isLoading = false;
+          }
+        }).catch(e => {
+          this.isLoading = false;
+        });
       });
   }
 
@@ -138,13 +146,22 @@ export class SearchPage implements OnInit, OnDestroy, AfterViewInit {
   onSearch(e: Event) {
     const event = e as InputCustomEvent;
     this.searchCode = event.target?.value as string;
-    this.search();
+    this.search().then(([codes, searchNumber]) => {
+      if (searchNumber === this.searchCounter - 1) {
+        this.dataCodes = codes;
+        this.isLoading = false;
+      }
+    }).catch(e => {
+      this.isLoading = false;
+    });
   }
 
-  async search() {
+  async search() : Promise<[CodeList, number]> {
+    const currentSearch = this.searchCounter++;
     this.isLoading = true;
+    let codes = { data: [], pagination: null }
     if (this.searchCode) {
-      this.dataCodes = await this.codesService.codes({
+      codes = await this.codesService.codes({
         searchCategory: 'converterName',
         searchQuery: this.searchCode as string,
         pageSize: 24,
@@ -155,7 +172,7 @@ export class SearchPage implements OnInit, OnDestroy, AfterViewInit {
     } else {
       this.dataCodes.data = [];
     }
-    this.isLoading = false;
+    return [codes, currentSearch];
   }
 
   onClearEmpty(e: Event) {

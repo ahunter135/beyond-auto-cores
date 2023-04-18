@@ -10,9 +10,9 @@
 <ion-content>
   <div class="ion-padding" style="position: relative;">
     <div class="clear-btn-wrapper">
-      <ion-icon class="clear-btn" name="close-outline" (click)="this.searchCode = '';"></ion-icon>
+      <ion-icon class="clear-btn" name="close-outline" (click)="this.searchCode = ''; ngOnInit()"></ion-icon>
     </div>
-    <ion-input [(ngModel)]="searchCode" placeholder="Search Generics..." (ionChange)="onSearch($event)" (keyup.enter)="hideKeyboard($event)" debounce="500" enterkeyhint="Search" #search></ion-input>
+    <ion-input [(ngModel)]="searchCode" placeholder="Search Generics..." (ionChange)="onSearch($event)" (keyup.enter)="hideKeyboard($event)" [debounce]="1000" enterkeyhint="Search" #search></ion-input>
   </div>
 
   <div class="ion-padding-end">

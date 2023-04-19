@@ -28,8 +28,10 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
+  
 
   async initializeApp(): Promise<void> {
+    
     document.body.classList.add('dark'); // enable dark mode always
     this.setStatusBarStyleDark();
 

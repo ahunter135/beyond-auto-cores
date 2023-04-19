@@ -1,5 +1,5 @@
 <ion-tabs>
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" *ngIf="showTabs">
     <ion-tab-button tab="home" (click)="onSelectTab('home')">
       <ion-icon
         [src]="selectedTab === 'home'? '/assets/icon/home-active.svg' :  '/assets/icon/home-inactive.svg'"

@@ -53,7 +53,7 @@
     </ion-accordion>
   </ion-accordion-group>
   <div class="spacer"></div>
-  <div class="footer" *ngIf="!isModalActive">
+  <div class="footer" *ngIf="!isModalActive && showFooter">
     <div class="f1">
       <p class="lot-name">{{ lot.lotName || 'No lot name' }}</p>
       <p>Quantity: {{ lot.quantity || 0 }}</p>

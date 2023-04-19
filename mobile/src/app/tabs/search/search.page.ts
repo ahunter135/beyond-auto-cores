@@ -204,7 +204,7 @@ export class SearchPage implements OnInit, OnDestroy, AfterViewInit {
 
     this.modalCtrl.dismiss();
     loading.dismiss();
-    this.route.navigate(['/lot-list']);
+    this.route.navigate(['lot-list']);
   }
 
   onPriceKeyDown(e) {

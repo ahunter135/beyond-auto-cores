@@ -113,7 +113,7 @@ export class AddToLotComponent implements OnInit {
     });
 
     loading.dismiss();
-    this.router.navigate(['/lot-list']);
-    this.modalCtrl.dismiss();
+    this.router.navigate(['lot-list']);
+        this.modalCtrl.dismiss();
   }
 }

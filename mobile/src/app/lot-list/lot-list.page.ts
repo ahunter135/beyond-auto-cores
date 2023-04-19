@@ -5,6 +5,7 @@ import {
   InputCustomEvent,
   LoadingController,
   ModalController,
+  NavController,
   ToastController,
 } from '@ionic/angular';
 import { Router } from '@angular/router';
@@ -21,7 +22,6 @@ import { LotItemFullnessService } from '@app/common/services/lot-item-fullness.s
 import { SubmitLotComponent } from '@app/common/components/submit-lot/submit-lot.component';
 import { AccountService } from '@app/common/services/account.service';
 import { currencyFormat, fullnessPrice } from '@app/common/utils/currencyUtils';
-import { Keyboard } from '@capacitor/keyboard';
 import { AddCodeToLotComponent } from '@app/common/components/add-code-to-lot/add-code-to-lot.component';
 
 @Component({
@@ -42,7 +42,7 @@ export class LotListPage implements OnInit {
   fullPrice: number;
   canInvoice: boolean;
   isModalActive = false;
-
+  showFooter: boolean = true;
   constructor(
     private lotsService: LotsService,
     private lotItemsService: LotItemsService,
@@ -52,7 +52,8 @@ export class LotListPage implements OnInit {
     private alertCtrl: AlertController,
     private accountService: AccountService,
     private router: Router,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private navCtrl: NavController
   ) {}
 
   ngOnInit() {
@@ -284,14 +285,7 @@ export class LotListPage implements OnInit {
   }
 
   async resubmitLot() {
-    const data = await this.lotsService.updateLot({
-      id: this.lot.lotId,
-      lotName: this.lot.lotName,
-      isSubmitted: false
-    });
-    if (data) {
       await this.submitLot();
-    }
   }
 
   async submitLot() {
@@ -306,6 +300,14 @@ export class LotListPage implements OnInit {
     console.log(data);
 
     if (role === 'submit') {
+      if (this.lot.isSubmitted) {
+        await this.lotsService.updateLot({
+          id: this.lot.lotId,
+          lotName: this.lot.lotName,
+          isSubmitted: false
+        });
+      }
+      
       const loading = await this.loadingCtrl.create({
         message: 'Submitting lot ...',
       });
@@ -328,8 +330,10 @@ export class LotListPage implements OnInit {
           color: 'success',
         });
 
-        toast.present();
-        this.router.navigate(['/tabs/tabs/inventory']);
+        await toast.present();
+        await loading.dismiss();
+        this.navCtrl.pop();
+
       }
 
       loading.dismiss();

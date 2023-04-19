@@ -10,6 +10,7 @@ import {
   ModalController,
   SegmentCustomEvent,
   IonContent,
+  AlertController,
 } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { LotsService } from '@app/common/services/lots.service';
@@ -42,10 +43,11 @@ export class InventoryPage implements OnDestroy {
     private modalCtrl: ModalController,
     private lotsService: LotsService,
     private loadingCtrl: LoadingController,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private alertController: AlertController
   ) { }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.onLoad();
   }
 
@@ -100,7 +102,7 @@ export class InventoryPage implements OnDestroy {
 
   goToLotList(lot: LotInventoryResponse) {
     this.lotsService.setSelectedLot = lot;
-    this.route.navigate(['/lot-list']);
+    this.route.navigate(['lot-list']);
   }
 
   async onCreateLot() {
@@ -145,16 +147,36 @@ export class InventoryPage implements OnDestroy {
 
   async deleteLot(event: any, lot: LotInventoryResponse) {
     event.stopPropagation();
-    const loading = await this.loadingCtrl.create({
-      message: `Deleting ${lot.lotName} ...`,
-    });
 
-    loading.present();
-    const data = await this.lotsService.deletelot(lot.lotId);
-    if (data) {
-      this.lots.data.splice(this.lots.data.indexOf(lot), 1);
-    }
-    loading.dismiss();
+    const alert = await this.alertController.create({
+      header: 'Alert',
+      message: 'Are you sure you would like to delete this lot?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {}
+        },
+        {
+          text: 'Yes',
+          role: 'confirm',
+          handler: async () => {
+            const loading = await this.loadingCtrl.create({
+              message: `Deleting ${lot.lotName} ...`,
+            });
+        
+            loading.present();
+            const data = await this.lotsService.deletelot(lot.lotId);
+            if (data) {
+              this.lots.data.splice(this.lots.data.indexOf(lot), 1);
+            }
+            loading.dismiss();
+          }
+        }
+      ],
+    });
+    
+    await alert.present();    
   }
 
   clear() {

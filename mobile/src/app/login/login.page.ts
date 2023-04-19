@@ -38,7 +38,7 @@ export class LoginPage
   /** Builds the form object. */
   buildForm(): void {
     this.form = this.formBuilder.group({
-      userName: [null, Validators.required],
+      userName: [window.localStorage.getItem("email"), Validators.required],
       password: [null, Validators.required],
     });
   }
@@ -50,6 +50,7 @@ export class LoginPage
   processValidForm(): void {
     const request: SimpleAuthenticateRequest = this.getFormData();
 
+    window.localStorage.setItem("email", request.userName);
     this.load(this.account.login({ ...request, validateSubscription: true }))
       .pipe(catchError((err) => this.handleError(err as HttpErrorResponse)))
       .subscribe(() => {

@@ -283,6 +283,17 @@ export class LotListPage implements OnInit {
     return role;
   }
 
+  async resubmitLot() {
+    const data = await this.lotsService.updateLot({
+      id: this.lot.lotId,
+      lotName: this.lot.lotName,
+      isSubmitted: false
+    });
+    if (data) {
+      await this.submitLot();
+    }
+  }
+
   async submitLot() {
     const modal = await this.modalCtrl.create({
       component: SubmitLotComponent,

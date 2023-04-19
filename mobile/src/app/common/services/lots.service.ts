@@ -9,6 +9,7 @@ import {
   LotRequest,
   Lots,
   SubmitLotRequest,
+  UpdateLotRequest,
 } from '../models/lots';
 import { FilterRequest } from '../models/rest';
 
@@ -122,6 +123,37 @@ export class LotsService {
       .pipe(
         map((response: any) => {
           const { data }: { data: LotInventoryResponse } = response.body;
+          return data;
+        }),
+        catchError((error) => throwError(error))
+      )
+      .toPromise();
+  }
+
+  updateLot(lot: UpdateLotRequest): Promise<boolean> {
+    return this.rest
+      .put<boolean>(`/lots`, lot)
+      .pipe(
+        map((response: any) => {
+          const { data }: { data: boolean } = response.body;
+          return data;
+        }),
+        catchError((error) => throwError(error))
+      )
+      .toPromise();
+  } 
+
+  /**@summary
+   * Deletes a lot
+   * @param lotId Id of lot to be deleted
+   * @returns a boolean that indicates whether the delete was successful
+   */
+  deletelot(lotId: number): Promise<boolean> {
+    return this.rest
+      .delete<boolean>(`/lots/${lotId}`)
+      .pipe(
+        map((response: any) => {
+          const { data }: { data: boolean } = response.body;
           return data;
         }),
         catchError((error) => throwError(error))

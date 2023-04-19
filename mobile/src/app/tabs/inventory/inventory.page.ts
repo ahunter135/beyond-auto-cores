@@ -143,6 +143,20 @@ export class InventoryPage implements OnDestroy {
     this.lots.data.sort(custom_sort);
   }
 
+  async deleteLot(event: any, lot: LotInventoryResponse) {
+    event.stopPropagation();
+    const loading = await this.loadingCtrl.create({
+      message: `Deleting ${lot.lotName} ...`,
+    });
+
+    loading.present();
+    const data = await this.lotsService.deletelot(lot.lotId);
+    if (data) {
+      this.lots.data.splice(this.lots.data.indexOf(lot), 1);
+    }
+    loading.dismiss();
+  }
+
   clear() {
     this.lotName = '';
   }

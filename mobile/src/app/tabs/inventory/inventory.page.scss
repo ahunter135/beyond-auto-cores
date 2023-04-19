@@ -27,6 +27,19 @@ ion-footer {
   padding: 0px !important;
   margin: 10px 0px !important;
   height: 86px;
+  position: relative;
+}
+
+.inventory-delete-button {
+  color: red;
+  font-size:26px;
+}
+
+.inventory-delete-button-wrapper {
+  position: absolute;
+  z-index: 10;
+  right: 5px;
+  top: 5px;
 }
 
 /* Modal Styling */

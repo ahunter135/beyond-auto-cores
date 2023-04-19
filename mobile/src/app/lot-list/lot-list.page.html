@@ -70,6 +70,12 @@
         Submit
       </ion-button>
     </div>
+    <div class="f2" *ngIf="lot.isSubmitted">
+      <ion-button class="add-code ion-text-capitalize" color="dark" (click)="resubmitLot()">
+        <ion-icon slot="start" name="checkmark"></ion-icon>
+        Resubmit
+      </ion-button>
+    </div>
   </div>
   <!--
   <ion-modal id="add-code-modal" #modal trigger="lot-modal" [animated]="false" (didDismiss)="reset()">

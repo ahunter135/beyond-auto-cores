@@ -52,7 +52,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var currenData = await _lotRepository.GetByIdAsync(updateCommand.Id);
 
             currenData.LotName = updateCommand.LotName;
-           
+            if (updateCommand.IsSubmitted != null) {
+                currenData.IsSubmitted = updateCommand.IsSubmitted ?? false;
+            }
+
             currenData.UpdatedBy = this.CurrentUserId();
             currenData.UpdatedOn = DateTime.UtcNow;
 
@@ -246,7 +249,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     //uploadResult = false;
                 //}
             }
-            Console.WriteLine($"UploadResult: {uploadResult}");
 
             if (!uploadResult)
             {

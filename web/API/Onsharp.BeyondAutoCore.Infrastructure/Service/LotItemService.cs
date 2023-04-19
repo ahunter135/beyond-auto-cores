@@ -2,6 +2,7 @@
 using Onsharp.BeyondAutoCore.Application;
 using Onsharp.BeyondAutoCore.Infrastructure.Repository;
 using Stripe;
+using System.Linq;
 using System.Xml.Linq;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Service
@@ -22,12 +23,15 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         private readonly IOptions<AWSSettingDto> _awsSettings;
         private readonly IAmazonS3 _aws3Client;
         private readonly AwsS3Helper _awsS3Helper;
+        private readonly IPhotoGradesRepository _photoGradesRepository;
+        private readonly IPhotoGradeItemsRepository _photoGradeItemsRepository;
 
         public LotItemService(IHttpContextAccessor httpContextAccessor, IMapper mapper,
                               ILotItemsRepository lotItemsRepository, ICodesRepository codesRepository,
                               IOptions<AWSSettingDto> awsSettings, IAmazonS3 aws3Client,
                               ICodeService codeService, ILotsRepository lotsRepository, ILotItemFullnessService lotItemFullnessService,
-                              IUserService userService, IPhotoGradeService photoGradeService, ILotItemPhotoGradeRepository lotPhotoItemGradeRepository)
+                              IUserService userService, IPhotoGradeService photoGradeService, ILotItemPhotoGradeRepository lotPhotoItemGradeRepository,
+                              IPhotoGradesRepository photoGradesRepository, IPhotoGradeItemsRepository photoGradeItemsRepository)
             : base(httpContextAccessor)
         {
             _mapper = mapper;
@@ -39,6 +43,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             _userService = userService;
             _photoGradeService = photoGradeService;
             _lotPhotoItemGradeRepository = lotPhotoItemGradeRepository;
+            _photoGradesRepository = photoGradesRepository;
+            _photoGradeItemsRepository = photoGradeItemsRepository;
 
             _awsSettings = awsSettings;
             _aws3Client = aws3Client;
@@ -189,6 +195,31 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             createLotItemFullnessCommand.UnitPrice = createCommand.OriginalPrice ?? 0;
             createLotItemFullnessCommand.Qty = 1;
             await _lotItemFullnessService.Create(createLotItemFullnessCommand);
+
+            var photoGrade = (await _photoGradesRepository.GetByAllAsync()).Where(p => p.CodeId == newLotItem.CodeId);
+            if (photoGrade.Count() > 0)
+            {
+				LotItemPhotoGradeModel photoGradeItem = new LotItemPhotoGradeModel();
+				photoGradeItem.LotItemId = newLotItem.Id;
+				photoGradeItem.LotId = newLotItem.LotId;
+				photoGradeItem.CreatedOn = DateTime.UtcNow;
+				photoGradeItem.CreatedBy = this.CurrentUserId();
+				photoGradeItem.PhotoGradeId = -1;
+				var photoGradeItems = _photoGradeItemsRepository.GetAllIQueryable().Where(pi => pi.FileName != "blob");
+                foreach ( var item in photoGradeItems )
+                {
+                    if (photoGrade.Where(p => p.Id == item.PhotoGradeId).Count() > 0)
+                    {
+						photoGradeItem.PhotoGradeId = item.PhotoGradeId;
+                        break;
+					}
+                }
+                if (photoGradeItem.PhotoGradeId != -1)
+                {
+					_lotPhotoItemGradeRepository.Add(photoGradeItem);
+					_lotPhotoItemGradeRepository.SaveChanges();
+				}
+			}
 
             return _mapper.Map<LotItemModel, LotItemDto>(newLotItem);
         }

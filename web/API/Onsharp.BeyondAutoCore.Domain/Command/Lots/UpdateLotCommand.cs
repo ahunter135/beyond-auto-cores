@@ -3,5 +3,6 @@
     public class UpdateLotCommand : DetailLotCommand
     {
         public long Id { get; set; }
+        public bool? IsSubmitted { get; set; }
     }
 }

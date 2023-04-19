@@ -40,6 +40,11 @@ export interface LotRequest {
   lotName: string;
 }
 
+export interface UpdateLotRequest extends LotRequest {
+  id: number;
+  isSubmitted?: boolean;
+}
+
 export interface SubmitLotRequest {
   businessName: string;
   email: string;

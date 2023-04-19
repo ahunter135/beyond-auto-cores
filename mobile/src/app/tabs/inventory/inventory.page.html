@@ -17,6 +17,9 @@
   </div>
 
   <ion-card *ngFor="let lot of lots.data; index as i" class="inventory-card-item" (click)="goToLotList(lot)">
+    <div class="inventory-delete-button-wrapper" (click)="deleteLot($event, lot)">
+      <ion-icon slot="icon-only" class="inventory-delete-button" name="close-outline"></ion-icon>
+    </div>
     <ion-card-content class="inventory-card-item-content">
       <ion-row>
         <ion-col class="ion-text-start inventory-item-col truncate" size="4">

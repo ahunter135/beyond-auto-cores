@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import {
   NavigationStart,
   Router,
+  NavigationEnd,
   Event as NavigationEvent,
 } from '@angular/router';
 import {
@@ -21,7 +22,8 @@ import {
 import { currencyFormat } from '@app/common/utils/currencyUtils';
 import { toLocalTime } from '@app/common/utils/timeUtils';
 import { AccountService } from '@app/common/services/account.service';
-
+import { Subject } from 'rxjs';
+import { takeUntil, filter } from 'rxjs/operators';
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.page.html',
@@ -34,6 +36,7 @@ export class InventoryPage implements OnDestroy {
   lots: LotInventoryList = { data: [], pagination: null };
   lotName: string;
   isLoading = false;
+  closed$ = new Subject<any>();
   navigationSubscription: Subscription;
   activeSegment = 'active';
   userSubscription: number = 0;
@@ -47,8 +50,17 @@ export class InventoryPage implements OnDestroy {
     private alertController: AlertController
   ) { }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.onLoad();
+    this.navigationSubscription = this.route.events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      takeUntil(this.closed$)
+    ).subscribe(event => {
+      console.log(event['url'])
+      if (event['url'] === '/tabs/tabs/inventory') {
+        this.onLoad();
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -59,6 +71,7 @@ export class InventoryPage implements OnDestroy {
 
   async onLoad() {
     this.defaultSegment = 'active';
+    this.activeSegment = this.defaultSegment;
     this.lots = { data: [], pagination: null };
     this.isLoading = true;
     this.lots = await this.lotsService.inventorySummary({
@@ -81,7 +94,7 @@ export class InventoryPage implements OnDestroy {
       this.isLoading = true;
       this.lots = { data: [], pagination: null };
       this.defaultSegment = event.detail.value;
-
+      this.activeSegment = this.defaultSegment;
       this.lots = await this.lotsService.inventorySummary({
         pageNumber: 1,
         pageSize: 100,

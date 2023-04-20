@@ -27,7 +27,7 @@ dependencies {
     implementation project(':capacitor-toast')
 
 }
-apply from: "../../node_modules/com-sarriaroman-photoviewer/src/android/photoviewer.gradle"
+
 
 if (hasProperty('postBuildExtras')) {
   postBuildExtras()

@@ -7,7 +7,10 @@ const routes: Routes = [
   {
     path: '',
     component: InventoryPage
-  }
+  },{
+    path: 'lot-list',
+    loadChildren: () => import('../../lot-list/lot-list.module').then( m => m.LotListPageModule)
+  },
 ];
 
 @NgModule({

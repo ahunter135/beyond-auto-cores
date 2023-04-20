@@ -160,7 +160,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 }
                 else
                 {
-                    return await CommonCreateLotItemModel(newLotItem, createCommand, codeId);
+                    return await CommonCreateLotItemModel(newLotItem, createCommand, codeId, true);
 
                 }
             }
@@ -180,7 +180,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return _mapper.Map<LotItemModel, LotItemDto>(existingLotItem);
         }
 
-        private async Task<LotItemDto> CommonCreateLotItemModel(LotItemModel newLotItem, CreateLotItemCommand createCommand, long codeId)
+        private async Task<LotItemDto> CommonCreateLotItemModel(LotItemModel newLotItem, CreateLotItemCommand createCommand, long codeId, bool addPhoto = false)
         {
             newLotItem.CodeId = codeId;
             newLotItem.CreatedBy = this.CurrentUserId();
@@ -196,30 +196,33 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             createLotItemFullnessCommand.Qty = 1;
             await _lotItemFullnessService.Create(createLotItemFullnessCommand);
 
-            var photoGrade = (await _photoGradesRepository.GetByAllAsync()).Where(p => p.CodeId == newLotItem.CodeId);
-            if (photoGrade.Count() > 0)
+            if (addPhoto == true && newLotItem.CodeId != 0)
             {
-				LotItemPhotoGradeModel photoGradeItem = new LotItemPhotoGradeModel();
-				photoGradeItem.LotItemId = newLotItem.Id;
-				photoGradeItem.LotId = newLotItem.LotId;
-				photoGradeItem.CreatedOn = DateTime.UtcNow;
-				photoGradeItem.CreatedBy = this.CurrentUserId();
-				photoGradeItem.PhotoGradeId = -1;
-				var photoGradeItems = _photoGradeItemsRepository.GetAllIQueryable().Where(pi => pi.FileName != "blob");
-                foreach ( var item in photoGradeItems )
+                var photoGrade = (await _photoGradesRepository.GetByAllAsync()).Where(p => p.CodeId == newLotItem.CodeId);
+                if (photoGrade.Count() > 0)
                 {
-                    if (photoGrade.Where(p => p.Id == item.PhotoGradeId).Count() > 0)
+                    LotItemPhotoGradeModel photoGradeItem = new LotItemPhotoGradeModel();
+                    photoGradeItem.LotItemId = newLotItem.Id;
+                    photoGradeItem.LotId = newLotItem.LotId;
+                    photoGradeItem.CreatedOn = DateTime.UtcNow;
+                    photoGradeItem.CreatedBy = this.CurrentUserId();
+                    photoGradeItem.PhotoGradeId = -1;
+                    var photoGradeItems = _photoGradeItemsRepository.GetAllIQueryable().Where(pi => pi.FileName != "blob");
+                    foreach ( var item in photoGradeItems )
                     {
-						photoGradeItem.PhotoGradeId = item.PhotoGradeId;
-                        break;
-					}
+                        if (photoGrade.Where(p => p.Id == item.PhotoGradeId).Count() > 0)
+                        {
+                            photoGradeItem.PhotoGradeId = item.PhotoGradeId;
+                            break;
+                        }
+                    }
+                    if (photoGradeItem.PhotoGradeId != -1)
+                    {
+                        _lotPhotoItemGradeRepository.Add(photoGradeItem);
+                        _lotPhotoItemGradeRepository.SaveChanges();
+                    }
                 }
-                if (photoGradeItem.PhotoGradeId != -1)
-                {
-					_lotPhotoItemGradeRepository.Add(photoGradeItem);
-					_lotPhotoItemGradeRepository.SaveChanges();
-				}
-			}
+            }
 
             return _mapper.Map<LotItemModel, LotItemDto>(newLotItem);
         }

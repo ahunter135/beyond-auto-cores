@@ -214,7 +214,7 @@ export class LotListPage implements OnInit {
     loading.dismiss();
   }
 
-  async removeItemFullness(id: string | number) {
+  async removeItemFullness(id: string | number, lotItemId: number) {
     const confirm = await this.presentConfirmationDelete();
 
     if (confirm === 'confirm') {
@@ -226,6 +226,11 @@ export class LotListPage implements OnInit {
         this.lotItemsFullness = this.lotItemsFullness.filter(
           (item) => item.id !== id
         );
+        
+        this.lotItem2Fullness = this.lotItem2Fullness[lotItemId].filter(
+          (item) => item.id != id
+        );
+
 
         if (!this.lotItemsFullness.length) {
           this.fetchLot();
@@ -242,7 +247,7 @@ export class LotListPage implements OnInit {
     const qty = increment ? item.qty + 1 : item.qty - 1;
 
     if (qty < 1) {
-      this.removeItemFullness(item.id as string);
+      this.removeItemFullness(item.id as string, item.id as number);
     } else {
       item.qty = qty;
       this.lotItemsFullness = this.lotItemsFullness.map((lotItem) =>
@@ -297,7 +302,6 @@ export class LotListPage implements OnInit {
 
     await modal.present();
     const { data, role } = await modal.onWillDismiss();
-    console.log(data);
 
     if (role === 'submit') {
       if (this.lot.isSubmitted) {

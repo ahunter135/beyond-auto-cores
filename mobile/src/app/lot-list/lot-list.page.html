@@ -45,7 +45,7 @@
             <ion-icon class="subtract" src="./assets/icon/minus-qty.svg" (click)="updateQtyItemFullness(lotItemFullness, false)"></ion-icon>
             <p class="qty bold">Qty: {{ lotItemFullness.qty || 0 }}</p>
             <ion-icon class="add" src="./assets/icon/add-qty.svg" (click)="updateQtyItemFullness(lotItemFullness, true)" *ngIf="!lot.isSubmitted"></ion-icon>
-            <ion-icon class="trash" name="trash" color="danger" (click)="removeItemFullness(lotItemFullness.id)" *ngIf="!lot.isSubmitted"></ion-icon>
+            <ion-icon class="trash" name="trash" color="danger" (click)="removeItemFullness(lotItemFullness.id, lotItem.id)" *ngIf="!lot.isSubmitted"></ion-icon>
           </div>
           <ion-button class="bold" expand="block" (click)="openModalFullness()" *ngIf="!lot.isSubmitted">Add New Fullness</ion-button>
         </div>

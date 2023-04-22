@@ -522,7 +522,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         {
             string siteLogo = siteDomain + $"/media/brand/{logoName}";
 
-            string htmlFullBody = System.IO.File.ReadAllText(@"HtmlTemplates\GradeCreditConfirmation.html");
+            string htmlFullBody = System.IO.File.ReadAllText(@"HtmlTemplates/GradeCreditConfirmation.html");
             htmlFullBody = String.Format(@htmlFullBody, siteLogo, numberOfGradeCredit.ToString());
 
             return htmlFullBody;

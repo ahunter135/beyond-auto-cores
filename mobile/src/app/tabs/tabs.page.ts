@@ -15,6 +15,18 @@ export class TabsPage implements OnInit {
   constructor(private _router: Router) {}
 
   ngOnInit() {
+    
+    this._router.events.pipe(
+      filter(e => e instanceof NavigationEnd),
+      takeUntil(this.closed$)
+    ).subscribe(event => {
+      console.log(event['url'])
+      if (event['url'] === '/tabs/tabs/inventory/lot-list') {
+        this.showTabs = false;
+      } else {
+        this.showTabs = true;
+      }
+    });
   }
 
   onSelectTab(tab: string): void {

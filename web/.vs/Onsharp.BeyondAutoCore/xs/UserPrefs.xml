@@ -8,8 +8,10 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="Onsharp.BeyondAutoCore" expanded="True" selected="True">
-            <Node name="API" expanded="True" />
+          <Node name="Onsharp.BeyondAutoCore" expanded="True">
+            <Node name="API" expanded="True">
+              <Node name="Onsharp.BeyondAutoCore.API" selected="True" />
+            </Node>
             <Node name="UI" expanded="True" />
           </Node>
         </State>

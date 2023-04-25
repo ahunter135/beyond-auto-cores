@@ -4,26 +4,26 @@
     <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
     <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
     <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
-    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
-    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\Carter\.nuget\packages\</NuGetPackageFolders>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/austinhunter/.nuget/packages/</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/austinhunter/.nuget/packages/</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
     <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <SourceRoot Include="C:\Users\Carter\.nuget\packages\" />
+    <SourceRoot Include="/Users/austinhunter/.nuget/packages/" />
   </ItemGroup>
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <Import Project="$(NuGetPackageRoot)usync.expansions.core\10.2.0\buildTransitive\uSync.Expansions.Core.props" Condition="Exists('$(NuGetPackageRoot)usync.expansions.core\10.2.0\buildTransitive\uSync.Expansions.Core.props')" />
-    <Import Project="$(NuGetPackageRoot)usync.snapshots\10.2.0\buildTransitive\uSync.Snapshots.props" Condition="Exists('$(NuGetPackageRoot)usync.snapshots\10.2.0\buildTransitive\uSync.Snapshots.props')" />
-    <Import Project="$(NuGetPackageRoot)usync.publisher\10.2.0\buildTransitive\uSync.Publisher.props" Condition="Exists('$(NuGetPackageRoot)usync.publisher\10.2.0\buildTransitive\uSync.Publisher.props')" />
-    <Import Project="$(NuGetPackageRoot)usync.peopleedition\10.2.0\buildTransitive\uSync.PeopleEdition.props" Condition="Exists('$(NuGetPackageRoot)usync.peopleedition\10.2.0\buildTransitive\uSync.PeopleEdition.props')" />
-    <Import Project="$(NuGetPackageRoot)usync.exporter\10.2.0\buildTransitive\uSync.Exporter.props" Condition="Exists('$(NuGetPackageRoot)usync.exporter\10.2.0\buildTransitive\uSync.Exporter.props')" />
-    <Import Project="$(NuGetPackageRoot)usync.backoffice.assets\10.2.1\buildTransitive\uSync.Backoffice.Assets.props" Condition="Exists('$(NuGetPackageRoot)usync.backoffice.assets\10.2.1\buildTransitive\uSync.Backoffice.Assets.props')" />
-    <Import Project="$(NuGetPackageRoot)umbraco.cms.staticassets\10.2.0\buildTransitive\Umbraco.Cms.StaticAssets.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms.staticassets\10.2.0\buildTransitive\Umbraco.Cms.StaticAssets.props')" />
-    <Import Project="$(NuGetPackageRoot)umbraco.cms\10.2.0\buildTransitive\Umbraco.Cms.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms\10.2.0\buildTransitive\Umbraco.Cms.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.expansions.core/10.2.0/buildTransitive/uSync.Expansions.Core.props" Condition="Exists('$(NuGetPackageRoot)usync.expansions.core/10.2.0/buildTransitive/uSync.Expansions.Core.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.snapshots/10.2.0/buildTransitive/uSync.Snapshots.props" Condition="Exists('$(NuGetPackageRoot)usync.snapshots/10.2.0/buildTransitive/uSync.Snapshots.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.publisher/10.2.0/buildTransitive/uSync.Publisher.props" Condition="Exists('$(NuGetPackageRoot)usync.publisher/10.2.0/buildTransitive/uSync.Publisher.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.peopleedition/10.2.0/buildTransitive/uSync.PeopleEdition.props" Condition="Exists('$(NuGetPackageRoot)usync.peopleedition/10.2.0/buildTransitive/uSync.PeopleEdition.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.exporter/10.2.0/buildTransitive/uSync.Exporter.props" Condition="Exists('$(NuGetPackageRoot)usync.exporter/10.2.0/buildTransitive/uSync.Exporter.props')" />
+    <Import Project="$(NuGetPackageRoot)usync.backoffice.assets/10.2.1/buildTransitive/uSync.Backoffice.Assets.props" Condition="Exists('$(NuGetPackageRoot)usync.backoffice.assets/10.2.1/buildTransitive/uSync.Backoffice.Assets.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.cms.staticassets/10.2.0/buildTransitive/Umbraco.Cms.StaticAssets.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms.staticassets/10.2.0/buildTransitive/Umbraco.Cms.StaticAssets.props')" />
+    <Import Project="$(NuGetPackageRoot)umbraco.cms/10.2.0/buildTransitive/Umbraco.Cms.props" Condition="Exists('$(NuGetPackageRoot)umbraco.cms/10.2.0/buildTransitive/Umbraco.Cms.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
-    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">C:\Users\Carter\.nuget\packages\microsoft.codeanalysis.analyzers\3.3.2</PkgMicrosoft_CodeAnalysis_Analyzers>
-    <PkgLucene_Net Condition=" '$(PkgLucene_Net)' == '' ">C:\Users\Carter\.nuget\packages\lucene.net\4.8.0-beta00016</PkgLucene_Net>
+    <PkgMicrosoft_CodeAnalysis_Analyzers Condition=" '$(PkgMicrosoft_CodeAnalysis_Analyzers)' == '' ">/Users/austinhunter/.nuget/packages/microsoft.codeanalysis.analyzers/3.3.2</PkgMicrosoft_CodeAnalysis_Analyzers>
+    <PkgLucene_Net Condition=" '$(PkgLucene_Net)' == '' ">/Users/austinhunter/.nuget/packages/lucene.net/4.8.0-beta00016</PkgLucene_Net>
   </PropertyGroup>
 </Project>

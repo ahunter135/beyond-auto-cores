@@ -66,11 +66,11 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
                 var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id);
-
+                Console.WriteLine(subscription);
                 subscriptionId = subscription.Id;
-                paymentIntentId = subscription.LatestInvoice.PaymentIntent.Id;
-                clientSecret = subscription.LatestInvoice.PaymentIntent.ClientSecret;
-                paymentStatus = subscription.LatestInvoice.PaymentIntent.Status;
+                //paymentIntentId = subscription.LatestInvoice.PaymentIntent.Id;
+                //clientSecret = subscription.LatestInvoice.PaymentIntent.ClientSecret;
+                //paymentStatus = subscription.LatestInvoice.PaymentIntent.Status;
             }
             else
             {
@@ -79,28 +79,34 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 paymentIntentId = paymentIntentResponse.Id;
                 clientSecret = paymentIntentResponse.ClientSecret;
                 paymentStatus = paymentIntentResponse.Status;
+
+                var newPayment = new CreatePaymentCommand();
+
+                if (!string.IsNullOrWhiteSpace(subscriptionId))
+                    newPayment.SubscriptionId = subscriptionId;
+
+                newPayment.LinkId = userRegistrationModel.Id;
+                newPayment.PaymentType = PaymentTypeEnum.Registration;
+                newPayment.Amount = priceInfo.Amount;
+                newPayment.Currency = priceInfo.Currency;
+
+                newPayment.CustomerId = customerReponse.Id;
+                newPayment.PaymentIntentId = paymentIntentId;
+                newPayment.ClientSecret = clientSecret;
+                newPayment.Status = paymentStatus;
+
+                await _paymentService.Create(newPayment);
             }
 
-            var newPayment = new CreatePaymentCommand();
-
-            if (!string.IsNullOrWhiteSpace(subscriptionId))
-                newPayment.SubscriptionId = subscriptionId;
-
-            newPayment.LinkId = userRegistrationModel.Id;
-            newPayment.PaymentType = PaymentTypeEnum.Registration;
-            newPayment.Amount = priceInfo.Amount;
-            newPayment.Currency = priceInfo.Currency;
-
-            newPayment.CustomerId = customerReponse.Id;
-            newPayment.PaymentIntentId = paymentIntentId;
-            newPayment.ClientSecret = clientSecret;
-            newPayment.Status = paymentStatus;
-
-            await _paymentService.Create(newPayment);
+            
 
             var result = _mapper.Map<RegistrationModel, RegistrationDto>(userRegistrationModel);
 
-            result.ClientSecret = clientSecret;
+            if (!String.IsNullOrWhiteSpace(clientSecret)) {
+                result.ClientSecret = clientSecret;
+            }
+
+            result.StripeCustomerId = customerReponse.Id;
 
             result.Success = true;
             result.Message = "Registration successfully saved.";
@@ -265,8 +271,16 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (userRegistration != null)
             {
                 var confirmPaymentCommand = new PaymentConfirmCommand();
-                confirmPaymentCommand.Status = confirmCommand.Status;
-                confirmPaymentCommand.PaymentIntentId = confirmCommand.PaymentIntentId;
+                //if (confirmCommand.Status != null && confirmCommand.PaymentIntentId != null) {
+                    //confirmPaymentCommand.Status = confirmCommand.Status;
+                    //confirmPaymentCommand.PaymentIntentId = confirmCommand.PaymentIntentId;
+               // }
+                if (confirmCommand.Customer != null) {
+                    confirmPaymentCommand.Customer = confirmCommand.Customer;
+                }
+                if (confirmCommand.Token != null) {
+                    confirmPaymentCommand.Token = confirmCommand.Token;
+                }
 
                 await _paymentService.PaymentConfirm(confirmPaymentCommand);
 

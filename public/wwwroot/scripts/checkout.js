@@ -39,6 +39,7 @@ async function initialize() {
 }
 
 async function postPayment() {
+	console.log(stripe.customers);
 	let data = {
 		"userName": $("#email").val(),
 		"firstName": $("#firstname").val(),
@@ -69,13 +70,14 @@ async function postPayment() {
 		return false;
 	}
 
-	if(document.querySelector("#payment-message").textContent) {
+	if (document.querySelector("#payment-message").textContent) {
 		validationError(document.querySelector("#payment-message").textContent);
 		return false;
 	}
 
 	confirmModal(null, "Confirm", `You are about to submit subscription application.`)
 		.then(res => {
+			//ttps://eeb5-47-13-38-235.ngrok-free.app/api/v1/registrations
 			let postUrl = `${API_URL}/registrations`;
 			const btnElement = '#pay-button';
 			loadingButton(btnElement, 'Loading...', true);
@@ -96,7 +98,8 @@ async function postPayment() {
 					if (response.success === 1) {
 						let clientSecret = response.data.clientSecret;
 						let registrationCode = response.data.registrationCode;
-						confirmPayment(registrationCode, clientSecret, btnElement);
+						let customer = response.data.stripeCustomerId
+						confirmPayment(registrationCode, clientSecret, btnElement, customer);
 					} else {
 						_swal.fire(
 							'Error!',
@@ -124,7 +127,7 @@ async function postPaymentPhotoGrades() {
 		return false;
 	}
 
-	if(document.querySelector("#payment-message").textContent) {
+	if (document.querySelector("#payment-message").textContent) {
 		validationError(document.querySelector("#payment-message").textContent);
 		return false;
 	}
@@ -234,30 +237,55 @@ async function confirmGradePayment(clientSecret, buttonEl) {
 	_swalMain.close();
 }
 
-async function confirmPayment(registrationCode, clientSecret, btnElement) {
+async function confirmPayment(registrationCode, clientSecret, btnElement, customer) {
 	let _swalMain = Swal;
-	const result = await stripe.confirmCardPayment(clientSecret, {
-		receipt_email: document.getElementById('email').value,
-		payment_method: {
-			card: cardelement
+	let token;
+	if (clientSecret) {
+		const result = await stripe.confirmCardPayment(clientSecret, {
+			receipt_email: document.getElementById('email').value,
+			payment_method: {
+				card: cardelement
+			}
+		});
+	} else {
+		token = await stripe.createToken(cardelement);
+	}
+	let data;
+	console.log(clientSecret);
+	if (clientSecret) {
+		if (!result || !result.paymentIntent || !result.paymentIntent.id) {
+			_swalMain.close();
+			loadingButton(btnElement, 'SUBMIT', false);
+			validationError(
+				'Something went wrong processing your payment.',
+				'Failed Payment Process.')
+			return false;
 		}
-	});
+		data = {
+			"registrationCode": registrationCode,
+			"paymentIntentId": result.paymentIntent.id,
+			"status": result.paymentIntent.status
+		}
+	} else {
+		try {
+			data = {
+				"registrationCode": registrationCode,
+				"customer": customer,
+				"token": token.token.id
+			}
+		} catch (error) {
+			console.log(error);
+			loadingButton(btnElement, 'SUBMIT', false)
+			_swalMain.close();
+			validationError(
+				'Something went wrong processing your payment. Kindly check card details or make sure you have suffecient funds.',
+				'Failed Payment Process.')
+			return false;
+		}
 
-	if(!result || !result.paymentIntent || !result.paymentIntent.id) {
-		_swalMain.close();
-		loadingButton(btnElement, 'SUBMIT', false);
-		validationError(
-			'Something went wrong processing your payment.',
-			'Failed Payment Process.')
-		return false;
 	}
-
-	let data = {
-		"registrationCode": registrationCode,
-		"paymentIntentId": result.paymentIntent.id,
-		"status": result.paymentIntent.status
-	}
-
+	console.log(data);
+	//https://eeb5-47-13-38-235.ngrok-free.app/api/v1/registrations/confirm-payment
 	let postUrl = `${API_URL}/registrations/confirm-payment`;
 
 	jQuery.ajax({

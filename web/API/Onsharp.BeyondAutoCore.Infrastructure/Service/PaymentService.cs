@@ -167,13 +167,26 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<bool> PaymentConfirm(PaymentConfirmCommand confirmCommand)
         {
-            var paymentInfo = await _paymentsRepository.GetPaymentByIntent(confirmCommand.PaymentIntentId);
-            if (paymentInfo != null)
-            {
-                paymentInfo.Status = confirmCommand.Status;
-                paymentInfo.PaymentIntentId = confirmCommand.PaymentIntentId;
-                _paymentsRepository.Update(paymentInfo);
-                _paymentsRepository.SaveChanges();
+            if (confirmCommand.PaymentIntentId != null) {
+                var paymentInfo = await _paymentsRepository.GetPaymentByIntent(confirmCommand.PaymentIntentId);
+                if (paymentInfo != null)
+                {
+                    paymentInfo.Status = confirmCommand.Status;
+                    paymentInfo.PaymentIntentId = confirmCommand.PaymentIntentId;
+                    _paymentsRepository.Update(paymentInfo);
+                    _paymentsRepository.SaveChanges();
+
+                    return true;
+                }
+
+                return false;
+            } else {
+                var options = new CardCreateOptions
+                {
+                    Source = confirmCommand.Token,
+                };
+                var service = new CardService();
+                service.Create(confirmCommand.Customer, options);
 
                 return true;
             }

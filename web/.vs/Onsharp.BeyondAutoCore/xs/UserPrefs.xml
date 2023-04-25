@@ -1,5 +1,5 @@
 ﻿<Properties StartupConfiguration="{8C618381-E959-4CD5-BC76-AD1F3BE0EF2B}|Default">
-  <MonoDevelop.Ide.ItemProperties.UI.Onsharp.BeyondAutoCore.Web PreferredExecutionTarget="/Applications/Brave Browser.app" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,9 +15,9 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.UI.Onsharp.BeyondAutoCore.Web PreferredExecutionTarget="/Applications/Brave Browser.app" />
 </Properties>

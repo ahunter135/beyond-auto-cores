@@ -1,12 +1,16 @@
 {
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true
+  },
   "profiles": {
     "BAC": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:9326",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:9326"
+      }
     },
     "WSL": {
       "commandName": "WSL2",
@@ -18,9 +22,5 @@
       },
       "distributionName": ""
     }
-  },
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true
   }
 }

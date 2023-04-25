@@ -271,7 +271,9 @@ async function confirmPayment(registrationCode, clientSecret, btnElement, custom
 			data = {
 				"registrationCode": registrationCode,
 				"customer": customer,
-				"token": token.token.id
+				"token": token.token.id,
+				"paymentIntentId": "null",
+				"status": "null"
 			}
 		} catch (error) {
 			console.log(error);

@@ -12,6 +12,7 @@ namespace Onsharp.BeyondAutoCore.Domain.Model
         public string? RegistrationCode { get; set; }
         public string StripeCustomerId { get; set; }
         public string? Company { get; set; }
+        public string? SubscriptionId { get; set; }
         public SubscriptionTypeEnum Subscription { get; set; }
         public bool SubscriptionIsCancel { get; set; }
         public string? AffiliateCode { get; set; }

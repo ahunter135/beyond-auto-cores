@@ -55,9 +55,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             userRegistrationModel.CreatedBy = this.CurrentUserId();
             userRegistrationModel.CreatedOn = DateTime.UtcNow;
 
-            _userRegistrationRepository.Add(userRegistrationModel);
-            _userRegistrationRepository.SaveChanges();
-
             string subscriptionId = "";
             string paymentIntentId = "";
             string clientSecret = "";
@@ -66,8 +63,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
                 var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id);
-                Console.WriteLine(subscription);
+
                 subscriptionId = subscription.Id;
+                userRegistrationModel.SubscriptionId = subscriptionId;
                 //paymentIntentId = subscription.LatestInvoice.PaymentIntent.Id;
                 //clientSecret = subscription.LatestInvoice.PaymentIntent.ClientSecret;
                 //paymentStatus = subscription.LatestInvoice.PaymentIntent.Status;
@@ -97,6 +95,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
                 await _paymentService.Create(newPayment);
             }
+            _userRegistrationRepository.Add(userRegistrationModel);
+            _userRegistrationRepository.SaveChanges();
 
             
 
@@ -124,7 +124,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 return new RegistrationDto() { Success = false, Message = "Unable to change subscription since it was already set to lifetime." };
             }
 
-            var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
+            //var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
 
             if ((int)userRegistration.Subscription != newSubscription)
             {
@@ -139,10 +139,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     // We should delete the current subscription then create new paymentIntent
                     // Update of registration is in ConfirmOneTimeSubscription() method. 
 
-                    await _paymentService.CancelSubscription(paymentInfo.SubscriptionId);
-                    await _paymentService.Delete(paymentInfo.Id);
+                    await _paymentService.CancelSubscription(userRegistration.SubscriptionId);
+                    //await _paymentService.Delete(paymentInfo.Id);
 
-                    var paymentIntentResponse = await _paymentService.CreatePaymentIntent(newPriceInfo.Amount, newPriceInfo.Currency, newPriceInfo.Description, paymentInfo.CustomerId);
+                    var paymentIntentResponse = await _paymentService.CreatePaymentIntent(newPriceInfo.Amount, newPriceInfo.Currency, newPriceInfo.Description, userRegistration.StripeCustomerId);
 
                     string paymentIntentId = paymentIntentResponse.Id;
                     string clientSecret = paymentIntentResponse.ClientSecret;
@@ -155,7 +155,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     newPayment.Amount = newPriceInfo.Amount;
                     newPayment.Currency = newPriceInfo.Currency;
 
-                    newPayment.CustomerId = paymentInfo.CustomerId;
+                    newPayment.CustomerId = userRegistration.StripeCustomerId;
                     newPayment.PaymentIntentId = paymentIntentId;
                     newPayment.ClientSecret = clientSecret;
                     newPayment.Status = paymentStatus;
@@ -170,7 +170,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 {
 
                     // If payment still recurring or subscription
-                    await _paymentService.UpdateSubscription(paymentInfo.SubscriptionId, newPriceInfo);
+                    await _paymentService.UpdateSubscription(userRegistration.SubscriptionId, newPriceInfo);
 
                     userRegistration.Subscription = (SubscriptionTypeEnum)newSubscription;
                     _userRegistrationRepository.Update(userRegistration);
@@ -225,9 +225,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 return new ResponseDto() { Success = 0, Message = "Unable to find registration." };
             }
 
-            var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
-            if (paymentInfo != null && !string.IsNullOrWhiteSpace(paymentInfo.SubscriptionId))
-                await _paymentService.CancelSubscription(paymentInfo.SubscriptionId);
+            //var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
+            if (!string.IsNullOrWhiteSpace(userRegistration.SubscriptionId))
+                await _paymentService.CancelSubscription(userRegistration.SubscriptionId);
 
             userRegistration.SubscriptionIsCancel = !enable;
             _userRegistrationRepository.Update(userRegistration);
@@ -271,10 +271,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (userRegistration != null)
             {
                 var confirmPaymentCommand = new PaymentConfirmCommand();
-                //if (confirmCommand.Status != null && confirmCommand.PaymentIntentId != null) {
-                    //confirmPaymentCommand.Status = confirmCommand.Status;
-                    //confirmPaymentCommand.PaymentIntentId = confirmCommand.PaymentIntentId;
-               // }
+                if (confirmCommand.Status != "null" && confirmCommand.PaymentIntentId != "null") {
+                    confirmPaymentCommand.Status = confirmCommand.Status;
+                    confirmPaymentCommand.PaymentIntentId = confirmCommand.PaymentIntentId;
+                }
                 if (confirmCommand.Customer != null) {
                     confirmPaymentCommand.Customer = confirmCommand.Customer;
                 }

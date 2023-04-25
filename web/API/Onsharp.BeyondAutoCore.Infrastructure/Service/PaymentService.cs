@@ -90,6 +90,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                         },
                 PaymentSettings = paymentSettings,
                 PaymentBehavior = "default_incomplete",
+                TrialEnd = DateTime.UtcNow.AddDays(5),
             };
 
             subscriptionOptions.AddExpand("latest_invoice.payment_intent");

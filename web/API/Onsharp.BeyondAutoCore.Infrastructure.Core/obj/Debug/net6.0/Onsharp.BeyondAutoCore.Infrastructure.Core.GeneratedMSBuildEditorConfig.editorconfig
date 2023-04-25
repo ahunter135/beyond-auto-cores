@@ -8,4 +8,4 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Onsharp.BeyondAutoCore.Infrastructure.Core
-build_property.ProjectDir = /Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.Infrastructure.Core/
+build_property.ProjectDir = C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure.Core\

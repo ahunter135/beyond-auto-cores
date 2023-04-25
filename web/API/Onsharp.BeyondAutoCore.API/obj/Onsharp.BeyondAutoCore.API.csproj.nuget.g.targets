@@ -2,6 +2,7 @@
 <Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.5/build/Microsoft.Extensions.ApiDescription.Server.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.5/build/Microsoft.Extensions.ApiDescription.Server.targets')" />
+    <Import Project="$(NuGetPackageRoot)sentry/3.30.0/buildTransitive/Sentry.targets" Condition="Exists('$(NuGetPackageRoot)sentry/3.30.0/buildTransitive/Sentry.targets')" />
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.logging.abstractions/6.0.1/build/Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.logging.abstractions/6.0.1/build/Microsoft.Extensions.Logging.Abstractions.targets')" />
     <Import Project="$(NuGetPackageRoot)haukcode.wkhtmltopdfdotnet/1.5.86/build/Haukcode.WkHtmlToPdfDotNet.targets" Condition="Exists('$(NuGetPackageRoot)haukcode.wkhtmltopdfdotnet/1.5.86/build/Haukcode.WkHtmlToPdfDotNet.targets')" />
   </ImportGroup>

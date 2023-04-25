@@ -10,7 +10,14 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Onsharp.BeyondAutoCore.API.Middlewares;
 using Onsharp.BeyondAutoCore.Infrastructure;
+using Sentry;
 
+using var _ = SentrySdk.Init(o =>
+{
+    o.Debug = false; // To see SDK logs on the console
+    o.Dsn = "https://76a59f099f224e3dacb64077d19824af@o4505059612033024.ingest.sentry.io/4505060822220800";
+    o.EnableTracing = true;
+});
 
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;

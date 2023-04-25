@@ -56,7 +56,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="RndUsr0.DinkToPdf" Version="1.0.9-20190207.1" />
-    <PackageReference Include="Sentry.AspNetCore" Version="3.21.0" />
+    <PackageReference Include="Sentry.AspNetCore" Version="3.30.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 

@@ -90,7 +90,7 @@
             },
             "Sentry.AspNetCore": {
               "target": "Package",
-              "version": "[3.21.0, )"
+              "version": "[3.30.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

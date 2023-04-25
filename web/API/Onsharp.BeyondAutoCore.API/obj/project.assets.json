@@ -1210,7 +1210,7 @@
           }
         }
       },
-      "Sentry/3.21.0": {
+      "Sentry/3.30.0": {
         "type": "package",
         "compile": {
           "lib/net6.0/Sentry.dll": {
@@ -1223,13 +1223,13 @@
           }
         },
         "build": {
-          "buildTransitive/Sentry.props": {}
+          "buildTransitive/Sentry.targets": {}
         }
       },
-      "Sentry.AspNetCore/3.21.0": {
+      "Sentry.AspNetCore/3.30.0": {
         "type": "package",
         "dependencies": {
-          "Sentry.Extensions.Logging": "3.21.0"
+          "Sentry.Extensions.Logging": "3.30.0"
         },
         "compile": {
           "lib/net6.0/Sentry.AspNetCore.dll": {
@@ -1245,12 +1245,12 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Sentry.Extensions.Logging/3.21.0": {
+      "Sentry.Extensions.Logging/3.30.0": {
         "type": "package",
         "dependencies": {
           "Microsoft.Extensions.Http": "6.0.0",
           "Microsoft.Extensions.Logging.Configuration": "6.0.0",
-          "Sentry": "3.21.0"
+          "Sentry": "3.30.0"
         },
         "compile": {
           "lib/net6.0/Sentry.Extensions.Logging.dll": {
@@ -3816,31 +3816,27 @@
         "version.txt"
       ]
     },
-    "Sentry/3.21.0": {
-      "sha512": "xoIh3CbplIhSPnelz2M++f5H0yAZqPpYvE41wnC4XbXacq68i1HPOF815fpcnvxtQNzA/diI78qO/daaCOoxWg==",
+    "Sentry/3.30.0": {
+      "sha512": "BfhnWf/NbMW+6RVrNZ8bH40YG6QSb01Dt50/BbPIb0W23Wya0tb8QSyX2990nU3DIqrhxqENajgBNDEo868CNw==",
       "type": "package",
-      "path": "sentry/3.21.0",
+      "path": "sentry/3.30.0",
+      "hasTools": true,
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "build/Sentry.props",
-        "buildTransitive/Sentry.props",
+        "build/Sentry.targets",
+        "buildTransitive/Sentry.targets",
         "lib/net461/Sentry.dll",
         "lib/net461/Sentry.xml",
         "lib/net5.0/Sentry.dll",
         "lib/net5.0/Sentry.xml",
-        "lib/net6.0-android31.0/Sentry.aar",
         "lib/net6.0-android31.0/Sentry.dll",
         "lib/net6.0-android31.0/Sentry.xml",
-        "lib/net6.0-android31.0/sentry-android-core-6.3.0.aar",
-        "lib/net6.0-android31.0/sentry-android-ndk-6.3.0.aar",
-        "lib/net6.0-ios15.4/Sentry.dll",
-        "lib/net6.0-ios15.4/Sentry.resources.zip",
-        "lib/net6.0-ios15.4/Sentry.xml",
-        "lib/net6.0-maccatalyst15.4/Sentry.dll",
-        "lib/net6.0-maccatalyst15.4/Sentry.resources.zip",
-        "lib/net6.0-maccatalyst15.4/Sentry.xml",
+        "lib/net6.0-ios16.1/Sentry.dll",
+        "lib/net6.0-ios16.1/Sentry.xml",
+        "lib/net6.0-maccatalyst16.1/Sentry.dll",
+        "lib/net6.0-maccatalyst16.1/Sentry.xml",
         "lib/net6.0/Sentry.dll",
         "lib/net6.0/Sentry.xml",
         "lib/netcoreapp3.0/Sentry.dll",
@@ -3850,14 +3846,21 @@
         "lib/netstandard2.1/Sentry.dll",
         "lib/netstandard2.1/Sentry.xml",
         "sentry-nuget.png",
-        "sentry.3.21.0.nupkg.sha512",
-        "sentry.nuspec"
+        "sentry.3.30.0.nupkg.sha512",
+        "sentry.nuspec",
+        "tools/sentry-cli-Darwin-arm64",
+        "tools/sentry-cli-Darwin-x86_64",
+        "tools/sentry-cli-Linux-aarch64",
+        "tools/sentry-cli-Linux-i686",
+        "tools/sentry-cli-Linux-x86_64",
+        "tools/sentry-cli-Windows-i686.exe",
+        "tools/sentry-cli-Windows-x86_64.exe"
       ]
     },
-    "Sentry.AspNetCore/3.21.0": {
-      "sha512": "hf5dFREug6xfCXNHr+pbK/JZ9I+0Rp+Af0GQiB46N7m6LuJLZ2TZCmXb+Glw0OJFmZZTZMROtCdi80lkct39Gg==",
+    "Sentry.AspNetCore/3.30.0": {
+      "sha512": "EpXvQQ6UbOQkyOwL0TNjXBBO0sK+XRETf8Oq6EdtmXdQuTfaLC48kqSXk3pxugBCqIxU/kT7fXd12rPkFG9EMA==",
       "type": "package",
-      "path": "sentry.aspnetcore/3.21.0",
+      "path": "sentry.aspnetcore/3.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3871,14 +3874,14 @@
         "lib/netstandard2.0/Sentry.AspNetCore.dll",
         "lib/netstandard2.0/Sentry.AspNetCore.xml",
         "sentry-nuget.png",
-        "sentry.aspnetcore.3.21.0.nupkg.sha512",
+        "sentry.aspnetcore.3.30.0.nupkg.sha512",
         "sentry.aspnetcore.nuspec"
       ]
     },
-    "Sentry.Extensions.Logging/3.21.0": {
-      "sha512": "Hon9s9UflOWHKqE2rpqkUfB/oawtkHECYe+I2s8fBz/ZPuZt4dBWmL6fLnDuBbPc1FkqtCtgfz3XSg29i8wAog==",
+    "Sentry.Extensions.Logging/3.30.0": {
+      "sha512": "tykAR21+TvzGT4/YnWB3HDKFQ0Vv+/9t//r/QDCyWN/9lzDseShXsK98Th66l/b4b1wOdYgDRfH3Dj0b6RikhQ==",
       "type": "package",
-      "path": "sentry.extensions.logging/3.21.0",
+      "path": "sentry.extensions.logging/3.30.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -3892,7 +3895,7 @@
         "lib/netstandard2.0/Sentry.Extensions.Logging.dll",
         "lib/netstandard2.0/Sentry.Extensions.Logging.xml",
         "sentry-nuget.png",
-        "sentry.extensions.logging.3.21.0.nupkg.sha512",
+        "sentry.extensions.logging.3.30.0.nupkg.sha512",
         "sentry.extensions.logging.nuspec"
       ]
     },
@@ -5964,7 +5967,7 @@
       "Microsoft.EntityFrameworkCore.Design >= 6.0.7",
       "Onsharp.BeyondAutoCore.Infrastructure >= 1.0.0",
       "RndUsr0.DinkToPdf >= 1.0.9-20190207.1",
-      "Sentry.AspNetCore >= 3.21.0",
+      "Sentry.AspNetCore >= 3.30.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
   },
@@ -6057,7 +6060,7 @@
           },
           "Sentry.AspNetCore": {
             "target": "Package",
-            "version": "[3.21.0, )"
+            "version": "[3.30.0, )"
           },
           "Swashbuckle.AspNetCore": {
             "target": "Package",

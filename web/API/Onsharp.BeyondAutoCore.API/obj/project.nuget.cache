@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "zxY2w1vaIQY24Nl6n6fFMPiPieRSr8m/f/ZLo/6ntE9j/vPMCfzXIoKyZGcgH2CtL9w4WsQjj5k5Qp/z2mcMnQ==",
+  "dgSpecHash": "thz4ud8iD143AobzkcxH6HuJPEiprIwaU9PLPMnYd5eOW7WTqxGfBW492oAXj0KEE4FJgGRnjObQ4udna6GjWw==",
   "success": true,
   "projectFilePath": "/Users/austinhunter/Documents/upwork/BAC/web/API/Onsharp.BeyondAutoCore.API/Onsharp.BeyondAutoCore.API.csproj",
   "expectedPackageFiles": [
@@ -72,9 +72,9 @@
     "/Users/austinhunter/.nuget/packages/runtime.win-arm64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-arm64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/austinhunter/.nuget/packages/runtime.win-x64.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x64.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
     "/Users/austinhunter/.nuget/packages/runtime.win-x86.runtime.native.system.data.sqlclient.sni/4.4.0/runtime.win-x86.runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
-    "/Users/austinhunter/.nuget/packages/sentry/3.21.0/sentry.3.21.0.nupkg.sha512",
-    "/Users/austinhunter/.nuget/packages/sentry.aspnetcore/3.21.0/sentry.aspnetcore.3.21.0.nupkg.sha512",
-    "/Users/austinhunter/.nuget/packages/sentry.extensions.logging/3.21.0/sentry.extensions.logging.3.21.0.nupkg.sha512",
+    "/Users/austinhunter/.nuget/packages/sentry/3.30.0/sentry.3.30.0.nupkg.sha512",
+    "/Users/austinhunter/.nuget/packages/sentry.aspnetcore/3.30.0/sentry.aspnetcore.3.30.0.nupkg.sha512",
+    "/Users/austinhunter/.nuget/packages/sentry.extensions.logging/3.30.0/sentry.extensions.logging.3.30.0.nupkg.sha512",
     "/Users/austinhunter/.nuget/packages/stripe.net/40.10.0/stripe.net.40.10.0.nupkg.sha512",
     "/Users/austinhunter/.nuget/packages/swashbuckle.aspnetcore/6.4.0/swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
     "/Users/austinhunter/.nuget/packages/swashbuckle.aspnetcore.annotations/6.3.2/swashbuckle.aspnetcore.annotations.6.3.2.nupkg.sha512",

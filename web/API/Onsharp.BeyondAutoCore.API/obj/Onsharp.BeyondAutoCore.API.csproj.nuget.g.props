@@ -7,7 +7,7 @@
     <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">/Users/austinhunter/.nuget/packages/</NuGetPackageRoot>
     <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">/Users/austinhunter/.nuget/packages/</NuGetPackageFolders>
     <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
-    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.4.0</NuGetToolVersion>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.5.0</NuGetToolVersion>
   </PropertyGroup>
   <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <SourceRoot Include="/Users/austinhunter/.nuget/packages/" />
@@ -15,12 +15,12 @@
   <ImportGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <Import Project="$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.5/build/Microsoft.Extensions.ApiDescription.Server.props" Condition="Exists('$(NuGetPackageRoot)microsoft.extensions.apidescription.server/6.0.5/build/Microsoft.Extensions.ApiDescription.Server.props')" />
     <Import Project="$(NuGetPackageRoot)swashbuckle.aspnetcore/6.4.0/build/Swashbuckle.AspNetCore.props" Condition="Exists('$(NuGetPackageRoot)swashbuckle.aspnetcore/6.4.0/build/Swashbuckle.AspNetCore.props')" />
-    <Import Project="$(NuGetPackageRoot)sentry/3.21.0/buildTransitive/Sentry.props" Condition="Exists('$(NuGetPackageRoot)sentry/3.21.0/buildTransitive/Sentry.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore/6.0.7/buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore/6.0.7/buildTransitive/net6.0/Microsoft.EntityFrameworkCore.props')" />
     <Import Project="$(NuGetPackageRoot)microsoft.entityframeworkcore.design/6.0.7/build/net6.0/Microsoft.EntityFrameworkCore.Design.props" Condition="Exists('$(NuGetPackageRoot)microsoft.entityframeworkcore.design/6.0.7/build/net6.0/Microsoft.EntityFrameworkCore.Design.props')" />
   </ImportGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgMicrosoft_Extensions_ApiDescription_Server Condition=" '$(PkgMicrosoft_Extensions_ApiDescription_Server)' == '' ">/Users/austinhunter/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5</PkgMicrosoft_Extensions_ApiDescription_Server>
+    <PkgSentry Condition=" '$(PkgSentry)' == '' ">/Users/austinhunter/.nuget/packages/sentry/3.30.0</PkgSentry>
     <PkgAWSSDK_Core Condition=" '$(PkgAWSSDK_Core)' == '' ">/Users/austinhunter/.nuget/packages/awssdk.core/3.7.12.19</PkgAWSSDK_Core>
     <PkgAWSSDK_S3 Condition=" '$(PkgAWSSDK_S3)' == '' ">/Users/austinhunter/.nuget/packages/awssdk.s3/3.7.9.37</PkgAWSSDK_S3>
     <PkgHangfire_SqlServer Condition=" '$(PkgHangfire_SqlServer)' == '' ">/Users/austinhunter/.nuget/packages/hangfire.sqlserver/1.7.31</PkgHangfire_SqlServer>

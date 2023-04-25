@@ -275,8 +275,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 string fromEmail = smtpSetting.Email;
                 string confirmEmail = $"Welcome to the {smtpSetting.NameOfProject}";
                 string logoName = smtpSetting.LogoName;
-                                            Console.WriteLine("HERE!!!!!!");
-
                 string emailBody = ComposeRegistrationEmailBody(smtpSetting.SiteDomain, smtpSetting.SiteDomainRegistration, userRegistration.RegistrationCode, smtpSetting.NameOfProject, logoName);
                 await EmailHelper.SendEmail(userRegistration.Email, fromEmail, confirmEmail, emailBody, isBodyHtml: true);
                 #endregion send email confirmation

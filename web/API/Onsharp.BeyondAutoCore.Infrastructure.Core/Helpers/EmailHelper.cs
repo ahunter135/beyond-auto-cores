@@ -33,7 +33,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
             smtp.UseDefaultCredentials = false;
             smtp.Port = smtpSetting.OutgoingEmailPort;
             smtp.Host = smtpSetting.Host;
-                                        Console.WriteLine("INSIDE EMAIL!!!!!!");
 
             smtp.Send(message);
 

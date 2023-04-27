@@ -71,15 +71,15 @@ h2 { font-weight: 100; }
 .access-btn { margin: 50px 0 0; }
 
 .access-title-sub,
-.access-price > div > span { font-size: 15px !important; color: #9C9C9C !important; }
+.access-price > div > span { font-size: 10px !important; color: #9C9C9C !important; }
 
 .access-price > div > span { margin-left: 10px; }
 
 .affiliates-cls .mid-side .access-price > div { color: #C37F2E; }
 
-.access-price > div { color: #111; font-weight: 500; font-size: 40px; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; }
+.access-price > div { color: #111; font-weight: 500; font-size: 24px; display: flex; flex-direction: row; align-items: center; justify-content: flex-start; }
 
-.access-title { font-size: 20px; color: #111111; margin-bottom: 15px; }
+.access-title { font-size: 30px; color: #111111; margin-bottom: 15px; }
 
 .access-title-price { font-size: 50px; color: #C37F2E; }
 
@@ -146,4 +146,16 @@ textarea { border-radius: 0 !important; }
 
 .margin-left-sm { margin-left: 10px; }
 
-.trial-text { font-weight: 800; font-size: 24px; color: black; }
+.trial-text { font-weight: 800; font-size: 28px; color: #c98c48; }
+.align-center-subs { text-align: center;}
+.align-center-subs .access-price {
+        text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#elite-name, #premium-name, #lifetime-name {
+       text-transform: uppercase;
+       text-decoration: underline;
+}

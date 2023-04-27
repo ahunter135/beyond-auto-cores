@@ -74,6 +74,17 @@ async function postPayment() {
 		validationError(document.querySelector("#payment-message").textContent);
 		return false;
 	}
+	let token = await stripe.createToken(cardelement);
+
+	try {
+		if (!token.token.id) {
+			validationError('Card is Not Valid');
+			return false;
+		}
+	} catch (error) {
+		validationError('Card is Not Valid');
+		return false;
+	}
 
 	confirmModal(null, "Confirm", `You are about to submit subscription application.`)
 		.then(res => {
@@ -99,7 +110,7 @@ async function postPayment() {
 						let clientSecret = response.data.clientSecret;
 						let registrationCode = response.data.registrationCode;
 						let customer = response.data.stripeCustomerId
-						confirmPayment(registrationCode, clientSecret, btnElement, customer);
+						confirmPayment(registrationCode, clientSecret, btnElement, customer, token);
 					} else {
 						_swal.fire(
 							'Error!',
@@ -237,21 +248,19 @@ async function confirmGradePayment(clientSecret, buttonEl) {
 	_swalMain.close();
 }
 
-async function confirmPayment(registrationCode, clientSecret, btnElement, customer) {
+async function confirmPayment(registrationCode, clientSecret, btnElement, customer, token) {
 	let _swalMain = Swal;
-	let token;
+	let result;
 	if (clientSecret) {
-		const result = await stripe.confirmCardPayment(clientSecret, {
+		result = await stripe.confirmCardPayment(clientSecret, {
 			receipt_email: document.getElementById('email').value,
 			payment_method: {
 				card: cardelement
 			}
 		});
-	} else {
-		token = await stripe.createToken(cardelement);
 	}
 	let data;
-	console.log(clientSecret);
+
 	if (clientSecret) {
 		if (!result || !result.paymentIntent || !result.paymentIntent.id) {
 			_swalMain.close();

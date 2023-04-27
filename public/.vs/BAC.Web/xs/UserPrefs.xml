@@ -1,33 +1,26 @@
 ﻿<Properties StartupConfiguration="{FA930898-9C2E-4616-B810-A991FCA61F3D}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.BAC.Web PreferredExecutionTarget="/Applications/Brave Browser.app" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings.Development.json">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="appsettings-schema.json">
     <Files>
-      <File FileName="Program.cs" />
-      <File FileName="appsettings.json" />
-      <File FileName="appsettings.Staging.json" />
-      <File FileName="appsettings.Development.json" Line="1" Column="1" />
-      <File FileName="Views/Home.cshtml" />
-      <File FileName="Views/PrivacyPolicy.cshtml" />
-      <File FileName="Views/TermsOfService.cshtml" />
+      <File FileName="appsettings-schema.json" Line="8" Column="23" />
+      <File FileName="uSync/v9/usync.config" Line="2" Column="12" />
+      <File FileName="appsettings.Staging.json" Line="11" Column="7" />
+      <File FileName="appsettings.Development.json" Line="26" Column="13" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="BAC.Web" expanded="True" selected="True">
-            <Node name="BAC.Web" expanded="True">
-              <Node name="Views" expanded="True" />
-              <Node name="wwwroot" expanded="True" />
-              <Node name="appsettings.json" expanded="True" />
-            </Node>
+          <Node name="BAC.Web" expanded="True">
+            <Node name="BAC.Web" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
 </Properties>

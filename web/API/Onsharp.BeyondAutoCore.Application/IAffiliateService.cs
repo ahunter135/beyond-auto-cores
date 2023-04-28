@@ -16,6 +16,7 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<UserAffiliateDto> JoinAffiliate(long id);
         Task<bool> ProcessPayouts();
         Task<bool> UpdateAffiliatesSummary();
+        Task<bool> DisableCancelledAccounts();
 
     }
 }

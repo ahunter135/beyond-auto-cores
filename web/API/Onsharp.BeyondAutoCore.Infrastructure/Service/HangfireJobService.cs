@@ -46,5 +46,16 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return true;
         }
 
+        public async Task<bool> DisableCancelledAccounts() 
+        {
+             Dictionary<string, string> apiParameters = new Dictionary<string, string>(); ;
+
+            string service = "affiliates";
+            var apiConfig = new HangfireApiConfig();
+            var apiClient = new ApiClient(apiConfig.Host, apiConfig.Port, service, apiConfig.EnableSSL, apiConfig.Token);
+            var data = await apiClient.PostRequest(apiParameters, "disable-cancelled-accounts");
+            return true;
+        }
+
     }
 }

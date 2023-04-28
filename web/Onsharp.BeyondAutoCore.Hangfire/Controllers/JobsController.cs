@@ -19,10 +19,11 @@ namespace Onsharp.BeyondAutoCore.Hangfire.Controllers
 
             var metalPriceService = new MetalPriceService();
             var affiliateService = new AffiliateService();
-
+            var stripeActiveSubscriptionService = new StripeActiveSubscriptionService();
+            
             RecurringJob.AddOrUpdate(() =>  metalPriceService.UpdateMetalPrices(), Cron.Minutely);
             RecurringJob.AddOrUpdate(() => affiliateService.ProcessPayouts(), "00 01 */01 * *"); // At 01:00 AM, everyday
-
+            RecurringJob.AddOrUpdate(() => affiliateService.DisableCancelledAccounts(), Cron.Minutely);
             return Json(new { success = true });
         }
 

@@ -9,5 +9,6 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<bool> UpdateMetalPrices();
         Task<bool> UpdateAffiliatesSummary();
         Task<bool> ProcessPayouts();
+        Task<bool> DisableCancelledAccounts();
     }
 }

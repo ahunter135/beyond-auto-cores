@@ -140,14 +140,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<Subscription> CancelSubscription(string subscriptionId)
         {
-            var subscriptionService = new Stripe.SubscriptionService();
-            
-            var options = new SubscriptionUpdateOptions
-            {
-                CancelAtPeriodEnd = true
-            };
-
-            Subscription subscription = subscriptionService.Update(subscriptionId, options);
+            var options = new SubscriptionUpdateOptions { CancelAtPeriodEnd = true };
+            var service = new Stripe.SubscriptionService();
+            Console.WriteLine(subscriptionId);
+            Subscription subscription = service.Update(subscriptionId, options);
 
             return subscription;
         }

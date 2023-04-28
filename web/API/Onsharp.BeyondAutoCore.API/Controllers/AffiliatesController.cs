@@ -103,6 +103,22 @@
             });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("disable-cancelled-accounts")]
+        public async Task<IActionResult> DisableCancelledAccounts()
+        {
+            var response = await _affiliateService.DisableCancelledAccounts();
+            
+            return Ok(new ResponseRecordDto<object>
+            {
+                Success = response ? 1: 0,
+                ErrorCode = response ? 0 : 1000,
+                Message = response == true ? "Successfully process affiliate payout." : "Failed processing payout.",
+                Data = response
+            });
+        }
+
         [HttpGet]
         [AllowAnonymous]
         [Route("affiliates-summary")]

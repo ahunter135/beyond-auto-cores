@@ -1,4 +1,5 @@
-﻿using Onsharp.BeyondAutoCore.Domain.Dto.Affiliates;
+﻿using Stripe;
+using Onsharp.BeyondAutoCore.Domain.Dto.Affiliates;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 {
@@ -10,11 +11,11 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         private readonly ICommissionService _commissionService;
         private readonly ISubscriptionsRepository _subscriptionsRepository;
         private readonly IAffiliatesSummaryRepository _affiliatesSummaryRepository;
-        
+private readonly IRegistrationsRepository _userRegistrationRepository;
         public AffiliateService(IHttpContextAccessor httpContextAccessor, IMapper mapper,
                            IPaymentService paymentService, ICommissionService commissionService,
                            IUsersRepository usersRepository, ISubscriptionsRepository subscriptionsRepository,
-                           IAffiliatesSummaryRepository affiliatesSummaryRepository)
+                           IAffiliatesSummaryRepository affiliatesSummaryRepository, IRegistrationsRepository userRegistrationRepository)
            : base(httpContextAccessor)
         {
             _mapper = mapper;
@@ -23,6 +24,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             _paymentService = paymentService;
             _subscriptionsRepository = subscriptionsRepository;
             _affiliatesSummaryRepository = affiliatesSummaryRepository;
+            _userRegistrationRepository = userRegistrationRepository;
+
+            var stripeConfig = new StripeConfig();
+            StripeConfiguration.ApiKey = stripeConfig.ApiKey;
         }
 
         public async Task<UserAffiliateDto> JoinAffiliate(long id)
@@ -45,6 +50,45 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 Url = accountLink
             };
 
+        }
+
+        public async Task<bool> DisableCancelledAccounts() {
+            var options = new Stripe.SubscriptionListOptions
+            {
+                Status = "active"
+            };
+            var service = new Stripe.SubscriptionService();
+            var subscriptions = service.List(options);
+            Stripe.StripeList<Subscription> subscriptionList = subscriptions;
+            var listData = await _usersRepository.GetUserList();
+            foreach (var data in listData)
+            {
+                var subcriptionId = "";
+                var registrationInfo = await _userRegistrationRepository.GetByIdAsync(data.RegistrationId);
+                if (!string.IsNullOrWhiteSpace(registrationInfo.SubscriptionId)) {
+                    subcriptionId = registrationInfo.SubscriptionId;
+                } else if (!string.IsNullOrWhiteSpace(registrationInfo.StripeCustomerId)) {
+                    foreach (var subData in subscriptionList.Data)
+                    {
+                        if (subData.CustomerId == registrationInfo.StripeCustomerId) {
+                            subcriptionId = subData.Id;
+                        }
+                    }
+                    
+                }
+
+                if (!string.IsNullOrWhiteSpace(subcriptionId)) {
+                    service = new Stripe.SubscriptionService();
+                    var subscription = service.Get(subcriptionId);
+                    if (subscription.Status == "canceled" || subscription.Status == "unpaid" || subscription.Status == "past_due") {
+                        registrationInfo.SubscriptionIsCancel = true;
+                        _userRegistrationRepository.Update(registrationInfo);
+                        _userRegistrationRepository.SaveChanges();
+                    }
+                }
+                
+            }
+            return true;
         }
 
         public async Task<ResponseDto> ConfirmJoinAffiliate(string stripeAccountId)

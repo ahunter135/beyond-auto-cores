@@ -229,9 +229,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (!string.IsNullOrWhiteSpace(userRegistration.SubscriptionId))
                 await _paymentService.CancelSubscription(userRegistration.SubscriptionId);
 
-            userRegistration.SubscriptionIsCancel = !enable;
-            _userRegistrationRepository.Update(userRegistration);
-            _userRegistrationRepository.SaveChanges();
+            //userRegistration.SubscriptionIsCancel = !enable;
+            //_userRegistrationRepository.Update(userRegistration);
+            //_userRegistrationRepository.SaveChanges();
 
             return new ResponseDto() { Success = 1, Message = "Successfully updated subscription." };
         }

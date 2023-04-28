@@ -114,7 +114,7 @@
             {
                 Success = response ? 1: 0,
                 ErrorCode = response ? 0 : 1000,
-                Message = response == true ? "Successfully process affiliate payout." : "Failed processing payout.",
+                Message = response == true ? "Successfuly Disabled the Accoutns" : "Failed",
                 Data = response
             });
         }

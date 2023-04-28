@@ -109,7 +109,7 @@
         public async Task<IActionResult> DisableCancelledAccounts()
         {
             var response = await _affiliateService.DisableCancelledAccounts();
-            
+
             return Ok(new ResponseRecordDto<object>
             {
                 Success = response ? 1: 0,

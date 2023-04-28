@@ -23,7 +23,7 @@ namespace Onsharp.BeyondAutoCore.Hangfire.Controllers
             
             RecurringJob.AddOrUpdate(() =>  metalPriceService.UpdateMetalPrices(), Cron.Minutely);
             RecurringJob.AddOrUpdate(() => affiliateService.ProcessPayouts(), "00 01 */01 * *"); // At 01:00 AM, everyday
-            RecurringJob.AddOrUpdate(() => affiliateService.DisableCancelledAccounts(), Cron.Minutely);
+            RecurringJob.AddOrUpdate(() => affiliateService.DisableCancelledAccounts(), "00 01 */01 * *");
             return Json(new { success = true });
         }
 

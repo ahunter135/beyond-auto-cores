@@ -55,7 +55,7 @@ private readonly IRegistrationsRepository _userRegistrationRepository;
         public async Task<bool> DisableCancelledAccounts() {
             var options = new Stripe.SubscriptionListOptions
             {
-                Status = "active"
+                Status = "all"
             };
             var service = new Stripe.SubscriptionService();
             var subscriptions = service.List(options);

@@ -6,6 +6,7 @@ import { Code } from '@app/common/models/codes';
 import { CodesService } from '@app/common/services/codes.service';
 import { AddToLotComponent } from '../add-to-lot/add-to-lot.component';
 import { currencyFormat } from '@app/common/utils/currencyUtils';
+import { AccountService } from '@app/common/services/account.service';
 
 @Component({
   selector: 'app-generic-code-card',
@@ -15,14 +16,17 @@ import { currencyFormat } from '@app/common/utils/currencyUtils';
 export class GenericCodeCardComponent implements OnInit {
   @Input()
   code: Code;
-
+  userSubscription: number = 1;
   constructor(
     private router: Router,
     private codeService: CodesService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private accountService: AccountService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userSubscription = this.accountService.currentUser.subscription;
+  }
 
   goToGeneric() {
     this.codeService.setSelectedCode = this.code;
@@ -31,6 +35,10 @@ export class GenericCodeCardComponent implements OnInit {
   }
 
   async openModal() {
+    if (this.userSubscription == 3) {
+      alert("You need to upgrade to use this feature");
+      return;
+    }
     this.codeService.setSelectedCode = this.code;
     const modal = await this.modalCtrl.create({
       component: AddToLotComponent,

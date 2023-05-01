@@ -31,6 +31,7 @@ export class PhotoGradePage implements OnInit, OnDestroy {
   isLoading = false;
   gradeCredits = 0;
   navigationSubscription: Subscription;
+  userSubscription: number = 0;
 
   constructor(
     private route: Router,
@@ -56,6 +57,7 @@ export class PhotoGradePage implements OnInit, OnDestroy {
 
   async onLoad() {
     this.defaultSegment = 'submitted';
+    this.userSubscription = this.accountService.currentUser.subscription;
 
     this.isLoading = true;
     this.photoGradeList = await this.photoGradeService.photoGradeList({

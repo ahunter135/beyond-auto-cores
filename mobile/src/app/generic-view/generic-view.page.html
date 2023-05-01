@@ -39,7 +39,8 @@
     </ion-row>
   </ion-grid>
 
-  <ion-button expand="block" class="add-inventory-button white ion-padding-start ion-padding-end" (click)="openModal()">
-    <ion-text class="paragraph-text-16-semibold white">Add to Inventory Lot</ion-text>
+  <ion-button expand="block" class="add-inventory-button white ion-padding-start ion-padding-end" (click)="openModal()" [disabled]="userSubscription == 3">
+    <ion-text *ngIf="userSubscription != 3" class="paragraph-text-16-semibold white">Add to Inventory Lot</ion-text>
+    <ion-text *ngIf="userSubscription == 3" class="paragraph-text-16-semibold">Upgrade your Subscription to Create Lots</ion-text>
   </ion-button>
 </ion-content>

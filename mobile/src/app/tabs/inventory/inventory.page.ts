@@ -24,6 +24,7 @@ import { toLocalTime } from '@app/common/utils/timeUtils';
 import { AccountService } from '@app/common/services/account.service';
 import { Subject } from 'rxjs';
 import { takeUntil, filter } from 'rxjs/operators';
+
 @Component({
   selector: 'app-inventory',
   templateUrl: './inventory.page.html',

@@ -20,7 +20,7 @@ export class GenericViewPage implements OnInit {
   code: Code;
   photoGrade: PhotoGradeResponse;
   currentPhoto: string;
-
+  userSubscription: number = 1;
   constructor(
     private codeService: CodesService,
     private photoGradeService: PhotoGradeService,
@@ -30,6 +30,7 @@ export class GenericViewPage implements OnInit {
 
   async ngOnInit() {
     this.code = this.codeService.selectedCode;
+    this.userSubscription = this.accountService.currentUser.subscription;
 
     if (this.code.photoGradeId) {
       this.photoGrade = await this.photoGradeService.photoGrade(

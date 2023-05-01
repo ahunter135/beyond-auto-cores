@@ -53,9 +53,9 @@
 </ion-content>
 
 <ion-footer class="ion-padding">
-  <ion-button [disabled]="userSubscription == 1" id="inventory-modal" expand="block" class="create-inventory-button" (click)="clear()">
-    <ion-text *ngIf="userSubscription == 2 || userSubscription == 3" class="paragraph-text-16-semibold">Create a New Inventory Lot</ion-text>
-    <ion-text *ngIf="userSubscription == 1" class="paragraph-text-16-semibold">Upgrade your Subscription to Create Lots</ion-text>
+  <ion-button [disabled]="userSubscription == 1" id="inventory-modal" expand="block" class="create-inventory-button" (click)="clear()" [disabled]="userSubscription == 1 || userSubscription == 3">
+    <ion-text *ngIf="userSubscription == 2" class="paragraph-text-16-semibold">Create a New Inventory Lot</ion-text>
+    <ion-text *ngIf="userSubscription == 1 || userSubscription == 3" class="paragraph-text-16-semibold">Upgrade your Subscription to Create Lots</ion-text>
   </ion-button>
 </ion-footer>
 

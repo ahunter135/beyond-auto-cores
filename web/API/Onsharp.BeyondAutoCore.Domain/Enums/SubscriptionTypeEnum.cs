@@ -5,6 +5,6 @@ namespace Onsharp.BeyondAutoCore.Domain.Enums
     {
         Premium = 1,
         Elite = 2,
-        Lifetime = 3,
+        Platinum = 3,
     }
 }

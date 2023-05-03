@@ -39,7 +39,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var userInfo = await _userRepository.GetUserByName(userCreateCommand.UserName);
             if (userInfo != null)
                 return new RegistrationDto() { Success = false, Message = "User already exists." };
-
             Enum.TryParse(userCreateCommand.Subscription.ToString(), out PriceEnum priceEnum);
             var priceInfo = await _priceService.GetPriceByName(priceEnum);
             if (priceInfo == null)
@@ -59,7 +58,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             string paymentIntentId = "";
             string clientSecret = "";
             string paymentStatus = "";
-
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
                 var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id);
@@ -119,7 +117,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             long id = this.CurrentUserId();
             var userInfo = await _userService.GetById(id);
             var userRegistration = await _userRegistrationRepository.GetByIdAsync(userInfo.RegistrationId);
-            if (userRegistration != null && userRegistration.Subscription == SubscriptionTypeEnum.Lifetime)
+            if (userRegistration != null && userRegistration.Subscription == SubscriptionTypeEnum.Platinum)
             {
                 return new RegistrationDto() { Success = false, Message = "Unable to change subscription since it was already set to lifetime." };
             }
@@ -386,8 +384,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 case SubscriptionTypeEnum.Elite:
 					gradeCreditCommand.Credit = 10.0m;
 					break;
-                case SubscriptionTypeEnum.Lifetime:
-					gradeCreditCommand.Credit = 150.0m;
+                case SubscriptionTypeEnum.Platinum:
+					gradeCreditCommand.Credit = 1.0m;
 					break;
             }
 

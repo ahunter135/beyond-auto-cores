@@ -21,7 +21,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Repository
             var subscrptionTypes = new List<string>();
             subscrptionTypes.Add(SubscriptionTypeEnum.Premium.ToString());
             subscrptionTypes.Add(SubscriptionTypeEnum.Elite.ToString());
-            subscrptionTypes.Add(SubscriptionTypeEnum.Lifetime.ToString());
+            subscrptionTypes.Add(SubscriptionTypeEnum.Platinum.ToString());
 
             return await _context.Prices.Where(w => subscrptionTypes.Contains(w.Name)).ToListAsync();
         }

@@ -117,10 +117,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             long id = this.CurrentUserId();
             var userInfo = await _userService.GetById(id);
             var userRegistration = await _userRegistrationRepository.GetByIdAsync(userInfo.RegistrationId);
-            if (userRegistration != null && userRegistration.Subscription == SubscriptionTypeEnum.Platinum)
-            {
-                return new RegistrationDto() { Success = false, Message = "Unable to change subscription since it was already set to lifetime." };
-            }
 
             //var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
 
@@ -280,8 +276,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     confirmPaymentCommand.Token = confirmCommand.Token;
                 }
 
-                await _paymentService.PaymentConfirm(confirmPaymentCommand);
-
+                var success = await _paymentService.PaymentConfirm(confirmPaymentCommand);
+                if (!success) {
+                    return false;
+                }
                 #region send email confirmation
                 var smtpSetting = new SMTPConfig();
                 string fromEmail = smtpSetting.Email;

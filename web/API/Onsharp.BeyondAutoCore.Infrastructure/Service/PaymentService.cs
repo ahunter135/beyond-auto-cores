@@ -2,7 +2,7 @@
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 {
-    public class PaymentService: BaseService, IPaymentService
+    public class PaymentService : BaseService, IPaymentService
     {
         private readonly IMapper _mapper;
         private readonly ISubscriptionService _subscriptionCreditService;
@@ -10,7 +10,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         private readonly IPaymentsRepository _paymentsRepository;
 
         public PaymentService(IHttpContextAccessor httpContextAccessor, ISubscriptionService subscriptionCreditService,
-                              IPaymentsRepository paymentsRepository, IRegistrationsRepository userRegistrationRepository,    
+                              IPaymentsRepository paymentsRepository, IRegistrationsRepository userRegistrationRepository,
                               IMapper mapper)
             : base(httpContextAccessor)
         {
@@ -163,7 +163,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<bool> PaymentConfirm(PaymentConfirmCommand confirmCommand)
         {
-            if (confirmCommand.PaymentIntentId != null) {
+            if (confirmCommand.PaymentIntentId != null)
+            {
                 var paymentInfo = await _paymentsRepository.GetPaymentByIntent(confirmCommand.PaymentIntentId);
                 if (paymentInfo != null)
                 {
@@ -176,15 +177,27 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 }
 
                 return false;
-            } else {
-                var options = new CardCreateOptions
+            }
+            else
+            {
+                try
                 {
-                    Source = confirmCommand.Token,
-                };
-                var service = new CardService();
-                service.Create(confirmCommand.Customer, options);
+                    var options = new CardCreateOptions
+                    {
+                        Source = confirmCommand.Token,
+                    };
+                    var service = new CardService();
+                    service.Create(confirmCommand.Customer, options);
 
-                return true;
+                    return true;
+                }
+                catch (System.Exception)
+                {
+                    var service = new CustomerService();
+                    service.Delete(confirmCommand.Customer);
+                    return false;
+                }
+
             }
 
             return false;
@@ -205,7 +218,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<string> CreateAccount()
         {
-            var optAccount = new AccountCreateOptions {
+            var optAccount = new AccountCreateOptions
+            {
                 Type = "express",
                 Capabilities = new AccountCapabilitiesOptions
                 {
@@ -216,7 +230,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var service = new AccountService();
             var account = service.Create(optAccount);
 
-             return account.Id;
+            return account.Id;
         }
 
         public async Task<string> CreateAccountLink(string accountId)
@@ -247,14 +261,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             try
             {
-                var options = new TransferCreateOptions 
+                var options = new TransferCreateOptions
                 {
                     Amount = long.Parse((amount * 100).ToString("#")),
                     Currency = "usd",
                     Destination = stripeAccountId
                 };
 
-                var service = new TransferService(); 
+                var service = new TransferService();
                 var transferResponse = service.Create(options);
 
                 return new PayoutDto() { Success = 1, Message = "Successfully sent payout.", StripeTransferId = transferResponse.Id };

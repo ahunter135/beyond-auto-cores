@@ -70,17 +70,19 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return paymentIntentResponse;
         }
 
-        public async Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId)
+        public async Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial)
         {
             var paymentSettings = new SubscriptionPaymentSettingsOptions
             {
                 SaveDefaultPaymentMethod = "on_subscription",
             };
-
-            var subscriptionOptions = new SubscriptionCreateOptions
+            var subscriptionOptions = new SubscriptionCreateOptions { };
+            if (allowTrial)
             {
-                Customer = stripeCustomerId,
-                Items = new List<SubscriptionItemOptions>
+                subscriptionOptions = new SubscriptionCreateOptions
+                {
+                    Customer = stripeCustomerId,
+                    Items = new List<SubscriptionItemOptions>
                         {
                             new SubscriptionItemOptions
                             {
@@ -88,10 +90,29 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                                 Price = priceInfo.StripePriceId,
                             },
                         },
-                PaymentSettings = paymentSettings,
-                PaymentBehavior = "default_incomplete",
-                TrialEnd = DateTime.UtcNow.AddDays(5),
-            };
+                    PaymentSettings = paymentSettings,
+                    PaymentBehavior = "default_incomplete",
+                    TrialEnd = DateTime.UtcNow.AddDays(5),
+                };
+            }
+            else
+            {
+                subscriptionOptions = new SubscriptionCreateOptions
+                {
+                    Customer = stripeCustomerId,
+                    Items = new List<SubscriptionItemOptions>
+                        {
+                            new SubscriptionItemOptions
+                            {
+                                Quantity = 1,
+                                Price = priceInfo.StripePriceId,
+                            },
+                        },
+                    PaymentSettings = paymentSettings,
+                    PaymentBehavior = "allow_incomplete",
+                    CollectionMethod = "charge_automatically"
+                };
+            }
 
             subscriptionOptions.AddExpand("latest_invoice.payment_intent");
             var subscriptionService = new Stripe.SubscriptionService();
@@ -100,49 +121,56 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return subscription;
         }
 
-        public async Task<Subscription> UpdateSubscription(string subscriptionId, PriceDto newPriceInfo)
+        public async Task<Subscription> UpdateSubscription(string subscriptionId, PriceDto newPriceInfo, string stripeCustomerId)
         {
-            var getService = new Stripe.SubscriptionService();
-            Subscription getSubscription = getService.Get(subscriptionId);
-            var itemToDelete = getSubscription.Items.FirstOrDefault();
-
-            var paymentSettings = new SubscriptionPaymentSettingsOptions
+            try
             {
-                SaveDefaultPaymentMethod = "on_subscription",
-            };
+                var getService = new Stripe.SubscriptionService();
+                Subscription getSubscription = getService.Get(subscriptionId);
+                var itemToDelete = getSubscription.Items.FirstOrDefault();
 
-            var subscriptionOptions = new SubscriptionUpdateOptions();
-            subscriptionOptions.PaymentSettings = paymentSettings;
-            subscriptionOptions.PaymentBehavior = "default_incomplete";
-            subscriptionOptions.Items = new List<SubscriptionItemOptions>();
+                var paymentSettings = new SubscriptionPaymentSettingsOptions
+                {
+                    SaveDefaultPaymentMethod = "on_subscription",
+                };
 
-            subscriptionOptions.Items.Add(new SubscriptionItemOptions
-            {
-                Quantity = 1,
-                Price = newPriceInfo.StripePriceId
-            });
+                var subscriptionOptions = new SubscriptionUpdateOptions();
+                subscriptionOptions.PaymentSettings = paymentSettings;
+                subscriptionOptions.PaymentBehavior = "default_incomplete";
+                subscriptionOptions.Items = new List<SubscriptionItemOptions>();
 
-            if (itemToDelete != null)
-            {
                 subscriptionOptions.Items.Add(new SubscriptionItemOptions
                 {
-                    Id = itemToDelete.Id,
-                    Deleted = true
+                    Quantity = 1,
+                    Price = newPriceInfo.StripePriceId
                 });
+
+                if (itemToDelete != null)
+                {
+                    subscriptionOptions.Items.Add(new SubscriptionItemOptions
+                    {
+                        Id = itemToDelete.Id,
+                        Deleted = true
+                    });
+                }
+
+                subscriptionOptions.AddExpand("latest_invoice.payment_intent");
+                var subscriptionService = new Stripe.SubscriptionService();
+                Subscription subscription = subscriptionService.Update(subscriptionId, subscriptionOptions);
+
+                return subscription;
+            }
+            catch (System.Exception e)
+            {
+                return await CreateSubscription(newPriceInfo, stripeCustomerId, false);
             }
 
-            subscriptionOptions.AddExpand("latest_invoice.payment_intent");
-            var subscriptionService = new Stripe.SubscriptionService();
-            Subscription subscription = subscriptionService.Update(subscriptionId, subscriptionOptions);
-
-            return subscription;
         }
 
         public async Task<Subscription> CancelSubscription(string subscriptionId)
         {
             var options = new SubscriptionUpdateOptions { CancelAtPeriodEnd = true };
             var service = new Stripe.SubscriptionService();
-            Console.WriteLine(subscriptionId);
             Subscription subscription = service.Update(subscriptionId, options);
 
             return subscription;

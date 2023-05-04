@@ -60,7 +60,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             string paymentStatus = "";
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
-                var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id);
+                var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id, true);
 
                 subscriptionId = subscription.Id;
                 userRegistrationModel.SubscriptionId = subscriptionId;
@@ -119,7 +119,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var userRegistration = await _userRegistrationRepository.GetByIdAsync(userInfo.RegistrationId);
 
             //var paymentInfo = await _paymentService.GetPaymentByLinkId(userInfo.RegistrationId, PaymentTypeEnum.Registration);
-
             if ((int)userRegistration.Subscription != newSubscription)
             {
                 var result = new RegistrationDto();
@@ -162,13 +161,16 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 }
                 else
                 {
-
                     // If payment still recurring or subscription
-                    await _paymentService.UpdateSubscription(userRegistration.SubscriptionId, newPriceInfo);
+                    await _paymentService.UpdateSubscription(userRegistration.SubscriptionId, newPriceInfo, userRegistration.StripeCustomerId);
 
                     userRegistration.Subscription = (SubscriptionTypeEnum)newSubscription;
+                    userRegistration.SubscriptionIsCancel = false;
                     _userRegistrationRepository.Update(userRegistration);
                     _userRegistrationRepository.SaveChanges();
+                    //userRegistration.SubscriptionIsCancel = !enable;
+            //_userRegistrationRepository.Update(userRegistration);
+            //_userRegistrationRepository.SaveChanges();
 
                     result = _mapper.Map<RegistrationModel, RegistrationDto>(userRegistration);
 

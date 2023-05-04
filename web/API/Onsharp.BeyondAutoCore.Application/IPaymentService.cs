@@ -13,8 +13,8 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<PaymentDto> Create(CreatePaymentCommand createCommand);
         Task<Subscription> CancelSubscription(string subscriptionId);
         Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string description, string stripeCustomerId);
-        Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId);
-        Task<Subscription> UpdateSubscription(string subscriptionId, PriceDto newPriceInfo);
+        Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial);
+        Task<Subscription> UpdateSubscription(string subscriptionId, PriceDto newPriceInfo, string stripeCustomerId);
         Task<Customer> CreateStripeCustomer(string email, string firstName, string lastName);
         Task<PayoutDto> SendPayouts(string stripeAccountId, decimal amount);
 

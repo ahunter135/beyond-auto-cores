@@ -15,5 +15,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Repository
             return await _context.Registrations.Where(c => c.RegistrationCode == registrationCode).FirstOrDefaultAsync();
         }
 
+        public async Task<SubscriptionStatusDto> GetSubscriptionStatusByUserId(long userId)
+        {
+            var p1 = new SqlParameter("@userId", userId);
+
+            return _context.Set<SubscriptionStatusDto>().FromSqlRaw("SProc_GetUserSubscriptionStatus @userId", p1).AsEnumerable().First();
+        }
+
     }
 }

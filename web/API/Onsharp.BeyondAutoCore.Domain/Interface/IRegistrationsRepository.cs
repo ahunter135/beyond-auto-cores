@@ -3,5 +3,6 @@
     public interface IRegistrationsRepository : IBaseRepository<RegistrationModel>
     {
         Task<RegistrationModel> GetRegistrationByCode(string registrationCode);
+        Task<SubscriptionStatusDto> GetSubscriptionStatusByUserId(long userId);
     }
 }

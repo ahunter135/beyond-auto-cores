@@ -24,6 +24,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure
         public DbSet<MaterialOriginalPriceModel> MaterialOriginalPrices { get; set; }
         public DbSet<MetalCustomPriceModel> MetalCustomPrices { get; set; }
         public DbSet<CountModel> Count {get; set; }
+        public DbSet<SubscriptionStatusDto> SubscriptionStatusDto { get; set; }
         
         public DbSet<MetalPriceHistoryModel> MetalPriceHistories { get; set; }
         public DbSet<MetalPriceSummaryModel> MetalPriceSummaries { get; set; }

@@ -17,14 +17,17 @@ namespace Onsharp.BeyondAutoCore.API.Middlewares
 	{
 		private readonly IRefreshTokensRepository _refreshTokensRepository;
 		private readonly IHttpContextAccessor _contextAccessor;
+		private readonly IRegistrationsRepository _registrationRepository;
 
 		public OneUserSessionHandler(
 			IRefreshTokensRepository refreshTokenRepo,
-			IHttpContextAccessor contextAccessor
+			IHttpContextAccessor contextAccessor,
+			IRegistrationsRepository registrationRepository
 			) 
 		{ 
 			_refreshTokensRepository= refreshTokenRepo;
 			_contextAccessor= contextAccessor;
+			_registrationRepository = registrationRepository;
 		}
 
 
@@ -50,6 +53,14 @@ namespace Onsharp.BeyondAutoCore.API.Middlewares
 					{
 						context.Succeed(requirement);
 						_contextAccessor.HttpContext.Response.StatusCode = 200;
+						return Task.CompletedTask;
+					}
+
+					var registration = await _registrationRepository.GetSubscriptionStatusByUserId(userId);
+
+					if (registration.SubscriptionIsCancel)
+					{
+						context.Fail();
 						return Task.CompletedTask;
 					}
 

@@ -15,7 +15,7 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string description, string stripeCustomerId);
         Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial);
         Task<Subscription> UpdateSubscription(string subscriptionId, PriceDto newPriceInfo, string stripeCustomerId);
-        Task<Customer> CreateStripeCustomer(string email, string firstName, string lastName);
+        Task<Customer> CreateStripeCustomer(string email, string firstName, string lastName, string token);
         Task<PayoutDto> SendPayouts(string stripeAccountId, decimal amount);
 
         Task<bool> Delete(long id);

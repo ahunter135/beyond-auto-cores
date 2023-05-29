@@ -11,6 +11,7 @@ namespace Onsharp.BeyondAutoCore.Domain.Command
         public string Email { get; set; }
         public SubscriptionTypeEnum Subscription { get; set; }
         public string? AffiliateCode { get; set; }
+        public string? Token { get; set; }
     }
 
 }

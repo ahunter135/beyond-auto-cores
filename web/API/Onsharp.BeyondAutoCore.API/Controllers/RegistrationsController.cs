@@ -1,6 +1,5 @@
 ﻿namespace Onsharp.BeyondAutoCore.API.Controllers
 {
-    [Authorize]
     [Route("api/v1/registrations")]
     [ApiController]
     public class RegistrationsController : BaseController

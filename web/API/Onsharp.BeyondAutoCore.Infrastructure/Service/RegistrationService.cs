@@ -46,8 +46,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             string invitationCode = Guid.NewGuid().ToString();
 
-            var customerReponse = await _paymentService.CreateStripeCustomer(userCreateCommand.Email, userCreateCommand.FirstName, userCreateCommand.LastName);
-
+            var customerReponse = await _paymentService.CreateStripeCustomer(userCreateCommand.Email, userCreateCommand.FirstName, userCreateCommand.LastName, userCreateCommand.Token);
+            if (customerReponse == null) {
+                return new RegistrationDto() { Success = false, Message = "Error with Payment Method." };
+            }
             var userRegistrationModel = _mapper.Map<CreateRegCommand, RegistrationModel>(userCreateCommand);
             userRegistrationModel.RegistrationCode = invitationCode;
             userRegistrationModel.StripeCustomerId = customerReponse.Id;

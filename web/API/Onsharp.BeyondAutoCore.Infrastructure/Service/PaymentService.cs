@@ -176,17 +176,26 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return subscription;
         }
 
-        public async Task<Customer> CreateStripeCustomer(string email, string firstName, string lastName)
+        public async Task<Customer> CreateStripeCustomer(string email, string firstName, string lastName, string token)
         {
-            var customerOptions = new CustomerCreateOptions
+            try
             {
-                Email = email,
-                Name = firstName + " " + lastName
-            };
-            var customerService = new CustomerService();
-            var customerReponse = customerService.Create(customerOptions);
+                var customerOptions = new CustomerCreateOptions
+                {
+                    Email = email,
+                    Name = firstName + " " + lastName,
+                    Source = token
+                };
+                var customerService = new CustomerService();
+                var customerReponse = customerService.Create(customerOptions);
 
-            return customerReponse;
+                return customerReponse;
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+
         }
 
         public async Task<bool> PaymentConfirm(PaymentConfirmCommand confirmCommand)
@@ -215,14 +224,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                         Source = confirmCommand.Token,
                     };
                     var service = new CardService();
-                    service.Create(confirmCommand.Customer, options);
+                    //service.Create(confirmCommand.Customer, options);
 
                     return true;
                 }
                 catch (System.Exception)
                 {
-                    var service = new CustomerService();
-                    service.Delete(confirmCommand.Customer);
+                    //var service = new CustomerService();
+                    //service.Delete(confirmCommand.Customer);
                     return false;
                 }
 

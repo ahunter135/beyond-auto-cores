@@ -48,26 +48,35 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         public async Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string description, string stripeCustomerId)
         {
-            var paymentIntentOptions = new PaymentIntentCreateOptions
+            try
             {
-                Amount = long.Parse((amount * 100).ToString("#.#").Replace(".", "")),
-                Currency = currency,
-                Customer = stripeCustomerId,
-                Description = description
-            };
+                var paymentIntentOptions = new PaymentIntentCreateOptions
+                {
+                    Amount = long.Parse((amount * 100).ToString("#.#").Replace(".", "")),
+                    Currency = currency,
+                    Customer = stripeCustomerId,
+                    Description = description,
+                    CaptureMethod = "manual"
+                };
 
-            //var paymentIntentOptions = new PaymentIntentCreateOptions
-            //{
-            //    Amount = long.Parse((priceInfo.Amount * 100).ToString("#.#").Replace(".", "")),
-            //    Currency = priceInfo.Currency,
-            //    Customer = stripeCustomerId,
-            //    Description = priceInfo.Description
-            //};
+                //var paymentIntentOptions = new PaymentIntentCreateOptions
+                //{
+                //    Amount = long.Parse((priceInfo.Amount * 100).ToString("#.#").Replace(".", "")),
+                //    Currency = priceInfo.Currency,
+                //    Customer = stripeCustomerId,
+                //    Description = priceInfo.Description
+                //};
 
-            var paymentIntentService = new Stripe.PaymentIntentService();
-            var paymentIntentResponse = paymentIntentService.Create(paymentIntentOptions);
+                var paymentIntentService = new Stripe.PaymentIntentService();
+                var paymentIntentResponse = paymentIntentService.Create(paymentIntentOptions);
 
-            return paymentIntentResponse;
+                return paymentIntentResponse;
+            }
+            catch (System.Exception)
+            {
+                return null;
+            }
+
         }
 
         public async Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial)
@@ -79,6 +88,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var subscriptionOptions = new SubscriptionCreateOptions { };
             if (allowTrial)
             {
+                var paymentIntentResponse = await CreatePaymentIntent(priceInfo.Amount, priceInfo.Currency, priceInfo.Description, stripeCustomerId);
+                
+                if (paymentIntentResponse == null) {
+                    return null;
+                } else {
+                    var paymentIntentService = new Stripe.PaymentIntentService();
+                    paymentIntentResponse = paymentIntentService.Cancel(paymentIntentResponse.Id);
+                }
                 subscriptionOptions = new SubscriptionCreateOptions
                 {
                     Customer = stripeCustomerId,
@@ -224,14 +241,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                         Source = confirmCommand.Token,
                     };
                     var service = new CardService();
-                    //service.Create(confirmCommand.Customer, options);
+                    service.Create(confirmCommand.Customer, options);
 
                     return true;
                 }
                 catch (System.Exception)
                 {
-                    //var service = new CustomerService();
-                    //service.Delete(confirmCommand.Customer);
+                    var service = new CustomerService();
+                    service.Delete(confirmCommand.Customer);
                     return false;
                 }
 

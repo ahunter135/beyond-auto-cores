@@ -47,7 +47,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             string invitationCode = Guid.NewGuid().ToString();
 
             var customerReponse = await _paymentService.CreateStripeCustomer(userCreateCommand.Email, userCreateCommand.FirstName, userCreateCommand.LastName, userCreateCommand.Token);
-            if (customerReponse == null) {
+            if (customerReponse == null)
+            {
                 return new RegistrationDto() { Success = false, Message = "Error with Payment Method." };
             }
             var userRegistrationModel = _mapper.Map<CreateRegCommand, RegistrationModel>(userCreateCommand);
@@ -63,7 +64,10 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
                 var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id, true);
-
+                if (subscription == null)
+                {
+                    return new RegistrationDto() { Success = false, Message = "Error with Payment Method." };
+                }
                 subscriptionId = subscription.Id;
                 userRegistrationModel.SubscriptionId = subscriptionId;
                 //paymentIntentId = subscription.LatestInvoice.PaymentIntent.Id;
@@ -98,11 +102,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             _userRegistrationRepository.Add(userRegistrationModel);
             _userRegistrationRepository.SaveChanges();
 
-            
+
 
             var result = _mapper.Map<RegistrationModel, RegistrationDto>(userRegistrationModel);
 
-            if (!String.IsNullOrWhiteSpace(clientSecret)) {
+            if (!String.IsNullOrWhiteSpace(clientSecret))
+            {
                 result.ClientSecret = clientSecret;
             }
 
@@ -171,8 +176,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     _userRegistrationRepository.Update(userRegistration);
                     _userRegistrationRepository.SaveChanges();
                     //userRegistration.SubscriptionIsCancel = !enable;
-            //_userRegistrationRepository.Update(userRegistration);
-            //_userRegistrationRepository.SaveChanges();
+                    //_userRegistrationRepository.Update(userRegistration);
+                    //_userRegistrationRepository.SaveChanges();
 
                     result = _mapper.Map<RegistrationModel, RegistrationDto>(userRegistration);
 
@@ -269,19 +274,23 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (userRegistration != null)
             {
                 var confirmPaymentCommand = new PaymentConfirmCommand();
-                if (confirmCommand.Status != "null" && confirmCommand.PaymentIntentId != "null") {
+                if (confirmCommand.Status != "null" && confirmCommand.PaymentIntentId != "null")
+                {
                     confirmPaymentCommand.Status = confirmCommand.Status;
                     confirmPaymentCommand.PaymentIntentId = confirmCommand.PaymentIntentId;
                 }
-                if (confirmCommand.Customer != null) {
+                if (confirmCommand.Customer != null)
+                {
                     confirmPaymentCommand.Customer = confirmCommand.Customer;
                 }
-                if (confirmCommand.Token != null) {
+                if (confirmCommand.Token != null)
+                {
                     confirmPaymentCommand.Token = confirmCommand.Token;
                 }
 
                 var success = await _paymentService.PaymentConfirm(confirmPaymentCommand);
-                if (!success) {
+                if (!success)
+                {
                     return false;
                 }
                 #region send email confirmation
@@ -334,7 +343,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     Enum.TryParse(userRegistration.Subscription.ToString(), out PriceEnum priceEnumFromSubEnum);
                     var subscriptionTypeInfo = await _priceService.GetPriceByName(priceEnumFromSubEnum);
                     await CreateSubscription(response.Id, subscriptionTypeInfo);
-
                     this.GiftCredits(userRegistration, response.Id);
 
                     var userLoginCommand = new LoginCommand();
@@ -375,20 +383,20 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         {
             if (String.IsNullOrWhiteSpace(userRegistration.AffiliateCode)) return;
 
-            CreateGradeCreditCommand gradeCreditCommand= new CreateGradeCreditCommand();
+            CreateGradeCreditCommand gradeCreditCommand = new CreateGradeCreditCommand();
             gradeCreditCommand.UserId = userId;
 
             switch (userRegistration.Subscription)
             {
                 case SubscriptionTypeEnum.Premium:
                     gradeCreditCommand.Credit = 3.0m;
-					break;
+                    break;
                 case SubscriptionTypeEnum.Elite:
-					gradeCreditCommand.Credit = 10.0m;
-					break;
+                    gradeCreditCommand.Credit = 10.0m;
+                    break;
                 case SubscriptionTypeEnum.Platinum:
-					gradeCreditCommand.Credit = 1.0m;
-					break;
+                    gradeCreditCommand.Credit = 1.0m;
+                    break;
             }
 
             await _gradeCreditService.Create(gradeCreditCommand);

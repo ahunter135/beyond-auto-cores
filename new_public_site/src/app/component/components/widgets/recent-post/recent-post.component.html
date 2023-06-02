@@ -1,0 +1,21 @@
+<div class="widget recent-posts-entry">
+	<h5 class="widget-title style-1">{{title}}</h5>
+	<div class="widget-post-bx">
+		<div *ngFor = "let item of widget_post" class="widget-post clearfix">
+			<div class="dlab-post-media"> 
+				<img src="assets/images/blog/recent-blog/{{item.image}}" width="200" height="143" alt=""> 
+			</div>
+			<div class="dlab-post-info">
+				<div class="dlab-post-meta">
+					<ul>
+						<li class="post-date"> <strong>{{item.date}}</strong> </li>
+						<li class="post-author" [innerHTML] = "item.author"> </li>
+					</ul>
+				</div>
+				<div class="dlab-post-header">
+					<h6 class="post-title"><a href="blog-single.html">{{item.title}}</a></h6>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

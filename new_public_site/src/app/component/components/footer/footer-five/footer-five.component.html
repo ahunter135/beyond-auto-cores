@@ -1,0 +1,67 @@
+<!-- Footer -->
+<footer class="site-footer">
+	<div class="footer-top" style="background-image:url(assets/images/background/solar/bg4.jpg); background-position:bottom;
+	 ">
+		 <div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-6 col-lg-5">
+					<div class="widget widget_getintuch">
+						<div class="footer-title">
+							<h4 class="title">{{about_title}}</h4>
+							<div class="dlab-separator-outer">
+								<div class="dlab-separator bg-primary style-skew"></div>
+							</div>
+						</div>
+						<ul class="info-contact">
+							<li>
+								<span>
+									<i class="fa fa-map-marker"></i>  {{about_desc}}
+								</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-lg-3">
+					<div class="widget">
+						 <div class="footer-title">
+							<h4 class="title">Contact Info</h4>
+							<div class="dlab-separator-outer">
+								<div class="dlab-separator bg-primary style-skew"></div>
+							</div>
+						</div>
+						
+						<ul class="ft-contact">
+							<li>Telephone: <span>+91 123 456 7890</span></li>
+							<li>Mobile: <span>+91 978 654 2310</span></li>
+							<li>E Email: <a href="#">exemple@gmail.com</a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-lg-4">
+					<div class="widget">
+						<div class="footer-title">
+							<h4 class="title">Follow Us</h4>
+							<div class="dlab-separator-outer">
+								<div class="dlab-separator bg-primary style-skew"></div>
+							</div>
+						</div>
+						<ul class="ft-social">
+							<li *ngFor="let item of socialList">
+								<a href="#" [ngClass]="['site-button', item.social, 'sharp']"><i [ngClass]="item.icon"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- footer bottom part -->
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">Copyright © All rights reserved. 2021</div>
+			</div>
+		</div>
+	</div>
+</footer>
+<!-- Footer END-->

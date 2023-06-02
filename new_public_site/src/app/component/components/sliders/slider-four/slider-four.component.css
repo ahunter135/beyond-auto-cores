@@ -1,0 +1,18 @@
+.sub-btn {
+    background-color: rgba(252, 252, 252, 0.755)
+}
+.btn-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.btn-row a {
+    margin: 5px;
+}
+.carousel-text {
+    margin: 15px;
+    text-align: center;
+}

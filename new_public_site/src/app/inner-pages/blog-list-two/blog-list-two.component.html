@@ -1,0 +1,46 @@
+<link class="skin" rel="stylesheet" type="text/css" href="/assets/css/skin/skin-1.css">
+<app-header-three></app-header-three>
+<app-page-header-one></app-page-header-one>
+<section id="work" class="tm-section-pad-top tm-section-pad-bottom">
+	<div class="container tm-container-gallery" style="padding: 0 15vw">
+		<form id="payment-form">
+			<div class="row justify-content-md-center">
+				<div class="col-12 text-center font-light">
+					<h2 style="color:white" class="poppins-extra-light">Create Credential</h2>
+				</div>
+
+				<div class="col-12 text-center font-light" style="padding:1vh">
+					<h4 style="color:white">Please set password for subcribed email.</h4>
+					<p style="color:white">Password must be minimum of 8 characters
+						consist of at least the following: Uppercase letter, Lowercase letter, Number and Special
+						Character.</p>
+				</div>
+
+				<div class="col-6" style="margin-bottom: 50px">
+					<div class="d-flex flex-row row">
+						<div class="col-12 form-group">
+							<label>Password</label>
+							<input type="password" class="form-control" id="password" aria-describedby="password"
+								placeholder="Password">
+						</div>
+						<div class="col-12 form-group">
+							<label>Confirm Password</label>
+							<input type="password" class="form-control" id="confirmPassword"
+								aria-describedby="confirmpassword" placeholder="Confirm Password">
+						</div>
+					</div>
+				</div>
+
+				<div id="card-element-submit" class="col-12">
+					<div class="col-12" style="text-align: center;margin-top:20px; margin-bottom: 20px">
+						<button type="submit" class="btn btn-warning" id="pay-button"
+							(click)="confirmRegistration($event)">SUBMIT</button>
+					</div>
+				</div>
+
+				<div id="payment-message-success" class="hide-form"></div>
+			</div>
+		</form>
+	</div>
+</section>
+<app-footer-one></app-footer-one>

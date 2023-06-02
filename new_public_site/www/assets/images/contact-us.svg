@@ -1,0 +1,14 @@
+<svg id="contact-us" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100.142" height="100.142" viewBox="0 0 100.142 100.142">
+  <defs>
+    <linearGradient id="linear-gradient" y1="0.505" x2="1" y2="0.505" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#d19753"/>
+      <stop offset="0.61" stop-color="#c37f2e"/>
+      <stop offset="1" stop-color="#aa6718"/>
+    </linearGradient>
+  </defs>
+  <path id="Path_139" data-name="Path 139" d="M18.558,0H81.584a18.567,18.567,0,0,1,18.558,18.558V81.584a18.567,18.567,0,0,1-18.558,18.558H18.558A18.567,18.567,0,0,1,0,81.584V18.558A18.567,18.567,0,0,1,18.558,0Z" fill="url(#linear-gradient)"/>
+  <g id="contact-us-2" data-name="contact-us" transform="translate(27.482 13.923)">
+    <path id="Path_149" data-name="Path 149" d="M166.246,64H130.829A4.8,4.8,0,0,0,126,68.742v62.7a4.772,4.772,0,0,0,4.786,4.786h35.46a4.772,4.772,0,0,0,4.786-4.786V68.785A4.772,4.772,0,0,0,166.246,64ZM130.829,66.61h35.416a2.182,2.182,0,0,1,2.175,2.175v2.893H128.654V68.785A2.168,2.168,0,0,1,130.829,66.61Zm37.592,57.062H128.763V74.289h39.658Zm-2.175,9.942H130.829a2.182,2.182,0,0,1-2.175-2.175v-5.221h39.767v5.221A2.168,2.168,0,0,1,166.246,133.614Z" transform="translate(-126 -63.999)" fill="#fff"/>
+    <path id="Path_150" data-name="Path 150" d="M219.93,361.4h-4.025a1.305,1.305,0,1,0,0,2.611h4.025a1.305,1.305,0,1,0,0-2.611Z" transform="translate(-195.326 -296.702)" fill="#fff"/>
+  </g>
+</svg>

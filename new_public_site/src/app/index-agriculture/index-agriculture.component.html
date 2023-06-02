@@ -1,0 +1,35 @@
+<link class="skin" rel="stylesheet" type="text/css" href="/assets/css/skin/skin-1.css">
+<app-header-three></app-header-three>
+<app-page-header-one></app-page-header-one>
+<section>
+    <div class="container tm-container-gallery" style="padding: 0 20vw">
+        <form>
+            <div class="row justify-content-md-center">
+                <div class="col-lg-8 text-center font-light">
+                    <div class="d-flex flex-column">
+                        <div class="form-group">
+                            <label for="username">Email Address</label>
+                            <input type="email" class="form-control" id="username" aria-describedby="emailHelp"
+                                   placeholder="Email Address">
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" aria-describedby="emailHelp"
+                                   placeholder="Password">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 row">
+                    <div class="col-12" style="text-align: center">
+                        <button type="submit" id="login-button" class="btn btn-warning"
+                                (click)="loginUser($event)">
+                            SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

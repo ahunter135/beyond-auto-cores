@@ -1,0 +1,140 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 11/07/2019 11:20
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-gauge-1:before { content: "\f100"; }
+.flaticon-pipes:before { content: "\f101"; }
+.flaticon-nut:before { content: "\f102"; }
+.flaticon-joint:before { content: "\f103"; }
+.flaticon-sink:before { content: "\f104"; }
+.flaticon-valve:before { content: "\f105"; }
+.flaticon-leak:before { content: "\f106"; }
+.flaticon-wrench:before { content: "\f107"; }
+.flaticon-valve-1:before { content: "\f108"; }
+.flaticon-pipe:before { content: "\f109"; }
+.flaticon-toilet:before { content: "\f10a"; }
+.flaticon-valve-2:before { content: "\f10b"; }
+.flaticon-hose:before { content: "\f10c"; }
+.flaticon-washbasin:before { content: "\f10d"; }
+.flaticon-plunger:before { content: "\f10e"; }
+.flaticon-pipe-1:before { content: "\f10f"; }
+.flaticon-faucet:before { content: "\f110"; }
+.flaticon-gauge:before { content: "\f111"; }
+.flaticon-saw:before { content: "\f112"; }
+.flaticon-drainage:before { content: "\f113"; }
+.flaticon-shower:before { content: "\f114"; }
+.flaticon-pipe-2:before { content: "\f115"; }
+.flaticon-pipe-3:before { content: "\f116"; }
+.flaticon-washing-machine:before { content: "\f117"; }
+.flaticon-wrench-1:before { content: "\f118"; }
+.flaticon-measure:before { content: "\f119"; }
+.flaticon-faucet-1:before { content: "\f11a"; }
+.flaticon-gauge-2:before { content: "\f11b"; }
+.flaticon-pipes-1:before { content: "\f11c"; }
+.flaticon-pliers:before { content: "\f11d"; }
+.flaticon-screwdriver:before { content: "\f11e"; }
+.flaticon-cleaner:before { content: "\f11f"; }
+.flaticon-wrench-2:before { content: "\f120"; }
+.flaticon-extractor:before { content: "\f121"; }
+.flaticon-pipe-4:before { content: "\f122"; }
+.flaticon-urinal:before { content: "\f123"; }
+.flaticon-heater:before { content: "\f124"; }
+.flaticon-leak-1:before { content: "\f125"; }
+.flaticon-leak-2:before { content: "\f126"; }
+.flaticon-toolbox:before { content: "\f127"; }
+.flaticon-valve-3:before { content: "\f128"; }
+.flaticon-valve-4:before { content: "\f129"; }
+.flaticon-pipes-2:before { content: "\f12a"; }
+.flaticon-detector:before { content: "\f12b"; }
+.flaticon-pipe-wrench:before { content: "\f12c"; }
+.flaticon-pipe-5:before { content: "\f12d"; }
+.flaticon-faucet-2:before { content: "\f12e"; }
+.flaticon-water-heater:before { content: "\f12f"; }
+.flaticon-silicone:before { content: "\f130"; }
+.flaticon-pipes-3:before { content: "\f131"; }
+    
+    $font-Flaticon-gauge-1: "\f100";
+    $font-Flaticon-pipes: "\f101";
+    $font-Flaticon-nut: "\f102";
+    $font-Flaticon-joint: "\f103";
+    $font-Flaticon-sink: "\f104";
+    $font-Flaticon-valve: "\f105";
+    $font-Flaticon-leak: "\f106";
+    $font-Flaticon-wrench: "\f107";
+    $font-Flaticon-valve-1: "\f108";
+    $font-Flaticon-pipe: "\f109";
+    $font-Flaticon-toilet: "\f10a";
+    $font-Flaticon-valve-2: "\f10b";
+    $font-Flaticon-hose: "\f10c";
+    $font-Flaticon-washbasin: "\f10d";
+    $font-Flaticon-plunger: "\f10e";
+    $font-Flaticon-pipe-1: "\f10f";
+    $font-Flaticon-faucet: "\f110";
+    $font-Flaticon-gauge: "\f111";
+    $font-Flaticon-saw: "\f112";
+    $font-Flaticon-drainage: "\f113";
+    $font-Flaticon-shower: "\f114";
+    $font-Flaticon-pipe-2: "\f115";
+    $font-Flaticon-pipe-3: "\f116";
+    $font-Flaticon-washing-machine: "\f117";
+    $font-Flaticon-wrench-1: "\f118";
+    $font-Flaticon-measure: "\f119";
+    $font-Flaticon-faucet-1: "\f11a";
+    $font-Flaticon-gauge-2: "\f11b";
+    $font-Flaticon-pipes-1: "\f11c";
+    $font-Flaticon-pliers: "\f11d";
+    $font-Flaticon-screwdriver: "\f11e";
+    $font-Flaticon-cleaner: "\f11f";
+    $font-Flaticon-wrench-2: "\f120";
+    $font-Flaticon-extractor: "\f121";
+    $font-Flaticon-pipe-4: "\f122";
+    $font-Flaticon-urinal: "\f123";
+    $font-Flaticon-heater: "\f124";
+    $font-Flaticon-leak-1: "\f125";
+    $font-Flaticon-leak-2: "\f126";
+    $font-Flaticon-toolbox: "\f127";
+    $font-Flaticon-valve-3: "\f128";
+    $font-Flaticon-valve-4: "\f129";
+    $font-Flaticon-pipes-2: "\f12a";
+    $font-Flaticon-detector: "\f12b";
+    $font-Flaticon-pipe-wrench: "\f12c";
+    $font-Flaticon-pipe-5: "\f12d";
+    $font-Flaticon-faucet-2: "\f12e";
+    $font-Flaticon-water-heater: "\f12f";
+    $font-Flaticon-silicone: "\f130";
+    $font-Flaticon-pipes-3: "\f131";

@@ -1,0 +1,36 @@
+<!-- Team Member -->
+<div class="section-full content-inner-2 bg-black overlay-primary-dark" id="team" style="background-image:url(assets/images/pattern/pt-img.jpg);">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="section-head text-center text-white col-md-12">
+				<h5 class="title-small">MEET TEAM MEMBERS</h5>
+				<div class="dlab-separator-outer">
+					<div class="dlab-separator bg-white style-skew"></div>
+				</div>
+				<h2 class="title">Team Behind Our Success</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<owl-carousel-o [options] = "customOptions" class="team-box-carousel owl-none owl-theme owl-dots-white-full">
+					<ng-template carouselSlide *ngFor = "let slide of slideStore">
+						<div class="slide">
+							<div class="team-box1">
+								<div class="team-member">
+									<img src="assets/images/our-team/food/{{slide.image}}" alt="">
+									<ul class="member-social list-inline">
+										<li *ngFor="let item of slide.list" [innerHTML] = "item.icon"></li>
+									</ul>
+								</div>
+								<div class="member-info text-white">
+									<h3 [innerHTML] = "slide.name"></h3>
+								</div>
+							</div>
+						</div>
+					</ng-template>
+				</owl-carousel-o>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Team Member End -->

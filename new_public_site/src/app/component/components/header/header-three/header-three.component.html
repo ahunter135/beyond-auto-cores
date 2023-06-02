@@ -1,0 +1,48 @@
+<!-- header -->
+    <header class="site-header mo-left header-transparent header agro-header">
+		<!-- main header -->
+        <div class="sticky-header main-bar-wraper navbar-expand-lg">
+            <div class="main-bar clearfix ">
+                <div class="container clearfix">
+                    <!-- website logo -->
+                    <div class="logo-header mostion">
+						<a routerLink="/"><img src="assets/images/logo-white-3.png" alt=""></a>
+					</div>
+                    <!-- nav toggle button -->
+                    <button class="navbar-toggler collapsed navicon justify-content-end" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+
+                    <!-- main nav -->
+                    <div class="header-nav navbar-collapse collapse justify-content-center onepage" id="navbarNavDropdown">
+						<div class="logo-header d-md-block d-lg-none dark">
+							<a  routerLink="/"><img src="assets/images/logo-3.png" alt=""></a>
+						</div>
+                        <ul class="nav navbar-nav navbar">	
+							<li><a href="#" (click)="scroll($event, 'appSection')" class="scroll nav-link">Download the App</a></li>
+							<li><a href="#about-us" class="scroll nav-link">About Us</a></li>
+							<li><a href="#" (click)="scroll($event, 'affiliates')" class="scroll nav-link">Affiliates</a></li>
+							<li><a href="#" (click)="scroll($event, 'contact')" class="scroll nav-link">Contact Us</a></li>
+							<li><a href="#" (click)="scroll($event, 'subscriptions')" class="scroll nav-link">Subscriptions</a></li>
+							<li  *ngIf="!loggedIn"><a href="#" (click)="scroll($event, 'subscriptions')" class="scroll nav-link">Sign Up</a></li>
+							<li *ngIf="!loggedIn"><a href="#" (click)="navTo($event, 'login')" class="scroll nav-link">Login</a></li>
+							<li *ngIf="loggedIn"><a href="#" (click)="navTo($event, 'account')" class="scroll nav-link">Account</a></li>
+							<li *ngIf="loggedIn"><a href="#" (click)="logout($event)" class="scroll nav-link">Logout</a></li>
+						</ul>
+						<div class="dlab-social-icon">
+							<ul>
+								<li><a class="site-button facebook sharp-sm fa fa-facebook" href="javascript:void(0);"></a></li>
+								<li><a class="site-button twitter sharp-sm fa fa-twitter" href="javascript:void(0);"></a></li>
+								<li><a class="site-button linkedin sharp-sm fa fa-linkedin" href="javascript:void(0);"></a></li>
+								<li><a class="site-button instagram sharp-sm fa fa-instagram" href="javascript:void(0);"></a></li>
+							</ul>
+						</div>			
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main header END -->
+    </header>
+    <!-- header END -->

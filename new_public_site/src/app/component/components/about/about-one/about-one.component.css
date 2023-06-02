@@ -1,0 +1,31 @@
+.container-about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-text {
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 50px;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+.icon-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.icon-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.icon-text h5 {
+    color: white;
+}

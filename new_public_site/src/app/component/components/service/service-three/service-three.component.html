@@ -1,0 +1,34 @@
+<!-- Features -->
+<div class="section-full content-inner bg-gray"  style="background-image:url(assets/images/background/agriculture/bg1.jpg);">
+	<div class="container"  id="services">
+		<div class="section-head text-center">
+			<h5 class="title-small">Step into the World of Organics!</h5>
+			<div class="dlab-separator-outer">
+				<div class="dlab-separator bg-primary style-skew"></div>
+			</div>
+			<h2 class="title">Let The First Step Be Firmly Anchored!</h2>
+		</div>
+		<div class="row">
+			<div *ngFor = "let item of serviceList" class="col-lg-4 col-md-6 col-sm-6 m-b30 wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s">
+				<div class="dlab-box service-box-6">
+					<div class="dlab-media"> 
+						<a href="javascript:void(0);"><img src="assets/images/our-services/agriculture/{{item.image}}" alt=""/></a> 
+					</div>
+					<div class="dlab-info">
+						<div class="icon-bx-sm radius bg-primary m-b20">
+							<a href="javascript:void(0);" class="icon-cell">
+								<img src="assets/images/icon/agriculture/{{item.icon}}" alt=""/>
+							</a>
+						</div>
+						<h4 class="title"><a href="javascript:void(0);">{{item.title}}</a></h4>
+						<div class="dlab-separator bg-primary m-b0"></div>
+						<div class="readmore">
+							<a href="javascript:void(0);" class="site-button btnhover14">Learn More</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Features End -->

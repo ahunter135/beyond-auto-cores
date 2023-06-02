@@ -1,0 +1,121 @@
+<link class="skin" rel="stylesheet" type="text/css" href="/assets/css/skin/skin-1.css">
+<app-header-three></app-header-three>
+<app-page-header-one [data] = "banner"></app-page-header-one>
+<section id="work" class="tm-section-pad-top tm-section-pad-bottom">
+	<div class="container tm-container-gallery" style="padding: 0 15vw">
+		<form id="payment-form">
+			<div class="row justify-content-md-center">
+				<div class="col-lg-12 text-center font-light">
+					<h2 id="subcription-label" style="color:white" class="poppins-extra-light">Choose Subscription</h2>
+				</div>
+				<div class="col-lg-12 font-light sub-selector" style="margin-bottom: 20px">
+					<select id="subscription" (change)="accessDisplayList()" class="form-control"
+						aria-label="Default select example">
+						<option selected value="">Select type of subscription</option>
+						<option value="3">Platinum Subscription</option>
+						<option value="1">Premium Subscription</option>
+						<option value="2">Elite Subscription</option>
+					</select>
+				</div>
+				<div class="col-lg-6 text-center" style="margin-bottom: 50px">
+					<div class="go-premium">
+						<h5 style="color: white; font-size:40px;">5 Day Free Trial!</h5>
+						<h6 style="color:white" class="font-bolder">$44.99/ Month</h6>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+							<span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+							<span><i class="bi bi-check-circle-fill"></i>5% commission affiliate link</span>
+						</div>
+					</div>
+					<div class="go-lifetime">
+						<h5 style="color: white; font-size:40px;">5 Day Free Trial!</h5>
+						<h2 style="color:white" class="font-bolder">$19.98/ Month</h2>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Search unlimited codes</span>
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+						</div>
+					</div>
+					<div class="go-elite">
+						<h5 style="color: white; font-size:40px;">5 Day Free Trial!</h5>
+						<h6 style="color:white" class="font-bolder">$59.99/ Month</h6>
+						<h5 style="color:white" class="font-bolder">Users will have access to</h5>
+						<div class="sub-access-list text-left">
+							<span><i class="bi bi-check-circle-fill"></i>Real-time converter pricing</span>
+							<span><i class="bi bi-check-circle-fill"></i>Live market data</span>
+							<span><i class="bi bi-check-circle-fill"></i>Images</span>
+							<span><i class="bi bi-check-circle-fill"></i>Photo grading</span>
+							<span><i class="bi bi-check-circle-fill"></i>10% commission affiliate link</span>
+							<span><i class="bi bi-check-circle-fill"></i>Invoice system</span>
+							<span><i class="bi bi-check-circle-fill"></i>Margin Adjustment</span>
+							<span><i class="bi bi-check-circle-fill"></i>Featured Marketing</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 text-center font-light">
+					<h2 style="color:white">Account Info</h2>
+				</div>
+				<div class="col-12" style="margin-bottom: 50px">
+					<div class="d-flex flex-row row">
+						<div class="col-6 form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" id="firstname" aria-describedby="name"
+								placeholder="First Name">
+						</div>
+						<div class="col-6 form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" id="lastname" aria-describedby="emailHelp"
+								placeholder="Last Name">
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<div class="form-group">
+							<label>Email Address</label>
+							<input type="email" class="form-control" id="email" aria-describedby="emailHelp"
+								placeholder="Email Address">
+						</div>
+					</div>
+					<div class="d-flex flex-column hide-form">
+						<div id="affiliation-section" class="form-group hide-form">
+							<label>Affiliate (Referral Code)</label>
+							<input type="text" disabled class="form-control form-disabled" id="affiliation" />
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-12 text-center font-light" style="margin-bottom: 20px">
+					
+					<h2 style="color:white">Submit Payment</h2>
+				</div>
+				<div class="col-lg-12 text-center" style="margin-bottom: 20px">
+					<div class="go-premium-total">
+						<h4 style="color:white">Total: $44.99</h4>
+					</div>
+					<div class="go-lifetime-total">
+						<h4 style="color:white">Total: $19.98</h4>
+					</div>
+					<div class="go-elite-total">
+						<h4 style="color:white">Total: $59.99</h4>
+					</div>
+				</div>
+				<div id="card-element" class="col-lg-11"></div>
+				<div id="payment-message" class="col-lg-11"></div>
+				<div id="card-element-submit" class="col-lg-12">
+					<div class="col-12" style="text-align: center; margin-bottom: 15px;">
+						<div class="spinner-border" role="status" *ngIf="loading">
+							<span class="sr-only">Loading...</span>
+						  </div>
+						<button type="submit" class="btn btn-warning" id="pay-button" (click)="postPayment($event)" *ngIf="!loading">SUBMIT</button>
+					</div>
+				</div>
+				
+				<div id="payment-message-success" class="hide-form"></div>
+			</div>
+		</form>
+	</div>
+</section>
+<app-footer-one></app-footer-one>

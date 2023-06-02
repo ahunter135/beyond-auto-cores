@@ -1,0 +1,29 @@
+<!-- Testimonials -->
+<div class="section-full content-inner-2 bg-white" id="client" style="background-image:url(assets/images/background/agriculture/bg2.jpg); background-repeat:no-repeat;
+ background-position:center">
+	<div class="container">
+		<div class="section-head text-center">
+			<h5 class="title-small">Client Says</h5>
+			<div class="dlab-separator-outer">
+				<div class="dlab-separator bg-primary style-skew"></div>
+			</div>
+			<h2 class="title">Happy Customers Said</h2>
+		</div>
+		<owl-carousel-o [options]="customOptions" class="testimonial-one owl-loaded owl-theme owl-carousel owl-btn-center-lr owl-btn-3 agro-client-says">
+			<ng-template carouselSlide *ngFor = "let slide of slideStore">
+				<div class="slide">
+					<div class="testimonial-1">
+						<div class="testimonial-text">
+							<p>{{slide.description}}</p>
+						</div>
+						<div class="testimonial-detail clearfix">
+							<div class="testimonial-pic radius"><img src="assets/images/testimonials/{{slide.image}}" width="100" height="100" alt=""></div>
+							<div class="info"><strong class="testimonial-name">{{slide.name}}</strong> <span class="testimonial-position">{{slide.position}}</span></div> 
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</owl-carousel-o>
+	</div>
+</div>
+<!-- Testimonials END -->

@@ -1,0 +1,81 @@
+<div class="section-full bg-gray">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-12 content-inner">
+				<div class="section-head m-b30">
+					<h5 class="title-small">Contact Us</h5>
+					<div class="dlab-separator-outer">
+						<div class="dlab-separator bg-primary style-skew"></div>
+					</div>
+					<h2 class="title">Do You Have Any Question?</h2>
+				</div>
+				<ul class="contact-question">
+					<li *ngFor="let item of contactList">
+						<i [ngClass]="item.icon"></i>
+						<h4 class="title">{{item.title}}</h4>
+						<p>{{item.description}}</p>
+					</li>
+				</ul>
+			</div>
+			<div class="col-lg-8 col-md-12 m-b30">
+				<form class="contact-box dzForm" action="script/contact.php">
+					<h3 class="title-box">Write us a few words about your project and we’ll prepare a proposal for you within <strong>24</strong> hours</h3>
+					<div class="dzFormMsg m-b20"></div>
+					<input type="hidden" value="Contact" name="dzToDo" >
+					<div class="row">
+						<div class="col-lg-6 col-md-6">
+							<div class="form-group">
+								<div class="input-group">
+									<input name="dzFirstName" type="text" required class="form-control" placeholder="First Name">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="form-group">
+								<div class="input-group">
+									<input name="dzLastName" type="text" required class="form-control" placeholder="Last Name">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-6">
+							<div class="form-group">
+								<div class="input-group">
+									<input name="dzOther[Phone]" type="text" required class="form-control" placeholder="Phone">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-12">
+							<div class="form-group">
+								<div class="input-group"> 
+									<input name="dzEmail" type="email" class="form-control" required  placeholder="Your Email Id" >
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12">
+							<div class="form-group">
+								<div class="input-group">
+									<textarea name="dzMessage" rows="4" class="form-control" required placeholder="Tell us about your project or idea"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="g-recaptcha" data-sitekey="6LefsVUUAAAAADBPsLZzsNnETChealv6PYGzv3ZN" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>
+									<input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-12 col-md-12">
+							<button name="submit" type="submit" value="Submit" class="site-button align-self-center ml-auto button-style-2 primary">
+								<span>Get A Free Quote!</span>
+								<i class="la la-long-arrow-alt-right"></i>
+							</button>
+						</div>
+					</div>
+				</form>	
+			</div>
+		</div>
+	</div>
+</div>
+

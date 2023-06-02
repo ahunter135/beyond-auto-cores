@@ -1,0 +1,49 @@
+<!-- Testimonial -->
+<div class="section-full content-inner-2 bg-primary" id="client" style="background-image:url(assets/images/pattern/pt5.png);">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 section-head text-center">
+				<h5 class="title-small">HOW WE PERFORMED</h5>
+				<div class="dlab-separator-outer">
+					<div class="dlab-separator bg-black style-skew"></div>
+				</div>
+				<h2 class="title">Words From Satisfied Customers</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<owl-carousel-o [options]="customOptions" class="testimonial-box-carousel2 owl-dots-black-full owl-theme owl-btn-center-lr owl-btn-3 btn-white">
+					<ng-template carouselSlide *ngFor = "let slide of slideStore">
+						<div class="slide p-a5">
+							<div class="testimonial-box1">
+								<div class="testimonial-top">
+									<div class="testimonial-pic radius">
+										<img src="assets/images/testimonials/pic1.jpg" width="100" height="100" alt="">	
+									</div>
+									<div class="testimonial-detail"> 
+										<strong class="testimonial-name">{{slide.name}}</strong> 
+										<span class="testimonial-position">{{slide.position}}</span> 
+										<ul class="star-review">
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+											<li><i class="fa fa-star"></i></li>
+										</ul>
+									</div>
+								</div>
+								<div class="testimonial-text">
+									<p>{{slide.description}}</p>
+								</div>
+								<div class="testimonial-quote">
+									<i class="fa fa-quote-right"></i>
+								</div>
+							</div>
+						</div>
+					</ng-template>
+				</owl-carousel-o>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Testimonial End -->

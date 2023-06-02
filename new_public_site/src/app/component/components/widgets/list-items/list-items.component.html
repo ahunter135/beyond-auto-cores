@@ -1,0 +1,8 @@
+<div *ngFor = "let item of widget_list">
+<div [ngClass]="['widget', item.css]">
+	<h5 class="widget-title style-1">{{item.title}}</h5>
+	<ul *ngFor = "let list of item.list">
+		<li [innerHTML]="list.list_item"></li>
+	</ul>
+</div>
+</div>

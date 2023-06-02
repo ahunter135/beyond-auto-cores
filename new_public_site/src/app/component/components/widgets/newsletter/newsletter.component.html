@@ -1,0 +1,16 @@
+<div class="widget widget-newslatter">
+	<h5 class="widget-title style-1">{{title}}</h5>
+	<div class="news-box">
+		<p>{{description}}</p>
+		<form class="dzSubscribe" action="script/mailchamp.php" method="post">
+			<div class="dzSubscribeMsg"></div>
+			<div class="input-group">
+				<input name="dzEmail" required="required" type="email" class="form-control" placeholder="Your Email"/>
+				<button name="submit" value="Submit" type="submit" class="site-button btn-block radius-no button-style-2 primary">
+					<span>Subscribe Now</span>
+					<i class="la la-long-arrow-alt-right"></i>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,40 @@
+<div class="section-full content-inner bg-white" id="about-us" style="background-image: url(assets/images/pattern/pt13.png);">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-6 col-md-12 m-b30 steel-about align-self-start">
+				<div class="row sp10">
+					<div class="col-md-12 m-b10">
+						<img src="assets/images/about/steel/pic1.jpg" class="img-cover" alt=""/>
+					</div>
+					<div class="col-md-5 m-b10">
+						<div class="steel-year bg-primary">
+							<div>
+								<h2 class="no-title">22+</h2>
+								<h4 class="title">Years Experience Working</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7 m-b10">
+						<img src="assets/images/about/steel/pic2.jpg" class="img-cover" alt=""/>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 m-b30 steel-about">
+				<div class="section-head m-b20">
+					<h5 class="title-small">{{subtitle}}</h5>
+					<div class="dlab-separator-outer">
+						<div class="dlab-separator bg-primary style-skew"></div>
+					</div>
+					<h2 class="title">{{title}}</h2>
+				</div>
+				<p>{{description}}</p>
+				<ul class="list-check white agro-list">
+					<li *ngFor = "let item of itemList">
+						{{item.list}}
+					</li>
+				</ul>
+				<a href="#" class="site-button btnhover14">Read More</a>
+			</div>
+		</div>
+	</div>
+</div>

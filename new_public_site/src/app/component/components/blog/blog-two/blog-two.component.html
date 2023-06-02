@@ -1,0 +1,59 @@
+<!-- Trending News -->
+<div class="section-full content-inner bg-white" id="news" style="background-image:url(assets/images/background/food/bg2.jpg);">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 section-head text-left">
+				<h5 class="title-small">NEWS AND UPDATES</h5>
+				<div class="dlab-separator-outer">
+					<div class="dlab-separator bg-primary style-skew"></div>
+				</div>
+				<h2 class="title">
+					Trending News & Thoughts
+					<a href="javascript:void(0);" class="site-button outline outline-2 btnhover11 radius-no pull-right">ABOUT US</a>
+				</h2>
+			</div>
+		</div>
+		<div class="row">
+			<div *ngFor="let item of blogList" class="col-lg-4 col-md-6 col-sm-6">
+				<div class="blog-post trending-post text-center text-white">
+					<div class="dlab-post-media dlab-img-effect"> 
+						<a href="blog-single.html"><img src="assets/images/blog/grid/food/{{item.image}}" alt=""></a> 
+					</div>
+					<div class="dlab-info">
+						<div class="dlab-post-meta">
+							<ul>
+								<li class="post-date"> <i class="fa fa-calendar"></i>{{item.date}}</li>
+								<li class="post-comment"><i class="fa fa-comments"></i> <a href="javascript:void(0);">{{item.comment}}</a> </li>
+							</ul>
+						</div>
+						<div class="dlab-post-title">
+							<h5 class="post-tag font-weight-500"><a class="text-white"  [routerLink] = "'/blog-list-two'">{{item.category}}</a></h5>
+							<h5 class="post-title font-weight-500"><a  [routerLink] = "'/blog-list-two'">{{item.title}}</a></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 m-b30 col-md-6 col-sm-12">
+				<div class="newsletter-box text-white">
+					<div class="icon-bx-wraper left">
+						<div class="icon-bx-sm bg-white radius text-primary m-b20"> 
+							<a href="#" class="icon-cell text-primary"><i class="ti ti-desktop"></i></a> 
+						</div>
+						<div class="icon-content">
+							<h5 class="dlab-tilte">Subsbribe Our <br/>Newsletter</h5>
+						</div>
+					</div>
+					<p>Subsbribe us to get news and updates directy to your inbox.</p>
+					<form class="dzSubscribe" action="script/mailchamp.php" method="post">
+						<div class="dzSubscribeMsg"></div>
+						<input name="dzEmail" required="required"  class="form-control" placeholder="Your Email Id" type="email">
+						<span class="input-group-btn">
+							<button name="submit" value="Submit" type="submit" class="site-button">Subscribe</button>
+						</span>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Trending News End -->

@@ -1,0 +1,32 @@
+<div class="section-full content-inner overlay-black-dark" id="team" style="background-image:url(assets/images/background/agriculture/bg3.jpg); background-repeat:no-repeat; background-position:center">
+	<div class="container">
+		<div class="section-head text-center text-white">
+			<h5 class="title-small">Our Team</h5>
+			<div class="dlab-separator-outer">
+				<div class="dlab-separator bg-white style-skew"></div>
+			</div>
+			<h2 class="title">Meet The Farmers</h2>
+		</div>
+		<div class="row">
+			<div *ngFor = "let item of teamlist" class="col-lg-3 col-md-6 col-sm-6">
+				<div class="dlab-box m-b30 dlab-team10">
+					<div class="dlab-media">
+						<a href="javascript:;">
+							<img alt="" src="assets/images/our-team/{{item.image}}">
+						</a>
+					</div>
+					<div class="dlab-info">
+						<h4 class="dlab-title"><a href="javascript:;">{{item.title}}</a></h4>
+						<span class="dlab-position">{{item.position}}</span>
+						<ul class="dlab-social-icon">
+							<li><a class="site-button fa fa-facebook facebook" href="javascript:void(0);"></a></li>
+							<li><a class="site-button fa fa-twitter twitter" href="javascript:void(0);"></a></li>
+							<li><a class="site-button fa fa-linkedin linkedin" href="javascript:void(0);"></a></li>
+							<li><a class="site-button fa fa-pinterest pinterest" href="javascript:void(0);"></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

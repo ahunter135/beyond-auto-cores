@@ -1,0 +1,29 @@
+<!-- Project And Portfolio -->
+<div class="section-full content-inner-2 frame-project-area overlay-white-middle frame-out" id="portfolio" style="background-image:url(assets/images/background/solar/bg2.jpg);">
+	<div class="container-fluid">
+		<div class="section-head text-center">
+			<h5 class="title-small">Our Portfolio</h5>
+			<div class="dlab-separator-outer">
+				<div class="dlab-separator bg-primary style-skew"></div>
+			</div>
+			<h2 class="title">Project And Portfolio</h2>
+		</div>
+		<owl-carousel-o [options]="customOptions" class="owl-project owl-theme owl-btn-center-lr">
+			<ng-template carouselSlide *ngFor = "let slide of slideStore">
+				<div class="slide wow fadeInUp" data-wow-duration="2s" data-wow-delay="0.3s">
+					<div class="dlab-box service-box-3">
+						<div class="dlab-media radius-sm dlab-img-overlay1 zoom dlab-img-effect"> 
+							<a href="javascript:void(0);"><img src="assets/images/our-work/solarplant/{{slide.image}}" alt=""></a> 
+						</div>
+						<div class="dlab-info">
+							<h4 class="title"><a href="javascript:void(0);">{{slide.title}}</a></h4>
+						</div>
+					</div>
+				</div>
+			</ng-template>
+		</owl-carousel-o>
+		<div class="m-t40 text-center">
+			<a href="javascript:void(0);" class="site-button btnhover14">View All Portfolio</a> 
+		</div>
+	</div>
+</div>

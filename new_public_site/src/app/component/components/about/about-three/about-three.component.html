@@ -1,0 +1,32 @@
+<div class="section-full bg-primary" id="about-us">
+	<div class="container-fluid">
+		<div class="row align-item-center">
+			<div class="col-lg-6 p-lr0">
+				<div class="video-bx agro-video">
+					<img src="assets/images/our-services/agriculture/pic7.jpg" class="img-cover" alt=""/>
+					<div class="video-play-icon">
+						<a href="https://www.youtube.com/watch?v=f4Bts39jimI" class="popup-youtube video"><i class="fa fa-play"></i></a>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-6 content-inner-2 agro-about">
+				<div class="max-w600 p-lr15">
+					<div class="section-head text-white m-b20">
+						<h5 class="title-small">{{subtitle}}</h5>
+						<div class="dlab-separator-outer">
+							<div class="dlab-separator bg-white style-skew"></div>
+						</div>
+						<h2 class="title">{{title}}</h2>
+					</div>
+					<p>{{description}}</p>
+					<ul class="list-check white agro-list">
+						<li *ngFor = "let item of itemList">
+							{{item.list}}
+						</li>
+					</ul>
+					<a href="#" class="site-button btnhover14 white">Read More</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

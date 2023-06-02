@@ -93,6 +93,12 @@ export class ContactPageComponent implements OnInit {
 			data['affiliateCode'] = (document.getElementById("affiliation") as any).value;
 		}
 
+		console.log((document.getElementById("agree-to-terms") as any).checked);
+
+		if (!(document.getElementById("agree-to-terms") as any).checked) {
+			
+		}
+
 		if ((!document.getElementById("subscription") as any).value) {
 			alert('Please Select Type of Subscription');
 			return false;

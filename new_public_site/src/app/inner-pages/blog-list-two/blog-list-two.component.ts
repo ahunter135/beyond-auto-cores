@@ -24,7 +24,7 @@ export class BlogListTwoComponent implements OnInit {
 
   async confirmRegistration(e: Event) {
 	e.preventDefault();
-	const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+	const pattern = /^.{8,}$/; // At least 8 characters
 	const queryString = window.location.search;
 	const registrationCode = queryString.replace('?registrationCode=', '')
 	if (!registrationCode) {

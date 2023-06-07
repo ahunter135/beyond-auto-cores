@@ -236,12 +236,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             {
                 try
                 {
-                    var options = new CardCreateOptions
-                    {
-                        Source = confirmCommand.Token,
-                    };
-                    var service = new CardService();
-                    service.Create(confirmCommand.Customer, options);
+                  //  var options = new CardCreateOptions
+                  //  {
+                  //      Source = confirmCommand.Token,
+                   // };
+                   // var service = new CardService();
+                    //service.Create(confirmCommand.Customer, options);
 
                     return true;
                 }

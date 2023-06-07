@@ -93,11 +93,10 @@ export class ContactPageComponent implements OnInit {
 			data['affiliateCode'] = (document.getElementById("affiliation") as any).value;
 		}
 
-		console.log((document.getElementById("agree-to-terms") as any).checked);
 
-		if (!(document.getElementById("agree-to-terms") as any).checked) {
+//		if (!(document.getElementById("agree-to-terms") as any).checked) {
 			
-		}
+		//}
 
 		if ((!document.getElementById("subscription") as any).value) {
 			alert('Please Select Type of Subscription');
@@ -280,6 +279,8 @@ export class ContactPageComponent implements OnInit {
 				(document.querySelector("#payment-message-success") as any).classList.remove('hide-form');
 				(document.querySelector("#card-element") as any).classList.add('hide-form');
 				(document.querySelector("#card-element-submit") as any).classList.add('hide-form');
+			} else {
+				alert(resp.message);
 			}
 
 			this.loading = false;

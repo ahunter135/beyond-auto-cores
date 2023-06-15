@@ -38,11 +38,12 @@ namespace Onsharp.BeyondAutoCore.API.Controllers
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             OnSubscriptionChangeCommand subscriptionChangeCommand = new OnSubscriptionChangeCommand
 			{
-				StripeSignature = Request.Headers["Stipe-Signature"],
+				StripeSignature = Request.Headers["Stripe-Signature"],
                 Json = json
             };
             try
             {
+                Console.WriteLine("HEREEE");
                 return await this._paymentService.OnSubscriptionChange(subscriptionChangeCommand);
             }
             catch (Exception e)

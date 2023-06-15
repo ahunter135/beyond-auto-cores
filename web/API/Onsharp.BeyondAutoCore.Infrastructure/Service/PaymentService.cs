@@ -277,7 +277,6 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             if (secret == null) throw new Exception("Secret not found in Stripe config");
             if (subscriptionChange.Json == null || subscriptionChange.StripeSignature == null)
                 return false;
-
             var stripeEvent = EventUtility.ConstructEvent(subscriptionChange.Json, subscriptionChange.StripeSignature, secret);
             if (stripeEvent == null) return false;
             // I think these are all the event types that change the subscription

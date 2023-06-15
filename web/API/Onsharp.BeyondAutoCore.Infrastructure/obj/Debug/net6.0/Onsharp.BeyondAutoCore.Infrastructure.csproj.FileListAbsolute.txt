@@ -65,11 +65,3 @@ C:/elco-dev-projects/beyond-auto-cores/web/API/Onsharp.BeyondAutoCore.Infrastruc
 C:/elco-dev-projects/beyond-auto-cores/web/API/Onsharp.BeyondAutoCore.Infrastructure/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.csproj.CopyComplete
 C:/elco-dev-projects/beyond-auto-cores/web/API/Onsharp.BeyondAutoCore.Infrastructure/obj/Debug/net6.0/Onsharp.BeyondAutoCore.Infrastructure.genruntimeconfig.cache
 C:/elco-dev-projects/beyond-auto-cores/web/API/Onsharp.BeyondAutoCore.Infrastructure/obj/Debug/net6.0/ref/Onsharp.BeyondAutoCore.Infrastructure.dll
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.csproj.AssemblyReference.cache
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.AssemblyInfoInputs.cache
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.AssemblyInfo.cs
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.csproj.CoreCompileInputs.cache
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.dll
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\refint\Onsharp.BeyondAutoCore.Infrastructure.dll
-C:\elco-dev-projects\beyond-auto-cores\web\API\Onsharp.BeyondAutoCore.Infrastructure\obj\Debug\net6.0\Onsharp.BeyondAutoCore.Infrastructure.pdb

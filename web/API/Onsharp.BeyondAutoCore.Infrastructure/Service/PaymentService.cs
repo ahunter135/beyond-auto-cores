@@ -297,6 +297,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         private async Task<bool> OnSubcriptionChangeHandler(Event stripeEvent, bool isCreateorUpdate = false)
         {
+            Console.WriteLine("INSIDE");
             var data = stripeEvent.Data.Object as Subscription;
 
             if (data == null) return false;
@@ -309,9 +310,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             var dataSet = this._userRegistrationRepository.GetAllIQueryable();
             var user = await dataSet.Where(r => r.StripeCustomerId == customerId).FirstOrDefaultAsync(); // Query registration table for customerId
-
+            Console.WriteLine(user);
             if (user == null) throw new Exception($"No user found with stripe customer id {customerId}"); // Throw for testing, probably just return in prod
-
+            Console.WriteLine("Not Null");
             // If the subscription is being created or updated, change the Subscription and SubscriptionId to ones provided
 			if (isCreateorUpdate)
             {
@@ -335,6 +336,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             {
 				user.SubscriptionIsCancel = true;
 			}
+            Console.WriteLine("HERE");
 			user.UpdatedOn = DateTime.UtcNow;
 			_userRegistrationRepository.Update(user); // Update table
 			_userRegistrationRepository.SaveChanges();

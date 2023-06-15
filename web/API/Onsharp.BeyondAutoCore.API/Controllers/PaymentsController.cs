@@ -43,7 +43,6 @@ namespace Onsharp.BeyondAutoCore.API.Controllers
             };
             try
             {
-                Console.WriteLine("HEREEE");
                 return await this._paymentService.OnSubscriptionChange(subscriptionChangeCommand);
             }
             catch (Exception e)

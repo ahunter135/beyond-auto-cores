@@ -280,15 +280,12 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var stripeEvent = EventUtility.ConstructEvent(subscriptionChange.Json, subscriptionChange.StripeSignature, secret);
             if (stripeEvent == null) return false;
             // I think these are all the event types that change the subscription
-            if (stripeEvent.Type == Events.SubscriptionScheduleCanceled || 
-                stripeEvent.Type == Events.SubscriptionScheduleAborted ||
-                stripeEvent.Type == Events.SubscriptionScheduleCompleted ||
-				stripeEvent.Type == Events.SubscriptionScheduleReleased) 
+            if (stripeEvent.Type == "customer.subscription.deleted") 
             {
                 return await OnSubcriptionChangeHandler(stripeEvent);
             }
-            else if (stripeEvent.Type == Events.SubscriptionScheduleCreated ||
-				stripeEvent.Type == Events.SubscriptionScheduleUpdated)
+            else if (stripeEvent.Type == "customer.subscription.created" ||
+				stripeEvent.Type == "customer.subscription.updated")
             {
                 return await OnSubcriptionChangeHandler(stripeEvent, true);
             }
@@ -300,12 +297,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
         private async Task<bool> OnSubcriptionChangeHandler(Event stripeEvent, bool isCreateorUpdate = false)
         {
-            var data = stripeEvent.Data.Object as SubscriptionSchedule;
+            var data = stripeEvent.Data.Object as Subscription;
+
             if (data == null) return false;
 
-            var customerId = data.Customer.Id;
-            var subscriptionId = data.Subscription.Id;
+            var customerId = data.CustomerId;
+            var subscriptionId = data.Id;
             var status = data.Status;
+
             if (customerId == null || status == null) throw new Exception("CustomerId and status not in event data"); // Throw for testing, probably just return in prod
 
             var dataSet = this._userRegistrationRepository.GetAllIQueryable();
@@ -316,18 +315,18 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             // If the subscription is being created or updated, change the Subscription and SubscriptionId to ones provided
 			if (isCreateorUpdate)
             {
-				// This looks stupid but kinda have to do something like this
-				// Check here for obj def https://stripe.com/docs/api/subscription_schedules/object
-				var phase = data.Phases.FirstOrDefault();
-                if (phase != null && phase.Items.FirstOrDefault() != null && phase.Items.FirstOrDefault().PriceId != null)
+                // This looks stupid but kinda have to do something like this
+                // Check here for obj def https://stripe.com/docs/api/subscription_schedules/object
+                var item = data.Items.FirstOrDefault();
+                var price = item == null ? null : item.Price.Id;
+                if (price != null)
                 {
-					user.Subscription = (await this.InterpretStripePriceString(phase.Items.FirstOrDefault().PriceId));
+					user.Subscription = (await this.InterpretStripePriceString(price));
 				}
 				if (subscriptionId != null) user.SubscriptionId = subscriptionId;
 			}
-
-			// I did not find a status for trialing. I would double check this
-			if (status == "active")
+			// I would double check this
+			if (status == "active" || status == "trialing")
             {
                 user.SubscriptionIsCancel = false;
             }

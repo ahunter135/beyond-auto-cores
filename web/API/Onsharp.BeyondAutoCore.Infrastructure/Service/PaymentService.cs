@@ -307,16 +307,19 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var customerId = data.Customer.Id;
             var subscriptionId = data.Subscription.Id;
             var status = data.Status;
-            if (customerId == null || status == null) throw new Exception("CustomerId and status not in event data"); // Throw for testing
+            if (customerId == null || status == null) throw new Exception("CustomerId and status not in event data"); // Throw for testing, probably just return in prod
 
             var dataSet = this._userRegistrationRepository.GetAllIQueryable();
-            var user = await dataSet.Where(r => r.StripeCustomerId == customerId).FirstOrDefaultAsync();
+            var user = await dataSet.Where(r => r.StripeCustomerId == customerId).FirstOrDefaultAsync(); // Query registration table for customerId
 
-            if (user == null) throw new Exception($"No user found with stripe customer id {customerId}"); // Throw for testing
+            if (user == null) throw new Exception($"No user found with stripe customer id {customerId}"); // Throw for testing, probably just return in prod
 
-            if (isCreateorUpdate)
+            // If the subscription is being created or updated, change the Subscription and SubscriptionId to ones provided
+			if (isCreateorUpdate)
             {
-                var phase = data.Phases.FirstOrDefault();
+				// This looks stupid but kinda have to do something like this
+				// Check here for obj def https://stripe.com/docs/api/subscription_schedules/object
+				var phase = data.Phases.FirstOrDefault();
                 if (phase != null && phase.Items.FirstOrDefault() != null && phase.Items.FirstOrDefault().PriceId != null)
                 {
 					user.Subscription = (await this.InterpretStripePriceString(phase.Items.FirstOrDefault().PriceId));
@@ -328,16 +331,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 			if (status == "active")
             {
                 user.SubscriptionIsCancel = false;
-                user.UpdatedOn = DateTime.UtcNow;
             }
             // Other possible status are not_started, completed, released, canceled. They get handled here
             else
             {
 				user.SubscriptionIsCancel = true;
-				user.UpdatedOn = DateTime.UtcNow;
 			}
-
-            _userRegistrationRepository.Update(user);
+			user.UpdatedOn = DateTime.UtcNow;
+			_userRegistrationRepository.Update(user); // Update table
             return true;
         }
 

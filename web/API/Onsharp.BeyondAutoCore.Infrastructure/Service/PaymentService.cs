@@ -339,7 +339,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 			}
 			user.UpdatedOn = DateTime.UtcNow;
 			_userRegistrationRepository.Update(user); // Update table
-            return true;
+			_userRegistrationRepository.SaveChanges();
+			return true;
         }
 
         private async Task<SubscriptionTypeEnum> InterpretStripePriceString(string price)

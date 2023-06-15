@@ -442,7 +442,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             decimal amount = this.GetPhotoGradeCost(numberOfGradeCredit, priceInfo.Amount);
 
             var registrationInfo = await _registrationsRepository.GetByIdAsync(userInfo.RegistrationId);
-            var paymentIntentResponse = await _paymentService.CreatePaymentIntent(amount, priceInfo.Currency, priceInfo.Description ?? "", registrationInfo.StripeCustomerId);
+            var paymentIntentResponse = await _paymentService.CreatePaymentIntent(amount, priceInfo.Currency, priceInfo.Description ?? "", registrationInfo.StripeCustomerId, "");
 
             string paymentIntentId = paymentIntentResponse.Id;
             string clientSecret = paymentIntentResponse.ClientSecret;

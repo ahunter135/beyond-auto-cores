@@ -84,6 +84,10 @@ private readonly IRegistrationsRepository _userRegistrationRepository;
                         registrationInfo.SubscriptionIsCancel = true;
                         _userRegistrationRepository.Update(registrationInfo);
                         _userRegistrationRepository.SaveChanges();
+                    } else if (subscription.Status == "succeeded") {
+                        registrationInfo.SubscriptionIsCancel = false;
+                        _userRegistrationRepository.Update(registrationInfo);
+                        _userRegistrationRepository.SaveChanges();
                     }
                 }
                 

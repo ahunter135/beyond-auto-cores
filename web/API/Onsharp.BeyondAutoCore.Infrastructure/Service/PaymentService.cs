@@ -46,7 +46,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return _mapper.Map<PaymentModel, PaymentDto>(paymentRepoInfo);
         }
 
-        public async Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string description, string stripeCustomerId)
+        public async Task<PaymentIntent> CreatePaymentIntent(decimal amount, string currency, string description, string stripeCustomerId, string paymentMethodId)
         {
             try
             {
@@ -56,7 +56,8 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     Currency = currency,
                     Customer = stripeCustomerId,
                     Description = description,
-                    CaptureMethod = "manual"
+                    CaptureMethod = "manual",
+                    PaymentMethod = paymentMethodId
                 };
 
                 //var paymentIntentOptions = new PaymentIntentCreateOptions
@@ -70,16 +71,21 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                 var paymentIntentService = new Stripe.PaymentIntentService();
                 var paymentIntentResponse = paymentIntentService.Create(paymentIntentOptions);
 
+                var service = new PaymentIntentService();
+                paymentIntentResponse = service.Confirm(
+                  paymentIntentResponse.Id);
+                Console.WriteLine(paymentIntentResponse.Status);
                 return paymentIntentResponse;
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
+                Console.WriteLine(e.Message);
                 return null;
             }
 
         }
 
-        public async Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial)
+        public async Task<Subscription> CreateSubscription(PriceDto priceInfo, string stripeCustomerId, bool allowTrial, string paymentMethodId)
         {
             var paymentSettings = new SubscriptionPaymentSettingsOptions
             {
@@ -88,11 +94,14 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var subscriptionOptions = new SubscriptionCreateOptions { };
             if (allowTrial)
             {
-                var paymentIntentResponse = await CreatePaymentIntent(priceInfo.Amount, priceInfo.Currency, priceInfo.Description, stripeCustomerId);
-                
-                if (paymentIntentResponse == null) {
+                var paymentIntentResponse = await CreatePaymentIntent(priceInfo.Amount, priceInfo.Currency, priceInfo.Description, stripeCustomerId, paymentMethodId);
+
+                if (paymentIntentResponse == null)
+                {
                     return null;
-                } else {
+                }
+                else
+                {
                     var paymentIntentService = new Stripe.PaymentIntentService();
                     paymentIntentResponse = paymentIntentService.Cancel(paymentIntentResponse.Id);
                 }
@@ -179,7 +188,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
             catch (System.Exception e)
             {
-                return await CreateSubscription(newPriceInfo, stripeCustomerId, false);
+                return await CreateSubscription(newPriceInfo, stripeCustomerId, false, "");
             }
 
         }
@@ -236,11 +245,11 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             {
                 try
                 {
-                  //  var options = new CardCreateOptions
-                  //  {
-                  //      Source = confirmCommand.Token,
-                   // };
-                   // var service = new CardService();
+                    //  var options = new CardCreateOptions
+                    //  {
+                    //      Source = confirmCommand.Token,
+                    // };
+                    // var service = new CardService();
                     //service.Create(confirmCommand.Customer, options);
 
                     return true;

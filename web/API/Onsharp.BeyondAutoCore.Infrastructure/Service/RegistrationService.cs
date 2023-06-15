@@ -63,7 +63,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             string paymentStatus = "";
             if (priceInfo.UnitType.ToLower() == UnitTypeEnum.monthly.ToString().ToLower())
             {
-                var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id, true);
+                var subscription = await _paymentService.CreateSubscription(priceInfo, customerReponse.Id, true, customerReponse.DefaultSourceId);
                 if (subscription == null)
                 {
                     return new RegistrationDto() { Success = false, Message = "Error with Payment Method." };
@@ -76,7 +76,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             }
             else
             {
-                var paymentIntentResponse = await _paymentService.CreatePaymentIntent(priceInfo.Amount, priceInfo.Currency, priceInfo.Description, customerReponse.Id);
+                var paymentIntentResponse = await _paymentService.CreatePaymentIntent(priceInfo.Amount, priceInfo.Currency, priceInfo.Description, customerReponse.Id, customerReponse.DefaultSourceId);
 
                 paymentIntentId = paymentIntentResponse.Id;
                 clientSecret = paymentIntentResponse.ClientSecret;
@@ -142,7 +142,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
                     await _paymentService.CancelSubscription(userRegistration.SubscriptionId);
                     //await _paymentService.Delete(paymentInfo.Id);
 
-                    var paymentIntentResponse = await _paymentService.CreatePaymentIntent(newPriceInfo.Amount, newPriceInfo.Currency, newPriceInfo.Description, userRegistration.StripeCustomerId);
+                    var paymentIntentResponse = await _paymentService.CreatePaymentIntent(newPriceInfo.Amount, newPriceInfo.Currency, newPriceInfo.Description, userRegistration.StripeCustomerId, "");
 
                     string paymentIntentId = paymentIntentResponse.Id;
                     string clientSecret = paymentIntentResponse.ClientSecret;

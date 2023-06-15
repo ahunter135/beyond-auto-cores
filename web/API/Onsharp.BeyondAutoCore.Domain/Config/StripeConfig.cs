@@ -21,5 +21,10 @@ namespace Onsharp.BeyondAutoCore.Domain.Config
             get { return configuration.GetValue<string>("Stripe:SiteDomain"); }
         }
 
+        public string SubscriptionChangeSecret
+        {
+            get { return configuration.GetValue<string>("Stripe:SubscriptionChangeSecret"); }
+        }
+
     }
 }

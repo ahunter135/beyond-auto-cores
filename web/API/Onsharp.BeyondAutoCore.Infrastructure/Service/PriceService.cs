@@ -36,5 +36,9 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             return mapData;
         }
 
+        public async Task<List<PriceModel>> GetSubscriptionPricesFull()
+        {
+            return await _pricesRepository.GetSubscriptionPrices();
+        }
     }
 }

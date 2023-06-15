@@ -8,7 +8,8 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<PriceDto> GetPriceByName(PriceEnum subscriptionType);
         Task<List<PriceLiteDto>> GetSubscriptionPrices();
 
-        // write
+        Task<List<PriceModel>> GetSubscriptionPricesFull();
+		// write
 
-    }
+	}
 }

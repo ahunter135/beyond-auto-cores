@@ -1,4 +1,6 @@
-﻿using Stripe;
+﻿using Microsoft.EntityFrameworkCore;
+using Stripe;
+using System.Diagnostics.Eventing.Reader;
 
 namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 {
@@ -8,16 +10,18 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
         private readonly ISubscriptionService _subscriptionCreditService;
         private readonly IRegistrationsRepository _userRegistrationRepository;
         private readonly IPaymentsRepository _paymentsRepository;
+        private readonly IPriceService _priceService;
 
         public PaymentService(IHttpContextAccessor httpContextAccessor, ISubscriptionService subscriptionCreditService,
                               IPaymentsRepository paymentsRepository, IRegistrationsRepository userRegistrationRepository,
-                              IMapper mapper)
+                              IMapper mapper, IPriceService priceService)
             : base(httpContextAccessor)
         {
             _mapper = mapper;
             _paymentsRepository = paymentsRepository;
             _subscriptionCreditService = subscriptionCreditService;
             _userRegistrationRepository = userRegistrationRepository;
+            _priceService = priceService;
 
             var stripeConfig = new StripeConfig();
             StripeConfiguration.ApiKey = stripeConfig.ApiKey;
@@ -265,6 +269,96 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
 
             return false;
         }
+
+        public async Task<bool> OnSubscriptionChange(OnSubscriptionChangeCommand subscriptionChange)
+        {
+            var stripeConfig = new StripeConfig();
+            string secret = stripeConfig.SubscriptionChangeSecret;
+            if (secret == null) throw new Exception("Secret not found in Stripe config");
+            if (subscriptionChange.Json == null || subscriptionChange.StripeSignature == null)
+                return false;
+
+            var stripeEvent = EventUtility.ConstructEvent(subscriptionChange.Json, subscriptionChange.StripeSignature, secret);
+            if (stripeEvent == null) return false;
+            // I think these are all the event types that change the subscription
+            if (stripeEvent.Type == Events.SubscriptionScheduleCanceled || 
+                stripeEvent.Type == Events.SubscriptionScheduleAborted ||
+                stripeEvent.Type == Events.SubscriptionScheduleCompleted ||
+				stripeEvent.Type == Events.SubscriptionScheduleReleased) 
+            {
+                return await OnSubcriptionChangeHandler(stripeEvent);
+            }
+            else if (stripeEvent.Type == Events.SubscriptionScheduleCreated ||
+				stripeEvent.Type == Events.SubscriptionScheduleUpdated)
+            {
+                return await OnSubcriptionChangeHandler(stripeEvent, true);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private async Task<bool> OnSubcriptionChangeHandler(Event stripeEvent, bool isCreateorUpdate = false)
+        {
+            var data = stripeEvent.Data.Object as SubscriptionSchedule;
+            if (data == null) return false;
+
+            var customerId = data.Customer.Id;
+            var subscriptionId = data.Subscription.Id;
+            var status = data.Status;
+            if (customerId == null || status == null) throw new Exception("CustomerId and status not in event data"); // Throw for testing
+
+            var dataSet = this._userRegistrationRepository.GetAllIQueryable();
+            var user = await dataSet.Where(r => r.StripeCustomerId == customerId).FirstOrDefaultAsync();
+
+            if (user == null) throw new Exception($"No user found with stripe customer id {customerId}"); // Throw for testing
+
+            if (isCreateorUpdate)
+            {
+                var phase = data.Phases.FirstOrDefault();
+                if (phase != null && phase.Items.FirstOrDefault() != null && phase.Items.FirstOrDefault().PriceId != null)
+                {
+					user.Subscription = (await this.InterpretStripePriceString(phase.Items.FirstOrDefault().PriceId));
+				}
+				if (subscriptionId != null) user.SubscriptionId = subscriptionId;
+			}
+
+			// I did not find a status for trialing. I would double check this
+			if (status == "active")
+            {
+                user.SubscriptionIsCancel = false;
+                user.UpdatedOn = DateTime.UtcNow;
+            }
+            // Other possible status are not_started, completed, released, canceled. They get handled here
+            else
+            {
+				user.SubscriptionIsCancel = true;
+				user.UpdatedOn = DateTime.UtcNow;
+			}
+
+            _userRegistrationRepository.Update(user);
+            return true;
+        }
+
+        private async Task<SubscriptionTypeEnum> InterpretStripePriceString(string price)
+        {
+            var prices = await _priceService.GetSubscriptionPricesFull();
+
+            if (prices == null) throw new Exception("Prices could not be fetched");
+
+            foreach (var p in prices)
+            {
+                if (p.StripePriceId == price)
+                {
+                    if (p.Name == "Premium") return SubscriptionTypeEnum.Premium;
+                    else if (p.Name == "Platinum") return SubscriptionTypeEnum.Platinum;
+                    else if (p.Name == "Elite") return SubscriptionTypeEnum.Elite;
+
+				}
+            }
+			throw new Exception("Not a valid price");
+		}
 
         public async Task<bool> Delete(long id)
         {

@@ -22,5 +22,8 @@ namespace Onsharp.BeyondAutoCore.Application
         Task<string> CreateAccount();
         Task<string> CreateAccountLink(string accountId);
 
-    }
+        Task<bool> OnSubscriptionChange(OnSubscriptionChangeCommand subscriptionChange);
+
+
+	}
 }

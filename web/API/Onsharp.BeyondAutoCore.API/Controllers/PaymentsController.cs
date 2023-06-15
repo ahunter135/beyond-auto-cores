@@ -30,5 +30,25 @@ namespace Onsharp.BeyondAutoCore.API.Controllers
             });
         }
 
+        [HttpPost]
+        [AllowAnonymous]
+        [Route("subscription-webhook")]
+        public async Task<bool> OnSubscriptionChange()
+        {
+            var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
+            OnSubscriptionChangeCommand subscriptionChangeCommand = new OnSubscriptionChangeCommand
+			{
+				StripeSignature = Request.Headers["Stipe-Signature"],
+                Json = json
+            };
+            try
+            {
+                return await this._paymentService.OnSubscriptionChange(subscriptionChangeCommand);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

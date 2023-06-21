@@ -8,11 +8,11 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Core.Helpers
         public static async Task<bool> SendEmail(
             string toEmail, string fromEmail, string subject, string body, string cc = "",
             bool isBodyHtml = false, MemoryStream fileAttachment = null, string overrideFromEmail = null,
-            string attachmentFileName = "", string fromName= "Beyond Auto Core")
+            string attachmentFileName = "", string fromName= "Beyond Auto Core", bool isSupportEmail = false)
         {
             MailMessage message = new MailMessage();
-            
-            message.From = new MailAddress(fromEmail, fromName);
+            if (isSupportEmail) message.From = new MailAddress(fromEmail, fromEmail);
+            else message.From = new MailAddress(fromEmail, fromName);
             message.To.Add(new MailAddress(toEmail));
             message.Subject = subject;
             message.IsBodyHtml = isBodyHtml;

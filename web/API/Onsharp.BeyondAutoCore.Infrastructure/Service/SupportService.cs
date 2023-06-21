@@ -22,7 +22,7 @@ namespace Onsharp.BeyondAutoCore.Infrastructure.Service
             var smtpSetting = new SMTPConfig();
             var subject = $"Message from {sendMessageCommand.Name}";
 
-            await EmailHelper.SendEmail(smtpSetting.SupportEmail, sendMessageCommand.Email, subject, sendMessageCommand.Message, isBodyHtml: true, fromName: sendMessageCommand.Name);
+            await EmailHelper.SendEmail(smtpSetting.SupportEmail, sendMessageCommand.Email, subject, sendMessageCommand.Message, isBodyHtml: true, fromName: sendMessageCommand.Name, isSupportEmail: true);
 
             return new ResponseDto() { Success = 1, Message = "Message successfully sent." };
         }
